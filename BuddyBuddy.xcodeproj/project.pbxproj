@@ -7,20 +7,90 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
+		C90827FA2CDA64C20096BA0D /* NetworkEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F92CDA64C20096BA0D /* NetworkEmpty */; };
+		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
+		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
+		C90828002CDA64D90096BA0D /* EntityEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FF2CDA64D90096BA0D /* EntityEmpty */; };
+		C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */; };
+		C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828032CDA64E60096BA0D /* UseCaseEmpty */; };
+		C90828062CDA64EB0096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828052CDA64EB0096BA0D /* RepositoryEmpty */; };
+		C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828072CDA64F30096BA0D /* HomeViewEmpty */; };
+		C908280A2CDA64FA0096BA0D /* DMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828092CDA64FA0096BA0D /* DMEmpty */; };
+		C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280B2CDA65040096BA0D /* SearchViewEmpty */; };
+		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
+		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
+		C90828162CDA65CD0096BA0D /* AppCoordiEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828152CDA65CD0096BA0D /* AppCoordiEmpty */; };
+		C90828182CDA65D60096BA0D /* TabEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828172CDA65D60096BA0D /* TabEmpty */; };
+		C908281C2CDA65F20096BA0D /* TabCoordi in Resources */ = {isa = PBXBuildFile; fileRef = C908281B2CDA65F20096BA0D /* TabCoordi */; };
+		C908281E2CDA65F70096BA0D /* HomeCoordi in Resources */ = {isa = PBXBuildFile; fileRef = C908281D2CDA65F70096BA0D /* HomeCoordi */; };
+		C90828202CDA65FF0096BA0D /* HomeVCEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908281F2CDA65FF0096BA0D /* HomeVCEmpty */; };
+		C90828222CDA66040096BA0D /* HomeVMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828212CDA66040096BA0D /* HomeVMEmpty */; };
+		C90828242CDA660D0096BA0D /* DMCoordiEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828232CDA660D0096BA0D /* DMCoordiEmpty */; };
+		C90828262CDA66140096BA0D /* DMVCEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828252CDA66140096BA0D /* DMVCEmpty */; };
+		C90828282CDA661D0096BA0D /* DMVMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828272CDA661D0096BA0D /* DMVMEmpty */; };
+		C908282A2CDA66220096BA0D /* SearchCoordiEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828292CDA66220096BA0D /* SearchCoordiEmpty */; };
+		C908282C2CDA66290096BA0D /* SearchVCEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908282B2CDA66290096BA0D /* SearchVCEmpty */; };
+		C908282E2CDA66300096BA0D /* SearchVMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908282D2CDA66300096BA0D /* SearchVMEmpty */; };
+		C90828302CDA66380096BA0D /* SettingCoordiEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908282F2CDA66380096BA0D /* SettingCoordiEmpty */; };
+		C90828322CDA66410096BA0D /* SettingVCEmtpy in Resources */ = {isa = PBXBuildFile; fileRef = C90828312CDA66410096BA0D /* SettingVCEmtpy */; };
+		C90828342CDA66490096BA0D /* SettingVMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828332CDA66490096BA0D /* SettingVMEmpty */; };
+		C90828362CDA66540096BA0D /* AuthCoordiEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828352CDA66540096BA0D /* AuthCoordiEmpty */; };
+		C90828382CDA665F0096BA0D /* AuthVCEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828372CDA665F0096BA0D /* AuthVCEmpty */; };
+		C908283A2CDA66670096BA0D /* AuthVMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828392CDA66670096BA0D /* AuthVMEmpty */; };
+		C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828402CDA66DB0096BA0D /* FormatterEmpty */; };
+		C90828432CDA66DF0096BA0D /* BaseEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828422CDA66DF0096BA0D /* BaseEmpty */; };
+		C90828452CDA66E60096BA0D /* ProtocolEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828442CDA66E60096BA0D /* ProtocolEmpty */; };
+		C90828472CDA66EB0096BA0D /* ExtEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828462CDA66EB0096BA0D /* ExtEmpty */; };
+		C90828492CDA66F10096BA0D /* DIContainerEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828482CDA66F10096BA0D /* DIContainerEmpty */; };
 		C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A032CDA315500243744 /* AppDelegate.swift */; };
 		C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A052CDA315500243744 /* SceneDelegate.swift */; };
 		C9C27A082CDA315500243744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A072CDA315500243744 /* ViewController.swift */; };
-		C9C27A0E2CDA315500243744 /* BuddyBuddy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A0C2CDA315500243744 /* BuddyBuddy.xcdatamodeld */; };
 		C9C27A102CDA315600243744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C27A0F2CDA315600243744 /* Assets.xcassets */; };
 		C9C27A132CDA315600243744 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C9C27A122CDA315600243744 /* Base */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
+		C90827F92CDA64C20096BA0D /* NetworkEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = NetworkEmpty; sourceTree = "<group>"; };
+		C90827FB2CDA64C80096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
+		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
+		C90827FF2CDA64D90096BA0D /* EntityEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = EntityEmpty; sourceTree = "<group>"; };
+		C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseInterfaceEmpty; sourceTree = "<group>"; };
+		C90828032CDA64E60096BA0D /* UseCaseEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseEmpty; sourceTree = "<group>"; };
+		C90828052CDA64EB0096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
+		C90828072CDA64F30096BA0D /* HomeViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeViewEmpty; sourceTree = "<group>"; };
+		C90828092CDA64FA0096BA0D /* DMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMEmpty; sourceTree = "<group>"; };
+		C908280B2CDA65040096BA0D /* SearchViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchViewEmpty; sourceTree = "<group>"; };
+		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
+		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
+		C90828152CDA65CD0096BA0D /* AppCoordiEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AppCoordiEmpty; sourceTree = "<group>"; };
+		C90828172CDA65D60096BA0D /* TabEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = TabEmpty; sourceTree = "<group>"; };
+		C908281B2CDA65F20096BA0D /* TabCoordi */ = {isa = PBXFileReference; lastKnownFileType = text; path = TabCoordi; sourceTree = "<group>"; };
+		C908281D2CDA65F70096BA0D /* HomeCoordi */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeCoordi; sourceTree = "<group>"; };
+		C908281F2CDA65FF0096BA0D /* HomeVCEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeVCEmpty; sourceTree = "<group>"; };
+		C90828212CDA66040096BA0D /* HomeVMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeVMEmpty; sourceTree = "<group>"; };
+		C90828232CDA660D0096BA0D /* DMCoordiEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMCoordiEmpty; sourceTree = "<group>"; };
+		C90828252CDA66140096BA0D /* DMVCEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMVCEmpty; sourceTree = "<group>"; };
+		C90828272CDA661D0096BA0D /* DMVMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMVMEmpty; sourceTree = "<group>"; };
+		C90828292CDA66220096BA0D /* SearchCoordiEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchCoordiEmpty; sourceTree = "<group>"; };
+		C908282B2CDA66290096BA0D /* SearchVCEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchVCEmpty; sourceTree = "<group>"; };
+		C908282D2CDA66300096BA0D /* SearchVMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchVMEmpty; sourceTree = "<group>"; };
+		C908282F2CDA66380096BA0D /* SettingCoordiEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingCoordiEmpty; sourceTree = "<group>"; };
+		C90828312CDA66410096BA0D /* SettingVCEmtpy */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingVCEmtpy; sourceTree = "<group>"; };
+		C90828332CDA66490096BA0D /* SettingVMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingVMEmpty; sourceTree = "<group>"; };
+		C90828352CDA66540096BA0D /* AuthCoordiEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthCoordiEmpty; sourceTree = "<group>"; };
+		C90828372CDA665F0096BA0D /* AuthVCEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthVCEmpty; sourceTree = "<group>"; };
+		C90828392CDA66670096BA0D /* AuthVMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthVMEmpty; sourceTree = "<group>"; };
+		C90828402CDA66DB0096BA0D /* FormatterEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = FormatterEmpty; sourceTree = "<group>"; };
+		C90828422CDA66DF0096BA0D /* BaseEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseEmpty; sourceTree = "<group>"; };
+		C90828442CDA66E60096BA0D /* ProtocolEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProtocolEmpty; sourceTree = "<group>"; };
+		C90828462CDA66EB0096BA0D /* ExtEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExtEmpty; sourceTree = "<group>"; };
+		C90828482CDA66F10096BA0D /* DIContainerEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DIContainerEmpty; sourceTree = "<group>"; };
 		C9C27A002CDA315500243744 /* BuddyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C27A032CDA315500243744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C27A052CDA315500243744 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		C9C27A072CDA315500243744 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C9C27A0D2CDA315500243744 /* BuddyBuddy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BuddyBuddy.xcdatamodel; sourceTree = "<group>"; };
 		C9C27A0F2CDA315600243744 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9C27A122CDA315600243744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9C27A142CDA315600243744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -37,6 +107,432 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C90827CC2CDA4CA30096BA0D /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C90827F62CDA64920096BA0D /* Coordinator */,
+				C9C27A032CDA315500243744 /* AppDelegate.swift */,
+				C9C27A052CDA315500243744 /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C90827CE2CDA4CB10096BA0D /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				C90827D62CDA632A0096BA0D /* Realm */,
+				C90827D52CDA63250096BA0D /* Network */,
+				C90827D42CDA63190096BA0D /* Repository */,
+				C90827D32CDA63140096BA0D /* DTO */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		C90827CF2CDA4CB50096BA0D /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				C90827DA2CDA638F0096BA0D /* Entity */,
+				C90827D92CDA63860096BA0D /* UseCaseInterface */,
+				C90827D82CDA63810096BA0D /* UseCase */,
+				C90827D72CDA63750096BA0D /* RepositoryInterface */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		C90827D02CDA4CBA0096BA0D /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				C908283E2CDA66890096BA0D /* Base */,
+				C90827DB2CDA639C0096BA0D /* Tab */,
+				C90827DC2CDA63A20096BA0D /* Home */,
+				C90827DD2CDA63A60096BA0D /* DM */,
+				C90827DE2CDA63AA0096BA0D /* Search */,
+				C90827DF2CDA63B30096BA0D /* Setting */,
+				C90827E02CDA63E10096BA0D /* Auth */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		C90827D12CDA4CC10096BA0D /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C908283F2CDA668E0096BA0D /* Formatter */,
+				C908283D2CDA66850096BA0D /* Protocol */,
+				C908283C2CDA667E0096BA0D /* Extension */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C90827D22CDA4CFA0096BA0D /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C9C27A0F2CDA315600243744 /* Assets.xcassets */,
+				C9C27A112CDA315600243744 /* LaunchScreen.storyboard */,
+				C9C27A142CDA315600243744 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C90827D32CDA63140096BA0D /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+				C90827FD2CDA64D30096BA0D /* DTOEmpty */,
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		C90827D42CDA63190096BA0D /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				C90827FB2CDA64C80096BA0D /* RepositoryEmpty */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		C90827D52CDA63250096BA0D /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C90827F92CDA64C20096BA0D /* NetworkEmpty */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		C90827D62CDA632A0096BA0D /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				C90827F72CDA64B70096BA0D /* RealmEmpty */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		C90827D72CDA63750096BA0D /* RepositoryInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C90828052CDA64EB0096BA0D /* RepositoryEmpty */,
+			);
+			path = RepositoryInterface;
+			sourceTree = "<group>";
+		};
+		C90827D82CDA63810096BA0D /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				C90828032CDA64E60096BA0D /* UseCaseEmpty */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		C90827D92CDA63860096BA0D /* UseCaseInterface */ = {
+			isa = PBXGroup;
+			children = (
+				C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */,
+			);
+			path = UseCaseInterface;
+			sourceTree = "<group>";
+		};
+		C90827DA2CDA638F0096BA0D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				C90827FF2CDA64D90096BA0D /* EntityEmpty */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		C90827DB2CDA639C0096BA0D /* Tab */ = {
+			isa = PBXGroup;
+			children = (
+				C90828192CDA65DC0096BA0D /* Coordinator */,
+				C908281A2CDA65E20096BA0D /* ViewController */,
+			);
+			path = Tab;
+			sourceTree = "<group>";
+		};
+		C90827DC2CDA63A20096BA0D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C90827E42CDA64100096BA0D /* Coordinator */,
+				C90827E12CDA64040096BA0D /* View */,
+				C90827E22CDA64080096BA0D /* ViewController */,
+				C90827E32CDA640C0096BA0D /* ViewModel */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C90827DD2CDA63A60096BA0D /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				C90827E92CDA64440096BA0D /* Coordinator */,
+				C90827E82CDA64400096BA0D /* View */,
+				C90827E62CDA64370096BA0D /* ViewController */,
+				C90827E52CDA642F0096BA0D /* ViewModel */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		C90827DE2CDA63AA0096BA0D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C90827ED2CDA64580096BA0D /* Coordinator */,
+				C90827EC2CDA64550096BA0D /* View */,
+				C90827EB2CDA644E0096BA0D /* ViewController */,
+				C90827EA2CDA64490096BA0D /* ViewModel */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C90827DF2CDA63B30096BA0D /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C90827F12CDA646E0096BA0D /* Coordinator */,
+				C90827F02CDA646A0096BA0D /* View */,
+				C90827EF2CDA64660096BA0D /* ViewController */,
+				C90827EE2CDA64600096BA0D /* ViewModel */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		C90827E02CDA63E10096BA0D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				C90827F52CDA64800096BA0D /* Coordinator */,
+				C90827F42CDA647D0096BA0D /* View */,
+				C90827F32CDA64780096BA0D /* ViewController */,
+				C90827F22CDA64740096BA0D /* ViewModel */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C90827E12CDA64040096BA0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C90828072CDA64F30096BA0D /* HomeViewEmpty */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C90827E22CDA64080096BA0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C908281F2CDA65FF0096BA0D /* HomeVCEmpty */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C90827E32CDA640C0096BA0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C90828212CDA66040096BA0D /* HomeVMEmpty */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C90827E42CDA64100096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C908281D2CDA65F70096BA0D /* HomeCoordi */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C90827E52CDA642F0096BA0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C90828272CDA661D0096BA0D /* DMVMEmpty */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C90827E62CDA64370096BA0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90828252CDA66140096BA0D /* DMVCEmpty */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C90827E82CDA64400096BA0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C90828092CDA64FA0096BA0D /* DMEmpty */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C90827E92CDA64440096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C90828232CDA660D0096BA0D /* DMCoordiEmpty */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C90827EA2CDA64490096BA0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C908282D2CDA66300096BA0D /* SearchVMEmpty */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C90827EB2CDA644E0096BA0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C908282B2CDA66290096BA0D /* SearchVCEmpty */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C90827EC2CDA64550096BA0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C908280B2CDA65040096BA0D /* SearchViewEmpty */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C90827ED2CDA64580096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C90828292CDA66220096BA0D /* SearchCoordiEmpty */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C90827EE2CDA64600096BA0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C90828332CDA66490096BA0D /* SettingVMEmpty */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C90827EF2CDA64660096BA0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90828312CDA66410096BA0D /* SettingVCEmtpy */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C90827F02CDA646A0096BA0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C908280D2CDA650B0096BA0D /* SettingViewEmpty */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C90827F12CDA646E0096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C908282F2CDA66380096BA0D /* SettingCoordiEmpty */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C90827F22CDA64740096BA0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C90828392CDA66670096BA0D /* AuthVMEmpty */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C90827F32CDA64780096BA0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90828372CDA665F0096BA0D /* AuthVCEmpty */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C90827F42CDA647D0096BA0D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C908280F2CDA651E0096BA0D /* AuthViewEmpty */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C90827F52CDA64800096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C90828352CDA66540096BA0D /* AuthCoordiEmpty */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C90827F62CDA64920096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C90828152CDA65CD0096BA0D /* AppCoordiEmpty */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C90828192CDA65DC0096BA0D /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C908281B2CDA65F20096BA0D /* TabCoordi */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C908281A2CDA65E20096BA0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C90828172CDA65D60096BA0D /* TabEmpty */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C908283B2CDA66760096BA0D /* DIContainer */ = {
+			isa = PBXGroup;
+			children = (
+				C90828482CDA66F10096BA0D /* DIContainerEmpty */,
+			);
+			path = DIContainer;
+			sourceTree = "<group>";
+		};
+		C908283C2CDA667E0096BA0D /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C90828462CDA66EB0096BA0D /* ExtEmpty */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		C908283D2CDA66850096BA0D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				C90828442CDA66E60096BA0D /* ProtocolEmpty */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		C908283E2CDA66890096BA0D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C90828422CDA66DF0096BA0D /* BaseEmpty */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		C908283F2CDA668E0096BA0D /* Formatter */ = {
+			isa = PBXGroup;
+			children = (
+				C90828402CDA66DB0096BA0D /* FormatterEmpty */,
+			);
+			path = Formatter;
+			sourceTree = "<group>";
+		};
+		C908284A2CDA68AB0096BA0D /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C908283B2CDA66760096BA0D /* DIContainer */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
 		C9C279F72CDA315500243744 = {
 			isa = PBXGroup;
 			children = (
@@ -56,13 +552,14 @@
 		C9C27A022CDA315500243744 /* BuddyBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				C9C27A032CDA315500243744 /* AppDelegate.swift */,
-				C9C27A052CDA315500243744 /* SceneDelegate.swift */,
+				C90827CC2CDA4CA30096BA0D /* App */,
+				C908284A2CDA68AB0096BA0D /* Core */,
+				C90827CE2CDA4CB10096BA0D /* Data */,
+				C90827CF2CDA4CB50096BA0D /* Domain */,
+				C90827D02CDA4CBA0096BA0D /* Presentation */,
+				C90827D12CDA4CC10096BA0D /* Utils */,
+				C90827D22CDA4CFA0096BA0D /* Resources */,
 				C9C27A072CDA315500243744 /* ViewController.swift */,
-				C9C27A0F2CDA315600243744 /* Assets.xcassets */,
-				C9C27A112CDA315600243744 /* LaunchScreen.storyboard */,
-				C9C27A142CDA315600243744 /* Info.plist */,
-				C9C27A0C2CDA315500243744 /* BuddyBuddy.xcdatamodeld */,
 			);
 			path = BuddyBuddy;
 			sourceTree = "<group>";
@@ -125,8 +622,44 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C90828322CDA66410096BA0D /* SettingVCEmtpy in Resources */,
+				C90828202CDA65FF0096BA0D /* HomeVCEmpty in Resources */,
+				C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */,
+				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
+				C90828362CDA66540096BA0D /* AuthCoordiEmpty in Resources */,
+				C90828432CDA66DF0096BA0D /* BaseEmpty in Resources */,
+				C90828452CDA66E60096BA0D /* ProtocolEmpty in Resources */,
+				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
+				C90828382CDA665F0096BA0D /* AuthVCEmpty in Resources */,
+				C908282C2CDA66290096BA0D /* SearchVCEmpty in Resources */,
+				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
+				C90828492CDA66F10096BA0D /* DIContainerEmpty in Resources */,
+				C90827FA2CDA64C20096BA0D /* NetworkEmpty in Resources */,
+				C908280A2CDA64FA0096BA0D /* DMEmpty in Resources */,
+				C90828302CDA66380096BA0D /* SettingCoordiEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
+				C90828222CDA66040096BA0D /* HomeVMEmpty in Resources */,
+				C908281C2CDA65F20096BA0D /* TabCoordi in Resources */,
+				C90828002CDA64D90096BA0D /* EntityEmpty in Resources */,
+				C90828262CDA66140096BA0D /* DMVCEmpty in Resources */,
+				C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */,
+				C90828282CDA661D0096BA0D /* DMVMEmpty in Resources */,
+				C908282E2CDA66300096BA0D /* SearchVMEmpty in Resources */,
+				C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */,
+				C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */,
+				C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */,
+				C90828062CDA64EB0096BA0D /* RepositoryEmpty in Resources */,
+				C908282A2CDA66220096BA0D /* SearchCoordiEmpty in Resources */,
 				C9C27A132CDA315600243744 /* Base in Resources */,
+				C908281E2CDA65F70096BA0D /* HomeCoordi in Resources */,
+				C90828342CDA66490096BA0D /* SettingVMEmpty in Resources */,
+				C908283A2CDA66670096BA0D /* AuthVMEmpty in Resources */,
+				C90828182CDA65D60096BA0D /* TabEmpty in Resources */,
+				C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */,
+				C90828472CDA66EB0096BA0D /* ExtEmpty in Resources */,
+				C90828162CDA65CD0096BA0D /* AppCoordiEmpty in Resources */,
+				C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */,
+				C90828242CDA660D0096BA0D /* DMCoordiEmpty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +673,6 @@
 				C9C27A082CDA315500243744 /* ViewController.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
-				C9C27A0E2CDA315500243744 /* BuddyBuddy.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +818,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T4W7695R5C;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BuddyBuddy/Info.plist;
+				INFOPLIST_FILE = BuddyBuddy/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -319,7 +851,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T4W7695R5C;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BuddyBuddy/Info.plist;
+				INFOPLIST_FILE = BuddyBuddy/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -365,19 +897,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		C9C27A0C2CDA315500243744 /* BuddyBuddy.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				C9C27A0D2CDA315500243744 /* BuddyBuddy.xcdatamodel */,
-			);
-			currentVersion = C9C27A0D2CDA315500243744 /* BuddyBuddy.xcdatamodel */;
-			path = BuddyBuddy.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = C9C279F82CDA315500243744 /* Project object */;
 }
