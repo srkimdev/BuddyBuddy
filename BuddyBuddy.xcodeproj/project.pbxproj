@@ -41,7 +41,6 @@
 		C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828402CDA66DB0096BA0D /* FormatterEmpty */; };
 		C90828432CDA66DF0096BA0D /* BaseEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828422CDA66DF0096BA0D /* BaseEmpty */; };
 		C90828452CDA66E60096BA0D /* ProtocolEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828442CDA66E60096BA0D /* ProtocolEmpty */; };
-		C90828472CDA66EB0096BA0D /* ExtEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828462CDA66EB0096BA0D /* ExtEmpty */; };
 		C90828492CDA66F10096BA0D /* DIContainerEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828482CDA66F10096BA0D /* DIContainerEmpty */; };
 		C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C908284C2CDA6B760096BA0D /* RxCocoa */; };
 		C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C908284E2CDA6B760096BA0D /* RxSwift */; };
@@ -52,6 +51,8 @@
 		C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C908285E2CDA72B50096BA0D /* .swiftlint.yml */; };
 		C90828622CDA75CF0096BA0D /* RxKakaoSDKAuth in Frameworks */ = {isa = PBXBuildFile; productRef = C90828612CDA75CF0096BA0D /* RxKakaoSDKAuth */; };
 		C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = C90828632CDA75CF0096BA0D /* RxKakaoSDKCommon */; };
+		C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C90828652CDA780D0096BA0D /* Localizable.xcstrings */; };
+		C90828682CDA78770096BA0D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90828672CDA78770096BA0D /* String+.swift */; };
 		C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A032CDA315500243744 /* AppDelegate.swift */; };
 		C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A052CDA315500243744 /* SceneDelegate.swift */; };
 		C9C27A082CDA315500243744 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A072CDA315500243744 /* ViewController.swift */; };
@@ -94,9 +95,10 @@
 		C90828402CDA66DB0096BA0D /* FormatterEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = FormatterEmpty; sourceTree = "<group>"; };
 		C90828422CDA66DF0096BA0D /* BaseEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseEmpty; sourceTree = "<group>"; };
 		C90828442CDA66E60096BA0D /* ProtocolEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = ProtocolEmpty; sourceTree = "<group>"; };
-		C90828462CDA66EB0096BA0D /* ExtEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExtEmpty; sourceTree = "<group>"; };
 		C90828482CDA66F10096BA0D /* DIContainerEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DIContainerEmpty; sourceTree = "<group>"; };
 		C908285E2CDA72B50096BA0D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C9C27A002CDA315500243744 /* BuddyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C27A032CDA315500243744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C27A052CDA315500243744 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				C9C27A0F2CDA315600243744 /* Assets.xcassets */,
 				C9C27A112CDA315600243744 /* LaunchScreen.storyboard */,
 				C9C27A142CDA315600243744 /* Info.plist */,
+				C90828652CDA780D0096BA0D /* Localizable.xcstrings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -514,7 +517,7 @@
 		C908283C2CDA667E0096BA0D /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				C90828462CDA66EB0096BA0D /* ExtEmpty */,
+				C90828672CDA78770096BA0D /* String+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -631,11 +634,12 @@
 			};
 			buildConfigurationList = C9C279FB2CDA315500243744 /* Build configuration list for PBXProject "BuddyBuddy" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = C9C279F72CDA315500243744;
 			packageReferences = (
@@ -687,6 +691,7 @@
 				C908282E2CDA66300096BA0D /* SearchVMEmpty in Resources */,
 				C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */,
 				C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */,
+				C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */,
 				C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */,
 				C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */,
 				C908282A2CDA66220096BA0D /* SearchCoordiEmpty in Resources */,
@@ -696,7 +701,6 @@
 				C908283A2CDA66670096BA0D /* AuthVMEmpty in Resources */,
 				C90828182CDA65D60096BA0D /* TabEmpty in Resources */,
 				C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */,
-				C90828472CDA66EB0096BA0D /* ExtEmpty in Resources */,
 				C90828162CDA65CD0096BA0D /* AppCoordiEmpty in Resources */,
 				C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */,
 				C90828242CDA660D0096BA0D /* DMCoordiEmpty in Resources */,
@@ -732,6 +736,7 @@
 			files = (
 				C9C27A082CDA315500243744 /* ViewController.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
+				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -802,7 +807,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -859,7 +864,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
