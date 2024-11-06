@@ -6,6 +6,7 @@ disabled_rules: # 제외 룰
     - control_statement
     - unneeded_override
     - void_return
+    - identifier_name
 opt_in_rules:
     - empty_string
     - empty_count # isEmpty 사용
