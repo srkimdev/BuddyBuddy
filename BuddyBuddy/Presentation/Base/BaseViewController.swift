@@ -28,6 +28,8 @@ class BaseViewController: UIViewController {
     }
     
     private func configureView() {
+        view.backgroundColor = .white
+        
         bind()
         setHierarchy()
         setConstraints()
