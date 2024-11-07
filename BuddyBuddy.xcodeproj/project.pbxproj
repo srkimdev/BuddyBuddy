@@ -75,6 +75,9 @@
 		C9F96D4F2CDD231D00271295 /* SearchDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */; };
 		C9F96D522CDD233500271295 /* SettingDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */; };
 		C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */; };
+		C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D572CDD24AC00271295 /* RequestEmpty */; };
+		C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */; };
+		C9F96D602CDD270900271295 /* KeychainEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5F2CDD270900271295 /* KeychainEmpty */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -140,6 +143,9 @@
 		C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchDataSourcesEmpty; sourceTree = "<group>"; };
 		C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingDataSourcesEmpty; sourceTree = "<group>"; };
 		C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D572CDD24AC00271295 /* RequestEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RequestEmpty; sourceTree = "<group>"; };
+		C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDefaultsEmpty; sourceTree = "<group>"; };
+		C9F96D5F2CDD270900271295 /* KeychainEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = KeychainEmpty; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,9 +180,10 @@
 		C90827CE2CDA4CB10096BA0D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C90827D62CDA632A0096BA0D /* Realm */,
 				C90827D52CDA63250096BA0D /* DataSources */,
 				C90827D42CDA63190096BA0D /* Repository */,
+				C90827D62CDA632A0096BA0D /* Persistence */,
+				C9F96D562CDD242200271295 /* Request */,
 				C90827D32CDA63140096BA0D /* DTO */,
 			);
 			path = Data;
@@ -258,12 +265,13 @@
 			path = DataSources;
 			sourceTree = "<group>";
 		};
-		C90827D62CDA632A0096BA0D /* Realm */ = {
+		C90827D62CDA632A0096BA0D /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
-				C90827F72CDA64B70096BA0D /* RealmEmpty */,
+				C9F96D592CDD260000271295 /* Realm */,
+				C9F96D5A2CDD268100271295 /* LocalStorage */,
 			);
-			path = Realm;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		C90827D72CDA63750096BA0D /* RepositoryInterface */ = {
@@ -693,6 +701,47 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		C9F96D562CDD242200271295 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D572CDD24AC00271295 /* RequestEmpty */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		C9F96D592CDD260000271295 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				C90827F72CDA64B70096BA0D /* RealmEmpty */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		C9F96D5A2CDD268100271295 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D5E2CDD26FC00271295 /* Keychain */,
+				C9F96D5B2CDD26ED00271295 /* UserDefaults */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		C9F96D5B2CDD26ED00271295 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		C9F96D5E2CDD26FC00271295 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D5F2CDD270900271295 /* KeychainEmpty */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -772,10 +821,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F96D602CDD270900271295 /* KeychainEmpty in Resources */,
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
 				C9F96D4F2CDD231D00271295 /* SearchDataSourcesEmpty in Resources */,
 				C9F96D522CDD233500271295 /* SettingDataSourcesEmpty in Resources */,
 				C9F96D462CDD22C300271295 /* AuthDataSourcesEmpty in Resources */,
+				C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */,
 				C9F96D492CDD22EF00271295 /* HomeDataSourcesEmpty in Resources */,
 				C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */,
 				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
@@ -793,6 +844,7 @@
 				C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */,
 				C9C27A132CDA315600243744 /* Base in Resources */,
 				C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */,
+				C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */,
 				C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */,
 				C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */,
 			);
