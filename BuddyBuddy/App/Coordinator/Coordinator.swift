@@ -22,11 +22,8 @@ extension Coordinator {
     }
     
     func childDidFinish(_ coordinator: Coordinator) {
-        for (index, child) in childs.enumerated() {
-            if child === coordinator {
-                childs.remove(at: index)
-                break
-            }
+        if let index = childs.firstIndex(where: { $0 === coordinator }) {
+            childs.remove(at: index)
         }
     }
 }
