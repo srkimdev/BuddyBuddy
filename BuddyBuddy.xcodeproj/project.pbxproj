@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
-		C90827FA2CDA64C20096BA0D /* NetworkEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F92CDA64C20096BA0D /* NetworkEmpty */; };
 		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
 		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
 		C90828002CDA64D90096BA0D /* EntityEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FF2CDA64D90096BA0D /* EntityEmpty */; };
@@ -70,11 +69,16 @@
 		C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */; };
 		C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D3F2CDCE51600271295 /* DIContainer.swift */; };
 		C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D412CDCE5E300271295 /* Dependency.swift */; };
+		C9F96D462CDD22C300271295 /* AuthDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D452CDD22C300271295 /* AuthDataSourcesEmpty */; };
+		C9F96D492CDD22EF00271295 /* HomeDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D482CDD22EF00271295 /* HomeDataSourcesEmpty */; };
+		C9F96D4C2CDD22FF00271295 /* DMDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D4B2CDD22FF00271295 /* DMDataSourcesEmpty */; };
+		C9F96D4F2CDD231D00271295 /* SearchDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */; };
+		C9F96D522CDD233500271295 /* SettingDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */; };
+		C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
-		C90827F92CDA64C20096BA0D /* NetworkEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = NetworkEmpty; sourceTree = "<group>"; };
 		C90827FB2CDA64C80096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
 		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
 		C90827FF2CDA64D90096BA0D /* EntityEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = EntityEmpty; sourceTree = "<group>"; };
@@ -130,6 +134,12 @@
 		C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthCoordinator.swift; sourceTree = "<group>"; };
 		C9F96D3F2CDCE51600271295 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		C9F96D412CDCE5E300271295 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
+		C9F96D452CDD22C300271295 /* AuthDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D482CDD22EF00271295 /* HomeDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D4B2CDD22FF00271295 /* DMDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseDataSourcesEmpty; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,7 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				C90827D62CDA632A0096BA0D /* Realm */,
-				C90827D52CDA63250096BA0D /* Network */,
+				C90827D52CDA63250096BA0D /* DataSources */,
 				C90827D42CDA63190096BA0D /* Repository */,
 				C90827D32CDA63140096BA0D /* DTO */,
 			);
@@ -200,7 +210,6 @@
 		C90827D12CDA4CC10096BA0D /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D432CDD1D1B00271295 /* Log */,
 				C9F20F382CDB5F030043351E /* Enum */,
 				C908283F2CDA668E0096BA0D /* Formatter */,
 				C908283D2CDA66850096BA0D /* Protocol */,
@@ -236,12 +245,17 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		C90827D52CDA63250096BA0D /* Network */ = {
+		C90827D52CDA63250096BA0D /* DataSources */ = {
 			isa = PBXGroup;
 			children = (
-				C90827F92CDA64C20096BA0D /* NetworkEmpty */,
+				C9F96D532CDD236900271295 /* Base */,
+				C9F96D472CDD22C700271295 /* Home */,
+				C9F96D4A2CDD22F200271295 /* DM */,
+				C9F96D4D2CDD230200271295 /* Search */,
+				C9F96D502CDD232000271295 /* Setting */,
+				C9F96D442CDD22B600271295 /* Auth */,
 			);
-			path = Network;
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		C90827D62CDA632A0096BA0D /* Realm */ = {
@@ -631,11 +645,52 @@
 			path = Enum;
 			sourceTree = "<group>";
 		};
-		C9F96D432CDD1D1B00271295 /* Log */ = {
+		C9F96D442CDD22B600271295 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				C9F96D452CDD22C300271295 /* AuthDataSourcesEmpty */,
 			);
-			path = Log;
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		C9F96D472CDD22C700271295 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D482CDD22EF00271295 /* HomeDataSourcesEmpty */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		C9F96D4A2CDD22F200271295 /* DM */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D4B2CDD22FF00271295 /* DMDataSourcesEmpty */,
+			);
+			path = DM;
+			sourceTree = "<group>";
+		};
+		C9F96D4D2CDD230200271295 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		C9F96D502CDD232000271295 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		C9F96D532CDD236900271295 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -718,11 +773,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
+				C9F96D4F2CDD231D00271295 /* SearchDataSourcesEmpty in Resources */,
+				C9F96D522CDD233500271295 /* SettingDataSourcesEmpty in Resources */,
+				C9F96D462CDD22C300271295 /* AuthDataSourcesEmpty in Resources */,
+				C9F96D492CDD22EF00271295 /* HomeDataSourcesEmpty in Resources */,
 				C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */,
 				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
 				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
+				C9F96D4C2CDD22FF00271295 /* DMDataSourcesEmpty in Resources */,
 				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
-				C90827FA2CDA64C20096BA0D /* NetworkEmpty in Resources */,
 				C908280A2CDA64FA0096BA0D /* DMEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
 				C90828002CDA64D90096BA0D /* EntityEmpty in Resources */,
@@ -733,6 +792,7 @@
 				C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */,
 				C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */,
 				C9C27A132CDA315600243744 /* Base in Resources */,
+				C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */,
 				C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */,
 				C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */,
 			);
