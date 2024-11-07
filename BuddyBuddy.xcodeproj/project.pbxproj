@@ -78,6 +78,7 @@
 		C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D572CDD24AC00271295 /* RequestEmpty */; };
 		C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */; };
 		C9F96D602CDD270900271295 /* KeychainEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5F2CDD270900271295 /* KeychainEmpty */; };
+		C9F96D652CDD295300271295 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D642CDD295300271295 /* UIFont+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -146,6 +147,9 @@
 		C9F96D572CDD24AC00271295 /* RequestEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RequestEmpty; sourceTree = "<group>"; };
 		C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDefaultsEmpty; sourceTree = "<group>"; };
 		C9F96D5F2CDD270900271295 /* KeychainEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = KeychainEmpty; sourceTree = "<group>"; };
+		C9F96D622CDD28D000271295 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
+		C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
+		C9F96D642CDD295300271295 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +232,7 @@
 		C90827D22CDA4CFA0096BA0D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C9F96D612CDD289000271295 /* Font */,
 				C9C27A0F2CDA315600243744 /* Assets.xcassets */,
 				C9C27A112CDA315600243744 /* LaunchScreen.storyboard */,
 				C9C27A142CDA315600243744 /* Info.plist */,
@@ -573,6 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				C90828672CDA78770096BA0D /* String+.swift */,
+				C9F96D642CDD295300271295 /* UIFont+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -742,6 +748,15 @@
 			path = Keychain;
 			sourceTree = "<group>";
 		};
+		C9F96D612CDD289000271295 /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */,
+				C9F96D622CDD28D000271295 /* Pretendard-Medium.otf */,
+			);
+			path = Font;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -879,6 +894,7 @@
 			files = (
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
+				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C9F20F482CDB63640043351E /* DMViewController.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
