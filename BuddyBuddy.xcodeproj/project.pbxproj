@@ -152,6 +152,7 @@
 		C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C9F96D642CDD295300271295 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		C9F96D662CDD2A5400271295 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
+		C9F96D682CDD2F8600271295 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -626,6 +627,7 @@
 		C9C279F72CDA315500243744 = {
 			isa = PBXGroup;
 			children = (
+				C9F96D682CDD2F8600271295 /* Secrets.xcconfig */,
 				C908285E2CDA72B50096BA0D /* .swiftlint.yml */,
 				C9C27A022CDA315500243744 /* BuddyBuddy */,
 				C9C27A012CDA315500243744 /* Products */,
@@ -954,6 +956,7 @@
 /* Begin XCBuildConfiguration section */
 		C9C27A152CDA315600243744 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9F96D682CDD2F8600271295 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -1073,6 +1076,7 @@
 		};
 		C9C27A182CDA315600243744 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C9F96D682CDD2F8600271295 /* Secrets.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
