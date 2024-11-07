@@ -70,10 +70,10 @@
 		C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D3F2CDCE51600271295 /* DIContainer.swift */; };
 		C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D412CDCE5E300271295 /* Dependency.swift */; };
 		C9F96D462CDD22C300271295 /* AuthDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D452CDD22C300271295 /* AuthDataSourcesEmpty */; };
-		C9F96D492CDD22EF00271295 /* HomeDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D482CDD22EF00271295 /* HomeDataSourcesEmpty */; };
+		C9F96D492CDD22EF00271295 /* UserDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D482CDD22EF00271295 /* UserDataSourcesEmpty */; };
 		C9F96D4C2CDD22FF00271295 /* DMDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D4B2CDD22FF00271295 /* DMDataSourcesEmpty */; };
-		C9F96D4F2CDD231D00271295 /* SearchDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */; };
-		C9F96D522CDD233500271295 /* SettingDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */; };
+		C9F96D4F2CDD231D00271295 /* WorkSpaceDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D4E2CDD231D00271295 /* WorkSpaceDataSourcesEmpty */; };
+		C9F96D522CDD233500271295 /* ChannelDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D512CDD233500271295 /* ChannelDataSourcesEmpty */; };
 		C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */; };
 		C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D572CDD24AC00271295 /* RequestEmpty */; };
 		C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */; };
@@ -140,10 +140,10 @@
 		C9F96D3F2CDCE51600271295 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		C9F96D412CDCE5E300271295 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C9F96D452CDD22C300271295 /* AuthDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthDataSourcesEmpty; sourceTree = "<group>"; };
-		C9F96D482CDD22EF00271295 /* HomeDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D482CDD22EF00271295 /* UserDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDataSourcesEmpty; sourceTree = "<group>"; };
 		C9F96D4B2CDD22FF00271295 /* DMDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMDataSourcesEmpty; sourceTree = "<group>"; };
-		C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchDataSourcesEmpty; sourceTree = "<group>"; };
-		C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D4E2CDD231D00271295 /* WorkSpaceDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = WorkSpaceDataSourcesEmpty; sourceTree = "<group>"; };
+		C9F96D512CDD233500271295 /* ChannelDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = ChannelDataSourcesEmpty; sourceTree = "<group>"; };
 		C9F96D542CDD237500271295 /* BaseDataSourcesEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = BaseDataSourcesEmpty; sourceTree = "<group>"; };
 		C9F96D572CDD24AC00271295 /* RequestEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RequestEmpty; sourceTree = "<group>"; };
 		C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDefaultsEmpty; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		C90827CE2CDA4CB10096BA0D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				C90827D52CDA63250096BA0D /* DataSources */,
+				C90827D52CDA63250096BA0D /* Network */,
 				C90827D42CDA63190096BA0D /* Repository */,
 				C90827D62CDA632A0096BA0D /* Persistence */,
 				C9F96D562CDD242200271295 /* Request */,
@@ -261,17 +261,17 @@
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		C90827D52CDA63250096BA0D /* DataSources */ = {
+		C90827D52CDA63250096BA0D /* Network */ = {
 			isa = PBXGroup;
 			children = (
 				C9F96D532CDD236900271295 /* Base */,
-				C9F96D472CDD22C700271295 /* Home */,
+				C9F96D472CDD22C700271295 /* User */,
 				C9F96D4A2CDD22F200271295 /* DM */,
-				C9F96D4D2CDD230200271295 /* Search */,
-				C9F96D502CDD232000271295 /* Setting */,
+				C9F96D4D2CDD230200271295 /* WorkSpace */,
+				C9F96D502CDD232000271295 /* Channel */,
 				C9F96D442CDD22B600271295 /* Auth */,
 			);
-			path = DataSources;
+			path = Network;
 			sourceTree = "<group>";
 		};
 		C90827D62CDA632A0096BA0D /* Persistence */ = {
@@ -672,12 +672,12 @@
 			path = Auth;
 			sourceTree = "<group>";
 		};
-		C9F96D472CDD22C700271295 /* Home */ = {
+		C9F96D472CDD22C700271295 /* User */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D482CDD22EF00271295 /* HomeDataSourcesEmpty */,
+				C9F96D482CDD22EF00271295 /* UserDataSourcesEmpty */,
 			);
-			path = Home;
+			path = User;
 			sourceTree = "<group>";
 		};
 		C9F96D4A2CDD22F200271295 /* DM */ = {
@@ -688,20 +688,20 @@
 			path = DM;
 			sourceTree = "<group>";
 		};
-		C9F96D4D2CDD230200271295 /* Search */ = {
+		C9F96D4D2CDD230200271295 /* WorkSpace */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D4E2CDD231D00271295 /* SearchDataSourcesEmpty */,
+				C9F96D4E2CDD231D00271295 /* WorkSpaceDataSourcesEmpty */,
 			);
-			path = Search;
+			path = WorkSpace;
 			sourceTree = "<group>";
 		};
-		C9F96D502CDD232000271295 /* Setting */ = {
+		C9F96D502CDD232000271295 /* Channel */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D512CDD233500271295 /* SettingDataSourcesEmpty */,
+				C9F96D512CDD233500271295 /* ChannelDataSourcesEmpty */,
 			);
-			path = Setting;
+			path = Channel;
 			sourceTree = "<group>";
 		};
 		C9F96D532CDD236900271295 /* Base */ = {
@@ -843,11 +843,11 @@
 			files = (
 				C9F96D602CDD270900271295 /* KeychainEmpty in Resources */,
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
-				C9F96D4F2CDD231D00271295 /* SearchDataSourcesEmpty in Resources */,
-				C9F96D522CDD233500271295 /* SettingDataSourcesEmpty in Resources */,
+				C9F96D4F2CDD231D00271295 /* WorkSpaceDataSourcesEmpty in Resources */,
+				C9F96D522CDD233500271295 /* ChannelDataSourcesEmpty in Resources */,
 				C9F96D462CDD22C300271295 /* AuthDataSourcesEmpty in Resources */,
 				C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */,
-				C9F96D492CDD22EF00271295 /* HomeDataSourcesEmpty in Resources */,
+				C9F96D492CDD22EF00271295 /* UserDataSourcesEmpty in Resources */,
 				C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */,
 				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
 				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
