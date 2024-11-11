@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
 		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
@@ -14,7 +15,6 @@
 		C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */; };
 		C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828032CDA64E60096BA0D /* UseCaseEmpty */; };
 		C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */; };
-		C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828072CDA64F30096BA0D /* HomeViewEmpty */; };
 		C908280A2CDA64FA0096BA0D /* DMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828092CDA64FA0096BA0D /* DMEmpty */; };
 		C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280B2CDA65040096BA0D /* SearchViewEmpty */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
@@ -84,6 +84,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C90827FB2CDA64C80096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
 		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
@@ -91,7 +92,6 @@
 		C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseInterfaceEmpty; sourceTree = "<group>"; };
 		C90828032CDA64E60096BA0D /* UseCaseEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseEmpty; sourceTree = "<group>"; };
 		C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryInterfaceEmpty; sourceTree = "<group>"; };
-		C90828072CDA64F30096BA0D /* HomeViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeViewEmpty; sourceTree = "<group>"; };
 		C90828092CDA64FA0096BA0D /* DMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMEmpty; sourceTree = "<group>"; };
 		C908280B2CDA65040096BA0D /* SearchViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SearchViewEmpty; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
@@ -385,7 +385,7 @@
 		C90827E12CDA64040096BA0D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C90828072CDA64F30096BA0D /* HomeViewEmpty */,
+				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -877,7 +877,6 @@
 				C9C27A132CDA315600243744 /* Base in Resources */,
 				C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */,
 				C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */,
-				C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */,
 				C908280C2CDA65040096BA0D /* SearchViewEmpty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -918,6 +917,7 @@
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
 				C9F20F5C2CDB6DB60043351E /* TabBarCoordinator.swift in Sources */,
+				C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */,
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
