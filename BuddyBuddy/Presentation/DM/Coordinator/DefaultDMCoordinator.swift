@@ -17,7 +17,7 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func start() {
-        let vc = DMViewController(vm: DMViewModel(coordinator: self))
+        let vc = DMListViewController(vm: DMViewModel(coordinator: self))
         navigationController.pushViewController(
             vc,
             animated: true

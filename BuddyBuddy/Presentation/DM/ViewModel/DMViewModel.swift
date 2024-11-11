@@ -8,6 +8,7 @@
 import Foundation
 
 import RxSwift
+import RxCocoa
 
 final class DMViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
@@ -19,15 +20,22 @@ final class DMViewModel: ViewModelType {
     }
     
     struct Input {
-        
+        let viewWillAppearTrigger: Observable<Void>
     }
     
     struct Output {
-        
+        let updateDMListTableView: Driver<[String]>
     }
     
     func transform(input: Input) -> Output {
+        let updateDMListTableView = BehaviorSubject<[String]>(value: [])
         
-        Output()
+        input.viewWillAppearTrigger
+            .subscribe(with: self) { _ in
+                updateDMListTableView.onNext(["1", "2", "3"])
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []))
     }
 }
