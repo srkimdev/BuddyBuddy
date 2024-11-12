@@ -18,16 +18,18 @@ final class ChannelView: BaseView {
         attr.font = UIFont.title2
         
         config.attributedTitle = attr
-        config.image = UIImage(systemName: "chevron.right")
+        config.image = UIImage(systemName: "chevron.down")
         config.imagePlacement = .trailing
-        config.imagePadding = .infinity
+//        config.imagePadding = .infinity
         
         view.configuration = config
+        view.backgroundColor = .white
         return view
     }()
     private let channelTableView: UITableView = {
         let view = UITableView()
         view.rowHeight = 41
+        view.backgroundColor = .white
         return view
     }()
     private let addBtn: UIButton = {
@@ -43,6 +45,7 @@ final class ChannelView: BaseView {
         config.imagePadding = 16
         
         view.configuration = config
+        view.backgroundColor = .white
         return view
     }()
 
@@ -59,12 +62,15 @@ final class ChannelView: BaseView {
         }
         
         channelTableView.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
+            make.top.equalTo(channelBtn.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(0)
         }
         
         addBtn.snp.makeConstraints { make in
-            make.top.horizontalEdges.equalToSuperview()
-            make.height.equalTo(44)
+            make.top.equalTo(channelTableView.snp.bottom)
+            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(48)
         }
     }
 }

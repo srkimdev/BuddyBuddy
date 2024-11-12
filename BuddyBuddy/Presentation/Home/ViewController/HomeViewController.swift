@@ -22,6 +22,10 @@ final class HomeViewController: BaseNavigationViewController {
     }()
     private let stackView: UIStackView = {
         let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 2
+        view.distribution = .fill
+        view.backgroundColor = .gray2
         return view
     }()
     private let menuBtn: UIButton = {
@@ -47,11 +51,13 @@ final class HomeViewController: BaseNavigationViewController {
         config.imagePadding = 16
         
         view.configuration = config
+        view.backgroundColor = .white
         return view
     }()
     private let emptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
+        view.setContentHuggingPriority(.init(1), for: .vertical)
         return view
     }()
     private let floatingBtn: UIButton = {
@@ -60,10 +66,10 @@ final class HomeViewController: BaseNavigationViewController {
         
         config.image = .newMessage
         config.contentInsets = .init(top: 16.45, leading: 16.45, bottom: 16.45, trailing: 16.45)
-        config.baseBackgroundColor = .primary
         
         view.configuration = config
         view.layer.cornerRadius = 25
+        view.backgroundColor = .primary
         return view
     }()
     
@@ -94,15 +100,16 @@ final class HomeViewController: BaseNavigationViewController {
         }
         
         channelView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(100)
         }
         
         memberAddBtn.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview()
+            make.height.equalTo(48)
         }
         
         emptyView.snp.makeConstraints { make in
-            make.horizontalEdges.bottom.equalToSuperview()
+            make.bottom.equalToSuperview()
+            make.height.equalTo(300)
         }
         
         floatingBtn.snp.makeConstraints { make in
