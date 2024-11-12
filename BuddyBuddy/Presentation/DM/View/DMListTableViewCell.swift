@@ -76,7 +76,7 @@ final class DMListTableViewCell: BaseTableViewCell {
         userName.text = "jack"
         lastText.text = "저희 수료식 언제?"
         lastTime.text = "pm 06:33"
-        unreadCount
+//        unreadCount
     }
     
 }

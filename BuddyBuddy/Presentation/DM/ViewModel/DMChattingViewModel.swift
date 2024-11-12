@@ -1,8 +1,8 @@
 //
-//  DMViewModel.swift
+//  DMChattingViewModel.swift
 //  BuddyBuddy
 //
-//  Created by Jisoo Ham on 11/6/24.
+//  Created by 김성률 on 11/12/24.
 //
 
 import Foundation
@@ -10,14 +10,10 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class DMViewModel: ViewModelType {
-    private let disposeBag: DisposeBag = DisposeBag()
+final class DMChattingViewModel: ViewModelType {
+    private let disposeBag = DisposeBag()
     
-    private let coordinator: DMCoordinator
-    
-    init(coordinator: DMCoordinator) {
-        self.coordinator = coordinator
-    }
+    // coodinator
     
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
@@ -38,4 +34,6 @@ final class DMViewModel: ViewModelType {
         
         return Output(updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []))
     }
+    
+    
 }
