@@ -20,10 +20,13 @@ final class ChannelView: BaseView {
         config.attributedTitle = attr
         config.image = UIImage(systemName: "chevron.down")
         config.imagePlacement = .trailing
+//        config.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
 //        config.imagePadding = .infinity
+        config.baseForegroundColor = .black
         
         view.configuration = config
         view.backgroundColor = .white
+        view.contentHorizontalAlignment = .left
         return view
     }()
     private let channelTableView: UITableView = {
@@ -43,9 +46,11 @@ final class ChannelView: BaseView {
         config.image = UIImage(systemName: "plus")
         config.imagePlacement = .leading
         config.imagePadding = 16
+        config.baseForegroundColor = .gray1
         
         view.configuration = config
         view.backgroundColor = .white
+        view.contentHorizontalAlignment = .left
         return view
     }()
 

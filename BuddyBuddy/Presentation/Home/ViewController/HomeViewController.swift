@@ -43,15 +43,16 @@ final class HomeViewController: BaseNavigationViewController {
         var attr = AttributedString.init("Add Member".localized())
         
         attr.font = UIFont.body
-        attr.foregroundColor = .gray1
         
         config.attributedTitle = attr
         config.image = UIImage(systemName: "plus")
         config.imagePlacement = .leading
         config.imagePadding = 16
+        config.baseForegroundColor = .gray1
         
         view.configuration = config
         view.backgroundColor = .white
+        view.contentHorizontalAlignment = .left
         return view
     }()
     private let emptyView: UIView = {
