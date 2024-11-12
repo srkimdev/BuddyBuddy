@@ -22,11 +22,12 @@ final class RecentSearchTableView: BaseView {
     let recentTableView: UITableView = {
         let view = UITableView()
         view.register(
-            RecentTableViewCell.self,
-            forCellReuseIdentifier: RecentTableViewCell.identifier
+            SearchItemTableViewCell.self,
+            forCellReuseIdentifier: SearchItemTableViewCell.identifier
         )
         view.rowHeight = 41
         view.separatorStyle = .none
+        view.showsVerticalScrollIndicator = false
         return view
     }()
     

@@ -36,6 +36,7 @@ final class SearchViewController: BaseNavigationViewController {
     }()
     private let searchEmptyView: SearchEmptyView = SearchEmptyView()
     private let recentSearchView: RecentSearchTableView = RecentSearchTableView()
+    private let searchedResult: SearchResultView = SearchResultView()
     
     init(vm: SearchViewModel) {
         self.vm = vm
@@ -48,21 +49,35 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        let input = SearchViewModel.Input(viewWillAppear: rx.viewWillAppear)
+        let input = SearchViewModel.Input(
+            viewWillAppear: rx.viewWillAppear,
+            inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 }
+        )
         let output = vm.transform(input: input)
-        
+        var imageType: SearchImageType = .clock
+        output.searchData
+            .drive { imgType in
+                imageType = imgType
+            }
+            .disposed(by: disposeBag)
         output.searchState
             .drive(with: self) { owner, state in
                 owner.updateSearchUI(state)
             }
             .disposed(by: disposeBag)
-        
         output.recentSearchList
-            .drive(recentSearchView.recentTableView.rx.items(
-                    cellIdentifier: RecentTableViewCell.identifier,
-                    cellType: RecentTableViewCell.self
+            .drive(searchedResult.searchResultTableView.rx.items(
+                    cellIdentifier: SearchItemTableViewCell.identifier,
+                    cellType: SearchItemTableViewCell.self
             )) { _, terms, cell in
-                cell.setTerms(text: terms)
+                cell.setupUI(text: terms)
+                cell.setupImageUI(imgType: imageType)
+            }
+            .disposed(by: disposeBag)
+        
+        output.selectedSegIndex
+            .drive(with: self) { owner, segIndex in
+                owner.searchedResult.segmentedControl.selectedSegmentIndex = segIndex
             }
             .disposed(by: disposeBag)
     }
@@ -76,7 +91,7 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        [searchEmptyView, recentSearchView]
+        [searchEmptyView, recentSearchView, searchedResult]
             .forEach { view.addSubview($0) }
     }
     
@@ -87,16 +102,22 @@ final class SearchViewController: BaseNavigationViewController {
         recentSearchView.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
         }
+        searchedResult.snp.makeConstraints { make in
+            make.edges.equalTo(safeArea)
+        }
     }
     
     private func updateSearchUI(_ state: SearchState) {
         switch state {
         case .empty:
             recentSearchView.isHidden = true
+            searchedResult.isHidden = true
         case .recentSearch:
             searchEmptyView.isHidden = true
+            searchedResult.isHidden = true
         case .searchResult:
             searchEmptyView.isHidden = true
+            recentSearchView.isHidden = true
         }
     }
 }
