@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RxCocoa
 import RxSwift
 import SnapKit
 
@@ -17,10 +18,14 @@ final class SearchViewController: BaseNavigationViewController {
     
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
-        controller.searchBar.placeholder = "search".localized()
+        controller.searchBar.placeholder = "Search".localized()
         controller.searchBar.tintColor = .blue
         controller.searchBar.sizeToFit()
-        controller.searchBar.setBackgroundImage(UIImage(), for: .any, barMetrics: .default)
+        controller.searchBar.setBackgroundImage(
+            UIImage(),
+            for: .any,
+            barMetrics: .default
+        )
         let searchTextField = controller.searchBar.searchTextField
         searchTextField.backgroundColor = .primary.withAlphaComponent(0.3)
         searchTextField.clipsToBounds = true
@@ -30,6 +35,7 @@ final class SearchViewController: BaseNavigationViewController {
         return controller
     }()
     private let searchEmptyView: SearchEmptyView = SearchEmptyView()
+    private let recentSearchView: RecentSearchTableView = RecentSearchTableView()
     
     init(vm: SearchViewModel) {
         self.vm = vm
@@ -42,7 +48,23 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func bind() {
+        let input = SearchViewModel.Input(viewWillAppear: rx.viewWillAppear)
+        let output = vm.transform(input: input)
         
+        output.searchState
+            .drive(with: self) { owner, state in
+                owner.updateSearchUI(state)
+            }
+            .disposed(by: disposeBag)
+        
+        output.recentSearchList
+            .drive(recentSearchView.recentTableView.rx.items(
+                    cellIdentifier: RecentTableViewCell.identifier,
+                    cellType: RecentTableViewCell.self
+            )) { _, terms, cell in
+                cell.setTerms(text: terms)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setNavigation() {
@@ -54,13 +76,27 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        [searchEmptyView]
+        [searchEmptyView, recentSearchView]
             .forEach { view.addSubview($0) }
     }
     
     override func setConstraints() {
         searchEmptyView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(safeArea)
+        }
+        recentSearchView.snp.makeConstraints { make in
+            make.edges.equalTo(safeArea)
+        }
+    }
+    
+    private func updateSearchUI(_ state: SearchState) {
+        switch state {
+        case .empty:
+            recentSearchView.isHidden = true
+        case .recentSearch:
+            searchEmptyView.isHidden = true
+        case .searchResult:
+            searchEmptyView.isHidden = true
         }
     }
 }

@@ -17,6 +17,8 @@ class BaseTableViewCell: UITableViewCell {
             reuseIdentifier: reuseIdentifier
         )
         
+        contentView.backgroundColor = .white
+        
         setHierarchy()
         setConstraints()
     }

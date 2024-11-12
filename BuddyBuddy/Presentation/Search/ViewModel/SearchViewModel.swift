@@ -7,6 +7,7 @@
 
 import Foundation
 
+import RxCocoa
 import RxSwift
 
 final class SearchViewModel: ViewModelType {
@@ -19,16 +20,29 @@ final class SearchViewModel: ViewModelType {
     }
     
     struct Input {
-        
+        let viewWillAppear: Observable<Void>
     }
     
     struct Output {
-        
+        let searchState: Driver<SearchState>
+        let recentSearchList: Driver<[String]>
     }
     
     func transform(input: Input) -> Output {
+        let searchState = PublishSubject<SearchState>()
+        let recentSearchList = PublishSubject<[String]>()
         
-        return Output()
+        input.viewWillAppear
+            .bind { _ in
+                searchState.onNext(.recentSearch)
+                recentSearchList.onNext(["감자도리", "함지수", "선아라", "김성률"])
+            }
+            .disposed(by: disposeBag)
+        
+        return Output(
+            searchState: searchState.asDriver(onErrorJustReturn: .empty),
+            recentSearchList: recentSearchList.asDriver(onErrorJustReturn: [])
+        )
     }
     
 }

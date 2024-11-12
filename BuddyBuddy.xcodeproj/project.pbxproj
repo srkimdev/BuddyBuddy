@@ -30,8 +30,12 @@
 		C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = C90828632CDA75CF0096BA0D /* RxKakaoSDKCommon */; };
 		C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C90828652CDA780D0096BA0D /* Localizable.xcstrings */; };
 		C90828682CDA78770096BA0D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90828672CDA78770096BA0D /* String+.swift */; };
+		C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
+		C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6C2CE21B2500B62A2A /* SearchState.swift */; };
+		C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */; };
+		C957EA712CE21FD800B62A2A /* RecentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA702CE21FD800B62A2A /* RecentTableViewCell.swift */; };
 		C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72942CDAF9CA00E0D6CF /* BaseView.swift */; };
 		C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72962CDAF9D100E0D6CF /* BaseViewController.swift */; };
 		C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C72982CDAF9EA00E0D6CF /* BaseNavigationViewController.swift */; };
@@ -100,8 +104,12 @@
 		C908285E2CDA72B50096BA0D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
+		C957EA6C2CE21B2500B62A2A /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
+		C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableView.swift; sourceTree = "<group>"; };
+		C957EA702CE21FD800B62A2A /* RecentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentTableViewCell.swift; sourceTree = "<group>"; };
 		C96C72942CDAF9CA00E0D6CF /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		C96C72962CDAF9D100E0D6CF /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		C96C72982CDAF9EA00E0D6CF /* BaseNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNavigationViewController.swift; sourceTree = "<group>"; };
@@ -470,6 +478,8 @@
 			isa = PBXGroup;
 			children = (
 				C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */,
+				C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */,
+				C957EA702CE21FD800B62A2A /* RecentTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -589,6 +599,7 @@
 				C90828672CDA78770096BA0D /* String+.swift */,
 				C9F96D642CDD295300271295 /* UIFont+.swift */,
 				C957EA662CE2095300B62A2A /* UIViewController+.swift */,
+				C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -674,6 +685,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F20F392CDB5F070043351E /* TabKind.swift */,
+				C957EA6C2CE21B2500B62A2A /* SearchState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -931,14 +943,18 @@
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
+				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
 				C9F20F6A2CDB73330043351E /* SettingCoordinator.swift in Sources */,
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
+				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
+				C957EA712CE21FD800B62A2A /* RecentTableViewCell.swift in Sources */,
+				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,

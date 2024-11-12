@@ -17,7 +17,7 @@ final class SearchEmptyView: BaseView {
     
     private let emptyText: UILabel = {
         let view = UILabel()
-        view.text = "emptySearch".localized()
+        view.text = "EmptySearch".localized()
         view.textColor = .gray1
         view.font = .body
         return view
