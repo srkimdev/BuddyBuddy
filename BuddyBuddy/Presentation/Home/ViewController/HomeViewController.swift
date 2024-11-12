@@ -8,6 +8,7 @@
 import UIKit
 
 import RxSwift
+import SnapKit
 
 final class HomeViewController: BaseNavigationViewController {
     private let disposeBag: DisposeBag = DisposeBag()
@@ -68,5 +69,45 @@ final class HomeViewController: BaseNavigationViewController {
     
     init(vm: HomeViewModel) {
         self.vm = vm
+    }
+    
+    override func setHierarchy() {
+        [scrollView, floatingBtn].forEach {
+            view.addSubview($0)
+        }
+        
+        scrollView.addSubview(stackView)
+        
+        [channelView, memberAddBtn, emptyView].forEach {
+            stackView.addArrangedSubview($0)
+        }
+    }
+    
+    override func setConstraints() {
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+        
+        channelView.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+        }
+        
+        memberAddBtn.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview()
+        }
+        
+        emptyView.snp.makeConstraints { make in
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+        
+        floatingBtn.snp.makeConstraints { make in
+            make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.size.equalTo(50)
+        }
     }
 }
