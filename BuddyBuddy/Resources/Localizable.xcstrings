@@ -18,6 +18,23 @@
         }
       }
     },
+    "Add Member" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "add Member"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "팀원 추가"
+          }
+        }
+      }
+    },
     "Channel" : {
       "extractionState" : "manual",
       "localizations" : {
