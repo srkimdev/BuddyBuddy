@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "ko",
   "strings" : {
-    "emptySearch" : {
+    "EmptySearch" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -18,7 +18,24 @@
         }
       }
     },
-    "search" : {
+    "RecentSearch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent Search"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "최근 검색"
+          }
+        }
+      }
+    },
+    "Search" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
