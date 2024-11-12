@@ -33,6 +33,8 @@ final class HomeViewController: BaseNavigationViewController {
         var config = UIButton.Configuration.plain()
         
         config.image = .menu
+        config.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        
         view.configuration = config
         return view
     }()
@@ -76,6 +78,28 @@ final class HomeViewController: BaseNavigationViewController {
     
     init(vm: HomeViewModel) {
         self.vm = vm
+    }
+    
+    override func setNavigation() {
+        super.setNavigation()
+        
+        title = "영어 마스터 할 사람 모여라"
+        
+        let appearance = UINavigationBarAppearance()
+        appearance.titlePositionAdjustment = UIOffset(
+            horizontal: -(view.frame.width/2),
+            vertical: 2
+        )
+        let font = UIFont.title1 ?? UIFont.boldSystemFont(ofSize: 22)
+        appearance.titleTextAttributes =
+        [NSAttributedString.Key.font: font]
+        
+        navigationController?.navigationBar.standardAppearance = appearance
+        navigationController?.navigationBar.standardAppearance = appearance
+        
+        let barItem = UIBarButtonItem(customView: menuBtn)
+        
+        navigationItem.leftBarButtonItem = barItem
     }
     
     override func setHierarchy() {
