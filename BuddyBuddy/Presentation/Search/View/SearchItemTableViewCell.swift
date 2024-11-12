@@ -1,5 +1,5 @@
 //
-//  RecentTableViewCell.swift
+//  SearchItemTableViewCell.swift
 //  BuddyBuddy
 //
 //  Created by Jisoo Ham on 11/11/24.
@@ -9,11 +9,10 @@ import UIKit
 
 import SnapKit
 
-final class RecentTableViewCell: BaseTableViewCell {
+final class SearchItemTableViewCell: BaseTableViewCell {
     private let searchedImg: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: "clock")
         view.tintColor = .black
         return view
     }()
@@ -44,14 +43,18 @@ final class RecentTableViewCell: BaseTableViewCell {
         }
     }
     
-    func setTerms(text: String) {
+    func setupUI(text: String) {
         searchedTerms.text = text
+    }
+    
+    func setupImageUI(imgType: SearchImageType) {
+        searchedImg.image = UIImage(systemName: imgType.toImgTitle)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
         searchedTerms.text = nil
-        searchedImg.image = UIImage(systemName: "clock")
+        searchedImg.image = nil
     }
 }
