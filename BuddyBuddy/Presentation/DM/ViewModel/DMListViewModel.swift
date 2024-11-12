@@ -13,10 +13,12 @@ import RxCocoa
 final class DMListViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
+    private let dmUseCase: DMUseCase
     private let coordinator: DMCoordinator
     
-    init(coordinator: DMCoordinator) {
+    init(coordinator: DMCoordinator, dmUseCase: DMUseCase) {
         self.coordinator = coordinator
+        self.dmUseCase = dmUseCase
     }
     
     struct Input {
@@ -31,8 +33,16 @@ final class DMListViewModel: ViewModelType {
         let updateDMListTableView = BehaviorSubject<[String]>(value: [])
         
         input.viewWillAppearTrigger
-            .subscribe(with: self) { _ in
-                updateDMListTableView.onNext(["1", "2", "3"])
+            .flatMap {
+                self.dmUseCase.fetchDMList(workspaceId: "")
+            }
+            .bind(with: self) { owner, response in
+                switch response {
+                case .success(let value):
+                    print(value)
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
         
