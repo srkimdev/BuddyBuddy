@@ -10,11 +10,13 @@ import UIKit
 final class UnderlineSegmentedControl: UISegmentedControl {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.removeBackgroundAndDivider()
+        removeBackgroundAndDivider()
+        setFont()
     }
     override init(items: [Any]?) {
         super.init(items: items)
-        self.removeBackgroundAndDivider()
+        removeBackgroundAndDivider()
+        setFont()
     }
     required init?(coder: NSCoder) {
         fatalError()
@@ -71,5 +73,16 @@ final class UnderlineSegmentedControl: UISegmentedControl {
             withDuration: 0.1,
             animations: { self.underlineView.frame.origin.x = underlineFinalXPosition }
         )
+    }
+    
+    private func setFont() {
+        let customAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.title2
+        ]
+        let normalAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.body
+        ]
+        self.setTitleTextAttributes(normalAttributes, for: .normal)
+        self.setTitleTextAttributes(customAttributes, for: .selected)
     }
 }
