@@ -31,6 +31,7 @@
 		C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C90828652CDA780D0096BA0D /* Localizable.xcstrings */; };
 		C90828682CDA78770096BA0D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90828672CDA78770096BA0D /* String+.swift */; };
 		C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */; };
+		C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6C2CE21B2500B62A2A /* SearchState.swift */; };
@@ -42,7 +43,6 @@
 		C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */; };
 		C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */; };
 		C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729E2CDB28F500E0D6CF /* Reusables.swift */; };
-		C9BCFCE62CE1CFB7003E5093 /* customEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9BCFCE52CE1CFB7003E5093 /* customEmpty */; };
 		C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A032CDA315500243744 /* AppDelegate.swift */; };
 		C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A052CDA315500243744 /* SceneDelegate.swift */; };
 		C9C27A102CDA315600243744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C27A0F2CDA315600243744 /* Assets.xcassets */; };
@@ -105,6 +105,7 @@
 		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
 		C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
+		C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6C2CE21B2500B62A2A /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -116,7 +117,6 @@
 		C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C96C729E2CDB28F500E0D6CF /* Reusables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusables.swift; sourceTree = "<group>"; };
-		C9BCFCE52CE1CFB7003E5093 /* customEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = customEmpty; sourceTree = "<group>"; };
 		C9C27A002CDA315500243744 /* BuddyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C27A032CDA315500243744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C27A052CDA315500243744 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -644,7 +644,7 @@
 		C9BCFCE42CE1CFA2003E5093 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				C9BCFCE52CE1CFB7003E5093 /* customEmpty */,
+				C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -875,7 +875,6 @@
 				C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */,
 				C9F96D492CDD22EF00271295 /* UserDataSourcesEmpty in Resources */,
 				C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */,
-				C9BCFCE62CE1CFB7003E5093 /* customEmpty in Resources */,
 				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
 				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
 				C9F96D4C2CDD22FF00271295 /* DMDataSourcesEmpty in Resources */,
@@ -950,6 +949,7 @@
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
+				C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
