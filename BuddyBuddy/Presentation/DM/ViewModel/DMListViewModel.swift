@@ -26,20 +26,20 @@ final class DMListViewModel: ViewModelType {
     }
     
     struct Output {
-        let updateDMListTableView: Driver<[String]>
+        let updateDMListTableView: Driver<[DMList]>
     }
     
     func transform(input: Input) -> Output {
-        let updateDMListTableView = BehaviorSubject<[String]>(value: [])
+        let updateDMListTableView = PublishSubject<[DMList]>()
         
         input.viewWillAppearTrigger
             .flatMap {
-                self.dmUseCase.fetchDMList(workspaceId: "")
+                self.dmUseCase.fetchDMList(workspaceId: "70b565b8-9ca1-483f-b812-15d3e57b5cf4")
             }
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let value):
-                    print(value)
+                    updateDMListTableView.onNext(value)
                 case .failure(let error):
                     print(error)
                 }

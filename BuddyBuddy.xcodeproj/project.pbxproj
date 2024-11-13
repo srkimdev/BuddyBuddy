@@ -94,6 +94,12 @@
 		DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */; };
 		DC213AA42CE3744300E2A2F7 /* DMUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA32CE3744300E2A2F7 /* DMUseCase.swift */; };
 		DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */; };
+		DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA72CE4632F00E2A2F7 /* AuthIntercepter.swift */; };
+		DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA92CE4742F00E2A2F7 /* KeyChainManager.swift */; };
+		DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AAB2CE47A8900E2A2F7 /* LoginQuery.swift */; };
+		DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AAE2CE4848B00E2A2F7 /* AccessTokenDTO.swift */; };
+		DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */; };
+		DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -180,6 +186,12 @@
 		DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListDTO.swift; sourceTree = "<group>"; };
 		DC213AA32CE3744300E2A2F7 /* DMUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUseCase.swift; sourceTree = "<group>"; };
 		DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMUseCase.swift; sourceTree = "<group>"; };
+		DC213AA72CE4632F00E2A2F7 /* AuthIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthIntercepter.swift; sourceTree = "<group>"; };
+		DC213AA92CE4742F00E2A2F7 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
+		DC213AAB2CE47A8900E2A2F7 /* LoginQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginQuery.swift; sourceTree = "<group>"; };
+		DC213AAE2CE4848B00E2A2F7 /* AccessTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenDTO.swift; sourceTree = "<group>"; };
+		DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
+		DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +288,8 @@
 		C90827D32CDA63140096BA0D /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				DC213AB32CE4874F00E2A2F7 /* LogIn */,
+				DC213AAD2CE4847A00E2A2F7 /* AccessToken */,
 				DC213AA02CE36DFC00E2A2F7 /* DM */,
 				C90827FD2CDA64D30096BA0D /* DTOEmpty */,
 			);
@@ -338,6 +352,7 @@
 		C90827DA2CDA638F0096BA0D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				DC213AB02CE484B600E2A2F7 /* AccessToken */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
 				C90827FF2CDA64D90096BA0D /* EntityEmpty */,
 			);
@@ -716,6 +731,7 @@
 				DC213A912CE332A000E2A2F7 /* TargetType.swift */,
 				DC213A932CE365D000E2A2F7 /* Header.swift */,
 				DC213A952CE3668700E2A2F7 /* APIKey.swift */,
+				DC213AA72CE4632F00E2A2F7 /* AuthIntercepter.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -724,6 +740,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F96D572CDD24AC00271295 /* RequestEmpty */,
+				DC213AAB2CE47A8900E2A2F7 /* LoginQuery.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -757,6 +774,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F96D5F2CDD270900271295 /* KeychainEmpty */,
+				DC213AA92CE4742F00E2A2F7 /* KeyChainManager.swift */,
 			);
 			path = Keychain;
 			sourceTree = "<group>";
@@ -800,6 +818,30 @@
 				DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */,
 			);
 			path = DM;
+			sourceTree = "<group>";
+		};
+		DC213AAD2CE4847A00E2A2F7 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+				DC213AAE2CE4848B00E2A2F7 /* AccessTokenDTO.swift */,
+			);
+			path = AccessToken;
+			sourceTree = "<group>";
+		};
+		DC213AB02CE484B600E2A2F7 /* AccessToken */ = {
+			isa = PBXGroup;
+			children = (
+				DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */,
+			);
+			path = AccessToken;
+			sourceTree = "<group>";
+		};
+		DC213AB32CE4874F00E2A2F7 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */,
+			);
+			path = LogIn;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -965,6 +1007,7 @@
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
+				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
@@ -980,6 +1023,7 @@
 				DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */,
 				C9F20F602CDB6E7E0043351E /* DefaultHomeCoordinator.swift in Sources */,
 				DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */,
+				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
@@ -988,8 +1032,12 @@
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
+				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				C9F20F4A2CDB63780043351E /* DMListViewModel.swift in Sources */,
+				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
+				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
+				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
 				DC213A902CE32C4500E2A2F7 /* APIRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -71,12 +71,11 @@ final class DMListTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: String) {
+    func designCell(_ transition: DMList) {
         profileImage.image = UIImage(systemName: "star")
-        userName.text = "jack"
+        userName.text = transition.user.nickname
         lastText.text = "저희 수료식 언제?"
         lastTime.text = "pm 06:33"
-//        unreadCount
     }
     
 }

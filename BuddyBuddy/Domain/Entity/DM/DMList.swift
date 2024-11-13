@@ -7,13 +7,13 @@
 
 import Foundation
 
-struct DMList: Decodable {
+struct DMList {
     let room_id: String
     let createdAt: String
     let user: UserInfo
 }
 
-struct UserInfo: Decodable {
+struct UserInfo {
     let user_id: String
     let email: String
     let nickname: String
