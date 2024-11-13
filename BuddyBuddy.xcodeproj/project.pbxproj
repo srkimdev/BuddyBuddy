@@ -12,6 +12,7 @@
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
 		C0BF42912CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */; };
+		C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
 		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
@@ -91,6 +92,7 @@
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelTableViewCell.swift; sourceTree = "<group>"; };
+		C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C90827FB2CDA64C80096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
 		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
 				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
 				C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */,
+				C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -939,6 +942,7 @@
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
+				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
 				C9F20F6A2CDB73330043351E /* SettingCoordinator.swift in Sources */,
