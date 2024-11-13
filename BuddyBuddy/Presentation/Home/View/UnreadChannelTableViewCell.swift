@@ -12,7 +12,7 @@ import SnapKit
 final class UnreadChannelTableViewCell: BaseTableViewCell {
     private let iconImgView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(systemName: "number")
+        view.image = .unread
         return  view
     }()
     private let titleLabel: UILabel = {
@@ -36,19 +36,24 @@ final class UnreadChannelTableViewCell: BaseTableViewCell {
     override func setConstraints() {
         iconImgView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(16)
+            make.leading.equalToSuperview().inset(16)
             make.size.equalTo(18)
         }
         
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(iconImgView).inset(16)
+            make.verticalEdges.equalToSuperview()
+            make.leading.equalTo(iconImgView.snp.trailing).offset(12)
+            make.height.equalTo(41)
         }
         
         notificationView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(16)
-            make.size.equalTo(24)
+            make.trailing.equalToSuperview().inset(24)
+            make.size.equalTo(10)
         }
+    }
+    
+    func configureCell(data: String) {
+        titleLabel.text = data
     }
 }

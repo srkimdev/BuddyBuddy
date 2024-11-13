@@ -18,6 +18,7 @@ final class DefaultChannelTableViewCell: BaseTableViewCell {
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.body
+        view.textColor = .gray1
         return view
     }()
     
@@ -30,13 +31,27 @@ final class DefaultChannelTableViewCell: BaseTableViewCell {
     override func setConstraints() {
         iconImgView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.trailing.equalToSuperview().inset(16)
+            make.leading.equalToSuperview().inset(16)
             make.size.equalTo(18)
         }
+    }
+    
+    func configureCell(title: String, image: String) {
+        titleLabel.text = title
+        iconImgView.image = UIImage(systemName: image)
         
-        titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
-            make.leading.equalTo(iconImgView).inset(16)
+        if image == "plus" {
+            titleLabel.snp.remakeConstraints { make in
+                make.verticalEdges.equalToSuperview()
+                make.leading.equalTo(iconImgView.snp.trailing).offset(12)
+                make.height.equalTo(48)
+            }
+        } else {
+            titleLabel.snp.remakeConstraints { make in
+                make.verticalEdges.equalToSuperview()
+                make.leading.equalTo(iconImgView.snp.trailing).offset(12)
+                make.height.equalTo(41)
+            }
         }
     }
 }

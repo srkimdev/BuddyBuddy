@@ -30,8 +30,9 @@ final class ChannelTitleTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview()
+            make.verticalEdges.equalToSuperview()
             make.leading.equalToSuperview().inset(13)
+            make.height.equalTo(56)
         }
         
         chevronImgView.snp.makeConstraints { make in
@@ -39,5 +40,9 @@ final class ChannelTitleTableViewCell: BaseTableViewCell {
             make.trailing.equalToSuperview().inset(13)
             make.size.equalTo(24)
         }
+    }
+    
+    func configureCell(data: String) {
+        chevronImgView.image = UIImage(named: data)
     }
 }

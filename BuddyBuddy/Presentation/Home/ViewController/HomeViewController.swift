@@ -53,6 +53,9 @@ final class HomeViewController: BaseNavigationViewController {
             UnreadChannelTableViewCell.self,
             forCellReuseIdentifier: UnreadChannelTableViewCell.identifier
         )
+        
+        view.separatorStyle = .none
+        view.isScrollEnabled = false
         return view
     }()
     private let memberAddBtn: UIButton = {
@@ -114,6 +117,10 @@ final class HomeViewController: BaseNavigationViewController {
         Observable.just(sections)
             .bind(to: channelTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
+        
+        channelTableView.snp.remakeConstraints { make in
+            make.height.equalTo(56 + sections[1].items.count * 41 + 48)
+        }
     }
     
     override func setNavigation() {
@@ -160,10 +167,6 @@ final class HomeViewController: BaseNavigationViewController {
             make.width.equalToSuperview()
         }
         
-        channelTableView.snp.makeConstraints { make in
-            make.height.equalTo(100)
-        }
-        
         memberAddBtn.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
@@ -192,6 +195,8 @@ extension HomeViewController {
                     withIdentifier: ChannelTitleTableViewCell.identifier,
                     for: indexpath
                 ) as? ChannelTitleTableViewCell else { return UITableViewCell() }
+                cell.configureCell(data: item.rawValue)
+                cell.selectionStyle = .none
                 return cell
             case .channel(let item):
                 if item.isRead {
@@ -199,12 +204,16 @@ extension HomeViewController {
                         withIdentifier: DefaultChannelTableViewCell.identifier,
                         for: indexpath
                     ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
+                    cell.configureCell(title: item.title, image: item.image)
+                    cell.selectionStyle = .none
                     return cell
                 } else {
                     guard let cell = channelTableView.dequeueReusableCell(
                         withIdentifier: UnreadChannelTableViewCell.identifier,
                         for: indexpath
                     ) as? UnreadChannelTableViewCell else { return UITableViewCell() }
+                    cell.configureCell(data: item.title)
+                    cell.selectionStyle = .none
                     return cell
                 }
             case .add(let item):
@@ -212,6 +221,8 @@ extension HomeViewController {
                     withIdentifier: DefaultChannelTableViewCell.identifier,
                     for: indexpath
                 ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
+                cell.configureCell(title: item.title, image: item.imageString)
+                cell.selectionStyle = .none
                 return cell
             }
         }
