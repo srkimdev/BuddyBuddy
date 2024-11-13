@@ -39,6 +39,12 @@
 		C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC0A2CE3B162001EFC70 /* AlertType.swift */; };
 		C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC102CE3B416001EFC70 /* RoundedButton.swift */; };
 		C91BBC132CE3B62D001EFC70 /* RoundedButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */; };
+		C91BBC152CE472CA001EFC70 /* ChannelSettingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */; };
+		C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */; };
+		C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */; };
+		C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */; };
+		C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */; };
+		C91BBC1F2CE4B213001EFC70 /* ChannelSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6C2CE21B2500B62A2A /* SearchState.swift */; };
@@ -118,6 +124,12 @@
 		C91BBC0A2CE3B162001EFC70 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
 		C91BBC102CE3B416001EFC70 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
 		C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonType.swift; sourceTree = "<group>"; };
+		C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingCell.swift; sourceTree = "<group>"; };
+		C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingTopView.swift; sourceTree = "<group>"; };
+		C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingBottomView.swift; sourceTree = "<group>"; };
+		C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingMiddleView.swift; sourceTree = "<group>"; };
+		C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingViewController.swift; sourceTree = "<group>"; };
+		C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingViewModel.swift; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6C2CE21B2500B62A2A /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -408,6 +420,10 @@
 			isa = PBXGroup;
 			children = (
 				C90828072CDA64F30096BA0D /* HomeViewEmpty */,
+				C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */,
+				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
+				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
+				C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -416,6 +432,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F20F412CDB61F50043351E /* HomeViewController.swift */,
+				C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -424,6 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F20F432CDB62530043351E /* HomeViewModel.swift */,
+				C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -942,6 +960,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
 				C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */,
@@ -957,6 +976,7 @@
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
+				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
@@ -965,6 +985,7 @@
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
 				C9F20F6A2CDB73330043351E /* SettingCoordinator.swift in Sources */,
 				C91BBC132CE3B62D001EFC70 /* RoundedButtonType.swift in Sources */,
+				C91BBC1F2CE4B213001EFC70 /* ChannelSettingViewModel.swift in Sources */,
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
@@ -984,15 +1005,18 @@
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
 				C9F20F602CDB6E7E0043351E /* DefaultHomeCoordinator.swift in Sources */,
+				C91BBC152CE472CA001EFC70 /* ChannelSettingCell.swift in Sources */,
 				C91BBC052CE37093001EFC70 /* SearchResultView.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
+				C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */,
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				C9F20F4A2CDB63780043351E /* DMViewModel.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
+				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
