@@ -15,6 +15,7 @@ protocol Coordinator: AnyObject {
     func start()
     func finish()
     func popVC()
+    func dismissVC()
 }
 
 extension Coordinator {
@@ -29,5 +30,8 @@ extension Coordinator {
     }
     func popVC() {
         navigationController.popViewController(animated: true)
+    }
+    func dismissVC() {
+        navigationController.dismiss(animated: true)
     }
 }

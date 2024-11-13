@@ -33,4 +33,13 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             animated: true
         )
     }
+    func toChannelAdmin() {
+        let vc = ChannelAdminViewController(vm: ChangeAdminViewModel(coordinator: self))
+        vc.modalPresentationStyle = .pageSheet
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(vc, animated: true)
+    }
 }
