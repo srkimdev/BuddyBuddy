@@ -9,53 +9,49 @@ import Foundation
 
 import RxDataSources
 
-struct ChannelListSectionModel {
-    var items: [Item]
+enum ChannelSectionModel: Equatable {
+    case title(items: [ChannelItem])
+    case list(items: [ChannelItem])
+    case add(items: [ChannelItem])
 }
 
-extension ChannelListSectionModel: SectionModelType {
-    typealias Item = Channel
+enum ChannelItem: Equatable {
+    case title(Accordion)
+    case channel(Channel)
+    case add(AddChannel)
     
-    init(original: ChannelListSectionModel, items: [Channel]) {
+    static func == (lhs: ChannelItem, rhs: ChannelItem) -> Bool {
+        return false
+    }
+}
+
+extension ChannelSectionModel: SectionModelType {
+    typealias Item = ChannelItem
+    
+    var items: [ChannelItem] {
+        switch self {
+        case .title(let items):
+            return items.map { $0 }
+        case .list(let items):
+            return items.map { $0 }
+        case .add(let items):
+            return items.map { $0 }
+        }
+    }
+    
+    init(original: ChannelSectionModel, items: [ChannelItem]) {
         self = original
-        self.items = items
     }
 }
 
 struct Channel {
     let title: String
-}
-
-
-struct ChannelTitleSectionModel {
-    var items: [Item]
-}
-
-extension ChannelTitleSectionModel: SectionModelType {
-    typealias Item = Accordion
-    
-    init(original: ChannelTitleSectionModel, items: [Accordion]) {
-        self = original
-        self.items = items
-    }
+    let image: String = "number"
 }
 
 enum Accordion: String {
     case arrow = "chevronRight"
     case caret = "chevronDown"
-}
-
-struct AddChannelSectionModel {
-    var items: [Item]
-}
-
-extension AddChannelSectionModel: SectionModelType {
-    typealias Item = AddChannel
-    
-    init(original: AddChannelSectionModel, items: [AddChannel]) {
-        self = original
-        self.items = items
-    }
 }
 
 struct AddChannel {

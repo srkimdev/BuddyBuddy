@@ -39,7 +39,22 @@ final class HomeViewController: BaseNavigationViewController {
         view.configuration = config
         return view
     }()
-    private let channelView: UIView = ChannelView()
+    private let channelTableView: UITableView = {
+        let view = UITableView()
+        view.register(
+            ChannelTitleTableViewCell.self,
+            forCellReuseIdentifier: ChannelTitleTableViewCell.identifier
+        )
+        view.register(
+            DefaultChannelTableViewCell.self,
+            forCellReuseIdentifier: DefaultChannelTableViewCell.identifier
+        )
+        view.register(
+            UnreadChannelTableViewCell.self,
+            forCellReuseIdentifier: UnreadChannelTableViewCell.identifier
+        )
+        return view
+    }()
     private let memberAddBtn: UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.plain()
@@ -110,7 +125,7 @@ final class HomeViewController: BaseNavigationViewController {
         
         scrollView.addSubview(stackView)
         
-        [channelView, memberAddBtn, emptyView].forEach {
+        [channelTableView, memberAddBtn, emptyView].forEach {
             stackView.addArrangedSubview($0)
         }
     }
@@ -125,7 +140,7 @@ final class HomeViewController: BaseNavigationViewController {
             make.width.equalToSuperview()
         }
         
-        channelView.snp.makeConstraints { make in
+        channelTableView.snp.makeConstraints { make in
             make.height.equalTo(100)
         }
         
@@ -142,5 +157,16 @@ final class HomeViewController: BaseNavigationViewController {
             make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.size.equalTo(50)
         }
+    }
+}
+
+// MARK: RxDataSource
+extension HomeViewController {
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource {
+        RxTableViewSectionedReloadDataSource<SectionModel(model: <#T##Section#>, items: <#T##[SectionModel<Section, ItemType>.Item]#>)
+        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>(configureCell: configureCell)
+        Observable.just([SectionModel(model: "title", items: [1, 2, 3])])
+        .bind(to: channelTableView.rx.items(dataSource: dataSource))
+        .disposed(by: disposeBag)
     }
 }
