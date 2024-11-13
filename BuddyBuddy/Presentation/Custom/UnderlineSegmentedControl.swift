@@ -77,10 +77,10 @@ final class UnderlineSegmentedControl: UISegmentedControl {
     
     private func setFont() {
         let customAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.title2
+            .font: UIFont.title2 as Any
         ]
         let normalAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.body
+            .font: UIFont.body as Any
         ]
         self.setTitleTextAttributes(normalAttributes, for: .normal)
         self.setTitleTextAttributes(customAttributes, for: .selected)
