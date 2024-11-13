@@ -12,6 +12,8 @@ import SnapKit
 final class ChannelTitleTableViewCell: BaseTableViewCell {
     private let titleLabel: UILabel = {
         let view = UILabel()
+        view.text = "Channel".localized()
+        view.font = .title2
         return view
     }()
     private let chevronImgView: UIImageView = {
