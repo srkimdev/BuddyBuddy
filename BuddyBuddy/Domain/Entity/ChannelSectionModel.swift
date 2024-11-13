@@ -47,6 +47,7 @@ extension ChannelSectionModel: SectionModelType {
 struct Channel {
     let title: String
     let image: String = "number"
+    let isRead: Bool
 }
 
 enum Accordion: String {

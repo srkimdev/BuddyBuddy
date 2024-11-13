@@ -162,11 +162,38 @@ final class HomeViewController: BaseNavigationViewController {
 
 // MARK: RxDataSource
 extension HomeViewController {
-    private func createDataSource() -> RxTableViewSectionedReloadDataSource {
-        RxTableViewSectionedReloadDataSource<SectionModel(model: <#T##Section#>, items: <#T##[SectionModel<Section, ItemType>.Item]#>)
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, Int>>(configureCell: configureCell)
-        Observable.just([SectionModel(model: "title", items: [1, 2, 3])])
-        .bind(to: channelTableView.rx.items(dataSource: dataSource))
-        .disposed(by: disposeBag)
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
+        return RxTableViewSectionedReloadDataSource<ChannelSectionModel> { [weak self] datasource, _, indexpath, _ in
+            guard let self else { return UITableViewCell() }
+            
+            switch datasource[indexpath] {
+            case .title(let item):
+                guard let cell = channelTableView.dequeueReusableCell(
+                    withIdentifier: ChannelTitleTableViewCell.identifier,
+                    for: indexpath
+                ) as? ChannelTitleTableViewCell else { return UITableViewCell() }
+                return cell
+            case .channel(let item):
+                if item.isRead {
+                    guard let cell = channelTableView.dequeueReusableCell(
+                        withIdentifier: DefaultChannelTableViewCell.identifier,
+                        for: indexpath
+                    ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
+                    return cell
+                } else {
+                    guard let cell = channelTableView.dequeueReusableCell(
+                        withIdentifier: UnreadChannelTableViewCell.identifier,
+                        for: indexpath
+                    ) as? UnreadChannelTableViewCell else { return UITableViewCell() }
+                    return cell
+                }
+            case .add(let item):
+                guard let cell = channelTableView.dequeueReusableCell(
+                    withIdentifier: DefaultChannelTableViewCell.identifier,
+                    for: indexpath
+                ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
+                return cell
+            }
+        }
     }
 }
