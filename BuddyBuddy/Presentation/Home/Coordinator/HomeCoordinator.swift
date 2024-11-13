@@ -10,4 +10,5 @@ import Foundation
 protocol HomeCoordinator: Coordinator {
     func toChannelSetting()
     func toChannelAdmin()
+    func toInviteMember()
 }

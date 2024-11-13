@@ -35,6 +35,23 @@
         }
       }
     },
+    "Email" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "이메일"
+          }
+        }
+      }
+    },
     "EmptySearch" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -48,6 +65,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "최근 검색어가 없어요!"
+          }
+        }
+      }
+    },
+    "InviteMember" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invite Member"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "팀원 초대"
+          }
+        }
+      }
+    },
+    "InvitePlaceholder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the emails of the team members to invite"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "초대하려는 팀원의 이메일을 입력하세요."
           }
         }
       }

@@ -49,6 +49,9 @@
 		C91BBC232CE4CF97001EFC70 /* ChannelAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */; };
 		C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */; };
 		C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */; };
+		C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC282CE4F370001EFC70 /* TitledTextField.swift */; };
+		C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */; };
+		C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6C2CE21B2500B62A2A /* SearchState.swift */; };
@@ -138,6 +141,9 @@
 		C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAdminViewController.swift; sourceTree = "<group>"; };
 		C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAdminViewModel.swift; sourceTree = "<group>"; };
 		C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationView.swift; sourceTree = "<group>"; };
+		C91BBC282CE4F370001EFC70 /* TitledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledTextField.swift; sourceTree = "<group>"; };
+		C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberViewController.swift; sourceTree = "<group>"; };
+		C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberViewModel.swift; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6C2CE21B2500B62A2A /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -443,6 +449,7 @@
 				C9F20F412CDB61F50043351E /* HomeViewController.swift */,
 				C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */,
 				C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */,
+				C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -453,6 +460,7 @@
 				C9F20F432CDB62530043351E /* HomeViewModel.swift */,
 				C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */,
 				C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */,
+				C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -689,6 +697,7 @@
 				C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */,
 				C91BBC102CE3B416001EFC70 /* RoundedButton.swift */,
 				C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */,
+				C91BBC282CE4F370001EFC70 /* TitledTextField.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -975,11 +984,13 @@
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
+				C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */,
 				C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */,
 				C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */,
 				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C9F20F482CDB63640043351E /* DMViewController.swift in Sources */,
+				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
@@ -1016,6 +1027,7 @@
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
+				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
