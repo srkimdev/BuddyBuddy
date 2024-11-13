@@ -14,6 +14,7 @@ protocol Coordinator: AnyObject {
     
     func start()
     func finish()
+    func popVC()
 }
 
 extension Coordinator {
@@ -25,5 +26,8 @@ extension Coordinator {
         if let index = childs.firstIndex(where: { $0 === coordinator }) {
             childs.remove(at: index)
         }
+    }
+    func popVC() {
+        navigationController.popViewController(animated: true)
     }
 }

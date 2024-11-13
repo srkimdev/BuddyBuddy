@@ -23,4 +23,14 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             animated: true
         )
     }
+    
+    func toChannelSetting() {
+        let vc = ChannelSettingViewController(vm: ChannelSettingViewModel(coordinator: self))
+        vc.hidesBottomBarWhenPushed = true
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
+        navigationController.pushViewController(
+            vc,
+            animated: true
+        )
+    }
 }
