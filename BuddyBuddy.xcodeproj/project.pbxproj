@@ -10,6 +10,7 @@
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
+		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
 		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
@@ -87,6 +88,7 @@
 
 /* Begin PBXFileReference section */
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
+		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C90827FB2CDA64C80096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
 		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
@@ -390,6 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
+				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
+				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				C9F20F4A2CDB63780043351E /* DMViewModel.swift in Sources */,
 			);
