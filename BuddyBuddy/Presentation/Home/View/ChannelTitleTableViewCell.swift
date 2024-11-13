@@ -17,7 +17,8 @@ final class ChannelTitleTableViewCell: BaseTableViewCell {
         return view
     }()
     private let chevronImgView: UIImageView = {
-        let view = UIImageView(image: UIImage(systemName: "chevron.down"))
+        let view = UIImageView()
+        view.image = .chevronDown
         return view
     }()
     

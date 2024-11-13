@@ -10,7 +10,11 @@ import UIKit
 import SnapKit
 
 final class DefaultChannelTableViewCell: BaseTableViewCell {
-    private let iconImgView: UIImageView = UIImageView()
+    private let iconImgView: UIImageView = {
+        let view = UIImageView()
+        view.tintColor = .gray1
+        return view
+    }()
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.font = UIFont.body
