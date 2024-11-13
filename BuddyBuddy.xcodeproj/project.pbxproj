@@ -45,6 +45,10 @@
 		C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */; };
 		C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */; };
 		C91BBC1F2CE4B213001EFC70 /* ChannelSettingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */; };
+		C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC202CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift */; };
+		C91BBC232CE4CF97001EFC70 /* ChannelAdminViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */; };
+		C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */; };
+		C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6C2CE21B2500B62A2A /* SearchState.swift */; };
@@ -130,6 +134,10 @@
 		C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingMiddleView.swift; sourceTree = "<group>"; };
 		C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingViewController.swift; sourceTree = "<group>"; };
 		C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSettingViewModel.swift; sourceTree = "<group>"; };
+		C91BBC202CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAdminTableViewCell.swift; sourceTree = "<group>"; };
+		C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAdminViewController.swift; sourceTree = "<group>"; };
+		C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeAdminViewModel.swift; sourceTree = "<group>"; };
+		C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalNavigationView.swift; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6C2CE21B2500B62A2A /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -424,6 +432,7 @@
 				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
 				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
 				C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */,
+				C91BBC202CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -433,6 +442,7 @@
 			children = (
 				C9F20F412CDB61F50043351E /* HomeViewController.swift */,
 				C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */,
+				C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -442,6 +452,7 @@
 			children = (
 				C9F20F432CDB62530043351E /* HomeViewModel.swift */,
 				C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */,
+				C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -677,6 +688,7 @@
 			children = (
 				C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */,
 				C91BBC102CE3B416001EFC70 /* RoundedButton.swift */,
+				C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -969,12 +981,14 @@
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C9F20F482CDB63640043351E /* DMViewController.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
+				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
 				C9F20F5C2CDB6DB60043351E /* TabBarCoordinator.swift in Sources */,
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
+				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
@@ -990,6 +1004,7 @@
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
+				C91BBC232CE4CF97001EFC70 /* ChannelAdminViewController.swift in Sources */,
 				C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */,
 				C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
@@ -998,6 +1013,7 @@
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
+				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
