@@ -1,6 +1,40 @@
 {
   "sourceLanguage" : "ko",
   "strings" : {
+    "ChangeChannelAdmin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Channel Admin"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널 관리자 변경"
+          }
+        }
+      }
+    },
+    "ChangeWorkspaceAdmin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Playground Admin"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드 관리자 변경"
+          }
+        }
+      }
+    },
     "EmptySearch" : {
       "extractionState" : "manual",
       "localizations" : {
