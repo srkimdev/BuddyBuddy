@@ -96,6 +96,26 @@ final class HomeViewController: BaseNavigationViewController {
         self.vm = vm
     }
     
+    override func bind() {
+        let datasource = createDataSource()
+        let sections: [ChannelSectionModel] = [.title(items: [.title(.caret)]),
+                                               .list(items: [.channel(Channel(
+                                                title: "받아쓰기 할 사람들 모여라",
+                                                isRead: true
+                                               )), .channel(Channel(
+                                                title: "스크립트 외우기",
+                                                isRead: false
+                                               )), .channel(Channel(
+                                                title: "오픽 딸 사람덜~ 여기 모여요",
+                                                isRead: true)
+                                               )]),
+                                               .add(items: [.add(AddChannel())])]
+        
+        Observable.just(sections)
+            .bind(to: channelTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
+    }
+    
     override func setNavigation() {
         super.setNavigation()
         
