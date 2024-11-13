@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
+		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
+		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
 		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
@@ -165,10 +167,12 @@
 				C908285B2CDA6E940096BA0D /* RealmSwift in Frameworks */,
 				C90828622CDA75CF0096BA0D /* RxKakaoSDKAuth in Frameworks */,
 				C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */,
+				C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */,
 				C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */,
 				C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */,
 				C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */,
 				C90828552CDA6D6E0096BA0D /* Nuke in Frameworks */,
+				C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */,
 				C90828582CDA6D910096BA0D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -799,6 +803,8 @@
 				C908285A2CDA6E940096BA0D /* RealmSwift */,
 				C90828612CDA75CF0096BA0D /* RxKakaoSDKAuth */,
 				C90828632CDA75CF0096BA0D /* RxKakaoSDKCommon */,
+				C0BF428A2CE4721600C5B5B4 /* Differentiator */,
+				C0BF428C2CE4721600C5B5B4 /* RxDataSources */,
 			);
 			productName = BuddyBuddy;
 			productReference = C9C27A002CDA315500243744 /* BuddyBuddy.app */;
@@ -837,6 +843,7 @@
 				C90828592CDA6E940096BA0D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C908285C2CDA6FEC0096BA0D /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				C90828602CDA75CF0096BA0D /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
+				C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = C9C27A012CDA315500243744 /* Products */;
 			projectDirPath = "";
@@ -1179,6 +1186,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		C908284B2CDA6B760096BA0D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1238,6 +1253,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C0BF428A2CE4721600C5B5B4 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		C0BF428C2CE4721600C5B5B4 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		C908284C2CDA6B760096BA0D /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C908284B2CDA6B760096BA0D /* XCRemoteSwiftPackageReference "RxSwift" */;
