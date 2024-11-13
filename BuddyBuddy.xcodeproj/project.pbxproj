@@ -36,6 +36,9 @@
 		C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC062CE37265001EFC70 /* SearchImageType.swift */; };
 		C91BBC082CE396B6001EFC70 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */; };
 		C91BBC092CE396B6001EFC70 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D622CDD28D000271295 /* Pretendard-Medium.otf */; };
+		C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC0A2CE3B162001EFC70 /* AlertType.swift */; };
+		C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC102CE3B416001EFC70 /* RoundedButton.swift */; };
+		C91BBC132CE3B62D001EFC70 /* RoundedButtonType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6C2CE21B2500B62A2A /* SearchState.swift */; };
@@ -112,6 +115,9 @@
 		C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		C91BBC042CE37093001EFC70 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
 		C91BBC062CE37265001EFC70 /* SearchImageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchImageType.swift; sourceTree = "<group>"; };
+		C91BBC0A2CE3B162001EFC70 /* AlertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertType.swift; sourceTree = "<group>"; };
+		C91BBC102CE3B416001EFC70 /* RoundedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedButtonType.swift; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6C2CE21B2500B62A2A /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -652,6 +658,7 @@
 			isa = PBXGroup;
 			children = (
 				C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */,
+				C91BBC102CE3B416001EFC70 /* RoundedButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -694,6 +701,8 @@
 				C9F20F392CDB5F070043351E /* TabKind.swift */,
 				C957EA6C2CE21B2500B62A2A /* SearchState.swift */,
 				C91BBC062CE37265001EFC70 /* SearchImageType.swift */,
+				C91BBC0A2CE3B162001EFC70 /* AlertType.swift */,
+				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -955,6 +964,7 @@
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
 				C9F20F6A2CDB73330043351E /* SettingCoordinator.swift in Sources */,
+				C91BBC132CE3B62D001EFC70 /* RoundedButtonType.swift in Sources */,
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
@@ -967,6 +977,7 @@
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
+				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
@@ -981,6 +992,7 @@
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				C9F20F4A2CDB63780043351E /* DMViewModel.swift in Sources */,
+				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
