@@ -26,6 +26,11 @@ final class ModalNavigationView: BaseView {
         view.font = .naviTitle
         return view
     }()
+    private let bottomBar: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray1.withAlphaComponent(0.5)
+        return view
+    }()
     
     init(title: String) {
         titleLb.text = title
@@ -34,11 +39,13 @@ final class ModalNavigationView: BaseView {
     }
     
     override func setHierarchy() {
-        [backBtn, titleLb]
+        [backBtn, titleLb, bottomBar]
             .forEach { addSubview($0) }
     }
     
     override func setConstraints() {
+        backgroundColor = .white
+        
         backBtn.snp.makeConstraints { make in
             make.width.height.equalTo(20)
             make.leading.equalToSuperview().inset(14)
@@ -46,6 +53,10 @@ final class ModalNavigationView: BaseView {
         }
         titleLb.snp.makeConstraints { make in
             make.center.equalToSuperview()
+        }
+        bottomBar.snp.makeConstraints { make in
+            make.height.equalTo(1)
+            make.leading.trailing.bottom.equalToSuperview()
         }
     }
 }
