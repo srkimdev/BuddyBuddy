@@ -1,20 +1,20 @@
 //
-//  DMViewModel.swift
+//  ProfileViewModel.swift
 //  BuddyBuddy
 //
-//  Created by Jisoo Ham on 11/6/24.
+//  Created by Jisoo Ham on 11/14/24.
 //
 
 import Foundation
 
+import RxCocoa
 import RxSwift
 
-final class DMViewModel: ViewModelType {
+final class ProfileViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
+    private let coordinator: HomeCoordinator
     
-    private let coordinator: DMCoordinator
-    
-    init(coordinator: DMCoordinator) {
+    init(coordinator: HomeCoordinator) {
         self.coordinator = coordinator
     }
     
@@ -28,6 +28,6 @@ final class DMViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         
-        Output()
+        return Output()
     }
 }
