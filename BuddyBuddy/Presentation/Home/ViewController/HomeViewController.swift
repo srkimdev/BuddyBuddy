@@ -95,7 +95,13 @@ final class HomeViewController: BaseNavigationViewController {
         view.configuration = config
         view.layer.cornerRadius = 25
         view.backgroundColor = .primary
-        view.drawShadow(radius: 25)
+        view.drawShadow(
+            radius: 25,
+            size: CGSize(
+                width: 50,
+                height: 50
+            )
+        )
         return view
     }()
     

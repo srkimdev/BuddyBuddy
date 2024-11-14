@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
@@ -89,6 +90,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelTableViewCell.swift; sourceTree = "<group>"; };
@@ -599,6 +601,7 @@
 			children = (
 				C90828672CDA78770096BA0D /* String+.swift */,
 				C9F96D642CDD295300271295 /* UIFont+.swift */,
+				C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -948,6 +951,7 @@
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */,
+				C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
