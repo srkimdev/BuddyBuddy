@@ -48,7 +48,7 @@ final class RoundedButton: UIButton {
         
         config.baseBackgroundColor = bgColor
         let attributes = AttributeContainer([
-            .font: UIFont.title1 as Any,
+            .font: UIFont.title2 as Any,
             .foregroundColor: btnType == .alertBtn ? UIColor.secondary : txtColor
         ])
         config.attributedTitle = AttributedString(title, attributes: attributes)
