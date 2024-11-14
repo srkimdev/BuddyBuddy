@@ -1,7 +1,24 @@
 {
   "sourceLanguage" : "ko",
   "strings" : {
-    "ChangeChannelAdmin" : {
+      "Add Channel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "add Channel"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널 추가"
+          }
+        }
+      }
+    },
+     "ChangeChannelAdmin" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -18,7 +35,24 @@
         }
       }
     },
-    "ChangeWorkspaceAdmin" : {
+     "Add Member" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "add Member"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "멤버 추가"
+          }
+        }
+      }
+    },
+    "ChangePlaygroundAdmin" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -35,6 +69,23 @@
         }
       }
     },
+    "Channel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Channel"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널"
+          }
+        }
+      }
+    },
     "Email" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -47,7 +98,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "이메일"
+            "value" : ""
           }
         }
       }

@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
+		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
+		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
+		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
+		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
+		C0BF42912CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */; };
+		C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */; };
+		C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FB2CDA64C80096BA0D /* RepositoryEmpty */; };
 		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
-		C90828002CDA64D90096BA0D /* EntityEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FF2CDA64D90096BA0D /* EntityEmpty */; };
 		C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */; };
 		C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828032CDA64E60096BA0D /* UseCaseEmpty */; };
 		C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */; };
-		C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828072CDA64F30096BA0D /* HomeViewEmpty */; };
 		C908280A2CDA64FA0096BA0D /* DMEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828092CDA64FA0096BA0D /* DMEmpty */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
 		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
@@ -132,14 +138,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
+		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
+		C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelTableViewCell.swift; sourceTree = "<group>"; };
+		C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChannelTableViewCell.swift; sourceTree = "<group>"; };
+		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C90827FB2CDA64C80096BA0D /* RepositoryEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryEmpty; sourceTree = "<group>"; };
 		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
-		C90827FF2CDA64D90096BA0D /* EntityEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = EntityEmpty; sourceTree = "<group>"; };
 		C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseInterfaceEmpty; sourceTree = "<group>"; };
 		C90828032CDA64E60096BA0D /* UseCaseEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseEmpty; sourceTree = "<group>"; };
 		C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryInterfaceEmpty; sourceTree = "<group>"; };
-		C90828072CDA64F30096BA0D /* HomeViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = HomeViewEmpty; sourceTree = "<group>"; };
 		C90828092CDA64FA0096BA0D /* DMEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DMEmpty; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
 		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
@@ -258,10 +268,12 @@
 				C908285B2CDA6E940096BA0D /* RealmSwift in Frameworks */,
 				C90828622CDA75CF0096BA0D /* RxKakaoSDKAuth in Frameworks */,
 				C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */,
+				C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */,
 				C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */,
 				C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */,
 				C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */,
 				C90828552CDA6D6E0096BA0D /* Nuke in Frameworks */,
+				C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */,
 				C90828582CDA6D910096BA0D /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -408,6 +420,7 @@
 		C90827DA2CDA638F0096BA0D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
 				C90827FF2CDA64D90096BA0D /* EntityEmpty */,
@@ -482,7 +495,10 @@
 		C90827E12CDA64040096BA0D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C90828072CDA64F30096BA0D /* HomeViewEmpty */,
+				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
+				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
+				C0BF42902CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift */,
+				C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */,
 				C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */,
 				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
 				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
@@ -704,6 +720,7 @@
 			children = (
 				C90828672CDA78770096BA0D /* String+.swift */,
 				C9F96D642CDD295300271295 /* UIFont+.swift */,
+				C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */,
 				C957EA662CE2095300B62A2A /* UIViewController+.swift */,
 				C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */,
 			);
@@ -953,6 +970,8 @@
 				C908285A2CDA6E940096BA0D /* RealmSwift */,
 				C90828612CDA75CF0096BA0D /* RxKakaoSDKAuth */,
 				C90828632CDA75CF0096BA0D /* RxKakaoSDKCommon */,
+				C0BF428A2CE4721600C5B5B4 /* Differentiator */,
+				C0BF428C2CE4721600C5B5B4 /* RxDataSources */,
 			);
 			productName = BuddyBuddy;
 			productReference = C9C27A002CDA315500243744 /* BuddyBuddy.app */;
@@ -991,6 +1010,7 @@
 				C90828592CDA6E940096BA0D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C908285C2CDA6FEC0096BA0D /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				C90828602CDA75CF0096BA0D /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
+				C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 			);
 			productRefGroup = C9C27A012CDA315500243744 /* Products */;
 			projectDirPath = "";
@@ -1018,7 +1038,6 @@
 				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
 				C908280A2CDA64FA0096BA0D /* DMEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
-				C90828002CDA64D90096BA0D /* EntityEmpty in Resources */,
 				C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */,
 				C90827FC2CDA64C80096BA0D /* RepositoryEmpty in Resources */,
 				C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */,
@@ -1028,7 +1047,6 @@
 				C9C27A132CDA315600243744 /* Base in Resources */,
 				C9F96D552CDD237500271295 /* BaseDataSourcesEmpty in Resources */,
 				C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */,
-				C90828082CDA64F30096BA0D /* HomeViewEmpty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,6 +1099,7 @@
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
 				C9F20F5C2CDB6DB60043351E /* TabBarCoordinator.swift in Sources */,
+				C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */,
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
@@ -1093,6 +1112,7 @@
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
+				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
@@ -1102,6 +1122,8 @@
 				C91BBC1F2CE4B213001EFC70 /* ChannelSettingViewModel.swift in Sources */,
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
+				C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */,
+				C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
 				C91BBC232CE4CF97001EFC70 /* ChannelAdminViewController.swift in Sources */,
@@ -1109,6 +1131,7 @@
 				C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
+				C0BF42912CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
@@ -1141,6 +1164,7 @@
 				DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */,
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
+				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
@@ -1382,6 +1406,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RxSwiftCommunity/RxDataSources.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		C908284B2CDA6B760096BA0D /* XCRemoteSwiftPackageReference "RxSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
@@ -1441,6 +1473,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		C0BF428A2CE4721600C5B5B4 /* Differentiator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = Differentiator;
+		};
+		C0BF428C2CE4721600C5B5B4 /* RxDataSources */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */;
+			productName = RxDataSources;
+		};
 		C908284C2CDA6B760096BA0D /* RxCocoa */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C908284B2CDA6B760096BA0D /* XCRemoteSwiftPackageReference "RxSwift" */;
