@@ -61,15 +61,18 @@ final class HomeViewController: BaseNavigationViewController {
     private let memberAddBtn: UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.plain()
+        var imgConfig = UIImage.SymbolConfiguration(pointSize: 13)
         var attr = AttributedString.init("Add Member".localized())
         
         attr.font = UIFont.body
         
         config.attributedTitle = attr
+        config.preferredSymbolConfigurationForImage = imgConfig
         config.image = UIImage(systemName: "plus")
         config.imagePlacement = .leading
-        config.imagePadding = 16
+        config.imagePadding = 12
         config.baseForegroundColor = .gray1
+        config.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 0)
         
         view.configuration = config
         view.backgroundColor = .white
@@ -92,6 +95,7 @@ final class HomeViewController: BaseNavigationViewController {
         view.configuration = config
         view.layer.cornerRadius = 25
         view.backgroundColor = .primary
+        view.drawShadow(radius: 25)
         return view
     }()
     
