@@ -82,8 +82,6 @@
 		C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F412CDB61F50043351E /* HomeViewController.swift */; };
 		C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F432CDB62530043351E /* HomeViewModel.swift */; };
 		C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F452CDB625A0043351E /* ViewModelType.swift */; };
-		C9F20F482CDB63640043351E /* DMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F472CDB63640043351E /* DMListViewController.swift */; };
-		C9F20F4A2CDB63780043351E /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
 		C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F4B2CDB64070043351E /* SearchViewController.swift */; };
 		C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F4D2CDB64330043351E /* SearchViewModel.swift */; };
 		C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F4F2CDB64770043351E /* SettingViewController.swift */; };
@@ -135,6 +133,8 @@
 		DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AAE2CE4848B00E2A2F7 /* AccessTokenDTO.swift */; };
 		DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */; };
 		DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */; };
+		DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F472CDB63640043351E /* DMListViewController.swift */; };
+		DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -423,7 +423,6 @@
 				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
-				C90827FF2CDA64D90096BA0D /* EntityEmpty */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -1078,6 +1077,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
+				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkManager.swift in Sources */,
@@ -1089,12 +1090,10 @@
 				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
 				DC213A992CE36AC400E2A2F7 /* DefaultDMListRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
-				C9F20F482CDB63640043351E /* DMViewController.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
 				DC213A882CE3086300E2A2F7 /* DMChattingTableViewCell.swift in Sources */,
-				C9F20F482CDB63640043351E /* DMListViewController.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
@@ -1168,11 +1167,9 @@
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
-				C9F20F4A2CDB63780043351E /* DMViewModel.swift in Sources */,
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
-				C9F20F4A2CDB63780043351E /* DMListViewModel.swift in Sources */,
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,

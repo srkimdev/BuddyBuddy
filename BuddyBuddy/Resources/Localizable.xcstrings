@@ -1,7 +1,7 @@
 {
   "sourceLanguage" : "ko",
   "strings" : {
-      "Add Channel" : {
+    "Add Channel" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -18,24 +18,7 @@
         }
       }
     },
-     "ChangeChannelAdmin" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Change Channel Admin"
-          }
-        },
-        "ko" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "채널 관리자 변경"
-          }
-        }
-      }
-    },
-     "Add Member" : {
+    "Add Member" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -48,6 +31,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "멤버 추가"
+          }
+        }
+      }
+    },
+    "ChangeChannelAdmin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Channel Admin"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널 관리자 변경"
           }
         }
       }
@@ -98,7 +98,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : ""
+            "value" : "이메일"
           }
         }
       }
