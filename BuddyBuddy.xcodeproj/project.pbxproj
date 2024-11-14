@@ -63,6 +63,10 @@
 		C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */; };
 		C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */; };
 		C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729E2CDB28F500E0D6CF /* Reusables.swift */; };
+		C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */; };
+		C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */; };
+		C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */; };
+		C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */; };
 		C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A032CDA315500243744 /* AppDelegate.swift */; };
 		C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A052CDA315500243744 /* SceneDelegate.swift */; };
 		C9C27A102CDA315600243744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C27A0F2CDA315600243744 /* Assets.xcassets */; };
@@ -155,6 +159,10 @@
 		C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C96C729E2CDB28F500E0D6CF /* Reusables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusables.swift; sourceTree = "<group>"; };
+		C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBottomView.swift; sourceTree = "<group>"; };
+		C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImageLabelView.swift; sourceTree = "<group>"; };
 		C9C27A002CDA315500243744 /* BuddyBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuddyBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C27A032CDA315500243744 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C9C27A052CDA315500243744 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -439,6 +447,7 @@
 				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
 				C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */,
 				C91BBC202CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift */,
+				C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -450,6 +459,7 @@
 				C91BBC1C2CE49366001EFC70 /* ChannelSettingViewController.swift */,
 				C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */,
 				C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */,
+				C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -461,6 +471,7 @@
 				C91BBC1E2CE4B213001EFC70 /* ChannelSettingViewModel.swift */,
 				C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */,
 				C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */,
+				C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -698,6 +709,7 @@
 				C91BBC102CE3B416001EFC70 /* RoundedButton.swift */,
 				C91BBC262CE4E343001EFC70 /* ModalNavigationView.swift */,
 				C91BBC282CE4F370001EFC70 /* TitledTextField.swift */,
+				C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -990,6 +1002,8 @@
 				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C9F20F482CDB63640043351E /* DMViewController.swift in Sources */,
+				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
+				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
@@ -999,6 +1013,7 @@
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
+				C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */,
 				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
@@ -1043,6 +1058,7 @@
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				C9F20F4A2CDB63780043351E /* DMViewModel.swift in Sources */,
+				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 			);

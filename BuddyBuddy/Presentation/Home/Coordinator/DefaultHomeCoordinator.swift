@@ -52,4 +52,13 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         }
         navigationController.present(vc, animated: true)
     }
+    func toProfile() {
+        let vc = ProfileViewController(vm: ProfileViewModel(coordinator: self))
+        vc.modalPresentationStyle = .pageSheet
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(vc, animated: true)
+    }
 }
