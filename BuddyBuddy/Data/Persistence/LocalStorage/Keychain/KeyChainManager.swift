@@ -6,14 +6,13 @@
 //
 
 import Foundation
-
 import Security
 
 final class KeyChainManager {
     static let shard = KeyChainManager()
     private init() { }
     
-    //MARK: save accessToken
+    // save accessToken
     func saveAccessToken(_ token: String) {
         guard let tokenData = token.data(using: .utf8) else { return }
         deleteAccessToken()
@@ -27,7 +26,7 @@ final class KeyChainManager {
         SecItemAdd(query as CFDictionary, nil)
     }
 
-    //MARK: save refreshToken
+    // save refreshToken
     func saveRefreshToken(_ token: String) {
         guard let tokenData = token.data(using: .utf8) else { return }
         deleteRefreshToken()
@@ -41,7 +40,7 @@ final class KeyChainManager {
         SecItemAdd(query as CFDictionary, nil)
     }
     
-    //MARK: load accessToken
+    // load accessToken
     func getAccessToken() -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -53,12 +52,18 @@ final class KeyChainManager {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
 
-        guard status == errSecSuccess, let data = item as? Data else { return nil }
+        guard status == errSecSuccess,
+              let data = item as? Data else {
+            return nil
+        }
 
-        return String(data: data, encoding: .utf8)
+        return String(
+            data: data,
+            encoding: .utf8
+        )
     }
     
-    //MARK: load refreshToken
+    // load refreshToken
     func getRefreshToken() -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -70,12 +75,18 @@ final class KeyChainManager {
         var item: CFTypeRef?
         let status = SecItemCopyMatching(query as CFDictionary, &item)
 
-        guard status == errSecSuccess, let data = item as? Data else { return nil }
+        guard status == errSecSuccess, 
+                let data = item as? Data else{
+            return nil
+        }
 
-        return String(data: data, encoding: .utf8)
+        return String(
+            data: data,
+            encoding: .utf8
+        )
     }
 
-    //MARK: delete accessToken
+    // delete accessToken
     func deleteAccessToken() {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -85,7 +96,7 @@ final class KeyChainManager {
         SecItemDelete(query as CFDictionary)
     }
     
-    //MARK: delete refreshToken
+    // delete refreshToken
     func deleteRefreshToken() {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,

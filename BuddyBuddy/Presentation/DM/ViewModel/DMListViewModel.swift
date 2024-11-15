@@ -36,7 +36,7 @@ final class DMListViewModel: ViewModelType {
             .flatMap {
                 self.dmUseCase.fetchDMList(workspaceId: "70b565b8-9ca1-483f-b812-15d3e57b5cf4")
             }
-            .bind(with: self) { owner, response in
+            .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
                     updateDMListTableView.onNext(value)

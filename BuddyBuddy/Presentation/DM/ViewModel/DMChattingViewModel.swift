@@ -27,13 +27,12 @@ final class DMChattingViewModel: ViewModelType {
         let updateDMListTableView = BehaviorSubject<[String]>(value: [])
         
         input.viewWillAppearTrigger
-            .subscribe(with: self) { _ in
+            .bind(with: self) { _, _ in
                 updateDMListTableView.onNext(["1", "2", "3"])
             }
             .disposed(by: disposeBag)
         
         return Output(updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []))
     }
-    
     
 }

@@ -10,11 +10,21 @@ import Foundation
 import Alamofire
 import RxSwift
 
-final class NetworkManager {
-    static let shared = NetworkManager()
+protocol NetworkProtocol {
+    func callRequest<T: Decodable>(
+        router: TargetType,
+        responseType: T.Type
+    ) -> Single<Result<T, Error>>
+}
+
+final class NetworkService: NetworkProtocol {
+    static let shared = NetworkService()
     private init() { }
     
-    func callRequest<T: Decodable>(router: APIRouter, responseType: T.Type) -> Single<Result<T, Error>> {
+    func callRequest<T: Decodable>(
+        router: TargetType,
+        responseType: T.Type
+    ) -> Single<Result<T, Error>> {
         return Single.create { observer -> Disposable in
             do {
                 let request = try router.asURLRequest()
@@ -37,7 +47,7 @@ final class NetworkManager {
     }
 }
 
-extension NetworkManager {
+extension NetworkService {
     func accessTokenRefresh(completionHandler: @escaping (Result<AccessToken, Error>) -> Void) {
         do {
             let request = try APIRouter.accessTokenRefresh.asURLRequest()

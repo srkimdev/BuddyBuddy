@@ -16,7 +16,10 @@ final class DMListViewController: BaseNavigationViewController {
     
     private let dmListTableView: UITableView = {
         let view = UITableView()
-        view.register(DMListTableViewCell.self, forCellReuseIdentifier: DMListTableViewCell.identifier)
+        view.register(
+            DMListTableViewCell.self,
+            forCellReuseIdentifier: DMListTableViewCell.identifier
+        )
         view.rowHeight = 70
         return view
     }()
@@ -44,9 +47,9 @@ final class DMListViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        view.addSubview(dmListTableView)
-        view.addSubview(noChatListImage)
-        view.addSubview(noChatListLabel)
+        [dmListTableView, noChatListImage, noChatListLabel].forEach {
+            view.addSubview($0)
+        }
     }
     
     override func setConstraints() {
@@ -75,7 +78,7 @@ final class DMListViewController: BaseNavigationViewController {
                     cellIdentifier: DMListTableViewCell.identifier,
                     cellType: DMListTableViewCell.self
                 )
-            ) { (row, element, cell) in
+            ) { (_, element, cell) in
                 cell.designCell(element)
             }
             .disposed(by: disposeBag)

@@ -11,7 +11,7 @@ import RxSwift
 
 final class DefaultDMListRepository: DMListRepositoryInterface {
     func fetchDMList(workspaceID: String) -> RxSwift.Single<Result<[DMList], any Error>> {
-        return NetworkManager.shared.callRequest(
+        return NetworkService.shared.callRequest(
             router: APIRouter.dmList(workspaceID: workspaceID),
             responseType: [DMListDTO].self
         )

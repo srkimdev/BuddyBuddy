@@ -26,17 +26,19 @@ final class AuthIntercepter: RequestInterceptor {
         dueTo error: any Error,
         completion: @escaping (RetryResult) -> Void
     ) {
-        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 419 else {
+        guard let response = request.task?.response as? HTTPURLResponse, 
+                response.statusCode == 419 else
+        {
             completion(.doNotRetryWithError(error))
             return
         }
         
-        NetworkManager.shared.accessTokenRefresh { response in
+        NetworkService.shared.accessTokenRefresh { response in
             switch response {
             case .success(let value):
                 KeyChainManager.shard.saveAccessToken(value.accessToken)
                 completion(.retry)
-            case .failure(let failure):
+            case .failure:
                 completion(.doNotRetryWithError(error))
                 // 로그인 화면으로 이동
             }
