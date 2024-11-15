@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
@@ -138,6 +139,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
@@ -281,6 +283,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C00F90BE2CE75EBC00B7DD62 /* NetworkLogger */ = {
+			isa = PBXGroup;
+			children = (
+				C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */,
+			);
+			path = NetworkLogger;
+			sourceTree = "<group>";
+		};
 		C90827CC2CDA4CA30096BA0D /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -758,6 +768,7 @@
 		C908284A2CDA68AB0096BA0D /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				C00F90BE2CE75EBC00B7DD62 /* NetworkLogger */,
 				C908283B2CDA66760096BA0D /* DIContainer */,
 			);
 			path = Core;
@@ -1105,6 +1116,7 @@
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
 				C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */,
 				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
+				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
