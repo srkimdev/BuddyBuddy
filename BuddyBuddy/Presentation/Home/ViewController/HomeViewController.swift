@@ -51,8 +51,8 @@ final class HomeViewController: BaseNavigationViewController {
             forCellReuseIdentifier: ChannelTitleTableViewCell.identifier
         )
         view.register(
-            DefaultChannelTableViewCell.self,
-            forCellReuseIdentifier: DefaultChannelTableViewCell.identifier
+            ReadChannelTableViewCell.self,
+            forCellReuseIdentifier: ReadChannelTableViewCell.identifier
         )
         view.register(
             UnreadChannelTableViewCell.self,
@@ -225,13 +225,10 @@ extension HomeViewController {
             case .channel(let item):
                 if item.isRead {
                     guard let cell = channelTableView.dequeueReusableCell(
-                        withIdentifier: DefaultChannelTableViewCell.identifier,
+                        withIdentifier: ReadChannelTableViewCell.identifier,
                         for: indexpath
-                    ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(
-                        title: item.title,
-                        image: item.image
-                    )
+                    ) as? ReadChannelTableViewCell else { return UITableViewCell() }
+                    cell.configureCell(title: item.title)
                     cell.selectionStyle = .none
                     return cell
                 } else {
@@ -245,13 +242,10 @@ extension HomeViewController {
                 }
             case .add(let item):
                 guard let cell = channelTableView.dequeueReusableCell(
-                    withIdentifier: DefaultChannelTableViewCell.identifier,
+                    withIdentifier: ReadChannelTableViewCell.identifier,
                     for: indexpath
-                ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
-                cell.configureCell(
-                    title: item.title,
-                    image: item.imageString
-                )
+                ) as? ReadChannelTableViewCell else { return UITableViewCell() }
+                cell.configureCell(title: item.title)
                 cell.selectionStyle = .none
                 return cell
             }
