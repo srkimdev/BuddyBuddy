@@ -8,7 +8,7 @@
 import UIKit
 
 final class TitledTextField: BaseView {
-    private let titleLb: UILabel = {
+    private let titleLabel: UILabel = {
         let view = UILabel()
         view.font = .title2
         view.textColor = .black
@@ -29,8 +29,11 @@ final class TitledTextField: BaseView {
         return view
     }()
     
-    init(title: String, placeholder: String) {
-        titleLb.text = title
+    init(
+        title: String,
+        placeholder: String
+    ) {
+        titleLabel.text = title
         textField.placeholder = placeholder
         textField.attributedPlaceholder = NSAttributedString(
             string: placeholder,
@@ -41,19 +44,19 @@ final class TitledTextField: BaseView {
     }
     
     override func setHierarchy() { 
-        [titleLb, textField]
-            .forEach { addSubview($0) }
+        [titleLabel, textField].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
-        titleLb.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.horizontalEdges.equalToSuperview().inset(24)
         }
-        
         textField.snp.makeConstraints { make in
-            make.top.equalTo(titleLb.snp.bottom).offset(8)
-            make.leading.trailing.equalTo(titleLb)
+            make.top.equalTo(titleLabel.snp.bottom).offset(8)
+            make.horizontalEdges.equalTo(titleLabel)
             make.height.equalTo(44)
             make.bottom.equalToSuperview()
         }

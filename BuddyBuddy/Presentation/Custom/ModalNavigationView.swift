@@ -20,7 +20,7 @@ final class ModalNavigationView: BaseView {
         let view = UIButton(configuration: config)
         return view
     }()
-    private let titleLb: UILabel = {
+    private let titleLabel: UILabel = {
         let view = UILabel()
         view.textAlignment = .center
         view.font = .naviTitle
@@ -33,30 +33,29 @@ final class ModalNavigationView: BaseView {
     }()
     
     init(title: String) {
-        titleLb.text = title
+        titleLabel.text = title
         
         super.init()
     }
     
     override func setHierarchy() {
-        [backBtn, titleLb, bottomBar]
-            .forEach { addSubview($0) }
+        [backBtn, titleLabel, bottomBar].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
-        backgroundColor = .white
-        
         backBtn.snp.makeConstraints { make in
-            make.width.height.equalTo(20)
+            make.size.equalTo(20)
             make.leading.equalToSuperview().inset(14)
             make.centerY.equalToSuperview()
         }
-        titleLb.snp.makeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()
         }
         bottomBar.snp.makeConstraints { make in
             make.height.equalTo(1)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
 }
