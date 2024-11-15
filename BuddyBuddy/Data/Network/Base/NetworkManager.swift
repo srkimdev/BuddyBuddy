@@ -12,7 +12,7 @@ import RxSwift
 
 final class NetworkManager {
     static let shared = NetworkManager()
-    static let session: Session = {
+    private static let session: Session = {
         let configuration = URLSessionConfiguration.af.default
         let logger = NetworkLogger()
         return Session(configuration: configuration, eventMonitors: [logger])
