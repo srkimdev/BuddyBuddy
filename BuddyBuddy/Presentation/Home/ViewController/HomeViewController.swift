@@ -129,7 +129,7 @@ final class HomeViewController: BaseNavigationViewController {
     
     override func bind() {
         let datasource = createDataSource()
-        let sections: [ChannelSectionModel] = [.title(items: [.title(.caret)]),
+        let sections: [ChannelSectionModel] = [.title(item: .title(.caret)),
                                                .list(items: [.channel(Channel(
                                                 title: "받아쓰기 할 사람들 모여라",
                                                 isRead: true
@@ -140,14 +140,17 @@ final class HomeViewController: BaseNavigationViewController {
                                                 title: "오픽 딸 사람덜~ 여기 모여요",
                                                 isRead: true)
                                                )]),
-                                               .add(items: [.add(AddChannel())])]
+                                               .add(item: .add("Add Channel".localized()))]
         
         Observable.just(sections)
             .bind(to: channelTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
         
         channelTableView.snp.remakeConstraints { make in
-            make.height.equalTo(56 + sections[1].items.count * 41 + 48)
+            let headerHeight = 56
+            let listHeight = sections[1].items.count * 41
+            let addHeight = sections[2].items.count * 48
+            make.height.equalTo(headerHeight + listHeight + addHeight)
         }
     }
     
@@ -245,8 +248,8 @@ extension HomeViewController {
                     withIdentifier: ChannelAddTableViewCell.identifier,
                     for: indexpath
                 ) as? ChannelAddTableViewCell else { return UITableViewCell() }
-                cell.configureCell(title: item.title)
                 cell.selectionStyle = .none
+                cell.configureCell(title: item)
                 return cell
             }
         }
