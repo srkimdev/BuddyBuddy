@@ -128,30 +128,7 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        let datasource = createDataSource()
-        let sections: [ChannelSectionModel] = [.title(item: .title(.caret)),
-                                               .list(items: [.channel(Channel(
-                                                title: "받아쓰기 할 사람들 모여라",
-                                                isRead: true
-                                               )), .channel(Channel(
-                                                title: "스크립트 외우기",
-                                                isRead: false
-                                               )), .channel(Channel(
-                                                title: "오픽 딸 사람덜~ 여기 모여요",
-                                                isRead: true)
-                                               )]),
-                                               .add(items: [.add("Add Channel".localized())])]
-        
-        Observable.just(sections)
-            .bind(to: channelTableView.rx.items(dataSource: datasource))
-            .disposed(by: disposeBag)
-        
-        channelTableView.snp.remakeConstraints { make in
-            let headerHeight = 56
-            let listHeight = sections[1].items.count * 41
-            let addHeight = sections[2].items.count * 48
-            make.height.equalTo(headerHeight + listHeight + addHeight)
-        }
+        bindTableView()
     }
     
     override func setNavigation() {
@@ -252,6 +229,35 @@ extension HomeViewController {
                 cell.configureCell(title: item)
                 return cell
             }
+        }
+    }
+    
+    private func bindTableView() {
+        let datasource = createDataSource()
+        let sections: [ChannelSectionModel] = [.title(item: .title(.caret)),
+                                               .list(items: [.channel(Channel(
+                                                title: "받아쓰기 할 사람들 모여라",
+                                                isRead: true
+                                               )), .channel(Channel(
+                                                title: "스크립트 외우기",
+                                                isRead: false
+                                               )), .channel(Channel(
+                                                title: "오픽 딸 사람덜~ 여기 모여요",
+                                                isRead: true)
+                                               )]),
+                                               .add(items: [.add("Add Channel".localized())])]
+        
+        Observable.just(sections)
+            .bind(to: channelTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
+        
+        channelTableView.snp.remakeConstraints { make in
+            let heights = [56, 41, 48]
+            var totalHeight = 0
+            for (idx, section) in sections.enumerated() {
+                totalHeight += section.items.count * heights[idx]
+            }
+            make.height.equalTo(totalHeight)
         }
     }
 }
