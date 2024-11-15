@@ -12,7 +12,7 @@ import RxDataSources
 enum ChannelSectionModel: Equatable {
     case title(item: ChannelItem)
     case list(items: [ChannelItem])
-    case add(item: ChannelItem)
+    case add(items: [ChannelItem])
 }
 
 enum ChannelItem: Equatable {
@@ -37,8 +37,8 @@ extension ChannelSectionModel: SectionModelType {
             return [item]
         case .list(let items):
             return items.map { $0 }
-        case .add(let item):
-            return [item]
+        case .add(let items):
+            return items.map { $0 }
         }
     }
     

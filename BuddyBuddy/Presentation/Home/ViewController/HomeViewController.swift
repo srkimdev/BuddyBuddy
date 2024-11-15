@@ -140,7 +140,7 @@ final class HomeViewController: BaseNavigationViewController {
                                                 title: "오픽 딸 사람덜~ 여기 모여요",
                                                 isRead: true)
                                                )]),
-                                               .add(item: .add("Add Channel".localized()))]
+                                               .add(items: [.add("Add Channel".localized())])]
         
         Observable.just(sections)
             .bind(to: channelTableView.rx.items(dataSource: datasource))
