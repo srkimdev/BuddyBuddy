@@ -35,19 +35,20 @@ final class ProfileViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        [profileImgView, profileBottmView]
-            .forEach { view.addSubview($0) }
+        [profileImgView, profileBottmView].forEach {
+            view.addSubview($0)
+        }
     }
     
     override func setConstraints() {
         profileImgView.snp.makeConstraints { make in
-            make.top.leading.trailing.equalToSuperview()
+            make.top.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(profileBottmView.snp.top)
         }
         
         profileBottmView.snp.makeConstraints { make in
             make.top.equalTo(profileImgView.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
         }
         profileBottmView.setProfileView(

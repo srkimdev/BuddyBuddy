@@ -14,6 +14,8 @@ import SnapKit
 final class ChannelSettingViewController: BaseViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     
+    private let vm: ChannelSettingViewModel
+    
     private let settingContainerView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
@@ -26,8 +28,6 @@ final class ChannelSettingViewController: BaseViewController {
     private let middleView = ChannelSettingMiddleView()
     private let bottomView = ChannelSettingBottomView()
     private let tapGesture = PublishRelay<Void>()
-    
-    private let vm: ChannelSettingViewModel
     
     init(vm: ChannelSettingViewModel) {
         self.vm = vm
@@ -53,15 +53,15 @@ final class ChannelSettingViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        view.backgroundColor = .white.withAlphaComponent(0.2)
+        view.addSubview(settingContainerView)
+        [topView, middleView, bottomView].forEach {
+            settingContainerView.addSubview($0)
+        }
         
-        [settingContainerView]
-            .forEach { view.addSubview($0) }
-        
-        [topView, middleView, bottomView]
-            .forEach { settingContainerView.addSubview($0) }
-        
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTap)
+        )
         view.addGestureRecognizer(tapGesture)
     }
     
@@ -73,17 +73,23 @@ final class ChannelSettingViewController: BaseViewController {
         }
         topView.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.trailing.equalTo(settingContainerView)
+            make.horizontalEdges.equalTo(settingContainerView)
         }
         bottomView.snp.makeConstraints { make in
-            make.bottom.leading.trailing.equalTo(settingContainerView)
+            make.bottom.horizontalEdges.equalTo(settingContainerView)
             make.height.equalTo(70)
         }
         middleView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom)
-            make.leading.trailing.equalTo(settingContainerView)
+            make.horizontalEdges.equalTo(settingContainerView)
             make.bottom.equalTo(bottomView.snp.top)
         }
+    }
+    
+    override func setView() {
+        super.setView()
+        
+        view.backgroundColor = .white.withAlphaComponent(0.2)
     }
     
     @objc func handleTap(_ gesture: UITapGestureRecognizer) {

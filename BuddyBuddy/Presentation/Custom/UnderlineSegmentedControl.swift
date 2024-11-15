@@ -38,7 +38,6 @@ final class UnderlineSegmentedControl: UISegmentedControl {
             for: .highlighted,
             barMetrics: .default
         )
-        
         self.setDividerImage(
             image,
             forLeftSegmentState: .selected,
@@ -82,7 +81,13 @@ final class UnderlineSegmentedControl: UISegmentedControl {
         let normalAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.body as Any
         ]
-        self.setTitleTextAttributes(normalAttributes, for: .normal)
-        self.setTitleTextAttributes(customAttributes, for: .selected)
+        self.setTitleTextAttributes(
+            normalAttributes,
+            for: .normal
+        )
+        self.setTitleTextAttributes(
+            customAttributes,
+            for: .selected
+        )
     }
 }
