@@ -43,7 +43,6 @@ final class DMListViewController: BaseNavigationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        print(KeyChainManager.shard.getAccessToken())
     }
     
     override func setHierarchy() {
@@ -80,6 +79,20 @@ final class DMListViewController: BaseNavigationViewController {
                 )
             ) { (_, element, cell) in
                 cell.designCell(element)
+            }
+            .disposed(by: disposeBag)
+        
+        output.viewState
+            .drive(with: self) { owner, value in
+                if value == .emptyList {
+                    owner.dmListTableView.isHidden = true
+                    owner.noChatListImage.isHidden = false
+                    owner.noChatListLabel.isHidden = false
+                } else {
+                    owner.dmListTableView.isHidden = false
+                    owner.noChatListImage.isHidden = true
+                    owner.noChatListLabel.isHidden = true
+                }
             }
             .disposed(by: disposeBag)
             

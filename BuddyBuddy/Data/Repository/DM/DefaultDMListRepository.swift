@@ -20,7 +20,6 @@ final class DefaultDMListRepository: DMListRepositoryInterface {
         .map { result in
             switch result {
             case .success(let dto):
-                print(dto, "dto")
                 return .success(dto.map { $0.toDomain() })
             case .failure(let error):
                 return .failure(error)

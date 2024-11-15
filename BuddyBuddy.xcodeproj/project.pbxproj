@@ -116,7 +116,7 @@
 		DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */; };
 		DC213A9F2CE36CA700E2A2F7 /* DMList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A9E2CE36CA700E2A2F7 /* DMList.swift */; };
 		DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */; };
-		DC213AA42CE3744300E2A2F7 /* DMUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA32CE3744300E2A2F7 /* DMUseCase.swift */; };
+		DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */; };
 		DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */; };
 		DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA72CE4632F00E2A2F7 /* AuthIntercepter.swift */; };
 		DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA92CE4742F00E2A2F7 /* KeyChainManager.swift */; };
@@ -127,6 +127,7 @@
 		DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F472CDB63640043351E /* DMListViewController.swift */; };
 		DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
+		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -233,7 +234,7 @@
 		DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC213A9E2CE36CA700E2A2F7 /* DMList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMList.swift; sourceTree = "<group>"; };
 		DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListDTO.swift; sourceTree = "<group>"; };
-		DC213AA32CE3744300E2A2F7 /* DMUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUseCase.swift; sourceTree = "<group>"; };
+		DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUseCaseInterface.swift; sourceTree = "<group>"; };
 		DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMUseCase.swift; sourceTree = "<group>"; };
 		DC213AA72CE4632F00E2A2F7 /* AuthIntercepter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthIntercepter.swift; sourceTree = "<group>"; };
 		DC213AA92CE4742F00E2A2F7 /* KeyChainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainManager.swift; sourceTree = "<group>"; };
@@ -242,6 +243,7 @@
 		DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
+		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -384,7 +386,7 @@
 		C90827D82CDA63810096BA0D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				DC213AA32CE3744300E2A2F7 /* DMUseCase.swift */,
+				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -392,7 +394,7 @@
 		C90827D92CDA63860096BA0D /* UseCaseInterface */ = {
 			isa = PBXGroup;
 			children = (
-				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
+				DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */,
 			);
 			path = UseCaseInterface;
 			sourceTree = "<group>";
@@ -793,6 +795,7 @@
 			children = (
 				C9F20F392CDB5F070043351E /* TabKind.swift */,
 				C957EA6C2CE21B2500B62A2A /* SearchState.swift */,
+				DC9BC0D02CE765B5002AF523 /* DMListState.swift */,
 				C91BBC062CE37265001EFC70 /* SearchImageType.swift */,
 				C91BBC0A2CE3B162001EFC70 /* AlertType.swift */,
 				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
@@ -1123,7 +1126,7 @@
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
 				DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
-				DC213AA42CE3744300E2A2F7 /* DMUseCase.swift in Sources */,
+				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
 				DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */,
 				C9F20F602CDB6E7E0043351E /* DefaultHomeCoordinator.swift in Sources */,
@@ -1131,6 +1134,7 @@
 				C91BBC052CE37093001EFC70 /* SearchResultView.swift in Sources */,
 				DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
+				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
 				C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */,

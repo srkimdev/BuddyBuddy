@@ -9,7 +9,7 @@ import Foundation
 
 import RxSwift
 
-final class DefaultDMUseCase: DMUseCase {
+final class DefaultDMUseCase: DMUseCaseInterface {
     private let dmListRepositoryInterface: DMListRepositoryInterface
     
     init(dmListRepositoryInterface: DMListRepositoryInterface) {

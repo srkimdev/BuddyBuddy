@@ -13,10 +13,10 @@ import RxCocoa
 final class DMListViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let dmUseCase: DMUseCase
+    private let dmUseCase: DMUseCaseInterface
     private let coordinator: DMCoordinator
     
-    init(coordinator: DMCoordinator, dmUseCase: DMUseCase) {
+    init(coordinator: DMCoordinator, dmUseCase: DMUseCaseInterface) {
         self.coordinator = coordinator
         self.dmUseCase = dmUseCase
     }
@@ -27,10 +27,12 @@ final class DMListViewModel: ViewModelType {
     
     struct Output {
         let updateDMListTableView: Driver<[DMList]>
+        let viewState: Driver<DMListState>
     }
     
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMList]>()
+        let viewState = PublishSubject<DMListState>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -39,13 +41,21 @@ final class DMListViewModel: ViewModelType {
             .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
-                    updateDMListTableView.onNext(value)
+                    if value.isEmpty {
+                        viewState.onNext(.emptyList)
+                    } else {
+                        updateDMListTableView.onNext(value)
+                        viewState.onNext(.chatting)
+                    }
                 case .failure(let error):
                     print(error)
                 }
             }
             .disposed(by: disposeBag)
         
-        return Output(updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []))
+        return Output(
+            updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
+            viewState: viewState.asDriver(onErrorJustReturn: .emptyList)
+        )
     }
 }
