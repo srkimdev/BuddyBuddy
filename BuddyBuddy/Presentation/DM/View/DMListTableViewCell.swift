@@ -36,11 +36,6 @@ final class DMListTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
-    
     override func setHierarchy() {
         [profileImage, userName, lastText, lastTime, unreadCount].forEach {
             contentView.addSubview($0)

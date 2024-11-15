@@ -16,10 +16,6 @@
 		C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */; };
 		C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
-		C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827FD2CDA64D30096BA0D /* DTOEmpty */; };
-		C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */; };
-		C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828032CDA64E60096BA0D /* UseCaseEmpty */; };
-		C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
 		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
 		C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828402CDA66DB0096BA0D /* FormatterEmpty */; };
@@ -101,9 +97,7 @@
 		C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */; };
 		C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D3F2CDCE51600271295 /* DIContainer.swift */; };
 		C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D412CDCE5E300271295 /* Dependency.swift */; };
-		C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D572CDD24AC00271295 /* RequestEmpty */; };
 		C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */; };
-		C9F96D602CDD270900271295 /* KeychainEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5F2CDD270900271295 /* KeychainEmpty */; };
 		C9F96D652CDD295300271295 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D642CDD295300271295 /* UIFont+.swift */; };
 		C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D662CDD2A5400271295 /* AppDelegate+Register.swift */; };
 		DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DC213A7F2CE1EEAE00E2A2F7 /* Secrets.xcconfig */; };
@@ -114,7 +108,7 @@
 		DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */; };
 		DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */; };
 		DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */; };
-		DC213A902CE32C4500E2A2F7 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8F2CE32C4500E2A2F7 /* APIRouter.swift */; };
+		DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */; };
 		DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A912CE332A000E2A2F7 /* TargetType.swift */; };
 		DC213A942CE365D000E2A2F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A932CE365D000E2A2F7 /* Header.swift */; };
 		DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A952CE3668700E2A2F7 /* APIKey.swift */; };
@@ -132,6 +126,7 @@
 		DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */; };
 		DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F472CDB63640043351E /* DMListViewController.swift */; };
 		DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
+		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,10 +137,6 @@
 		C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
-		C90827FD2CDA64D30096BA0D /* DTOEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = DTOEmpty; sourceTree = "<group>"; };
-		C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseInterfaceEmpty; sourceTree = "<group>"; };
-		C90828032CDA64E60096BA0D /* UseCaseEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UseCaseEmpty; sourceTree = "<group>"; };
-		C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RepositoryInterfaceEmpty; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
 		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
 		C90828402CDA66DB0096BA0D /* FormatterEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = FormatterEmpty; sourceTree = "<group>"; };
@@ -221,9 +212,7 @@
 		C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthCoordinator.swift; sourceTree = "<group>"; };
 		C9F96D3F2CDCE51600271295 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		C9F96D412CDCE5E300271295 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
-		C9F96D572CDD24AC00271295 /* RequestEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RequestEmpty; sourceTree = "<group>"; };
 		C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDefaultsEmpty; sourceTree = "<group>"; };
-		C9F96D5F2CDD270900271295 /* KeychainEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = KeychainEmpty; sourceTree = "<group>"; };
 		C9F96D622CDD28D000271295 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C9F96D642CDD295300271295 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
@@ -236,7 +225,7 @@
 		DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
 		DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingViewModel.swift; sourceTree = "<group>"; };
 		DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		DC213A8F2CE32C4500E2A2F7 /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInRouter.swift; sourceTree = "<group>"; };
 		DC213A912CE332A000E2A2F7 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		DC213A932CE365D000E2A2F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DC213A952CE3668700E2A2F7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -252,6 +241,7 @@
 		DC213AAE2CE4848B00E2A2F7 /* AccessTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenDTO.swift; sourceTree = "<group>"; };
 		DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
+		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,7 +343,6 @@
 				DC213AB32CE4874F00E2A2F7 /* LogIn */,
 				DC213AAD2CE4847A00E2A2F7 /* AccessToken */,
 				DC213AA02CE36DFC00E2A2F7 /* DM */,
-				C90827FD2CDA64D30096BA0D /* DTOEmpty */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -370,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				C9F96D532CDD236900271295 /* Base */,
+				DC9BC0CF2CE748C6002AF523 /* Router */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -387,7 +377,6 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9A2CE36AED00E2A2F7 /* DM */,
-				C90828052CDA64EB0096BA0D /* RepositoryInterfaceEmpty */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -395,7 +384,6 @@
 		C90827D82CDA63810096BA0D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				C90828032CDA64E60096BA0D /* UseCaseEmpty */,
 				DC213AA32CE3744300E2A2F7 /* DMUseCase.swift */,
 			);
 			path = UseCase;
@@ -404,7 +392,6 @@
 		C90827D92CDA63860096BA0D /* UseCaseInterface */ = {
 			isa = PBXGroup;
 			children = (
-				C90828012CDA64E00096BA0D /* UseCaseInterfaceEmpty */,
 				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
 			);
 			path = UseCaseInterface;
@@ -817,7 +804,6 @@
 			isa = PBXGroup;
 			children = (
 				DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */,
-				DC213A8F2CE32C4500E2A2F7 /* APIRouter.swift */,
 				DC213A912CE332A000E2A2F7 /* TargetType.swift */,
 				DC213A932CE365D000E2A2F7 /* Header.swift */,
 				DC213A952CE3668700E2A2F7 /* APIKey.swift */,
@@ -829,7 +815,6 @@
 		C9F96D562CDD242200271295 /* Request */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D572CDD24AC00271295 /* RequestEmpty */,
 				DC213AAB2CE47A8900E2A2F7 /* LoginQuery.swift */,
 			);
 			path = Request;
@@ -863,7 +848,6 @@
 		C9F96D5E2CDD26FC00271295 /* Keychain */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D5F2CDD270900271295 /* KeychainEmpty */,
 				DC213AA92CE4742F00E2A2F7 /* KeyChainManager.swift */,
 			);
 			path = Keychain;
@@ -932,6 +916,15 @@
 				DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */,
 			);
 			path = LogIn;
+			sourceTree = "<group>";
+		};
+		DC9BC0CF2CE748C6002AF523 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */,
+				DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1019,19 +1012,13 @@
 				C91BBC082CE396B6001EFC70 /* Pretendard-Bold.otf in Resources */,
 				C91BBC092CE396B6001EFC70 /* Pretendard-Medium.otf in Resources */,
 				DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */,
-				C9F96D602CDD270900271295 /* KeychainEmpty in Resources */,
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
-				C9F96D582CDD24AC00271295 /* RequestEmpty in Resources */,
-				C90827FE2CDA64D30096BA0D /* DTOEmpty in Resources */,
 				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
 				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
 				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
-				C90828042CDA64E60096BA0D /* UseCaseEmpty in Resources */,
 				C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */,
 				C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */,
-				C90828022CDA64E00096BA0D /* UseCaseInterfaceEmpty in Resources */,
-				C90828062CDA64EB0096BA0D /* RepositoryInterfaceEmpty in Resources */,
 				C9C27A132CDA315600243744 /* Base in Resources */,
 				C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */,
 			);
@@ -1110,6 +1097,7 @@
 				C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */,
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */,
+				DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */,
 				C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
@@ -1161,7 +1149,7 @@
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
-				DC213A902CE32C4500E2A2F7 /* APIRouter.swift in Sources */,
+				DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

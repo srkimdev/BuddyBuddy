@@ -43,7 +43,7 @@ final class DMListViewController: BaseNavigationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+//        print(KeyChainManager.shard.getAccessToken())
     }
     
     override func setHierarchy() {

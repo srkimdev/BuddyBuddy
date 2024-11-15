@@ -18,9 +18,6 @@ protocol NetworkProtocol {
 }
 
 final class NetworkService: NetworkProtocol {
-    static let shared = NetworkService()
-    private init() { }
-    
     func callRequest<T: Decodable>(
         router: TargetType,
         responseType: T.Type
@@ -28,7 +25,7 @@ final class NetworkService: NetworkProtocol {
         return Single.create { observer -> Disposable in
             do {
                 let request = try router.asURLRequest()
-                print(request)
+
                 AF.request(request)
                     .validate(statusCode: 200..<300)
                     .responseDecodable(of: responseType.self) { response in
@@ -47,10 +44,10 @@ final class NetworkService: NetworkProtocol {
     }
 }
 
-extension NetworkService {
+extension NetworkProtocol {
     func accessTokenRefresh(completionHandler: @escaping (Result<AccessToken, Error>) -> Void) {
         do {
-            let request = try APIRouter.accessTokenRefresh.asURLRequest()
+            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
             
             AF.request(request)
                 .responseDecodable(of: AccessTokenDTO.self) { response in

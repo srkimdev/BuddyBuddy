@@ -1,5 +1,5 @@
 //
-//  APIRouter.swift
+//  LogInRouter.swift
 //  BuddyBuddy
 //
 //  Created by 김성률 on 11/12/24.
@@ -9,14 +9,12 @@ import Foundation
 
 import Alamofire
 
-enum APIRouter: TargetType {
+enum LogInRouter: TargetType {
     case login(query: LoginQuery)
     case accessTokenRefresh
     
-    case dmList(workspaceID: String)
-    
     var baseURL: String {
-        return "http://" + APIKey.baseURL + "/v1/"
+        return APIKey.baseURL + "/v1/"
     }
     
     var path: String {
@@ -25,8 +23,6 @@ enum APIRouter: TargetType {
             return "users/login"
         case .accessTokenRefresh:
             return "auth/refresh"
-        case .dmList(let workspaceID):
-            return "workspaces/\(workspaceID)/dms"
         }
     }
     
@@ -35,8 +31,6 @@ enum APIRouter: TargetType {
         case .login:
             return .post
         case .accessTokenRefresh:
-            return .get
-        case .dmList:
             return .get
         }
     }
@@ -75,11 +69,6 @@ enum APIRouter: TargetType {
         case .login:
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
-                Header.Key.rawValue: APIKey.Key
-            ]
-        case .dmList:
-            return [
-                Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
         }

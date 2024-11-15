@@ -12,6 +12,6 @@ extension AppDelegate {
      의존성 주입을 위한 객체 등록 메서드
      */
     func registerDependencies() {
-        
+        DIContainer.register(type: NetworkProtocol.self, NetworkService())
     }
 }

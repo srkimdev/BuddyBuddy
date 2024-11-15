@@ -16,7 +16,7 @@ final class DefaultDMUseCase: DMUseCase {
         self.dmListRepositoryInterface = dmListRepositoryInterface
     }
     
-    func fetchDMList(workspaceId: String) -> RxSwift.Single<Result<[DMList], any Error>> {
-        return dmListRepositoryInterface.fetchDMList(workspaceID: workspaceId)
+    func fetchDMList(plagroundID: String) -> RxSwift.Single<Result<[DMList], any Error>> {
+        return dmListRepositoryInterface.fetchDMList(playgroundID: plagroundID)
     }
 }

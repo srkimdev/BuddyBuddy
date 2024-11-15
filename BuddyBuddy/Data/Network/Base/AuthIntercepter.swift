@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 
 final class AuthIntercepter: RequestInterceptor {
+    @Dependency(NetworkProtocol.self) private var service: NetworkProtocol
+    
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
@@ -33,11 +35,12 @@ final class AuthIntercepter: RequestInterceptor {
             return
         }
         
-        NetworkService.shared.accessTokenRefresh { response in
+        service.accessTokenRefresh { response in
             switch response {
             case .success(let value):
                 KeyChainManager.shard.saveAccessToken(value.accessToken)
                 completion(.retry)
+                print("토큰 갱신 성공")
             case .failure:
                 completion(.doNotRetryWithError(error))
                 // 로그인 화면으로 이동

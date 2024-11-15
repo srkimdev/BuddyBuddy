@@ -30,11 +30,6 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
-    
     override func setHierarchy() {
         [profileImage, userName, speechBubble, chatTime].forEach {
             contentView.addSubview($0)

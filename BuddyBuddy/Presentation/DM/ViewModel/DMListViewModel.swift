@@ -34,7 +34,7 @@ final class DMListViewModel: ViewModelType {
         
         input.viewWillAppearTrigger
             .flatMap {
-                self.dmUseCase.fetchDMList(workspaceId: "70b565b8-9ca1-483f-b812-15d3e57b5cf4")
+                self.dmUseCase.fetchDMList(plagroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4")
             }
             .bind(with: self) { _, response in
                 switch response {

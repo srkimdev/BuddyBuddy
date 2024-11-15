@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol DMUseCase {
-    func fetchDMList(workspaceId: String) -> Single<Result<[DMList], Error>>
+    func fetchDMList(plagroundID: String) -> Single<Result<[DMList], Error>>
 }

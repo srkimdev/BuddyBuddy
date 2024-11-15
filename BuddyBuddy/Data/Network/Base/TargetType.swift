@@ -28,7 +28,10 @@ extension TargetType {
         guard let url = urlComponents.url else {
             throw AFError.invalidURL(url: baseURL + path)
         }
-        var request = try URLRequest(url: url, method: method)
+        var request = try URLRequest(
+            url: url,
+            method: method
+        )
         request.allHTTPHeaderFields = header
         request.httpBody = body
         return request
