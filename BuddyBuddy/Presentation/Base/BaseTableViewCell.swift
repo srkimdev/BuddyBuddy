@@ -21,6 +21,7 @@ class BaseTableViewCell: UITableViewCell {
         
         setHierarchy()
         setConstraints()
+        setBackground()
     }
     
     @available(*, unavailable)
@@ -31,5 +32,9 @@ class BaseTableViewCell: UITableViewCell {
     func setHierarchy() { }
     
     func setConstraints() { }
+    
+    func setBackground() {
+        contentView.backgroundColor = .white
+    }
 }
 extension BaseTableViewCell: Reusables { }

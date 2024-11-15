@@ -13,6 +13,7 @@ class BaseView: UIView {
         
         setHierarchy()
         setConstraints()
+        setView()
     }
     
     @available(*, unavailable)
@@ -23,4 +24,8 @@ class BaseView: UIView {
     func setHierarchy() { }
     
     func setConstraints() { }
+    
+    func setView() {
+        backgroundColor = .white
+    }
 }
