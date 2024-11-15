@@ -20,7 +20,10 @@ enum ChannelItem: Equatable {
     case channel(Channel)
     case add(AddChannel)
     
-    static func == (lhs: ChannelItem, rhs: ChannelItem) -> Bool {
+    static func == (
+        lhs: ChannelItem,
+        rhs: ChannelItem
+    ) -> Bool {
         return false
     }
 }
@@ -39,7 +42,10 @@ extension ChannelSectionModel: SectionModelType {
         }
     }
     
-    init(original: ChannelSectionModel, items: [ChannelItem]) {
+    init(
+        original: ChannelSectionModel,
+        items: [ChannelItem]
+    ) {
         self = original
     }
 }

@@ -65,13 +65,11 @@ final class ChannelView: BaseView {
             make.top.horizontalEdges.equalToSuperview()
             make.height.equalTo(52)
         }
-        
         channelTableView.snp.makeConstraints { make in
             make.top.equalTo(channelBtn.snp.bottom)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(0)
         }
-        
         addBtn.snp.makeConstraints { make in
             make.top.equalTo(channelTableView.snp.bottom)
             make.horizontalEdges.equalToSuperview()

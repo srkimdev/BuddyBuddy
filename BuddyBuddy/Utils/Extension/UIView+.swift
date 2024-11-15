@@ -10,7 +10,10 @@ import UIKit
 extension UIView {
     func drawShadow(radius: CGFloat, size: CGSize) {
         let origin = self.bounds.origin
-        let point = CGPoint(x: origin.x, y: origin.y + 7.8)
+        let point = CGPoint(
+            x: origin.x,
+            y: origin.y + 7.8
+        )
         let rect = CGRect(
             origin: point,
             size: size

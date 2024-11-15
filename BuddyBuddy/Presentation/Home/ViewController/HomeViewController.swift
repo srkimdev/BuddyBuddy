@@ -34,7 +34,12 @@ final class HomeViewController: BaseNavigationViewController {
         var config = UIButton.Configuration.plain()
         
         config.image = .menu
-        config.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        config.contentInsets = .init(
+            top: 0,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
+        )
         
         view.configuration = config
         return view
@@ -72,7 +77,12 @@ final class HomeViewController: BaseNavigationViewController {
         config.imagePlacement = .leading
         config.imagePadding = 12
         config.baseForegroundColor = .gray1
-        config.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 0)
+        config.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 0
+        )
         
         view.configuration = config
         view.backgroundColor = .white
@@ -82,7 +92,6 @@ final class HomeViewController: BaseNavigationViewController {
     private let emptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.setContentHuggingPriority(.init(1), for: .vertical)
         return view
     }()
     private let floatingBtn: UIButton = {
@@ -90,7 +99,12 @@ final class HomeViewController: BaseNavigationViewController {
         var config = UIButton.Configuration.plain()
         
         config.image = .newMessage
-        config.contentInsets = .init(top: 16.45, leading: 16.45, bottom: 16.45, trailing: 16.45)
+        config.contentInsets = .init(
+            top: 16.45,
+            leading: 16.45,
+            bottom: 16.45,
+            trailing: 16.45
+        )
         
         view.configuration = config
         view.layer.cornerRadius = 25
@@ -171,21 +185,17 @@ final class HomeViewController: BaseNavigationViewController {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
         }
-        
         memberAddBtn.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
-        
         emptyView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.height.equalTo(300)
         }
-        
         floatingBtn.snp.makeConstraints { make in
             make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.size.equalTo(50)
@@ -196,7 +206,11 @@ final class HomeViewController: BaseNavigationViewController {
 // MARK: RxDataSource
 extension HomeViewController {
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
-        return RxTableViewSectionedReloadDataSource<ChannelSectionModel> { [weak self] datasource, _, indexpath, _ in
+        return RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
+            [weak self] datasource,
+            _,
+            indexpath,
+            _ in
             guard let self else { return UITableViewCell() }
             
             switch datasource[indexpath] {
@@ -214,7 +228,10 @@ extension HomeViewController {
                         withIdentifier: DefaultChannelTableViewCell.identifier,
                         for: indexpath
                     ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(title: item.title, image: item.image)
+                    cell.configureCell(
+                        title: item.title,
+                        image: item.image
+                    )
                     cell.selectionStyle = .none
                     return cell
                 } else {
@@ -231,7 +248,10 @@ extension HomeViewController {
                     withIdentifier: DefaultChannelTableViewCell.identifier,
                     for: indexpath
                 ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
-                cell.configureCell(title: item.title, image: item.imageString)
+                cell.configureCell(
+                    title: item.title,
+                    image: item.imageString
+                )
                 cell.selectionStyle = .none
                 return cell
             }

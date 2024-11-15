@@ -39,13 +39,11 @@ final class UnreadChannelTableViewCell: BaseTableViewCell {
             make.leading.equalToSuperview().inset(16)
             make.size.equalTo(18)
         }
-        
         titleLabel.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview()
             make.leading.equalTo(iconImgView.snp.trailing).offset(12)
             make.height.equalTo(41)
         }
-        
         notificationView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(24)

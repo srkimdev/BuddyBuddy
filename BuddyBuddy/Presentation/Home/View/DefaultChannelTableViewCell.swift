@@ -36,7 +36,10 @@ final class DefaultChannelTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configureCell(title: String, image: String) {
+    func configureCell(
+        title: String,
+        image: String
+    ) {
         titleLabel.text = title
         iconImgView.image = UIImage(systemName: image)
         
