@@ -58,6 +58,10 @@ final class HomeViewController: BaseNavigationViewController {
             UnreadChannelTableViewCell.self,
             forCellReuseIdentifier: UnreadChannelTableViewCell.identifier
         )
+        view.register(
+            ChannelAddTableViewCell.self,
+            forCellReuseIdentifier: ChannelAddTableViewCell.identifier
+        )
         
         view.separatorStyle = .none
         view.isScrollEnabled = false
@@ -206,11 +210,7 @@ final class HomeViewController: BaseNavigationViewController {
 // MARK: RxDataSource
 extension HomeViewController {
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
-        return RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
-            [weak self] datasource,
-            _,
-            indexpath,
-            _ in
+        return RxTableViewSectionedReloadDataSource<ChannelSectionModel> { [weak self] datasource, _, indexpath, _ in
             guard let self else { return UITableViewCell() }
             
             switch datasource[indexpath] {
@@ -242,9 +242,9 @@ extension HomeViewController {
                 }
             case .add(let item):
                 guard let cell = channelTableView.dequeueReusableCell(
-                    withIdentifier: ReadChannelTableViewCell.identifier,
+                    withIdentifier: ChannelAddTableViewCell.identifier,
                     for: indexpath
-                ) as? ReadChannelTableViewCell else { return UITableViewCell() }
+                ) as? ChannelAddTableViewCell else { return UITableViewCell() }
                 cell.configureCell(title: item.title)
                 cell.selectionStyle = .none
                 return cell
