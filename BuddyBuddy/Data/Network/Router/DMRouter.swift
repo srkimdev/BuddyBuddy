@@ -11,6 +11,7 @@ import Alamofire
 
 enum DMRouter: TargetType {
     case dmList(playgroundID: String)
+    case dmChat(playgroundID: String, roomID: String, cursorDate: String)
     
     var baseURL: String {
         return APIKey.baseURL + "/v1/"
@@ -20,12 +21,16 @@ enum DMRouter: TargetType {
         switch self {
         case .dmList(let playgroundID):
             return "workspaces/\(playgroundID)/dms"
+        case .dmChat(let playgroundID, let roomID, _):
+            return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
         }
     }
     
     var method: HTTPMethod {
         switch self {
         case .dmList:
+            return .get
+        case .dmChat:
             return .get
         }
     }
@@ -35,7 +40,13 @@ enum DMRouter: TargetType {
     }
     
     var queryItems: [URLQueryItem]? {
-        return nil
+        switch self {
+        case .dmChat(_, _, let cursorDate):
+            return [URLQueryItem(name: "cursor_date", value: cursorDate)]
+        
+        default:
+            return nil
+        }
     }
     
     var body: Data? {
@@ -45,12 +56,15 @@ enum DMRouter: TargetType {
     var header: [String: String] {
         switch self {
         case .dmList:
-            let header = [
+            [
                 Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
-            print(header)
-            return header
+        case .dmChat:
+            [
+                Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
+                Header.Key.rawValue: APIKey.Key
+            ]
         }
     }
 }

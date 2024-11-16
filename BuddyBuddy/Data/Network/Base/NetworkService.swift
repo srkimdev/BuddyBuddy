@@ -10,13 +10,6 @@ import Foundation
 import Alamofire
 import RxSwift
 
-protocol NetworkProtocol {
-    func callRequest<T: Decodable>(
-        router: TargetType,
-        responseType: T.Type
-    ) -> Single<Result<T, Error>>
-}
-
 final class NetworkService: NetworkProtocol {
     func callRequest<T: Decodable>(
         router: TargetType,

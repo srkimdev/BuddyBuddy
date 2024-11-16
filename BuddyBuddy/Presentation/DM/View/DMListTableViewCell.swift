@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 final class DMListTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
+    private let profileImg: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 25
         view.backgroundColor = .lightGray
@@ -28,7 +28,7 @@ final class DMListTableViewCell: BaseTableViewCell {
     }()
     private let lastTime: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 13)
+        view.font = .systemFont(ofSize: 12)
         return view
     }()
     private let unreadCount: UIView = {
@@ -37,27 +37,27 @@ final class DMListTableViewCell: BaseTableViewCell {
     }()
     
     override func setHierarchy() {
-        [profileImage, userName, lastText, lastTime, unreadCount].forEach {
+        [profileImg, userName, lastText, lastTime, unreadCount].forEach {
             contentView.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        profileImage.snp.makeConstraints { make in
+        profileImg.snp.makeConstraints { make in
             make.centerY.equalTo(contentView.safeAreaLayoutGuide)
             make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.size.equalTo(50)
         }
         userName.snp.makeConstraints { make in
-            make.top.equalTo(profileImage.snp.top).offset(4)
-            make.leading.equalTo(profileImage.snp.trailing).offset(16)
+            make.top.equalTo(profileImg.snp.top).offset(4)
+            make.leading.equalTo(profileImg.snp.trailing).offset(16)
         }
         lastText.snp.makeConstraints { make in
-            make.bottom.equalTo(profileImage.snp.bottom).inset(4)
-            make.leading.equalTo(profileImage.snp.trailing).offset(16)
+            make.bottom.equalTo(profileImg.snp.bottom).inset(4)
+            make.leading.equalTo(profileImg.snp.trailing).offset(16)
         }
         lastTime.snp.makeConstraints { make in
-            make.top.equalTo(profileImage.snp.top).offset(4)
+            make.top.equalTo(profileImg.snp.top).offset(4)
             make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
         }
         unreadCount.snp.makeConstraints { make in
@@ -67,7 +67,7 @@ final class DMListTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: DMList) {
-        profileImage.image = UIImage(systemName: "star")
+        profileImg.image = UIImage(systemName: "star")
         userName.text = transition.user.nickname
         lastText.text = "저희 수료식 언제?"
         lastTime.text = "pm 06:33"

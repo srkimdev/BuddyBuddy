@@ -128,6 +128,11 @@
 		DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
+		DC9BC0D32CE8DA29002AF523 /* DMChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMChatDTO.swift */; };
+		DC9BC0D52CE8DAA6002AF523 /* DMChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMChat.swift */; };
+		DC9BC0D72CE8DB2C002AF523 /* DMChatRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D62CE8DB2C002AF523 /* DMChatRepositoryInterface.swift */; };
+		DC9BC0D92CE8DD97002AF523 /* DefaultDMChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D82CE8DD97002AF523 /* DefaultDMChatRepository.swift */; };
+		DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -244,6 +249,11 @@
 		DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
+		DC9BC0D22CE8DA29002AF523 /* DMChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatDTO.swift; sourceTree = "<group>"; };
+		DC9BC0D42CE8DAA6002AF523 /* DMChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChat.swift; sourceTree = "<group>"; };
+		DC9BC0D62CE8DB2C002AF523 /* DMChatRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatRepositoryInterface.swift; sourceTree = "<group>"; };
+		DC9BC0D82CE8DD97002AF523 /* DefaultDMChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMChatRepository.swift; sourceTree = "<group>"; };
+		DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -712,6 +722,7 @@
 			children = (
 				C96C729E2CDB28F500E0D6CF /* Reusables.swift */,
 				C9F20F452CDB625A0043351E /* ViewModelType.swift */,
+				DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -869,6 +880,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213A982CE36AC400E2A2F7 /* DefaultDMListRepository.swift */,
+				DC9BC0D82CE8DD97002AF523 /* DefaultDMChatRepository.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -877,6 +889,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */,
+				DC9BC0D62CE8DB2C002AF523 /* DMChatRepositoryInterface.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -885,6 +898,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9E2CE36CA700E2A2F7 /* DMList.swift */,
+				DC9BC0D42CE8DAA6002AF523 /* DMChat.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -893,6 +907,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */,
+				DC9BC0D22CE8DA29002AF523 /* DMChatDTO.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1067,6 +1082,7 @@
 				C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */,
 				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
 				DC213A992CE36AC400E2A2F7 /* DefaultDMListRepository.swift in Sources */,
+				DC9BC0D92CE8DD97002AF523 /* DefaultDMChatRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
@@ -1090,6 +1106,7 @@
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
 				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
+				DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
@@ -1111,6 +1128,7 @@
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
 				C0BF42912CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
+				DC9BC0D52CE8DAA6002AF523 /* DMChat.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
@@ -1133,6 +1151,7 @@
 				C91BBC152CE472CA001EFC70 /* ChannelSettingCell.swift in Sources */,
 				C91BBC052CE37093001EFC70 /* SearchResultView.swift in Sources */,
 				DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */,
+				DC9BC0D32CE8DA29002AF523 /* DMChatDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
@@ -1147,6 +1166,7 @@
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
+				DC9BC0D72CE8DB2C002AF523 /* DMChatRepositoryInterface.swift in Sources */,
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,

@@ -17,7 +17,7 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func start() {
-        let vc = DMListViewController(vm: DMListViewModel(coordinator: self, dmUseCase: DefaultDMUseCase(dmListRepositoryInterface: DefaultDMListRepository())))
+        let vc = DMListViewController(vm: DMListViewModel(coordinator: self, dmUseCase: DefaultDMUseCase(dmListRepositoryInterface: DefaultDMListRepository(), dmChatRepositoryInterface: DefaultDMChatRepository())))
 //        let vc = DMChattingViewController(vm: DMChattingViewModel())
         navigationController.pushViewController(
             vc,
