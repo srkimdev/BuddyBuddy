@@ -12,6 +12,15 @@ import RxSwift
 
 final class NetworkManager {
     static let shared = NetworkManager()
+    private static let session: Session = {
+        let configuration = URLSessionConfiguration.af.default
+        let logger = NetworkLogger()
+        return Session(
+            configuration: configuration,
+            eventMonitors: [logger]
+        )
+    }()
+    
     private init() { }
     
     func callRequest<T: Decodable>(router: APIRouter, responseType: T.Type) -> Single<Result<T, Error>> {
@@ -19,7 +28,7 @@ final class NetworkManager {
             do {
                 let request = try router.asURLRequest()
                 print(request)
-                AF.request(request)
+                NetworkManager.session.request(request)
                     .validate(statusCode: 200..<300)
                     .responseDecodable(of: responseType.self) { response in
                         switch response.result {
