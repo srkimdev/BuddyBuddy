@@ -35,7 +35,7 @@ final class ReadChannelTableViewCell: BaseTableViewCell {
             make.leading.equalToSuperview().inset(16)
             make.size.equalTo(18)
         }
-        titleLabel.snp.remakeConstraints { make in
+        titleLabel.snp.makeConstraints { make in
             make.verticalEdges.equalToSuperview()
             make.leading.equalTo(iconImgView.snp.trailing).offset(12)
             make.height.equalTo(41)
