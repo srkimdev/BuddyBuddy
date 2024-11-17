@@ -62,18 +62,18 @@ enum DMRouter: TargetType {
     var header: [String: String] {
         switch self {
         case .dmList:
-            [
-                Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
+            return [
+                Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
         case .dmHistory:
-            [
-                Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
+            return [
+                Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
         case .dmUnRead:
-            [
-                Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
+            return [
+                Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
         }

@@ -137,6 +137,7 @@
 		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
 		DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */; };
 		DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */; };
+		DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -262,6 +263,7 @@
 		DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnRead.swift; sourceTree = "<group>"; };
 		DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMUnReadRepository.swift; sourceTree = "<group>"; };
 		DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadRepositoryInterface.swift; sourceTree = "<group>"; };
+		DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -731,6 +733,7 @@
 				C96C729E2CDB28F500E0D6CF /* Reusables.swift */,
 				C9F20F452CDB625A0043351E /* ViewModelType.swift */,
 				DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */,
+				DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1155,6 +1158,7 @@
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
 				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
+				DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
 				DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */,

@@ -8,8 +8,8 @@
 import Foundation
 import Security
 
-final class KeyChainManager {
-    static let shard = KeyChainManager()
+final class KeyChainManager: KeyChainProtocol {
+    static let shared = KeyChainManager()
     private init() { }
     
     // save accessToken
@@ -45,7 +45,7 @@ final class KeyChainManager {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: "accessToken",
-            kSecReturnData as String: kCFBooleanTrue!,
+            kSecReturnData as String: true,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
 
@@ -68,7 +68,7 @@ final class KeyChainManager {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: "refreshToken",
-            kSecReturnData as String: kCFBooleanTrue!,
+            kSecReturnData as String: true,
             kSecMatchLimit as String: kSecMatchLimitOne
         ]
 
@@ -76,7 +76,7 @@ final class KeyChainManager {
         let status = SecItemCopyMatching(query as CFDictionary, &item)
 
         guard status == errSecSuccess, 
-                let data = item as? Data else{
+                let data = item as? Data else {
             return nil
         }
 

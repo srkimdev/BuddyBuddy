@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 
 enum LogInRouter: TargetType {
+    
     case login(query: LoginQuery)
     case accessTokenRefresh
     
@@ -62,7 +63,7 @@ enum LogInRouter: TargetType {
         switch self {
         case .accessTokenRefresh:
             return [
-                Header.authorization.rawValue: KeyChainManager.shard.getRefreshToken() ?? "",
+                Header.authorization.rawValue: KeyChainManager.shared.getRefreshToken() ?? "",
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.Key.rawValue: APIKey.Key
             ]

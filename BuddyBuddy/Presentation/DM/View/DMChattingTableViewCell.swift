@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 final class DMChattingTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
+    private let profileImg: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 10
         return view
@@ -21,7 +21,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         return view
     }()
     private let speechBubble: SpeechBubbleView = {
-        let view = SpeechBubbleView(text: "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ이거보셨어요?너무웃기당zzzzzzzzzzzz푸하하하하하핳")
+        let view = SpeechBubbleView(text: "")
         return view
     }()
     private let chatTime: UILabel = {
@@ -31,23 +31,23 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     }()
     
     override func setHierarchy() {
-        [profileImage, userName, speechBubble, chatTime].forEach {
+        [profileImg, userName, speechBubble, chatTime].forEach {
             contentView.addSubview($0)
         }
     }
     
     override func setConstraints() {
-        profileImage.snp.makeConstraints { make in
+        profileImg.snp.makeConstraints { make in
             make.top.leading.equalTo(contentView.safeAreaLayoutGuide).offset(12)
             make.size.equalTo(40)
         }
         userName.snp.makeConstraints { make in
-            make.top.equalTo(profileImage.snp.top)
-            make.leading.equalTo(profileImage.snp.trailing).offset(8)
+            make.top.equalTo(profileImg.snp.top)
+            make.leading.equalTo(profileImg.snp.trailing).offset(8)
         }
         speechBubble.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
-            make.leading.equalTo(profileImage.snp.trailing).offset(8)
+            make.leading.equalTo(profileImg.snp.trailing).offset(8)
             make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(4)
         }
         chatTime.snp.makeConstraints { make in
@@ -58,7 +58,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: DMHistory) {
-        profileImage.backgroundColor = .lightGray
+        profileImg.backgroundColor = .lightGray
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         speechBubble.updateText(transition.content)

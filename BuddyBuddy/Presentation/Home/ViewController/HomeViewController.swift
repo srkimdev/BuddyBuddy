@@ -124,8 +124,8 @@ final class HomeViewController: BaseNavigationViewController {
                 switch response {
                 case .success(let value):
                     print(value)
-                    KeyChainManager.shard.saveAccessToken(value.token.accessToken)
-                    KeyChainManager.shard.saveRefreshToken(value.token.refreshToken)
+                    KeyChainManager.shared.saveAccessToken(value.token.accessToken)
+                    KeyChainManager.shared.saveRefreshToken(value.token.refreshToken)
                 case .failure(let error):
                     print(error)
                 }

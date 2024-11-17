@@ -29,9 +29,15 @@ extension AppDelegate {
         
         DIContainer.register(type: DMUseCaseInterface.self, 
                              DefaultDMUseCase(
-                                dmListRepositoryInterface: DIContainer.resolve(type: DMListRepositoryInterface.self),
-                                dmHistoryRepositoryInterface: DIContainer.resolve(type: DMHistoryRepositoryInterface.self),
-                                dmUnReadRepositoryInterface: DIContainer.resolve(type: DMUnReadRepositoryInterface.self))
+                                dmListRepositoryInterface: DIContainer.resolve(
+                                    type: DMListRepositoryInterface.self
+                                ),
+                                dmHistoryRepositoryInterface: DIContainer.resolve(
+                                    type: DMHistoryRepositoryInterface.self
+                                ),
+                                dmUnReadRepositoryInterface: DIContainer.resolve(
+                                    type: DMUnReadRepositoryInterface.self)
+                             )
         )
         
     }

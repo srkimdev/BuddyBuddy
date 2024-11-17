@@ -27,7 +27,11 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func toDMChatting(_ dmListInfo: DMListInfo) {
-        let vc = DMChattingViewController(vm: DMChattingViewModel(dmUseCase: dmUseCase, coordinator: self, dmListInfo: dmListInfo))
+        let vc = DMChattingViewController(vm: DMChattingViewModel(
+            dmUseCase: dmUseCase,
+            coordinator: self,
+            dmListInfo: dmListInfo)
+        )
         navigationController.pushViewController(
             vc,
             animated: true

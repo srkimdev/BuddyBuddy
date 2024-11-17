@@ -7,8 +7,8 @@
 
 import Foundation
 
-import RxSwift
 import RxCocoa
+import RxSwift
 
 final class DMChattingViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
