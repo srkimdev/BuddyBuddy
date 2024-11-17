@@ -10,7 +10,7 @@ import Foundation
 import RxDataSources
 
 enum ChannelSectionModel: Equatable {
-    case title(items: [ChannelItem])
+    case title(item: ChannelItem)
     case list(items: [ChannelItem])
     case add(items: [ChannelItem])
 }
@@ -18,9 +18,12 @@ enum ChannelSectionModel: Equatable {
 enum ChannelItem: Equatable {
     case title(Accordion)
     case channel(Channel)
-    case add(AddChannel)
+    case add(String)
     
-    static func == (lhs: ChannelItem, rhs: ChannelItem) -> Bool {
+    static func == (
+        lhs: ChannelItem,
+        rhs: ChannelItem
+    ) -> Bool {
         return false
     }
 }
@@ -30,8 +33,8 @@ extension ChannelSectionModel: SectionModelType {
     
     var items: [ChannelItem] {
         switch self {
-        case .title(let items):
-            return items.map { $0 }
+        case .title(let item):
+            return [item]
         case .list(let items):
             return items.map { $0 }
         case .add(let items):
@@ -39,7 +42,10 @@ extension ChannelSectionModel: SectionModelType {
         }
     }
     
-    init(original: ChannelSectionModel, items: [ChannelItem]) {
+    init(
+        original: ChannelSectionModel,
+        items: [ChannelItem]
+    ) {
         self = original
     }
 }
@@ -53,9 +59,4 @@ struct Channel {
 enum Accordion: String {
     case arrow = "chevronRight"
     case caret = "chevronDown"
-}
-
-struct AddChannel {
-    let title = "채널추가"
-    let imageString = "plus"
 }
