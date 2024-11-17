@@ -31,7 +31,7 @@ final class DMListTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 12)
         return view
     }()
-    private let unreadCount: UIView = {
+    private let unreadCount: MessageCountView = {
         let view = MessageCountView(count: 10)
         return view
     }()
@@ -66,11 +66,12 @@ final class DMListTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: DMList) {
+    func designCell(_ transition: DMListInfo) {
         profileImg.image = UIImage(systemName: "star")
-        userName.text = transition.user.nickname
-        lastText.text = "저희 수료식 언제?"
-        lastTime.text = "pm 06:33"
+        userName.text = transition.userName
+        lastText.text = "When is your birthday?"
+        lastTime.text = "PM 06:12"
+        unreadCount.updateCount(transition.unReadCount)
     }
     
 }

@@ -17,7 +17,7 @@ struct UserInfoDTO: Decodable {
     let user_id: String
     let email: String
     let nickname: String
-    let profileImage: String?
+    let profileImg: String?
 }
 
 extension DMListDTO {
@@ -33,6 +33,6 @@ extension UserInfoDTO {
         return UserInfo(user_id: user_id,
                         email: email,
                         nickname: nickname,
-                        profileImage: profileImage)
+                        profileImg: profileImg)
     }
 }

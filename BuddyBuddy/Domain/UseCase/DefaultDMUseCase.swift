@@ -24,11 +24,11 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         self.dmUnReadRepositoryInterface = dmUnReadRepositoryInterface
     }
     
-    func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], any Error>> {
+    func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], Error>> {
         return dmListRepositoryInterface.fetchDMList(playgroundID: playgroundID)
     }
     
-    func fetchDMChat(
+    func fetchDMHistory(
         playgroundID: String,
         roomID: String,
         cursorDate: String

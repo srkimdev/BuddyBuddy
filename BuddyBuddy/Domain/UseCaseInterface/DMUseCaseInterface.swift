@@ -11,7 +11,7 @@ import RxSwift
 
 protocol DMUseCaseInterface {
     func fetchDMList(playgroundID: String) -> Single<Result<[DMList], Error>>
-    func fetchDMChat(
+    func fetchDMHistory(
         playgroundID: String,
         roomID: String,
         cursorDate: String

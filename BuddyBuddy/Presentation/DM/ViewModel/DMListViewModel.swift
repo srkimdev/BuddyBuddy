@@ -10,19 +10,19 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+struct DMListInfo {
+    let profileImg: String
+    let userName: String
+    let lastText: String
+    let lastTime: String
+    let unReadCount: Int
+}
+
 final class DMListViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let dmUseCase: DMUseCaseInterface
     private let coordinator: DMCoordinator
-    
-    struct DMListInfo {
-        let profileImg: String
-        let userName: String
-        let lastText: String
-        let lastTime: String
-        let unReadCount: String
-    }
     
     init(coordinator: DMCoordinator, dmUseCase: DMUseCaseInterface) {
         self.coordinator = coordinator
@@ -34,43 +34,62 @@ final class DMListViewModel: ViewModelType {
     }
     
     struct Output {
-        let updateDMListTableView: Driver<[DMList]>
+        let updateDMListTableView: Driver<[DMListInfo]>
         let viewState: Driver<DMListState>
     }
     
     func transform(input: Input) -> Output {
-        let updateDMListTableView = PublishSubject<[DMList]>()
+        let updateDMListTableView = PublishSubject<[DMListInfo]>()
         let viewState = PublishSubject<DMListState>()
         
         input.viewWillAppearTrigger
-            .flatMap {
-//                self.dmUseCase.fetchDMList(playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4")
-//                self.dmUseCase.fetchDMChat(
-//                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-//                    roomID: "8ee29646-2bd6-41b6-8072-06bfdec2a83c",
-//                    cursorDate: ""
-//                )
-                self.dmUseCase.fetchDMUnRead(
-                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                    roomID: "8ee29646-2bd6-41b6-8072-06bfdec2a83c",
-                    after: ""
-                )
+            .flatMapLatest {
+                self.dmUseCase.fetchDMList(
+                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4"
+                ).asObservable()
+            }
+            .flatMap { result -> Observable<[DMListInfo]> in
+                switch result {
+                case .success(let dmLists):
+                    let dmListInfoRequests = dmLists.map { dmList in
+                        Observable.zip(
+                            self.dmUseCase.fetchDMHistory(
+                                playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                                roomID: dmList.room_id,
+                                cursorDate: ""
+                            )
+                            .asObservable(),
+                            self.dmUseCase.fetchDMUnRead(
+                                playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                                roomID: dmList.room_id,
+                                after: ""
+                            )
+                            .asObservable()
+                        )
+                        .flatMap { history, unread -> Observable<DMListInfo> in
+                            switch (history, unread) {
+                            case (.success(let historyArray), .success(let unreadData)):
+                                return Observable.just(DMListInfo(
+                                    profileImg: dmList.user.profileImg ?? "",
+                                    userName: dmList.user.nickname,
+                                    lastText: historyArray.last?.content ?? "",
+                                    lastTime: historyArray.last?.createdAt ?? "",
+                                    unReadCount: unreadData.count
+                                ))
+                            case (.failure(let error), _), (_, .failure(let error)):
+                                return Observable.error(error)
+                            }
+                        }
+                    }
+                    return Observable.zip(dmListInfoRequests)
+                    
+                case .failure(let error):
+                    return Observable.error(error)
+                }
             }
             .bind(with: self) { _, response in
-                switch response {
-                case .success(let value):
-//                    if value.isEmpty {
-//                        viewState.onNext(.emptyList)
-//                        print(value, "here")
-//                    } else {
-////                        updateDMListTableView.onNext(value)
-//                        
-//                        viewState.onNext(.chatting)
-//                    }
-                    print(value, "here")
-                case .failure(let error):
-                    print(error)
-                }
+                updateDMListTableView.onNext(response)
+                print(response)
             }
             .disposed(by: disposeBag)
         

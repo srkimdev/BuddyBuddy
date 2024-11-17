@@ -44,4 +44,7 @@ final class MessageCountView: BaseView {
         }
     }
     
+    func updateCount(_ count: Int) {
+        messageCount.text = "\(count)"
+    }
 }
