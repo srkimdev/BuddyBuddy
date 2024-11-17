@@ -16,6 +16,7 @@ struct DMListInfo {
     let lastText: String
     let lastTime: String
     let unReadCount: Int
+    let roomID: String
 }
 
 final class DMListViewModel: ViewModelType {
@@ -77,7 +78,8 @@ final class DMListViewModel: ViewModelType {
                                     userName: dmList.user.nickname,
                                     lastText: historyArray.last?.content ?? "",
                                     lastTime: historyArray.last?.createdAt ?? "",
-                                    unReadCount: unreadData.count
+                                    unReadCount: unreadData.count,
+                                    roomID: dmList.room_id
                                 ))
                             case (.failure(let error), _), (_, .failure(let error)):
                                 return Observable.error(error)

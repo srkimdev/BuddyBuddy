@@ -43,4 +43,8 @@ final class SpeechBubbleView: BaseView {
         }
     }
     
+    func updateText(_ text: String) {
+        content.text = text
+    }
+    
 }

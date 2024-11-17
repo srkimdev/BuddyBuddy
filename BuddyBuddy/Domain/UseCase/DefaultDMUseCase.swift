@@ -32,7 +32,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         playgroundID: String,
         roomID: String,
         cursorDate: String
-    ) -> Single<Result<[DMHistory], any Error>> {
+    ) -> Single<Result<[DMHistory], Error>> {
         return dmHistoryRepositoryInterface.fetchDMHistory(
             playgroundID: playgroundID,
             roomID: roomID,

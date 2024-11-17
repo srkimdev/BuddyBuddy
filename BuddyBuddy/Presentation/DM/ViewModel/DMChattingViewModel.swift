@@ -36,15 +36,27 @@ final class DMChattingViewModel: ViewModelType {
     }
     
     struct Output {
-        let updateDMListTableView: Driver<[String]>
+        let updateDMListTableView: Driver<[DMHistory]>
     }
     
     func transform(input: Input) -> Output {
-        let updateDMListTableView = BehaviorSubject<[String]>(value: [])
+        let updateDMListTableView = PublishSubject<[DMHistory]>()
         
         input.viewWillAppearTrigger
-            .bind(with: self) { _, _ in
-                updateDMListTableView.onNext(["1", "2", "3"])
+            .flatMap {
+                self.dmUseCase.fetchDMHistory(
+                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                    roomID: self.dmListInfo.roomID,
+                    cursorDate: ""
+                )
+            }
+            .bind(with: self) { _, response in
+                switch response {
+                case .success(let value):
+                    updateDMListTableView.onNext(value)
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
         
