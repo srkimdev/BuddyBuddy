@@ -1,5 +1,5 @@
 //
-//  DMChatDTO.swift
+//  DMHistoryDTO.swift
 //  BuddyBuddy
 //
 //  Created by 김성률 on 11/16/24.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DMChatDTO: Decodable {
+struct DMHistoryDTO: Decodable {
     let dm_id: String
     let room_id: String
     let content: String
@@ -16,9 +16,9 @@ struct DMChatDTO: Decodable {
     let user: UserInfoDTO
 }
 
-extension DMChatDTO {
-    func toDomain() -> DMChat {
-        return DMChat(dm_id: dm_id,
+extension DMHistoryDTO {
+    func toDomain() -> DMHistory {
+        return DMHistory(dm_id: dm_id,
                       room_id: room_id, 
                       content: content,
                       createdAt: createdAt,

@@ -128,11 +128,15 @@
 		DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
-		DC9BC0D32CE8DA29002AF523 /* DMChatDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMChatDTO.swift */; };
-		DC9BC0D52CE8DAA6002AF523 /* DMChat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMChat.swift */; };
-		DC9BC0D72CE8DB2C002AF523 /* DMChatRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D62CE8DB2C002AF523 /* DMChatRepositoryInterface.swift */; };
-		DC9BC0D92CE8DD97002AF523 /* DefaultDMChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D82CE8DD97002AF523 /* DefaultDMChatRepository.swift */; };
+		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
+		DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */; };
+		DC9BC0D72CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D62CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift */; };
+		DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D82CE8DD97002AF523 /* DefaultDMHistoryRepository.swift */; };
 		DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */; };
+		DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */; };
+		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
+		DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */; };
+		DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -249,11 +253,15 @@
 		DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
-		DC9BC0D22CE8DA29002AF523 /* DMChatDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatDTO.swift; sourceTree = "<group>"; };
-		DC9BC0D42CE8DAA6002AF523 /* DMChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChat.swift; sourceTree = "<group>"; };
-		DC9BC0D62CE8DB2C002AF523 /* DMChatRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChatRepositoryInterface.swift; sourceTree = "<group>"; };
-		DC9BC0D82CE8DD97002AF523 /* DefaultDMChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMChatRepository.swift; sourceTree = "<group>"; };
+		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
+		DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistory.swift; sourceTree = "<group>"; };
+		DC9BC0D62CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryRepositoryInterface.swift; sourceTree = "<group>"; };
+		DC9BC0D82CE8DD97002AF523 /* DefaultDMHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMHistoryRepository.swift; sourceTree = "<group>"; };
 		DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
+		DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadDTO.swift; sourceTree = "<group>"; };
+		DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnRead.swift; sourceTree = "<group>"; };
+		DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMUnReadRepository.swift; sourceTree = "<group>"; };
+		DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadRepositoryInterface.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -880,7 +888,8 @@
 			isa = PBXGroup;
 			children = (
 				DC213A982CE36AC400E2A2F7 /* DefaultDMListRepository.swift */,
-				DC9BC0D82CE8DD97002AF523 /* DefaultDMChatRepository.swift */,
+				DC9BC0D82CE8DD97002AF523 /* DefaultDMHistoryRepository.swift */,
+				DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -889,7 +898,8 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */,
-				DC9BC0D62CE8DB2C002AF523 /* DMChatRepositoryInterface.swift */,
+				DC9BC0D62CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift */,
+				DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -898,7 +908,8 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9E2CE36CA700E2A2F7 /* DMList.swift */,
-				DC9BC0D42CE8DAA6002AF523 /* DMChat.swift */,
+				DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */,
+				DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -907,7 +918,8 @@
 			isa = PBXGroup;
 			children = (
 				DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */,
-				DC9BC0D22CE8DA29002AF523 /* DMChatDTO.swift */,
+				DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */,
+				DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1075,6 +1087,7 @@
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
+				DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
 				C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */,
@@ -1082,7 +1095,8 @@
 				C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */,
 				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
 				DC213A992CE36AC400E2A2F7 /* DefaultDMListRepository.swift in Sources */,
-				DC9BC0D92CE8DD97002AF523 /* DefaultDMChatRepository.swift in Sources */,
+				DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */,
+				DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
@@ -1128,7 +1142,7 @@
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
 				C0BF42912CE4774B00C5B5B4 /* DefaultChannelTableViewCell.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
-				DC9BC0D52CE8DAA6002AF523 /* DMChat.swift in Sources */,
+				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
@@ -1139,6 +1153,7 @@
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,
 				DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */,
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
+				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
@@ -1151,7 +1166,7 @@
 				C91BBC152CE472CA001EFC70 /* ChannelSettingCell.swift in Sources */,
 				C91BBC052CE37093001EFC70 /* SearchResultView.swift in Sources */,
 				DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */,
-				DC9BC0D32CE8DA29002AF523 /* DMChatDTO.swift in Sources */,
+				DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
@@ -1165,8 +1180,9 @@
 				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
+				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
-				DC9BC0D72CE8DB2C002AF523 /* DMChatRepositoryInterface.swift in Sources */,
+				DC9BC0D72CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift in Sources */,
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,

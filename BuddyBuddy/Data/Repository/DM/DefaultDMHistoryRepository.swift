@@ -1,5 +1,5 @@
 //
-//  DefaultDMChatRepository.swift
+//  DefaultDMHistoryRepository.swift
 //  BuddyBuddy
 //
 //  Created by 김성률 on 11/16/24.
@@ -9,20 +9,20 @@ import Foundation
 
 import RxSwift
 
-final class DefaultDMChatRepository: DMChatRepositoryInterface {
+final class DefaultDMHistoryRepository: DMHistoryRepositoryInterface {
     @Dependency(NetworkProtocol.self) private var service
     
-    func fetchDMChat(
+    func fetchDMHistory(
         playgroundID: String,
         roomID: String,
         cursorDate: String
-    ) -> RxSwift.Single<Result<[DMChat], Error>> {
+    ) -> RxSwift.Single<Result<[DMHistory], Error>> {
         return service.callRequest(
-            router: DMRouter.dmChat(
+            router: DMRouter.dmHistory(
             playgroundID: playgroundID,
             roomID: roomID,
             cursorDate: ""),
-            responseType: [DMChatDTO].self
+            responseType: [DMHistoryDTO].self
         )
         .map { result in
             switch result {

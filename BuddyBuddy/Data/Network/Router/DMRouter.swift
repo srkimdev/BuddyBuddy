@@ -11,7 +11,8 @@ import Alamofire
 
 enum DMRouter: TargetType {
     case dmList(playgroundID: String)
-    case dmChat(playgroundID: String, roomID: String, cursorDate: String)
+    case dmHistory(playgroundID: String, roomID: String, cursorDate: String)
+    case dmUnRead(playgroundID: String, roomID: String, after: String)
     
     var baseURL: String {
         return APIKey.baseURL + "/v1/"
@@ -21,8 +22,10 @@ enum DMRouter: TargetType {
         switch self {
         case .dmList(let playgroundID):
             return "workspaces/\(playgroundID)/dms"
-        case .dmChat(let playgroundID, let roomID, _):
+        case .dmHistory(let playgroundID, let roomID, _):
             return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
+        case .dmUnRead(let playgroundID, let roomID, _):
+            return "workspaces/\(playgroundID)/dms/\(roomID)/unreads"
         }
     }
     
@@ -30,7 +33,9 @@ enum DMRouter: TargetType {
         switch self {
         case .dmList:
             return .get
-        case .dmChat:
+        case .dmHistory:
+            return .get
+        case .dmUnRead:
             return .get
         }
     }
@@ -41,9 +46,10 @@ enum DMRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .dmChat(_, _, let cursorDate):
+        case .dmHistory(_, _, let cursorDate):
             return [URLQueryItem(name: "cursor_date", value: cursorDate)]
-        
+        case .dmUnRead(_, _, let after):
+            return [URLQueryItem(name: "after", value: after)]
         default:
             return nil
         }
@@ -60,7 +66,12 @@ enum DMRouter: TargetType {
                 Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
-        case .dmChat:
+        case .dmHistory:
+            [
+                Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
+                Header.Key.rawValue: APIKey.Key
+            ]
+        case .dmUnRead:
             [
                 Header.authorization.rawValue: KeyChainManager.shard.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
