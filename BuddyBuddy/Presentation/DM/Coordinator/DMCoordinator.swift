@@ -8,5 +8,5 @@
 import Foundation
 
 protocol DMCoordinator: Coordinator {
-    
+    func toDMChatting(_ dmListInfo: DMListInfo)
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 final class DefaultDMCoordinator: DMCoordinator {
+    @Dependency(DMUseCaseInterface.self) private var dmUseCase
+    
     var parent: Coordinator?
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
@@ -17,8 +19,15 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func start() {
-        let vc = DMListViewController(vm: DMListViewModel(coordinator: self, dmUseCase: DefaultDMUseCase(dmListRepositoryInterface: DefaultDMListRepository(), dmHistoryRepositoryInterface: DefaultDMHistoryRepository(), dmUnReadRepositoryInterface: DefaultDMUnReadRepository())))
-//        let vc = DMChattingViewController(vm: DMChattingViewModel())
+        let vc = DMListViewController(vm: DMListViewModel(dmUseCase: dmUseCase, coordinator: self))
+        navigationController.pushViewController(
+            vc,
+            animated: true
+        )
+    }
+    
+    func toDMChatting(_ dmListInfo: DMListInfo) {
+        let vc = DMChattingViewController(vm: DMChattingViewModel(dmUseCase: dmUseCase, coordinator: self, dmListInfo: dmListInfo))
         navigationController.pushViewController(
             vc,
             animated: true

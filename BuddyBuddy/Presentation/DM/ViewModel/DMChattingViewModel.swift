@@ -13,7 +13,23 @@ import RxCocoa
 final class DMChattingViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
-    // coodinator
+    private let dmUseCase: DMUseCaseInterface
+    private let coordinator: DMCoordinator
+    private let dmListInfo: DMListInfo
+    
+    init(
+        dmUseCase: DMUseCaseInterface,
+        coordinator: DMCoordinator,
+        dmListInfo: DMListInfo
+    ) {
+        self.dmUseCase = dmUseCase
+        self.coordinator = coordinator
+        self.dmListInfo = dmListInfo
+    }
+    
+    deinit {
+        print("dmchatviewmodel deinit")
+    }
     
     struct Input {
         let viewWillAppearTrigger: Observable<Void>

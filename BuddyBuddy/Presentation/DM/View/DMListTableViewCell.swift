@@ -69,7 +69,7 @@ final class DMListTableViewCell: BaseTableViewCell {
     func designCell(_ transition: DMListInfo) {
         profileImg.image = UIImage(systemName: "star")
         userName.text = transition.userName
-        lastText.text = "When is your birthday?"
+        lastText.text = transition.lastText
         lastTime.text = "PM 06:12"
         unreadCount.updateCount(transition.unReadCount)
     }

@@ -24,9 +24,12 @@ final class DMListViewModel: ViewModelType {
     private let dmUseCase: DMUseCaseInterface
     private let coordinator: DMCoordinator
     
-    init(coordinator: DMCoordinator, dmUseCase: DMUseCaseInterface) {
-        self.coordinator = coordinator
+    init(
+        dmUseCase: DMUseCaseInterface,
+        coordinator: DMCoordinator
+    ) {
         self.dmUseCase = dmUseCase
+        self.coordinator = coordinator
     }
     
     struct Input {
@@ -88,8 +91,12 @@ final class DMListViewModel: ViewModelType {
                 }
             }
             .bind(with: self) { _, response in
-                updateDMListTableView.onNext(response)
-                print(response)
+                if response.isEmpty {
+                    viewState.onNext(.emptyList)
+                } else {
+                    updateDMListTableView.onNext(response)
+                    viewState.onNext(.chatting)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -97,5 +104,9 @@ final class DMListViewModel: ViewModelType {
             updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
             viewState: viewState.asDriver(onErrorJustReturn: .emptyList)
         )
+    }
+ 
+    func toDMChatting(_ dmListInfo: DMListInfo) {
+        coordinator.toDMChatting(dmListInfo)
     }
 }

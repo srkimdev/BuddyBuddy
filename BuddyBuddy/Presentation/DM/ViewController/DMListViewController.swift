@@ -96,5 +96,10 @@ final class DMListViewController: BaseNavigationViewController {
             }
             .disposed(by: disposeBag)
             
+        dmListTableView.rx.modelSelected(DMListInfo.self)
+            .bind(with: self) { owner, value in
+                owner.vm.toDMChatting(value)
+            }
+            .disposed(by: disposeBag)
     }
 }
