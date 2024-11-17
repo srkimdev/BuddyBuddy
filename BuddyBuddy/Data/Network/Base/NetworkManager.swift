@@ -15,7 +15,10 @@ final class NetworkManager {
     private static let session: Session = {
         let configuration = URLSessionConfiguration.af.default
         let logger = NetworkLogger()
-        return Session(configuration: configuration, eventMonitors: [logger])
+        return Session(
+            configuration: configuration,
+            eventMonitors: [logger]
+        )
     }()
     
     private init() { }
