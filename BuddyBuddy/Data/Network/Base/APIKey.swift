@@ -8,6 +8,9 @@
 import Foundation
 
 struct APIKey {
-    static let baseURL = (Bundle.main.object(forInfoDictionaryKey: "BaseURL") as? String ?? "") + ":" + (Bundle.main.object(forInfoDictionaryKey: "Port") as? String ?? "")
+    static let baseURL = 
+    (Bundle.main.object(forInfoDictionaryKey: "BaseURL") as? String ?? "") +
+    ":" +
+    (Bundle.main.object(forInfoDictionaryKey: "Port") as? String ?? "")
     static let Key = Bundle.main.object(forInfoDictionaryKey: "Key") as? String ?? ""
 }

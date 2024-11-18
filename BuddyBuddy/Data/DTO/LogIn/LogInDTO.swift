@@ -8,7 +8,7 @@
 import Foundation
 
 struct LogInDTO: Decodable {
-    let user_id: String
+    let userID: String
     let email: String
     let nickname: String
     let profileImage: String?
@@ -16,6 +16,17 @@ struct LogInDTO: Decodable {
     let provider: String?
     let createdAt: String
     let token: TokenDTO
+    
+    enum CodingKeys: String, CodingKey {
+        case userID = "user_id"
+        case email
+        case nickname
+        case profileImage
+        case phone
+        case provider
+        case createdAt
+        case token
+    }
 }
 
 struct TokenDTO: Decodable {

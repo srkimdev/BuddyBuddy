@@ -20,8 +20,8 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 13)
         return view
     }()
-    private let speechBubble: UIView = {
-        let view = SpeechBubbleView(text: "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ이거보셨어요?너무웃기당zzzzzzzzzzzz푸하하하하하핳")
+    private let speechBubble: SpeechBubbleView = {
+        let view = SpeechBubbleView(text: "")
         return view
     }()
     private let chatTime: UILabel = {
@@ -29,11 +29,6 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 12)
         return view
     }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
     
     override func setHierarchy() {
         [profileImage, userName, speechBubble, chatTime].forEach {
@@ -62,10 +57,10 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: String) {
+    func designCell(_ transition: DMHistory) {
         profileImage.backgroundColor = .lightGray
-        userName.text = "뚜비두밥"
+        userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
+        speechBubble.updateText(transition.content)
     }
-    
 }

@@ -28,18 +28,13 @@ final class DMListTableViewCell: BaseTableViewCell {
     }()
     private let lastTime: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 13)
+        view.font = .systemFont(ofSize: 12)
         return view
     }()
-    private let unreadCount: UIView = {
+    private let unreadCount: MessageCountView = {
         let view = MessageCountView(count: 10)
         return view
     }()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-    }
     
     override func setHierarchy() {
         [profileImage, userName, lastText, lastTime, unreadCount].forEach {
@@ -71,11 +66,12 @@ final class DMListTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: DMList) {
+    func designCell(_ transition: DMListInfo) {
         profileImage.image = UIImage(systemName: "star")
-        userName.text = transition.user.nickname
-        lastText.text = "저희 수료식 언제?"
-        lastTime.text = "pm 06:33"
+        userName.text = transition.userName
+        lastText.text = transition.lastText
+        lastTime.text = "PM 06:12"
+        unreadCount.updateCount(transition.unReadCount)
     }
     
 }

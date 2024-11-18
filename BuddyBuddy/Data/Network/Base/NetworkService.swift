@@ -10,9 +10,8 @@ import Foundation
 import Alamofire
 import RxSwift
 
-final class NetworkManager {
-    static let shared = NetworkManager()
-    private static let session: Session = {
+final class NetworkService: NetworkProtocol {
+    static let session: Session = {
         let configuration = URLSessionConfiguration.af.default
         let logger = NetworkLogger()
         return Session(
@@ -21,14 +20,14 @@ final class NetworkManager {
         )
     }()
     
-    private init() { }
-    
-    func callRequest<T: Decodable>(router: APIRouter, responseType: T.Type) -> Single<Result<T, Error>> {
+    func callRequest<T: Decodable>(
+        router: TargetType,
+        responseType: T.Type
+    ) -> Single<Result<T, Error>> {
         return Single.create { observer -> Disposable in
             do {
                 let request = try router.asURLRequest()
-                print(request)
-                NetworkManager.session.request(request)
+                NetworkService.session.request(request)
                     .validate(statusCode: 200..<300)
                     .responseDecodable(of: responseType.self) { response in
                         switch response.result {
@@ -46,12 +45,12 @@ final class NetworkManager {
     }
 }
 
-extension NetworkManager {
+extension NetworkProtocol {
     func accessTokenRefresh(completionHandler: @escaping (Result<AccessToken, Error>) -> Void) {
         do {
-            let request = try APIRouter.accessTokenRefresh.asURLRequest()
+            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
             
-            AF.request(request)
+            NetworkService.session.request(request)
                 .responseDecodable(of: AccessTokenDTO.self) { response in
                     switch response.result {
                     case .success(let value):
@@ -60,7 +59,6 @@ extension NetworkManager {
                         print(error)
                     }
                 }
-            
         } catch {
             print(error)
         }

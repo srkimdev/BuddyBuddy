@@ -16,7 +16,10 @@ final class DMListViewController: BaseNavigationViewController {
     
     private let dmListTableView: UITableView = {
         let view = UITableView()
-        view.register(DMListTableViewCell.self, forCellReuseIdentifier: DMListTableViewCell.identifier)
+        view.register(
+            DMListTableViewCell.self,
+            forCellReuseIdentifier: DMListTableViewCell.identifier
+        )
         view.rowHeight = 70
         return view
     }()
@@ -40,13 +43,12 @@ final class DMListViewController: BaseNavigationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
     }
     
     override func setHierarchy() {
-        view.addSubview(dmListTableView)
-        view.addSubview(noChatListImage)
-        view.addSubview(noChatListLabel)
+        [dmListTableView, noChatListImage, noChatListLabel].forEach {
+            view.addSubview($0)
+        }
     }
     
     override func setConstraints() {
@@ -75,10 +77,29 @@ final class DMListViewController: BaseNavigationViewController {
                     cellIdentifier: DMListTableViewCell.identifier,
                     cellType: DMListTableViewCell.self
                 )
-            ) { (row, element, cell) in
+            ) { (_, element, cell) in
                 cell.designCell(element)
             }
             .disposed(by: disposeBag)
+        
+        output.viewState
+            .drive(with: self) { owner, value in
+                if value == .emptyList {
+                    owner.dmListTableView.isHidden = true
+                    owner.noChatListImage.isHidden = false
+                    owner.noChatListLabel.isHidden = false
+                } else {
+                    owner.dmListTableView.isHidden = false
+                    owner.noChatListImage.isHidden = true
+                    owner.noChatListLabel.isHidden = true
+                }
+            }
+            .disposed(by: disposeBag)
             
+        dmListTableView.rx.modelSelected(DMListInfo.self)
+            .bind(with: self) { owner, value in
+                owner.vm.toDMChatting(value)
+            }
+            .disposed(by: disposeBag)
     }
 }

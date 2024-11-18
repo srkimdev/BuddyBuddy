@@ -16,7 +16,10 @@ final class DMChattingViewController: BaseNavigationViewController {
     
     private let dmChattingTableView: UITableView = {
         let view = UITableView()
-        view.register(DMChattingTableViewCell.self, forCellReuseIdentifier: DMChattingTableViewCell.identifier)
+        view.register(
+            DMChattingTableViewCell.self,
+            forCellReuseIdentifier: DMChattingTableViewCell.identifier
+        )
         view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
         return view
@@ -53,7 +56,7 @@ final class DMChattingViewController: BaseNavigationViewController {
                     cellIdentifier: DMChattingTableViewCell.identifier,
                     cellType: DMChattingTableViewCell.self
                 )
-            ) { (row, element, cell) in
+            ) { (_, element, cell) in
                 cell.designCell(element)
             }
             .disposed(by: disposeBag)

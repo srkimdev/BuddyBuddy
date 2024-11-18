@@ -9,34 +9,43 @@ import Foundation
 
 import Alamofire
 
-final class AuthIntercepter: RequestInterceptor {
+final class AuthIntercepter: RequestInterceptor{
+    @Dependency(NetworkProtocol.self) private var service
+    @Dependency(KeyChainProtocol.self) private var keyChain
+    
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
-        completion: @escaping (Result<URLRequest, any Error>) -> Void
+        completion: @escaping (Result<URLRequest, Error>) -> Void
     ) {
         var urlRequest = urlRequest
-        urlRequest.setValue(KeyChainManager.shard.getAccessToken(), forHTTPHeaderField: "accept")
+        urlRequest.setValue(
+            keyChain.getAccessToken(),
+            forHTTPHeaderField: "accept"
+        )
         completion(.success(urlRequest))
     }
     
     func retry(
         _ request: Request,
         for session: Session,
-        dueTo error: any Error,
+        dueTo error: Error,
         completion: @escaping (RetryResult) -> Void
     ) {
-        guard let response = request.task?.response as? HTTPURLResponse, response.statusCode == 419 else {
+        guard let response = request.task?.response as? HTTPURLResponse, 
+                response.statusCode == 419 else {
             completion(.doNotRetryWithError(error))
             return
         }
         
-        NetworkManager.shared.accessTokenRefresh { response in
+        service.accessTokenRefresh { [weak self] response in
+            guard let self else { return }
             switch response {
             case .success(let value):
-                KeyChainManager.shard.saveAccessToken(value.accessToken)
+                keyChain.saveAccessToken(value.accessToken)
                 completion(.retry)
-            case .failure(let failure):
+                print("토큰 갱신 성공")
+            case .failure:
                 completion(.doNotRetryWithError(error))
                 // 로그인 화면으로 이동
             }

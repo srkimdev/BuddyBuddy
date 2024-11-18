@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol DMListRepositoryInterface {
-    func fetchDMList(workspaceID: String) -> Single<Result<[DMList], Error>>
+    func fetchDMList(playgroundID: String) -> Single<Result<[DMList], Error>>
 }

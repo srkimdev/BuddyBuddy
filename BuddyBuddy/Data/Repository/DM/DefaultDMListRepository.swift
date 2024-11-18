@@ -10,9 +10,11 @@ import Foundation
 import RxSwift
 
 final class DefaultDMListRepository: DMListRepositoryInterface {
-    func fetchDMList(workspaceID: String) -> RxSwift.Single<Result<[DMList], any Error>> {
-        return NetworkManager.shared.callRequest(
-            router: APIRouter.dmList(workspaceID: workspaceID),
+    @Dependency(NetworkProtocol.self) private var service
+    
+    func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], any Error>> {
+        return service.callRequest(
+            router: DMRouter.dmList(playgroundID: playgroundID),
             responseType: [DMListDTO].self
         )
         .map { result in
