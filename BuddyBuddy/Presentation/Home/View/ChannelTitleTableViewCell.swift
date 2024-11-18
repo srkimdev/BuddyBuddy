@@ -34,7 +34,6 @@ final class ChannelTitleTableViewCell: BaseTableViewCell {
             make.leading.equalToSuperview().inset(13)
             make.height.equalTo(56)
         }
-        
         chevronImgView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.trailing.equalToSuperview().inset(13)

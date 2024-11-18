@@ -34,7 +34,12 @@ final class HomeViewController: BaseNavigationViewController {
         var config = UIButton.Configuration.plain()
         
         config.image = .menu
-        config.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 0)
+        config.contentInsets = .init(
+            top: 0,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
+        )
         
         view.configuration = config
         return view
@@ -46,12 +51,16 @@ final class HomeViewController: BaseNavigationViewController {
             forCellReuseIdentifier: ChannelTitleTableViewCell.identifier
         )
         view.register(
-            DefaultChannelTableViewCell.self,
-            forCellReuseIdentifier: DefaultChannelTableViewCell.identifier
+            ReadChannelTableViewCell.self,
+            forCellReuseIdentifier: ReadChannelTableViewCell.identifier
         )
         view.register(
             UnreadChannelTableViewCell.self,
             forCellReuseIdentifier: UnreadChannelTableViewCell.identifier
+        )
+        view.register(
+            ChannelAddTableViewCell.self,
+            forCellReuseIdentifier: ChannelAddTableViewCell.identifier
         )
         
         view.separatorStyle = .none
@@ -72,7 +81,12 @@ final class HomeViewController: BaseNavigationViewController {
         config.imagePlacement = .leading
         config.imagePadding = 12
         config.baseForegroundColor = .gray1
-        config.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 0)
+        config.contentInsets = .init(
+            top: 0,
+            leading: 16,
+            bottom: 0,
+            trailing: 0
+        )
         
         view.configuration = config
         view.backgroundColor = .white
@@ -82,7 +96,6 @@ final class HomeViewController: BaseNavigationViewController {
     private let emptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .white
-        view.setContentHuggingPriority(.init(1), for: .vertical)
         return view
     }()
     private let floatingBtn: UIButton = {
@@ -90,7 +103,12 @@ final class HomeViewController: BaseNavigationViewController {
         var config = UIButton.Configuration.plain()
         
         config.image = .newMessage
-        config.contentInsets = .init(top: 16.45, leading: 16.45, bottom: 16.45, trailing: 16.45)
+        config.contentInsets = .init(
+            top: 16.45,
+            leading: 16.45,
+            bottom: 16.45,
+            trailing: 16.45
+        )
         
         view.configuration = config
         view.layer.cornerRadius = 25
@@ -134,27 +152,7 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        let datasource = createDataSource()
-        let sections: [ChannelSectionModel] = [.title(items: [.title(.caret)]),
-                                               .list(items: [.channel(Channel(
-                                                title: "받아쓰기 할 사람들 모여라",
-                                                isRead: true
-                                               )), .channel(Channel(
-                                                title: "스크립트 외우기",
-                                                isRead: false
-                                               )), .channel(Channel(
-                                                title: "오픽 딸 사람덜~ 여기 모여요",
-                                                isRead: true)
-                                               )]),
-                                               .add(items: [.add(AddChannel())])]
-        
-        Observable.just(sections)
-            .bind(to: channelTableView.rx.items(dataSource: datasource))
-            .disposed(by: disposeBag)
-        
-        channelTableView.snp.remakeConstraints { make in
-            make.height.equalTo(56 + sections[1].items.count * 41 + 48)
-        }
+        bindTableView()
     }
     
     override func setNavigation() {
@@ -195,21 +193,17 @@ final class HomeViewController: BaseNavigationViewController {
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
-        
         stackView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
             make.width.equalToSuperview()
         }
-        
         memberAddBtn.snp.makeConstraints { make in
             make.height.equalTo(48)
         }
-        
         emptyView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()
             make.height.equalTo(300)
         }
-        
         floatingBtn.snp.makeConstraints { make in
             make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.size.equalTo(50)
@@ -235,10 +229,10 @@ extension HomeViewController {
             case .channel(let item):
                 if item.isRead {
                     guard let cell = channelTableView.dequeueReusableCell(
-                        withIdentifier: DefaultChannelTableViewCell.identifier,
+                        withIdentifier: ReadChannelTableViewCell.identifier,
                         for: indexpath
-                    ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(title: item.title, image: item.image)
+                    ) as? ReadChannelTableViewCell else { return UITableViewCell() }
+                    cell.configureCell(title: item.title)
                     cell.selectionStyle = .none
                     return cell
                 } else {
@@ -252,13 +246,42 @@ extension HomeViewController {
                 }
             case .add(let item):
                 guard let cell = channelTableView.dequeueReusableCell(
-                    withIdentifier: DefaultChannelTableViewCell.identifier,
+                    withIdentifier: ChannelAddTableViewCell.identifier,
                     for: indexpath
-                ) as? DefaultChannelTableViewCell else { return UITableViewCell() }
-                cell.configureCell(title: item.title, image: item.imageString)
+                ) as? ChannelAddTableViewCell else { return UITableViewCell() }
                 cell.selectionStyle = .none
+                cell.configureCell(title: item)
                 return cell
             }
+        }
+    }
+    
+    private func bindTableView() {
+        let datasource = createDataSource()
+        let sections: [ChannelSectionModel] = [.title(item: .title(.caret)),
+                                               .list(items: [.channel(Channel(
+                                                title: "받아쓰기 할 사람들 모여라",
+                                                isRead: true
+                                               )), .channel(Channel(
+                                                title: "스크립트 외우기",
+                                                isRead: false
+                                               )), .channel(Channel(
+                                                title: "오픽 딸 사람덜~ 여기 모여요",
+                                                isRead: true)
+                                               )]),
+                                               .add(items: [.add("Add Channel".localized())])]
+        
+        Observable.just(sections)
+            .bind(to: channelTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
+        
+        channelTableView.snp.remakeConstraints { make in
+            let heights = [56, 41, 48]
+            var totalHeight = 0
+            for (idx, section) in sections.enumerated() {
+                totalHeight += section.items.count * heights[idx]
+            }
+            make.height.equalTo(totalHeight)
         }
     }
 }

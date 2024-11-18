@@ -9,10 +9,11 @@ import UIKit
 
 import SnapKit
 
-final class DefaultChannelTableViewCell: BaseTableViewCell {
+final class ReadChannelTableViewCell: BaseTableViewCell {
     private let iconImgView: UIImageView = {
         let view = UIImageView()
         view.tintColor = .gray1
+        view.image = UIImage(systemName: "number")
         return view
     }()
     private let titleLabel: UILabel = {
@@ -34,24 +35,14 @@ final class DefaultChannelTableViewCell: BaseTableViewCell {
             make.leading.equalToSuperview().inset(16)
             make.size.equalTo(18)
         }
+        titleLabel.snp.makeConstraints { make in
+            make.verticalEdges.equalToSuperview()
+            make.leading.equalTo(iconImgView.snp.trailing).offset(12)
+            make.height.equalTo(41)
+        }
     }
     
-    func configureCell(title: String, image: String) {
+    func configureCell(title: String) {
         titleLabel.text = title
-        iconImgView.image = UIImage(systemName: image)
-        
-        if image == "plus" {
-            titleLabel.snp.remakeConstraints { make in
-                make.verticalEdges.equalToSuperview()
-                make.leading.equalTo(iconImgView.snp.trailing).offset(12)
-                make.height.equalTo(48)
-            }
-        } else {
-            titleLabel.snp.remakeConstraints { make in
-                make.verticalEdges.equalToSuperview()
-                make.leading.equalTo(iconImgView.snp.trailing).offset(12)
-                make.height.equalTo(41)
-            }
-        }
     }
 }

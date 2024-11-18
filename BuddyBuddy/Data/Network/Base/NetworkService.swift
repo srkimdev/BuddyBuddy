@@ -11,6 +11,15 @@ import Alamofire
 import RxSwift
 
 final class NetworkService: NetworkProtocol {
+    static let session: Session = {
+        let configuration = URLSessionConfiguration.af.default
+        let logger = NetworkLogger()
+        return Session(
+            configuration: configuration,
+            eventMonitors: [logger]
+        )
+    }()
+    
     func callRequest<T: Decodable>(
         router: TargetType,
         responseType: T.Type
@@ -18,8 +27,7 @@ final class NetworkService: NetworkProtocol {
         return Single.create { observer -> Disposable in
             do {
                 let request = try router.asURLRequest()
-
-                AF.request(request)
+                NetworkService.session.request(request)
                     .validate(statusCode: 200..<300)
                     .responseDecodable(of: responseType.self) { response in
                         switch response.result {
@@ -42,7 +50,7 @@ extension NetworkProtocol {
         do {
             let request = try LogInRouter.accessTokenRefresh.asURLRequest()
             
-            AF.request(request)
+            NetworkService.session.request(request)
                 .responseDecodable(of: AccessTokenDTO.self) { response in
                     switch response.result {
                     case .success(let value):
@@ -51,7 +59,6 @@ extension NetworkProtocol {
                         print(error)
                     }
                 }
-            
         } catch {
             print(error)
         }
