@@ -21,13 +21,13 @@ enum AlertButtonType: String {
     var toBtnTitle: String {
         switch self {
         case .confirm:
-            return "Confirm"
+            return "Confirm".localized()
         case .cancel:
-            return "Cancel"
+            return "Cancel".localized()
         case .exit:
-            return "Exit"
+            return "Exit".localized()
         case .delete:
-            return "Delete"
+            return "Delete".localized()
         }
     }
 }

@@ -32,18 +32,19 @@ final class RecentSearchTableView: BaseView {
     }()
     
     override func setHierarchy() {
-        [headerLabel, recentTableView]
-            .forEach { addSubview($0) }
+        [headerLabel, recentTableView].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
         headerLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(16)
         }
         recentTableView.snp.makeConstraints { make in
             make.top.equalTo(headerLabel.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
 }

@@ -59,4 +59,9 @@ extension UIFont {
         type: .medium,
         size: 12
     )
+    /// medium 11
+    static let caption2 = UIFont.pretendard(
+        type: .medium,
+        size: 11
+    )
 }

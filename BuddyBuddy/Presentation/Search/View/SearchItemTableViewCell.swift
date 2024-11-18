@@ -25,14 +25,15 @@ final class SearchItemTableViewCell: BaseTableViewCell {
     }()
     
     override func setHierarchy() {
-        [searchedImg, searchedTerms]
-            .forEach { contentView.addSubview($0) }
+        [searchedImg, searchedTerms].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     override func setConstraints() {
         searchedImg.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.width.height.equalTo(15)
+            make.size.equalTo(15)
             make.leading.equalToSuperview().inset(16)
             
         }

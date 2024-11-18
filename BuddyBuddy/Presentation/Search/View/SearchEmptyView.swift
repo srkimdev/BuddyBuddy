@@ -24,14 +24,15 @@ final class SearchEmptyView: BaseView {
     }()
     
     override func setHierarchy() {
-        [emptyView, emptyText]
-            .forEach { addSubview($0) }
+        [emptyView, emptyText].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
         emptyView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.height.equalTo(180)
+            make.size.equalTo(180)
         }
         emptyText.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
