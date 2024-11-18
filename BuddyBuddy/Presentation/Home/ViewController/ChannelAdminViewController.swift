@@ -14,6 +14,8 @@ import SnapKit
 final class ChannelAdminViewController: BaseViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     
+    private let vm: ChangeAdminViewModel
+    
     private let topView: ModalNavigationView = ModalNavigationView(
         title: "ChangeChannelAdmin".localized()
     )
@@ -28,8 +30,6 @@ final class ChannelAdminViewController: BaseViewController {
         return view
     }()
     
-    private let vm: ChangeAdminViewModel
-    
     init(vm: ChangeAdminViewModel) {
         self.vm = vm
         
@@ -42,19 +42,20 @@ final class ChannelAdminViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        [topView, userTableView]
-            .forEach { view.addSubview($0) }
+        [topView, userTableView].forEach {
+            view.addSubview($0)
+        }
     }
     
     override func setConstraints() {
         topView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(44)
         }
         userTableView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom)
-            make.leading.trailing.bottom.equalTo(safeArea)
+            make.horizontalEdges.bottom.equalTo(safeArea)
         }
     }
 }

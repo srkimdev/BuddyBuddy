@@ -31,28 +31,31 @@ final class InviteMemberViewController: BaseViewController {
     
     override func bind() {
         let input = InviteMemberViewModel.Input(backBtnTapped: topView.backBtn.rx.tap.map { () })
-        let output = vm.transform(input: input)
-        
+        let output = vm.transform(input: input)        
     }
     
     override func setHierarchy() {
-        [topView, emailTextField]
-            .forEach { view.addSubview($0) }
+        [topView, emailTextField].forEach {
+            view.addSubview($0)
+        }
     }
     
     override func setConstraints() {
-        view.backgroundColor = .gray2
-        
         topView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(10)
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(44)
         }
         emailTextField.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom).offset(24)
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(76)
         }
     }
     
+    override func setView() {
+        super.setView()
+        
+        view.backgroundColor = .gray2
+    }
 }

@@ -41,7 +41,10 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             sheet.detents = [.large()]
             sheet.prefersGrabberVisible = true
         }
-        navigationController.present(vc, animated: true)
+        navigationController.present(
+            vc,
+            animated: true
+        )
     }
     func toInviteMember() {
         let vc = InviteMemberViewController(vm: InviteMemberViewModel(coordinator: self))
@@ -50,7 +53,10 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             sheet.detents = [.large()]
             sheet.prefersGrabberVisible = true
         }
-        navigationController.present(vc, animated: true)
+        navigationController.present(
+            vc,
+            animated: true
+        )
     }
     func toProfile() {
         let vc = ProfileViewController(vm: ProfileViewModel(coordinator: self))
@@ -59,6 +65,9 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             sheet.detents = [.large()]
             sheet.prefersGrabberVisible = true
         }
-        navigationController.present(vc, animated: true)
+        navigationController.present(
+            vc,
+            animated: true
+        )
     }
 }

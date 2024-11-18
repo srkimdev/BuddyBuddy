@@ -21,26 +21,25 @@ final class ProfileBottomView: BaseView {
     )
     
     override func setHierarchy() {
-        [nameView, emailView, dmBtn]
-            .forEach { addSubview($0) }
+        [nameView, emailView, dmBtn].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
-        backgroundColor = .white
-        
         nameView.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(40)
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(40)
         }
         emailView.snp.makeConstraints { make in
             make.top.equalTo(nameView.snp.bottom).offset(18)
-            make.leading.trailing.equalToSuperview()
+            make.horizontalEdges.equalToSuperview()
             make.height.equalTo(40)
         }
         dmBtn.snp.makeConstraints { make in
             make.top.equalTo(emailView.snp.bottom).offset(30)
-            make.leading.trailing.equalToSuperview().inset(24)
+            make.horizontalEdges.equalToSuperview().inset(24)
             make.bottom.equalToSuperview().inset(30)
         }
     }
@@ -49,7 +48,15 @@ final class ProfileBottomView: BaseView {
         name: String,
         email: String
     ) {
-        nameView.setUI(label: name, font: .title2, fontColor: .black)
-        emailView.setUI(label: email, font: .body, fontColor: .gray2)
+        nameView.setUI(
+            label: name,
+            font: .title2,
+            fontColor: .black
+        )
+        emailView.setUI(
+            label: email,
+            font: .body,
+            fontColor: .gray2
+        )
     }
 }

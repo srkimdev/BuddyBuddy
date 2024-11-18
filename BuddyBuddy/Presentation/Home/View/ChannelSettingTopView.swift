@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 final class ChannelSettingTopView: BaseView {
-    private let channelNameLb: UILabel = {
+    private let channelNameLabel: UILabel = {
         let view = UILabel()
         view.font = .title1
         view.textAlignment = .left
@@ -32,26 +32,30 @@ final class ChannelSettingTopView: BaseView {
     }()
     
     override func setHierarchy() {
-        [channelNameLb, channelIntro]
-            .forEach { addSubview($0) }
+        [channelNameLabel, channelIntro].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
-        channelNameLb.snp.makeConstraints { make in
+        channelNameLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(16)
             make.leading.equalToSuperview().inset(16)
             make.trailing.equalToSuperview().inset(4)
         }
         channelIntro.snp.makeConstraints { make in
-            make.top.equalTo(channelNameLb.snp.bottom).offset(8)
+            make.top.equalTo(channelNameLabel.snp.bottom).offset(8)
             make.leading.equalToSuperview().inset(16)
             make.trailing.equalToSuperview().inset(8)
             make.bottom.equalToSuperview().inset(8)
         }
     }
     
-    func setChannelInfo(name: String, intro: String) {
-        channelNameLb.text = name
+    func setChannelInfo(
+        name: String,
+        intro: String
+    ) {
+        channelNameLabel.text = name
         channelIntro.text = intro
     }
 }

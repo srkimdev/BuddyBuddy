@@ -16,21 +16,20 @@ final class ChannelAdminTableViewCell: BaseTableViewCell {
         view.clipsToBounds = true
         return view
     }()
-    private let profileNameLb: UILabel = {
+    private let profileNameLabel: UILabel = {
         let view = UILabel()
         view.font = .bodyBold
         view.textColor = .black
         view.textAlignment = .left
         return view
     }()
-    private let emailLb: UILabel = {
+    private let emailLabel: UILabel = {
         let view = UILabel()
         view.font = .body
         view.textColor = .gray1
         view.textAlignment = .left
         return view
     }()
-    
     private let labelContainerView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
@@ -41,30 +40,31 @@ final class ChannelAdminTableViewCell: BaseTableViewCell {
     }()
     
     override func setHierarchy() {
-        contentView.backgroundColor = .white
-        
-        [profileImgView, labelContainerView]
-            .forEach { contentView.addSubview($0) }
-        [profileNameLb, emailLb]
-            .forEach { labelContainerView.addArrangedSubview($0) }
+        [profileImgView, labelContainerView].forEach {
+            contentView.addSubview($0)
+        }
+        [profileNameLabel, emailLabel].forEach {
+            labelContainerView.addArrangedSubview($0)
+        }
     }
+    
     override func setConstraints() {
         profileImgView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
-            make.height.width.equalTo(44)
+            make.size.equalTo(44)
         }
-        
         labelContainerView.snp.makeConstraints { make in
             make.leading.equalTo(profileImgView.snp.trailing).offset(8)
             make.centerY.equalToSuperview()
-            make.top.bottom.equalToSuperview().inset(12)
+            make.verticalEdges.equalToSuperview().inset(12)
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            profileImgView.layer.cornerRadius = profileImgView.bounds.width / 2
-        }
+        profileImgView.layer.cornerRadius = profileImgView.bounds.width / 2
     }
     
     func setUserProfile(
@@ -73,7 +73,7 @@ final class ChannelAdminTableViewCell: BaseTableViewCell {
         email: String
     ) {
         profileImgView.image = img
-        profileNameLb.text = name
-        emailLb.text = email
+        profileNameLabel.text = name
+        emailLabel.text = email
     }
 }

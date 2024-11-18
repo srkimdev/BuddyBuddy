@@ -41,17 +41,17 @@ final class SystemImageLabelView: BaseView {
     }
     
     override func setHierarchy() {
-        [imgCircleView, titleLabel]
-            .forEach { addSubview($0) }
-        [imgView]
-            .forEach { imgCircleView.addSubview($0) }
+        [imgCircleView, titleLabel].forEach {
+            addSubview($0)
+        }
+        imgCircleView.addSubview(imgView)
     }
     
     override func setConstraints() {
         imgCircleView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
             make.leading.equalToSuperview().inset(24)
-            make.width.height.equalTo(40)
+            make.size.equalTo(40)
         }
         titleLabel.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -60,13 +60,8 @@ final class SystemImageLabelView: BaseView {
         }
         imgView.snp.makeConstraints { make in
             make.center.equalTo(imgCircleView)
-            make.width.height.equalTo(30)
+            make.size.equalTo(30)
         }
-        
-//        DispatchQueue.main.async { [weak self] in
-//            guard let self else { return }
-//            imgCircleView.layer.cornerRadius = imgCircleView.bounds.width / 2
-//        }
     }
     
     func setUI(

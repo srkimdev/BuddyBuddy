@@ -16,7 +16,6 @@ final class ChannelSettingMiddleView: BaseView {
         view.text = "멤버(14)"
         return view
     }()
-    
     let memberTableView: UITableView = {
         let view = UITableView()
         view.register(
@@ -30,8 +29,9 @@ final class ChannelSettingMiddleView: BaseView {
     }()
     
     override func setHierarchy() {
-        [memberCount, memberTableView]
-            .forEach { addSubview($0) }
+        [memberCount, memberTableView].forEach {
+            addSubview($0)
+        }
     }
     
     override func setConstraints() {
@@ -43,7 +43,7 @@ final class ChannelSettingMiddleView: BaseView {
         }
         memberTableView.snp.makeConstraints { make in
             make.top.equalTo(memberCount.snp.bottom)
-            make.leading.trailing.bottom.equalToSuperview()
+            make.horizontalEdges.bottom.equalToSuperview()
         }
     }
     

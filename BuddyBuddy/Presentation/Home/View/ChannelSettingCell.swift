@@ -25,8 +25,9 @@ final class ChannelSettingCell: BaseTableViewCell {
     }()
     
     override func setHierarchy() {
-        [profileImgView, nameLabel]
-            .forEach { contentView.addSubview($0) }
+        [profileImgView, nameLabel].forEach {
+            contentView.addSubview($0)
+        }
     }
     
     override func setConstraints() {
@@ -41,16 +42,17 @@ final class ChannelSettingCell: BaseTableViewCell {
             make.height.equalTo(18)
             make.trailing.equalToSuperview()
         }
-        
-        DispatchQueue.main.async { [weak self] in
-            guard let self else { return }
-            self.profileImgView.layer.cornerRadius = profileImgView.bounds.width / 2
-        }
     }
     
     func setProfileUI(profileImg: UIImage, profileName: String) {
         // TODO: 프로필 이미지 없을 때 처리 필요
         profileImgView.image = profileImg
         nameLabel.text = profileName
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        profileImgView.layer.cornerRadius = profileImgView.bounds.width / 2
     }
 }
