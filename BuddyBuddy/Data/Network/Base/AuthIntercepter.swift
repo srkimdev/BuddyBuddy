@@ -38,10 +38,11 @@ final class AuthIntercepter: RequestInterceptor{
             return
         }
         
-        service.accessTokenRefresh { response in
+        service.accessTokenRefresh { [weak self] response in
+            guard let self else { return }
             switch response {
             case .success(let value):
-                self.keyChain.saveAccessToken(value.accessToken)
+                keyChain.saveAccessToken(value.accessToken)
                 completion(.retry)
                 print("토큰 갱신 성공")
             case .failure:

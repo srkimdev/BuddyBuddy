@@ -8,10 +8,19 @@
 import Foundation
 
 struct DMHistory {
-    let dm_id: String
-    let room_id: String
+    let dmID: String
+    let roomID: String
     let content: String
     let createdAt: String
     let files: [String]
     let user: UserInfo
+    
+    enum CodingKeys: String, CodingKey {
+        case dmID = "dm_id"
+        case roomID = "room_id"
+        case content
+        case createdAt
+        case files
+        case user
+    }
 }

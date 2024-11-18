@@ -8,14 +8,19 @@
 import Foundation
 
 struct DMUnReadDTO: Decodable {
-    let room_id: String
+    let roomID: String
     let count: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case roomID = "room_id"
+        case count
+    }
 }
 
 extension DMUnReadDTO {
     func toDomain() -> DMUnRead {
         return .init(
-            room_id: room_id,
+            roomID: roomID,
             count: count
         )
     }

@@ -20,16 +20,13 @@ struct DMListInfo {
 }
 
 final class DMListViewModel: ViewModelType {
+    @Dependency(DMUseCaseInterface.self) private var dmUseCase
+    
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let dmUseCase: DMUseCaseInterface
     private let coordinator: DMCoordinator
     
-    init(
-        dmUseCase: DMUseCaseInterface,
-        coordinator: DMCoordinator
-    ) {
-        self.dmUseCase = dmUseCase
+    init(coordinator: DMCoordinator) {
         self.coordinator = coordinator
     }
     
@@ -59,13 +56,13 @@ final class DMListViewModel: ViewModelType {
                         Observable.zip(
                             self.dmUseCase.fetchDMHistory(
                                 playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.room_id,
+                                roomID: dmList.roomID,
                                 cursorDate: ""
                             )
                             .asObservable(),
                             self.dmUseCase.fetchDMUnRead(
                                 playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.room_id,
+                                roomID: dmList.roomID,
                                 after: ""
                             )
                             .asObservable()
@@ -74,12 +71,12 @@ final class DMListViewModel: ViewModelType {
                             switch (history, unread) {
                             case (.success(let historyArray), .success(let unreadData)):
                                 return Observable.just(DMListInfo(
-                                    profileImg: dmList.user.profileImg ?? "",
+                                    profileImg: dmList.user.profileImage ?? "",
                                     userName: dmList.user.nickname,
                                     lastText: historyArray.last?.content ?? "",
                                     lastTime: historyArray.last?.createdAt ?? "",
                                     unReadCount: unreadData.count,
-                                    roomID: dmList.room_id
+                                    roomID: dmList.roomID
                                 ))
                             case (.failure(let error), _), (_, .failure(let error)):
                                 return Observable.error(error)

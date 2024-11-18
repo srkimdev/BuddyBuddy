@@ -11,18 +11,17 @@ import RxCocoa
 import RxSwift
 
 final class DMChattingViewModel: ViewModelType {
+    @Dependency(DMUseCaseInterface.self) private var dmUseCase
+    
     private let disposeBag = DisposeBag()
     
-    private let dmUseCase: DMUseCaseInterface
     private let coordinator: DMCoordinator
     private let dmListInfo: DMListInfo
     
     init(
-        dmUseCase: DMUseCaseInterface,
         coordinator: DMCoordinator,
         dmListInfo: DMListInfo
     ) {
-        self.dmUseCase = dmUseCase
         self.coordinator = coordinator
         self.dmListInfo = dmListInfo
     }

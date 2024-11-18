@@ -19,9 +19,10 @@ final class DefaultDMHistoryRepository: DMHistoryRepositoryInterface {
     ) -> RxSwift.Single<Result<[DMHistory], Error>> {
         return service.callRequest(
             router: DMRouter.dmHistory(
-            playgroundID: playgroundID,
-            roomID: roomID,
-            cursorDate: ""),
+                playgroundID: playgroundID,
+                roomID: roomID,
+                cursorDate: ""
+                ),
             responseType: [DMHistoryDTO].self
         )
         .map { result in

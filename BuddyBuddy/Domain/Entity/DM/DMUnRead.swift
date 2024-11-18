@@ -8,6 +8,10 @@
 import Foundation
 
 struct DMUnRead {
-    let room_id: String
+    let roomID: String
     let count: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case roomID = "room_id"
+    }
 }
