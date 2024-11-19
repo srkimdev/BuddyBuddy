@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
+		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
+		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
 		C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */; };
 		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
@@ -153,6 +155,8 @@
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
+		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
 		C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDateFormatter.swift; sourceTree = "<group>"; };
 		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
@@ -480,6 +484,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
+				C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -487,6 +492,7 @@
 		C90827D92CDA63860096BA0D /* UseCaseInterface */ = {
 			isa = PBXGroup;
 			children = (
+				C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */,
 				DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */,
 			);
 			path = UseCaseInterface;
@@ -1239,6 +1245,7 @@
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
 				DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */,
+				C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
@@ -1270,6 +1277,7 @@
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
+				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
