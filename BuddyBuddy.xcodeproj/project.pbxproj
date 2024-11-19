@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
+		C09FA8E22CEC620700613FEA /* _DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* _DateFormatter.swift */; };
+		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
@@ -144,6 +146,8 @@
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		C09FA8E12CEC620700613FEA /* _DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DateFormatter.swift; sourceTree = "<group>"; };
+		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChannelTableViewCell.swift; sourceTree = "<group>"; };
@@ -733,6 +737,7 @@
 				C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */,
 				C957EA662CE2095300B62A2A /* UIViewController+.swift */,
 				C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */,
+				C09FA8E32CEC62A200613FEA /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -824,6 +829,7 @@
 				C91BBC062CE37265001EFC70 /* SearchImageType.swift */,
 				C91BBC0A2CE3B162001EFC70 /* AlertType.swift */,
 				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
+				C09FA8E12CEC620700613FEA /* _DateFormatter.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1103,6 +1109,7 @@
 				DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */,
 				DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
+				C09FA8E22CEC620700613FEA /* _DateFormatter.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
@@ -1156,6 +1163,7 @@
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
+				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,
 				DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */,
