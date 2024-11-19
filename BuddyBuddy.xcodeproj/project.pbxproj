@@ -20,7 +20,6 @@
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
 		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
-		C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828402CDA66DB0096BA0D /* FormatterEmpty */; };
 		C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C908284C2CDA6B760096BA0D /* RxCocoa */; };
 		C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C908284E2CDA6B760096BA0D /* RxSwift */; };
 		C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C90828512CDA6BD90096BA0D /* Alamofire */; };
@@ -154,7 +153,6 @@
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
 		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
-		C90828402CDA66DB0096BA0D /* FormatterEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = FormatterEmpty; sourceTree = "<group>"; };
 		C908285E2CDA72B50096BA0D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -352,7 +350,6 @@
 			isa = PBXGroup;
 			children = (
 				C9F20F382CDB5F030043351E /* Enum */,
-				C908283F2CDA668E0096BA0D /* Formatter */,
 				C908283D2CDA66850096BA0D /* Protocol */,
 				C908283C2CDA667E0096BA0D /* Extension */,
 			);
@@ -763,14 +760,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		C908283F2CDA668E0096BA0D /* Formatter */ = {
-			isa = PBXGroup;
-			children = (
-				C90828402CDA66DB0096BA0D /* FormatterEmpty */,
-			);
-			path = Formatter;
-			sourceTree = "<group>";
-		};
 		C908284A2CDA68AB0096BA0D /* Core */ = {
 			isa = PBXGroup;
 			children = (
@@ -1060,7 +1049,6 @@
 				C91BBC092CE396B6001EFC70 /* Pretendard-Medium.otf in Resources */,
 				DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */,
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
-				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
 				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
 				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
