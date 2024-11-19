@@ -7,6 +7,8 @@
 
 import Foundation
 
+typealias MyChannelList = [MyChannel]
+
 struct MyChannel {
     let workspaceID: String
     let name: String
