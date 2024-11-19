@@ -17,10 +17,8 @@
 		C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */; };
 		C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */; };
 		C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */; };
-		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
 		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
-		C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828402CDA66DB0096BA0D /* FormatterEmpty */; };
 		C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C908284C2CDA6B760096BA0D /* RxCocoa */; };
 		C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C908284E2CDA6B760096BA0D /* RxSwift */; };
 		C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C90828512CDA6BD90096BA0D /* Alamofire */; };
@@ -114,8 +112,6 @@
 		DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A912CE332A000E2A2F7 /* TargetType.swift */; };
 		DC213A942CE365D000E2A2F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A932CE365D000E2A2F7 /* Header.swift */; };
 		DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A952CE3668700E2A2F7 /* APIKey.swift */; };
-		DC213A992CE36AC400E2A2F7 /* DefaultDMListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A982CE36AC400E2A2F7 /* DefaultDMListRepository.swift */; };
-		DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */; };
 		DC213A9F2CE36CA700E2A2F7 /* DMList.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A9E2CE36CA700E2A2F7 /* DMList.swift */; };
 		DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */; };
 		DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */; };
@@ -128,17 +124,19 @@
 		DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */; };
 		DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F472CDB63640043351E /* DMListViewController.swift */; };
 		DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F492CDB63780043351E /* DMListViewModel.swift */; };
+		DC9375602CEC67D900012F43 /* RealmTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93755F2CEC67D900012F43 /* RealmTable.swift */; };
+		DC9375622CEC73B800012F43 /* RealmRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375612CEC73B800012F43 /* RealmRepository.swift */; };
+		DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375632CEC7E6500012F43 /* UserInfo.swift */; };
+		DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */; };
+		DC9375682CECAB5D00012F43 /* DMRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375672CECAB5D00012F43 /* DMRepositoryInterface.swift */; };
+		DC93756A2CECBC8000012F43 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375692CECBC8000012F43 /* DateFormatManager.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
 		DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */; };
-		DC9BC0D72CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D62CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift */; };
-		DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D82CE8DD97002AF523 /* DefaultDMHistoryRepository.swift */; };
 		DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */; };
 		DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */; };
 		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
-		DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */; };
-		DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */; };
 		DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */; };
 /* End PBXBuildFile section */
 
@@ -151,10 +149,8 @@
 		C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
 		C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAddTableViewCell.swift; sourceTree = "<group>"; };
-		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
 		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
-		C90828402CDA66DB0096BA0D /* FormatterEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = FormatterEmpty; sourceTree = "<group>"; };
 		C908285E2CDA72B50096BA0D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -244,8 +240,6 @@
 		DC213A912CE332A000E2A2F7 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		DC213A932CE365D000E2A2F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DC213A952CE3668700E2A2F7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		DC213A982CE36AC400E2A2F7 /* DefaultDMListRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMListRepository.swift; sourceTree = "<group>"; };
-		DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC213A9E2CE36CA700E2A2F7 /* DMList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMList.swift; sourceTree = "<group>"; };
 		DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListDTO.swift; sourceTree = "<group>"; };
 		DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUseCaseInterface.swift; sourceTree = "<group>"; };
@@ -256,17 +250,19 @@
 		DC213AAE2CE4848B00E2A2F7 /* AccessTokenDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessTokenDTO.swift; sourceTree = "<group>"; };
 		DC213AB12CE484BE00E2A2F7 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		DC213AB42CE4876600E2A2F7 /* LogInDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInDTO.swift; sourceTree = "<group>"; };
+		DC93755F2CEC67D900012F43 /* RealmTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmTable.swift; sourceTree = "<group>"; };
+		DC9375612CEC73B800012F43 /* RealmRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmRepository.swift; sourceTree = "<group>"; };
+		DC9375632CEC7E6500012F43 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
+		DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMRepository.swift; sourceTree = "<group>"; };
+		DC9375672CECAB5D00012F43 /* DMRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRepositoryInterface.swift; sourceTree = "<group>"; };
+		DC9375692CECBC8000012F43 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
 		DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistory.swift; sourceTree = "<group>"; };
-		DC9BC0D62CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryRepositoryInterface.swift; sourceTree = "<group>"; };
-		DC9BC0D82CE8DD97002AF523 /* DefaultDMHistoryRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMHistoryRepository.swift; sourceTree = "<group>"; };
 		DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadDTO.swift; sourceTree = "<group>"; };
 		DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnRead.swift; sourceTree = "<group>"; };
-		DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMUnReadRepository.swift; sourceTree = "<group>"; };
-		DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -384,7 +380,7 @@
 		C90827D42CDA63190096BA0D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				DC213A972CE369AB00E2A2F7 /* DM */,
+				DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -410,7 +406,7 @@
 		C90827D72CDA63750096BA0D /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
-				DC213A9A2CE36AED00E2A2F7 /* DM */,
+				DC9375672CECAB5D00012F43 /* DMRepositoryInterface.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -766,7 +762,7 @@
 		C908283F2CDA668E0096BA0D /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
-				C90828402CDA66DB0096BA0D /* FormatterEmpty */,
+				DC9375692CECBC8000012F43 /* DateFormatManager.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -862,7 +858,8 @@
 		C9F96D592CDD260000271295 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				C90827F72CDA64B70096BA0D /* RealmEmpty */,
+				DC93755F2CEC67D900012F43 /* RealmTable.swift */,
+				DC9375612CEC73B800012F43 /* RealmRepository.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -901,32 +898,13 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
-		DC213A972CE369AB00E2A2F7 /* DM */ = {
-			isa = PBXGroup;
-			children = (
-				DC213A982CE36AC400E2A2F7 /* DefaultDMListRepository.swift */,
-				DC9BC0D82CE8DD97002AF523 /* DefaultDMHistoryRepository.swift */,
-				DC9BC0E02CE9BB95002AF523 /* DefaultDMUnReadRepository.swift */,
-			);
-			path = DM;
-			sourceTree = "<group>";
-		};
-		DC213A9A2CE36AED00E2A2F7 /* DM */ = {
-			isa = PBXGroup;
-			children = (
-				DC213A9B2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift */,
-				DC9BC0D62CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift */,
-				DC9BC0E22CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift */,
-			);
-			path = DM;
-			sourceTree = "<group>";
-		};
 		DC213A9D2CE36CA000E2A2F7 /* DM */ = {
 			isa = PBXGroup;
 			children = (
 				DC213A9E2CE36CA700E2A2F7 /* DMList.swift */,
 				DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */,
 				DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */,
+				DC9375632CEC7E6500012F43 /* UserInfo.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1060,8 +1038,6 @@
 				C91BBC092CE396B6001EFC70 /* Pretendard-Medium.otf in Resources */,
 				DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */,
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
-				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
-				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
 				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
 				C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */,
@@ -1104,16 +1080,12 @@
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
-				DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
 				C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */,
 				C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */,
 				C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */,
 				C9F96D652CDD295300271295 /* UIFont+.swift in Sources */,
-				DC213A992CE36AC400E2A2F7 /* DefaultDMListRepository.swift in Sources */,
-				DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */,
-				DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
@@ -1139,6 +1111,7 @@
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
 				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
+				DC9375602CEC67D900012F43 /* RealmTable.swift in Sources */,
 				DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
@@ -1160,12 +1133,14 @@
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
 				C0BF42912CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift in Sources */,
+				DC93756A2CECBC8000012F43 /* DateFormatManager.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
+				DC9375622CEC73B800012F43 /* RealmRepository.swift in Sources */,
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
@@ -1173,11 +1148,11 @@
 				DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */,
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
 				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
+				DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
 				DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
-				DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
@@ -1188,6 +1163,7 @@
 				DC213AA22CE36E0700E2A2F7 /* DMListDTO.swift in Sources */,
 				DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
+				DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
@@ -1202,11 +1178,11 @@
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
-				DC9BC0D72CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift in Sources */,
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
+				DC9375682CECAB5D00012F43 /* DMRepositoryInterface.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
 				DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */,

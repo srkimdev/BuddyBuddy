@@ -15,31 +15,8 @@ extension AppDelegate {
         DIContainer.register(type: NetworkProtocol.self, NetworkService())
         
         DIContainer.register(
-            type: DMListRepositoryInterface.self,
-            DefaultDMListRepository()
+            type: DMRepositoryInterface.self,
+            DefaultDMRepository()
         )
-        DIContainer.register(
-            type: DMHistoryRepositoryInterface.self,
-            DefaultDMHistoryRepository()
-        )
-        DIContainer.register(
-            type: DMUnReadRepositoryInterface.self,
-            DefaultDMUnReadRepository()
-        )
-        
-        DIContainer.register(
-            type: DMUseCaseInterface.self,
-            DefaultDMUseCase(
-               dmListRepositoryInterface: DIContainer.resolve(
-                   type: DMListRepositoryInterface.self
-               ),
-               dmHistoryRepositoryInterface: DIContainer.resolve(
-                   type: DMHistoryRepositoryInterface.self
-               ),
-               dmUnReadRepositoryInterface: DIContainer.resolve(
-                   type: DMUnReadRepositoryInterface.self)
-            )
-        )
-        
     }
 }

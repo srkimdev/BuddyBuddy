@@ -17,7 +17,10 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func start() {
-        let vc = DMListViewController(vm: DMListViewModel(coordinator: self))
+        let vc = DMListViewController(vm: DMListViewModel(
+            coordinator: self,
+            dmUseCase: DefaultDMUseCase()
+        ))
         navigationController.pushViewController(
             vc,
             animated: true
@@ -27,7 +30,9 @@ final class DefaultDMCoordinator: DMCoordinator {
     func toDMChatting(_ dmListInfo: DMListInfo) {
         let vc = DMChattingViewController(vm: DMChattingViewModel(
             coordinator: self,
-            dmListInfo: dmListInfo
+            dmUseCase: DefaultDMUseCase(),
+            dmListInfo: dmListInfo,
+            realmRepository: RealmRepository()
         ))
         navigationController.pushViewController(
             vc,

@@ -9,9 +9,7 @@ import Foundation
 
 import Alamofire
 
-final class AuthIntercepter: RequestInterceptor{
-    @Dependency(NetworkProtocol.self) private var service
-    @Dependency(KeyChainProtocol.self) private var keyChain
+final class AuthIntercepter: RequestInterceptor {
     
     func adapt(
         _ urlRequest: URLRequest,
@@ -20,7 +18,7 @@ final class AuthIntercepter: RequestInterceptor{
     ) {
         var urlRequest = urlRequest
         urlRequest.setValue(
-            keyChain.getAccessToken(),
+            KeyChainManager.shared.getAccessToken(),
             forHTTPHeaderField: "accept"
         )
         completion(.success(urlRequest))
@@ -38,17 +36,35 @@ final class AuthIntercepter: RequestInterceptor{
             return
         }
         
-        service.accessTokenRefresh { [weak self] response in
-            guard let self else { return }
-            switch response {
-            case .success(let value):
-                keyChain.saveAccessToken(value.accessToken)
-                completion(.retry)
-                print("토큰 갱신 성공")
-            case .failure:
-                completion(.doNotRetryWithError(error))
-                // 로그인 화면으로 이동
-            }
+//        NetworkService.session.accessTokenRefresh { [weak self] response in
+//            guard let self else { return }
+//            switch response {
+//            case .success(let value):
+//                KeyChainManager.shared.saveAccessToken(value.accessToken)
+//                completion(.retry)
+//                print("토큰 갱신 성공")
+//            case .failure:
+//                completion(.doNotRetryWithError(error))
+//                // 로그인 화면으로 이동
+//            }
+//        }
+    }
+    
+    func accessTokenRefresh(completionHandler: @escaping (Result<AccessToken, Error>) -> Void) {
+        do {
+            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
+            
+            NetworkService.session.request(request)
+                .responseDecodable(of: AccessTokenDTO.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        completionHandler(.success(value.toDomain()))
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+        } catch {
+            print(error)
         }
     }
 }

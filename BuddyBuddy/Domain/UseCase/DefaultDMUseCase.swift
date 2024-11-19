@@ -10,22 +10,10 @@ import Foundation
 import RxSwift
 
 final class DefaultDMUseCase: DMUseCaseInterface {
-    private let dmListRepositoryInterface: DMListRepositoryInterface
-    private let dmHistoryRepositoryInterface: DMHistoryRepositoryInterface
-    private let dmUnReadRepositoryInterface: DMUnReadRepositoryInterface
-    
-    init(
-        dmListRepositoryInterface: DMListRepositoryInterface,
-        dmHistoryRepositoryInterface: DMHistoryRepositoryInterface,
-        dmUnReadRepositoryInterface: DMUnReadRepositoryInterface
-    ) {
-        self.dmListRepositoryInterface = dmListRepositoryInterface
-        self.dmHistoryRepositoryInterface = dmHistoryRepositoryInterface
-        self.dmUnReadRepositoryInterface = dmUnReadRepositoryInterface
-    }
+    @Dependency(DMRepositoryInterface.self) private var dmRepositoryInterface
     
     func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], Error>> {
-        return dmListRepositoryInterface.fetchDMList(playgroundID: playgroundID)
+        return dmRepositoryInterface.fetchDMList(playgroundID: playgroundID)
     }
     
     func fetchDMHistory(
@@ -33,7 +21,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         roomID: String,
         cursorDate: String
     ) -> Single<Result<[DMHistory], Error>> {
-        return dmHistoryRepositoryInterface.fetchDMHistory(
+        return dmRepositoryInterface.fetchDMHistory(
             playgroundID: playgroundID,
             roomID: roomID,
             cursorDate: cursorDate
@@ -45,7 +33,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         roomID: String,
         after: String
     ) -> Single<Result<DMUnRead, Error>> {
-        return dmUnReadRepositoryInterface.fetchDMNoRead(
+        return dmRepositoryInterface.fetchDMNoRead(
             playgroundID: playgroundID,
             roomID: roomID,
             after: after

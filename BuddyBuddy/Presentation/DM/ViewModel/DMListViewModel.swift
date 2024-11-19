@@ -20,14 +20,17 @@ struct DMListInfo {
 }
 
 final class DMListViewModel: ViewModelType {
-    @Dependency(DMUseCaseInterface.self) private var dmUseCase
-    
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let coordinator: DMCoordinator
+    private let dmUseCase: DMUseCaseInterface
     
-    init(coordinator: DMCoordinator) {
+    init(
+        coordinator: DMCoordinator,
+        dmUseCase: DMUseCaseInterface
+    ) {
         self.coordinator = coordinator
+        self.dmUseCase = dmUseCase
     }
     
     struct Input {
