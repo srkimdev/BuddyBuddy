@@ -8,9 +8,9 @@
 import Foundation
 
 extension Date {
-    func toString(format: _DateFormatter) -> String {
-        _DateFormatter.standard.timeStyle = .none
-        _DateFormatter.standard.dateFormat = format.rawValue
-        return _DateFormatter.standard.string(from: self)
+    func toString(format: BuddyDateFormatter) -> String {
+        BuddyDateFormatter.standard.timeStyle = .none
+        BuddyDateFormatter.standard.dateFormat = format.rawValue
+        return BuddyDateFormatter.standard.string(from: self)
     }
 }

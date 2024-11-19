@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
-		C09FA8E22CEC620700613FEA /* _DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* _DateFormatter.swift */; };
+		C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */; };
 		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
 		C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */; };
@@ -153,7 +153,7 @@
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		C09FA8E12CEC620700613FEA /* _DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DateFormatter.swift; sourceTree = "<group>"; };
+		C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDateFormatter.swift; sourceTree = "<group>"; };
 		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
 		C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelListResponseDTO.swift; sourceTree = "<group>"; };
@@ -889,7 +889,7 @@
 				C91BBC062CE37265001EFC70 /* SearchImageType.swift */,
 				C91BBC0A2CE3B162001EFC70 /* AlertType.swift */,
 				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
-				C09FA8E12CEC620700613FEA /* _DateFormatter.swift */,
+				C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1171,7 +1171,7 @@
 				DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */,
 				DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
-				C09FA8E22CEC620700613FEA /* _DateFormatter.swift in Sources */,
+				C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
