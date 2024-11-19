@@ -20,7 +20,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     
     func fetchMyChannelList(playgroundID: String) -> RxSwift.Single<Result<MyChannelList, any Error>> {
         service.callRequest(
-            router: Router.fetchMyChannelList(playgroundID: playgroundID),
+            router: Router.myChannelList(playgroundID: playgroundID),
             responseType: MyChannelListResponseDTO.self
         )
         .map { result in
@@ -39,7 +39,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         after: Date?
     ) -> RxSwift.Single<Result<UnreadCountOfChannel, any Error>> {
         service.callRequest(
-            router: Router.countUnreads(
+            router: Router.unreadCount(
                 playgroundID: playgroundID,
                 channelID: channelID,
                 after: after

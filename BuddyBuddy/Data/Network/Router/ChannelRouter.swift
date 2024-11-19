@@ -10,8 +10,8 @@ import Foundation
 import Alamofire
 
 enum ChannelRouter {
-    case fetchMyChannelList(playgroundID: String)
-    case countUnreads(playgroundID: String, channelID: String, after: Date? = nil)
+    case myChannelList(playgroundID: String)
+    case unreadCount(playgroundID: String, channelID: String, after: Date?)
 }
 
 extension ChannelRouter: TargetType {
@@ -21,23 +21,23 @@ extension ChannelRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .fetchMyChannelList, .countUnreads:
+        case .myChannelList, .unreadCount:
             return .get
         }
     }
     
     var path: String {
         switch self {
-        case .fetchMyChannelList(let playgroundID):
+        case .myChannelList(let playgroundID):
             return "/workspaces/\(playgroundID)/my-channels"
-        case .countUnreads(let playgroundID, let channelID, _):
+        case .unreadCount(let playgroundID, let channelID, _):
             return "/workspaces/\(playgroundID)/channels/\(channelID)/unreads"
         }
     }
     
     var header: [String : String] {
         switch self {
-        case .fetchMyChannelList, .countUnreads:
+        case .myChannelList, .unreadCount:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
@@ -51,9 +51,9 @@ extension ChannelRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .fetchMyChannelList:
+        case .myChannelList:
             return nil
-        case .countUnreads(_, _, let after):
+        case .unreadCount(_, _, let after):
             guard let after else { return nil }
             let afterValue = after.toString(format: .defaultDate)
             return [URLQueryItem(name: "after", value: afterValue)]
