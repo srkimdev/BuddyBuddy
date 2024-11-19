@@ -24,8 +24,7 @@
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
-		C0BF42912CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */; };
-		C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */; };
+		C0BF42932CE47A6100C5B5B4 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */; };
 		C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */; };
 		C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
@@ -168,8 +167,7 @@
 		C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelRepository.swift; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
-		C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChannelTableViewCell.swift; sourceTree = "<group>"; };
-		C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChannelTableViewCell.swift; sourceTree = "<group>"; };
+		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
 		C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAddTableViewCell.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
@@ -577,8 +575,7 @@
 			children = (
 				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
 				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
-				C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */,
-				C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */,
+				C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */,
 				C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */,
 				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
 				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
@@ -1202,7 +1199,7 @@
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
-				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
+				C0BF42932CE47A6100C5B5B4 /* ChannelTableViewCell.swift in Sources */,
 				DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
@@ -1223,7 +1220,6 @@
 				C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
-				C0BF42912CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,

@@ -51,12 +51,8 @@ final class HomeViewController: BaseNavigationViewController {
             forCellReuseIdentifier: ChannelTitleTableViewCell.identifier
         )
         view.register(
-            ReadChannelTableViewCell.self,
-            forCellReuseIdentifier: ReadChannelTableViewCell.identifier
-        )
-        view.register(
-            UnreadChannelTableViewCell.self,
-            forCellReuseIdentifier: UnreadChannelTableViewCell.identifier
+            ChannelTableViewCell.self,
+            forCellReuseIdentifier: ChannelTableViewCell.identifier
         )
         view.register(
             ChannelAddTableViewCell.self,
@@ -152,7 +148,7 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        bindTableView()
+//        bindTableView()
     }
     
     override func setNavigation() {
@@ -227,23 +223,13 @@ extension HomeViewController {
                 cell.selectionStyle = .none
                 return cell
             case .channel(let item):
-                if item.isRead {
-                    guard let cell = channelTableView.dequeueReusableCell(
-                        withIdentifier: ReadChannelTableViewCell.identifier,
-                        for: indexpath
-                    ) as? ReadChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(title: item.title)
-                    cell.selectionStyle = .none
-                    return cell
-                } else {
-                    guard let cell = channelTableView.dequeueReusableCell(
-                        withIdentifier: UnreadChannelTableViewCell.identifier,
-                        for: indexpath
-                    ) as? UnreadChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(data: item.title)
-                    cell.selectionStyle = .none
-                    return cell
-                }
+                guard let cell = channelTableView.dequeueReusableCell(
+                    withIdentifier: ChannelTableViewCell.identifier,
+                    for: indexpath
+                ) as? ChannelTableViewCell else { return UITableViewCell() }
+                cell.configureCell(data: item)
+                cell.selectionStyle = .none
+                return cell
             case .add(let item):
                 guard let cell = channelTableView.dequeueReusableCell(
                     withIdentifier: ChannelAddTableViewCell.identifier,
@@ -256,20 +242,8 @@ extension HomeViewController {
         }
     }
     
-    private func bindTableView() {
+    private func bindTableView(sections: [ChannelSectionModel]) {
         let datasource = createDataSource()
-        let sections: [ChannelSectionModel] = [.title(item: .title(.caret)),
-                                               .list(items: [.channel(Channel(
-                                                title: "받아쓰기 할 사람들 모여라",
-                                                isRead: true
-                                               )), .channel(Channel(
-                                                title: "스크립트 외우기",
-                                                isRead: false
-                                               )), .channel(Channel(
-                                                title: "오픽 딸 사람덜~ 여기 모여요",
-                                                isRead: true)
-                                               )]),
-                                               .add(items: [.add("Add Channel".localized())])]
         
         Observable.just(sections)
             .bind(to: channelTableView.rx.items(dataSource: datasource))
