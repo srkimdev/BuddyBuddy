@@ -14,6 +14,8 @@
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
 		C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */; };
 		C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8F42CEC673400613FEA /* MyChannelList.swift */; };
+		C09FA8FB2CEC6DD200613FEA /* UnreadCountOfChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */; };
+		C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
@@ -154,6 +156,8 @@
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
 		C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelListResponseDTO.swift; sourceTree = "<group>"; };
 		C09FA8F42CEC673400613FEA /* MyChannelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelList.swift; sourceTree = "<group>"; };
+		C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannel.swift; sourceTree = "<group>"; };
+		C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannelResponseDTO.swift; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChannelTableViewCell.swift; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */,
+				C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -328,6 +333,7 @@
 			children = (
 				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				C09FA8F42CEC673400613FEA /* MyChannelList.swift */,
+				C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */,
 			);
 			path = Channel;
 			sourceTree = "<group>";
@@ -1129,6 +1135,7 @@
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
+				C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
 				DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */,
@@ -1220,6 +1227,7 @@
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */,
+				C09FA8FB2CEC6DD200613FEA /* UnreadCountOfChannel.swift in Sources */,
 				C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
