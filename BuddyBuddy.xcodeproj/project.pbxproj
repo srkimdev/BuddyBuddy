@@ -326,6 +326,7 @@
 		C09FA8F32CEC66D900613FEA /* Channel */ = {
 			isa = PBXGroup;
 			children = (
+				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				C09FA8F42CEC673400613FEA /* MyChannelList.swift */,
 			);
 			path = Channel;
@@ -466,7 +467,6 @@
 		C90827DA2CDA638F0096BA0D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
 				C09FA8F32CEC66D900613FEA /* Channel */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
