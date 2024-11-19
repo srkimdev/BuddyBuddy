@@ -483,8 +483,8 @@
 		C90827D82CDA63810096BA0D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
 				C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */,
+				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
