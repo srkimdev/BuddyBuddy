@@ -18,7 +18,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         self.service = service
     }
     
-    func fetchMyChannelList(playgroundID: String) -> RxSwift.Single<Result<MyChannelList, any Error>> {
+    func fetchMyChannelList(playgroundID: String) -> Single<Result<MyChannelList, any Error>> {
         service.callRequest(
             router: Router.myChannelList(playgroundID: playgroundID),
             responseType: MyChannelListResponseDTO.self
@@ -37,7 +37,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         playgroundID: String,
         channelID: String,
         after: Date?
-    ) -> RxSwift.Single<Result<UnreadCountOfChannel, any Error>> {
+    ) -> Single<Result<UnreadCountOfChannel, any Error>> {
         service.callRequest(
             router: Router.unreadCount(
                 playgroundID: playgroundID,
