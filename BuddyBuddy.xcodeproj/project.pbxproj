@@ -12,6 +12,8 @@
 		C09FA8E22CEC620700613FEA /* _DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* _DateFormatter.swift */; };
 		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
+		C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */; };
+		C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8F42CEC673400613FEA /* MyChannelList.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
@@ -150,6 +152,8 @@
 		C09FA8E12CEC620700613FEA /* _DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _DateFormatter.swift; sourceTree = "<group>"; };
 		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
+		C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelListResponseDTO.swift; sourceTree = "<group>"; };
+		C09FA8F42CEC673400613FEA /* MyChannelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelList.swift; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChannelTableViewCell.swift; sourceTree = "<group>"; };
@@ -303,6 +307,30 @@
 			path = NetworkLogger;
 			sourceTree = "<group>";
 		};
+		C09FA8ED2CEC660E00613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8EE2CEC664300613FEA /* Response */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		C09FA8EE2CEC664300613FEA /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		C09FA8F32CEC66D900613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8F42CEC673400613FEA /* MyChannelList.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
 		C90827CC2CDA4CA30096BA0D /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,6 +407,7 @@
 			children = (
 				DC213AB32CE4874F00E2A2F7 /* LogIn */,
 				DC213AAD2CE4847A00E2A2F7 /* AccessToken */,
+				C09FA8ED2CEC660E00613FEA /* Channel */,
 				DC213AA02CE36DFC00E2A2F7 /* DM */,
 			);
 			path = DTO;
@@ -439,6 +468,7 @@
 			children = (
 				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
+				C09FA8F32CEC66D900613FEA /* Channel */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
 			);
 			path = Entity;
@@ -1165,6 +1195,7 @@
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
+				C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
@@ -1189,6 +1220,7 @@
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */,
+				C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
 				C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */,
