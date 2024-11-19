@@ -16,6 +16,8 @@
 		C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8F42CEC673400613FEA /* MyChannelList.swift */; };
 		C09FA8FB2CEC6DD200613FEA /* UnreadCountOfChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */; };
 		C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */; };
+		C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */; };
+		C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
@@ -158,6 +160,8 @@
 		C09FA8F42CEC673400613FEA /* MyChannelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelList.swift; sourceTree = "<group>"; };
 		C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannel.swift; sourceTree = "<group>"; };
 		C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannelResponseDTO.swift; sourceTree = "<group>"; };
+		C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRepositoryInterface.swift; sourceTree = "<group>"; };
+		C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelRepository.swift; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChannelTableViewCell.swift; sourceTree = "<group>"; };
@@ -338,6 +342,22 @@
 			path = Channel;
 			sourceTree = "<group>";
 		};
+		C09FA8FE2CEC6F9B00613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		C09FA9012CEC715800613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
 		C90827CC2CDA4CA30096BA0D /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -423,6 +443,7 @@
 		C90827D42CDA63190096BA0D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				C09FA9012CEC715800613FEA /* Channel */,
 				DC213A972CE369AB00E2A2F7 /* DM */,
 			);
 			path = Repository;
@@ -449,6 +470,7 @@
 		C90827D72CDA63750096BA0D /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
+				C09FA8FE2CEC6F9B00613FEA /* Channel */,
 				DC213A9A2CE36AED00E2A2F7 /* DM */,
 			);
 			path = RepositoryInterface;
@@ -1167,6 +1189,7 @@
 				C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */,
 				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
 				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
+				C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
@@ -1198,6 +1221,7 @@
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
+				C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
