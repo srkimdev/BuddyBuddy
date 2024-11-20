@@ -37,7 +37,7 @@ final class HomeViewModel: ViewModelType {
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
         let configureChannelCell: Observable<MyChannel>
-        let menuBtnDidTap: Observable<Bool>
+        let menuBtnDidTap: Observable<Void>
         let channelItemDidSelected: Observable<IndexPath>
         let addMemeberBtnDidTap: Observable<Void>
         let floatingBtnDidTap: Observable<Void>
@@ -124,14 +124,8 @@ final class HomeViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.menuBtnDidTap
-            .bind(with: self) { owner, isFold in
-                let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
-                let listItem = isFold ? [] : channelList.value.map { ChannelItem.channel($0) }
-                let addItem = isFold ? [] : [ChannelItem.add("Add Channel")]
-                
-                updateChannelState.accept([.title(item: titleItem),
-                                           .list(items: listItem),
-                                           .add(items: addItem)])
+            .bind(with: self) { owner, _ in
+                // TODO: 화면전환
             }
             .disposed(by: disposeBag)
         

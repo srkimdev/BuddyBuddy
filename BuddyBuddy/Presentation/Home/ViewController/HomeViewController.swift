@@ -152,25 +152,15 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        let isFoldRelay = BehaviorRelay(value: false)
-        
         let input = HomeViewModel.Input(
             viewWillAppearTrigger: rx.viewWillAppear,
             configureChannelCell: configureChannelCell.asObservable(),
-            menuBtnDidTap: isFoldRelay.asObservable(),
+            menuBtnDidTap: menuBtn.rx.tap.map { _ in }.asObservable(),
             channelItemDidSelected: channelTableView.rx.itemSelected.asObservable(),
             addMemeberBtnDidTap: memberAddBtn.rx.tap.map { _ in }.asObservable(),
             floatingBtnDidTap: floatingBtn.rx.tap.map { _ in }.asObservable()
         )
         let output = vm.transform(input: input)
-        
-        menuBtn.rx.tap
-            .bind(onNext: { [weak isFoldRelay] in
-                guard let isFoldRelay else { return }
-                let currentValue = isFoldRelay.value
-                isFoldRelay.accept(!currentValue)
-            })
-            .disposed(by: disposeBag)
         
         output.navigationTitle
             .drive(with: self) { owner, title in
