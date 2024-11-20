@@ -119,7 +119,9 @@ final class HomeViewController: BaseNavigationViewController {
         )
         return view
     }()
-    
+    private lazy var datasource = createDataSource()
+    private var isTableViewBound = false
+
     init(vm: HomeViewModel) {
         self.vm = vm
     }
@@ -179,7 +181,7 @@ final class HomeViewController: BaseNavigationViewController {
         output.updateChannelState
             .drive(with: self) { owner, sections in
                 print("😝😝😝😝")
-                owner.bindTableView(sections: sections)
+                owner.bindTableView(sections: Observable.just(sections))
             }
             .disposed(by: disposeBag)
         
@@ -258,6 +260,7 @@ final class HomeViewController: BaseNavigationViewController {
 // MARK: RxDataSource
 extension HomeViewController {
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
+        print("🐶")
         return RxTableViewSectionedReloadDataSource<ChannelSectionModel> { [weak self] datasource, _, indexpath, _ in
             guard let self else { return UITableViewCell() }
             
@@ -290,13 +293,24 @@ extension HomeViewController {
         }
     }
     
-    private func bindTableView(sections: [ChannelSectionModel]) {
-        let datasource = createDataSource()
-        
-        Observable.just(sections)
+    private func bindTableView(sections: Observable<[ChannelSectionModel]>) {
+        guard !isTableViewBound else { return }
+        isTableViewBound = true
+        print("🐱")
+        sections
             .bind(to: channelTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
         
+        sections
+            .subscribe(onNext: { [weak self] sections in
+                guard let self else { return }
+                updateTableViewHeight(sections: sections)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func updateTableViewHeight(sections: [ChannelSectionModel]) {
+        print("🐭")
         channelTableView.snp.remakeConstraints { make in
             let heights = [56, 41, 48]
             var totalHeight = 0
