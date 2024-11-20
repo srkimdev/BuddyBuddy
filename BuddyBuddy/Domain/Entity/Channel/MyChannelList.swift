@@ -16,4 +16,5 @@ struct MyChannel {
     let coverImage: String?
     let ownerID: String
     let createdAt: String
+    var unreadCount: Int = 0
 }

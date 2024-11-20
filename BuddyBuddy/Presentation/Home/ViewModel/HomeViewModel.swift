@@ -46,14 +46,12 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let navigationTitle: Driver<String>
         let updateChannelState: Driver<[ChannelSectionModel]>
-        let unreadCountList: Driver<[UnreadCountOfChannel]>
     }
     
     func transform(input: Input) -> Output {
         let navigationTitle = PublishRelay<String>()
         let updateChannelState = PublishRelay<[ChannelSectionModel]>()
         let channelList = BehaviorRelay<MyChannelList>(value: [])
-        let unreadCountList = BehaviorRelay<[UnreadCountOfChannel]>(value: [])
         
         input.viewWillAppearTrigger
             .bind(with: self) { owner, _ in
@@ -109,9 +107,16 @@ final class HomeViewModel: ViewModelType {
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
-                    var list = unreadCountList.value
-                    list.append(value)
-                    unreadCountList.accept(list)
+//                    var list = unreadCountList.value
+//                    list.append(value)
+//                    unreadCountList.accept(list)
+                    var channels = channelList.value
+                    var current = channels.filter { $0.channelID == value.channelID }
+                    current[0].unreadCount = value.count
+                    if let index = channels.firstIndex(where: { $0.channelID == value.channelID }) {
+                        channels[index] = current[0]
+                        channelList.accept(channels)
+                     }
                 case .failure(let error):
                     print(error)
                 }
@@ -150,8 +155,7 @@ final class HomeViewModel: ViewModelType {
         
         return Output(
             navigationTitle: navigationTitle.asDriver(onErrorJustReturn: "Buddy Buddy"),
-            updateChannelState: updateChannelState.asDriver(onErrorDriveWith: .empty()),
-            unreadCountList: unreadCountList.asDriver(onErrorJustReturn: [])
+            updateChannelState: updateChannelState.asDriver(onErrorDriveWith: .empty())
         )
     }
 }

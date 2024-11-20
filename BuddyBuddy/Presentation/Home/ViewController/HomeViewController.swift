@@ -121,7 +121,8 @@ final class HomeViewController: BaseNavigationViewController {
     }()
     private lazy var datasource = createDataSource()
     private var isTableViewBound = false
-
+    private let configureChannelCell = PublishRelay<MyChannel>()
+    
     init(vm: HomeViewModel) {
         self.vm = vm
     }
@@ -151,7 +152,6 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        let configureChannelCell = PublishRelay<MyChannel>()
         let isFoldRelay = BehaviorRelay(value: false)
         
         let input = HomeViewModel.Input(
@@ -182,23 +182,6 @@ final class HomeViewController: BaseNavigationViewController {
             .drive(with: self) { owner, sections in
                 print("😝😝😝😝")
                 owner.bindTableView(sections: Observable.just(sections))
-            }
-            .disposed(by: disposeBag)
-        
-        output.unreadCountList
-            .drive(with: self) { owner, counts in
-                print(counts, "🐻🐻")
-                owner.channelTableView.rx.willDisplayCell
-                    .bind { cell, indexPath in
-                        guard let cell = owner.channelTableView.dequeueReusableCell(
-                            withIdentifier: ChannelTableViewCell.identifier,
-                            for: indexPath
-                        ) as? ChannelTableViewCell else { return }
-//                        let count = counts[indexPath.row]
-//                        let isRead = count.count <= 0
-//                        cell.configureCell(isRead: isRead)
-                    }
-                    .disposed(by: owner.disposeBag)
             }
             .disposed(by: disposeBag)
     }
@@ -278,6 +261,7 @@ extension HomeViewController {
                     withIdentifier: ChannelTableViewCell.identifier,
                     for: indexpath
                 ) as? ChannelTableViewCell else { return UITableViewCell() }
+                configureChannelCell.accept(item)
                 cell.configureCell(data: item)
                 cell.selectionStyle = .none
                 return cell
