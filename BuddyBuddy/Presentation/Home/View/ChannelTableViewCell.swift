@@ -47,4 +47,11 @@ final class ChannelTableViewCell: BaseTableViewCell {
         titleLabel.text = data.name
         // TODO: 안읽은 메세지 수 
     }
+    
+    func configureCell(isRead: Bool) {
+        iconImgView.image = isRead ? .read : .unread
+        titleLabel.font = isRead ?.body : .bodyBold
+        titleLabel.textColor = isRead ?.gray1 : .black
+        notificationView.isHidden = isRead
+    }
 }
