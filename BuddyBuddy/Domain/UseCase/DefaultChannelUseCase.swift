@@ -10,11 +10,8 @@ import Foundation
 import RxSwift
 
 final class DefaultChannelUseCase: ChannelUseCaseInterface {
-    private let repository: ChannelRepositoryInterface
-    
-    init(repository: ChannelRepositoryInterface) {
-        self.repository = repository
-    }
+    @Dependency(ChannelRepositoryInterface.self)
+    private var repository: ChannelRepositoryInterface
     
     func fetchMyChannelList(playgroundID: String) -> Single<Result<MyChannelList, any Error>> {
         repository.fetchMyChannelList(playgroundID: playgroundID)

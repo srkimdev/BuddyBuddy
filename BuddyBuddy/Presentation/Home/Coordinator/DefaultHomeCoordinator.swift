@@ -17,7 +17,10 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func start() {
-        let vc = HomeViewController(vm: HomeViewModel(coordinator: self))
+        let vc = HomeViewController(vm: HomeViewModel(
+            coordinator: self,
+            channelUseCase: DefaultChannelUseCase())
+        )
         navigationController.pushViewController(
             vc,
             animated: true

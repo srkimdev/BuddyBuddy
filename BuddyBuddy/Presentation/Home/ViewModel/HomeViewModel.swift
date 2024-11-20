@@ -24,8 +24,7 @@ final class HomeViewModel: ViewModelType {
     
     init(
         coordinator: HomeCoordinator,
-        channelUseCase: ChannelUseCaseInterface,
-        playground: Playground
+        channelUseCase: ChannelUseCaseInterface
     ) {
         self.coordinator = coordinator
         self.channelUseCase = channelUseCase
