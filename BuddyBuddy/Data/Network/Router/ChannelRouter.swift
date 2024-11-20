@@ -29,9 +29,9 @@ extension ChannelRouter: TargetType {
     var path: String {
         switch self {
         case .myChannelList(let playgroundID):
-            return "/workspaces/\(playgroundID)/my-channels"
+            return "workspaces/\(playgroundID)/my-channels"
         case .unreadCount(let playgroundID, let channelID, _):
-            return "/workspaces/\(playgroundID)/channels/\(channelID)/unreads"
+            return "workspaces/\(playgroundID)/channels/\(channelID)/unreads"
         }
     }
     

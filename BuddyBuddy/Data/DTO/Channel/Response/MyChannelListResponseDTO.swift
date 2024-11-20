@@ -10,12 +10,13 @@ import Foundation
 typealias MyChannelListResponseDTO = [MyChannelDTO]
 
 struct MyChannelDTO: Decodable {
-    let workspaceID, name: String
+    let channelID, name: String
     let description: String?
-    let coverImage, ownerID, createdAt: String
+    let coverImage: String?
+    let ownerID, createdAt: String
 
     enum CodingKeys: String, CodingKey {
-        case workspaceID = "workspace_id"
+        case channelID = "channel_id"
         case name, description, coverImage
         case ownerID = "owner_id"
         case createdAt
@@ -25,7 +26,7 @@ struct MyChannelDTO: Decodable {
 extension MyChannelDTO {
     func toDomain() -> MyChannel {
         return MyChannel(
-            channelID: workspaceID,
+            channelID: channelID,
             name: name,
             description: description,
             coverImage: coverImage,
