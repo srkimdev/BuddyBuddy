@@ -77,6 +77,19 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        channelList
+            .bind(with: self) { owner, list in
+                let isFold = false
+                let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
+                let listItem = isFold ? [] : list.map { ChannelItem.channel($0) }
+                let addItem = isFold ? [] : [ChannelItem.add("Add Channel".localized())]
+                
+                updateChannelState.accept([.title(item: titleItem),
+                                           .list(items: listItem),
+                                           .add(items: addItem)])
+            }
+            .disposed(by: disposeBag)
+        
         input.configureChannelCell
             .flatMap { [weak self] channel -> Single<Result<UnreadCountOfChannel, any Error>> in
                 // TODO: faliure 반환하며 early exit
@@ -107,13 +120,7 @@ final class HomeViewModel: ViewModelType {
         
         input.menuBtnDidTap
             .bind(with: self) { owner, isFold in
-                let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
-                let listItem = isFold ? [] : channelList.value.map { ChannelItem.channel($0) }
-                let addItem = isFold ? [] : [ChannelItem.add("Add Channel")]
-                
-                updateChannelState.accept([.title(item: titleItem),
-                                           .list(items: listItem),
-                                           .add(items: addItem)])
+                // TODO: 화면 전환
             }
             .disposed(by: disposeBag)
         
