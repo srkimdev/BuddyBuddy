@@ -57,9 +57,9 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: DMHistory) {
+    func designCell(_ transition: DMHistoryTable) {
         profileImage.backgroundColor = .lightGray
-        userName.text = transition.user.nickname
+        userName.text = transition.user?.nickname
         chatTime.text = "11:55 오전"
         speechBubble.updateText(transition.content)
     }

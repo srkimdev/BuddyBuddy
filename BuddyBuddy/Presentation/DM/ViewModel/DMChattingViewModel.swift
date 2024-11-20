@@ -40,11 +40,11 @@ final class DMChattingViewModel: ViewModelType {
     }
     
     struct Output {
-        let updateDMListTableView: Driver<[DMHistory]>
+        let updateDMListTableView: Driver<[DMHistoryTable]>
     }
     
     func transform(input: Input) -> Output {
-        let updateDMListTableView = PublishSubject<[DMHistory]>()
+        let updateDMListTableView = PublishSubject<[DMHistoryTable]>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -52,7 +52,6 @@ final class DMChattingViewModel: ViewModelType {
                     $0.roomID == self.dmListInfo.roomID
                 }/*.sorted(by: { $0.createdAt < $1.createdAt })*/
                 
-                print(chatHistory.last?.createdAt, "last")
                 return self.dmUseCase.fetchDMHistory(
                     playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
                     roomID: self.dmListInfo.roomID,
@@ -62,10 +61,16 @@ final class DMChattingViewModel: ViewModelType {
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let value):
-                    updateDMListTableView.onNext(value)
                     
                     let dmHistoryTable = value.map { $0.toTable() }
                     dmHistoryTable.forEach { owner.realmRepository.updateItem($0) }
+                    
+                    let chatHistory = self.realmRepository.readAllItem().filter {
+                        $0.roomID == self.dmListInfo.roomID
+                    }
+                    
+                    updateDMListTableView.onNext(chatHistory)
+                    
                 case .failure(let error):
                     print(error)
                 }
