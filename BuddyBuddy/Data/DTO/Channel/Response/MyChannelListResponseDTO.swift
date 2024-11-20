@@ -25,7 +25,7 @@ struct MyChannelDTO: Decodable {
 extension MyChannelDTO {
     func toDomain() -> MyChannel {
         return MyChannel(
-            workspaceID: workspaceID,
+            channelID: workspaceID,
             name: name,
             description: description,
             coverImage: coverImage,

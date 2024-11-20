@@ -10,7 +10,7 @@ import Foundation
 typealias MyChannelList = [MyChannel]
 
 struct MyChannel {
-    let workspaceID: String
+    let channelID: String
     let name: String
     let description: String?
     let coverImage: String
