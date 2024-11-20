@@ -149,13 +149,60 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-//        bindTableView()
+        let configureChannelCell = PublishRelay<MyChannel>()
+        let isFoldRelay = BehaviorRelay(value: false)
+        
+        let input = HomeViewModel.Input(
+            viewWillAppearTrigger: rx.viewWillAppear,
+            configureChannelCell: configureChannelCell.asObservable(),
+            menuBtnDidTap: isFoldRelay.asObservable(),
+            channelItemDidSelected: channelTableView.rx.itemSelected.asObservable(),
+            addMemeberBtnDidTap: memberAddBtn.rx.tap.map { _ in }.asObservable(),
+            floatingBtnDidTap: floatingBtn.rx.tap.map { _ in }.asObservable()
+        )
+        let output = vm.transform(input: input)
+        
+        menuBtn.rx.tap
+            .bind(onNext: { [weak isFoldRelay] in
+                guard let isFoldRelay else { return }
+                let currentValue = isFoldRelay.value
+                isFoldRelay.accept(!currentValue)
+            })
+            .disposed(by: disposeBag)
+        
+        output.navigationTitle
+            .drive(with: self) { owner, title in
+                owner.title = title
+            }
+            .disposed(by: disposeBag)
+        
+        output.updateChannelState
+            .drive(with: self) { owner, sections in
+                print("😝😝😝😝")
+                owner.bindTableView(sections: sections)
+            }
+            .disposed(by: disposeBag)
+        
+        output.unreadCountList
+            .drive(with: self) { owner, counts in
+                print(counts, "🐻🐻")
+                owner.channelTableView.rx.willDisplayCell
+                    .bind { cell, indexPath in
+                        guard let cell = owner.channelTableView.dequeueReusableCell(
+                            withIdentifier: ChannelTableViewCell.identifier,
+                            for: indexPath
+                        ) as? ChannelTableViewCell else { return }
+//                        let count = counts[indexPath.row]
+//                        let isRead = count.count <= 0
+//                        cell.configureCell(isRead: isRead)
+                    }
+                    .disposed(by: owner.disposeBag)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setNavigation() {
         super.setNavigation()
-        
-        title = "영어 마스터 할 사람 모여라"
         
         let appearance = UINavigationBarAppearance()
         appearance.titlePositionAdjustment = UIOffset(

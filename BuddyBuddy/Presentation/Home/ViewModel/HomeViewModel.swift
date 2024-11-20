@@ -120,7 +120,13 @@ final class HomeViewModel: ViewModelType {
         
         input.menuBtnDidTap
             .bind(with: self) { owner, isFold in
-                // TODO: 화면 전환
+                let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
+                let listItem = isFold ? [] : channelList.value.map { ChannelItem.channel($0) }
+                let addItem = isFold ? [] : [ChannelItem.add("Add Channel")]
+                
+                updateChannelState.accept([.title(item: titleItem),
+                                           .list(items: listItem),
+                                           .add(items: addItem)])
             }
             .disposed(by: disposeBag)
         
