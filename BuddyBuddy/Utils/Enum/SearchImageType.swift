@@ -7,17 +7,54 @@
 
 import Foundation
 
-enum SearchImageType: String {
-    case clock, channel, person
+enum SearchImageType {
+    case channel
+    case country(emoji: Country)
     
     var toImgTitle: String {
         switch self {
-        case .clock:
-            return "clock"
         case .channel:
-            return "number"
-        case .person:
-            return "person"
+            return "unread"
+        case .country(let emoji):
+            return emoji.toString
+        }
+    }
+}
+
+enum Country: String {
+    case kr
+    case us
+    case jp
+    case cn
+    case es
+    case fr
+    case pt
+    case ind
+    case sg
+    case au
+
+    var toString: String {
+        switch self {
+        case .kr: 
+            return "KoreaFlag"
+        case .us:
+            return "USAFlag"
+        case .jp:
+            return "JapanFlag"
+        case .cn:
+            return "ChinaFlag"
+        case .es:
+            return "SpainFlag"
+        case .fr:
+            return "FranceFlag"
+        case .pt:
+            return "PortugalFlag"
+        case .ind:
+            return "IndiaFlag"
+        case .sg:
+            return "SingaporeFlag"
+        case .au:
+            return "AustraliaFlag"
         }
     }
 }

@@ -2,11 +2,11 @@
 //  SearchState.swift
 //  BuddyBuddy
 //
-//  Created by Jisoo Ham on 11/11/24.
+//  Created by Jisoo Ham on 11/21/24.
 //
 
 import Foundation
 
-enum SearchState: String {
-    case empty, recentSearch, searchResult
+enum SearchState: Int {
+    case channel, user
 }

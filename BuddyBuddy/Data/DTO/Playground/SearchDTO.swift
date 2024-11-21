@@ -68,7 +68,7 @@ struct ChannelDTO: Decodable {
     
     enum CodingKeys: String, CodingKey {
         case channelID = "channel_id"
-        case channelName
+        case channelName = "name"
         case coverImage
         case ownerID = "owner_id"
         case createdAt
