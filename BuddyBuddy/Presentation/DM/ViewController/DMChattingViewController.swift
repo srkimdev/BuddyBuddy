@@ -24,6 +24,57 @@ final class DMChattingViewController: BaseNavigationViewController {
         view.separatorStyle = .none
         return view
     }()
+    private let textFieldBackground: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray3
+        view.layer.cornerRadius = 8
+        return view
+    }()
+    private let chatTextField: UITextField = {
+        let view = UITextField()
+        view.placeholder = "메시지를 입력하세요"
+        return view
+    }()
+    private let plusButton: UIButton = {
+        let view = UIButton()
+        var config = UIButton.Configuration.plain()
+        var imgConfig = UIImage.SymbolConfiguration(pointSize: 16)
+        
+        config.preferredSymbolConfigurationForImage = imgConfig
+        config.image = UIImage(systemName: "plus")
+        config.baseForegroundColor = .black
+        config.contentInsets = .init(
+            top: 0,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
+        )
+        
+        view.configuration = config
+        view.backgroundColor = .gray3
+        
+        return view
+    }()
+    private let sendButton: UIButton = {
+        let view = UIButton()
+        var config = UIButton.Configuration.plain()
+        var imgConfig = UIImage.SymbolConfiguration(pointSize: 16)
+        
+        config.preferredSymbolConfigurationForImage = imgConfig
+        config.image = UIImage(systemName: "paperplane")
+        config.baseForegroundColor = .black
+        config.contentInsets = .init(
+            top: 0,
+            leading: 0,
+            bottom: 0,
+            trailing: 0
+        )
+        
+        view.configuration = config
+        view.backgroundColor = .gray3
+        
+        return view
+    }()
     
     init(vm: DMChattingViewModel) {
         self.vm = vm
@@ -36,11 +87,35 @@ final class DMChattingViewController: BaseNavigationViewController {
     
     override func setHierarchy() {
         view.addSubview(dmChattingTableView)
+        view.addSubview(textFieldBackground)
+        [chatTextField, plusButton, sendButton].forEach {
+            textFieldBackground.addSubview($0)
+        }
     }
     
     override func setConstraints() {
         dmChattingTableView.snp.makeConstraints { make in
             make.edges.equalTo(view.safeAreaLayoutGuide)
+        }
+        textFieldBackground.snp.makeConstraints { make in
+            make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
+            make.bottom.equalTo(view.safeAreaLayoutGuide)
+            make.height.equalTo(44)
+        }
+        plusButton.snp.makeConstraints { make in
+            make.leading.equalTo(textFieldBackground.snp.leading).offset(8)
+            make.verticalEdges.equalToSuperview()
+            make.width.equalTo(44)
+        }
+        chatTextField.snp.makeConstraints { make in
+            make.leading.equalTo(plusButton.snp.trailing)
+            make.verticalEdges.equalToSuperview()
+            make.trailing.equalTo(sendButton.snp.leading)
+        }
+        sendButton.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(8)
+            make.verticalEdges.equalToSuperview()
+            make.width.equalTo(44)
         }
     }
     
@@ -61,5 +136,4 @@ final class DMChattingViewController: BaseNavigationViewController {
             }
             .disposed(by: disposeBag)
     }
-    
 }

@@ -129,7 +129,12 @@
 		DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375632CEC7E6500012F43 /* UserInfo.swift */; };
 		DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */; };
 		DC9375682CECAB5D00012F43 /* DMRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375672CECAB5D00012F43 /* DMRepositoryInterface.swift */; };
-		DC93756A2CECBC8000012F43 /* DateFormatManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375692CECBC8000012F43 /* DateFormatManager.swift */; };
+		DC93756F2CEDB19E00012F43 /* SocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93756E2CEDB19E00012F43 /* SocketService.swift */; };
+		DC9375712CEDC0B900012F43 /* SocketProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375702CEDC0B900012F43 /* SocketProtocol.swift */; };
+		DC9375732CEDF8A000012F43 /* UserInfoDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375722CEDF8A000012F43 /* UserInfoDTO.swift */; };
+		DC9375752CEE081D00012F43 /* DefaultSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */; };
+		DC9375772CEE087B00012F43 /* SocketRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */; };
+		DC93757A2CEE330700012F43 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DC9375792CEE330700012F43 /* SocketIO */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
@@ -255,7 +260,11 @@
 		DC9375632CEC7E6500012F43 /* UserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultDMRepository.swift; sourceTree = "<group>"; };
 		DC9375672CECAB5D00012F43 /* DMRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRepositoryInterface.swift; sourceTree = "<group>"; };
-		DC9375692CECBC8000012F43 /* DateFormatManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatManager.swift; sourceTree = "<group>"; };
+		DC93756E2CEDB19E00012F43 /* SocketService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketService.swift; sourceTree = "<group>"; };
+		DC9375702CEDC0B900012F43 /* SocketProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketProtocol.swift; sourceTree = "<group>"; };
+		DC9375722CEDF8A000012F43 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
+		DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSocketRepository.swift; sourceTree = "<group>"; };
+		DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
@@ -276,6 +285,7 @@
 				C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */,
 				C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */,
 				C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */,
+				DC93757A2CEE330700012F43 /* SocketIO in Frameworks */,
 				C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */,
 				C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */,
 				C90828552CDA6D6E0096BA0D /* Nuke in Frameworks */,
@@ -381,6 +391,7 @@
 			isa = PBXGroup;
 			children = (
 				DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */,
+				DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -407,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				DC9375672CECAB5D00012F43 /* DMRepositoryInterface.swift */,
+				DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -742,6 +754,7 @@
 				C96C729E2CDB28F500E0D6CF /* Reusables.swift */,
 				C9F20F452CDB625A0043351E /* ViewModelType.swift */,
 				DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */,
+				DC9375702CEDC0B900012F43 /* SocketProtocol.swift */,
 				DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */,
 			);
 			path = Protocol;
@@ -762,7 +775,6 @@
 		C908283F2CDA668E0096BA0D /* Formatter */ = {
 			isa = PBXGroup;
 			children = (
-				DC9375692CECBC8000012F43 /* DateFormatManager.swift */,
 			);
 			path = Formatter;
 			sourceTree = "<group>";
@@ -843,6 +855,7 @@
 				DC213A932CE365D000E2A2F7 /* Header.swift */,
 				DC213A952CE3668700E2A2F7 /* APIKey.swift */,
 				DC213AA72CE4632F00E2A2F7 /* AuthIntercepter.swift */,
+				DC93756E2CEDB19E00012F43 /* SocketService.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -915,6 +928,7 @@
 				DC213AA12CE36E0700E2A2F7 /* DMListDTO.swift */,
 				DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */,
 				DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */,
+				DC9375722CEDF8A000012F43 /* UserInfoDTO.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -980,6 +994,7 @@
 				C90828632CDA75CF0096BA0D /* RxKakaoSDKCommon */,
 				C0BF428A2CE4721600C5B5B4 /* Differentiator */,
 				C0BF428C2CE4721600C5B5B4 /* RxDataSources */,
+				DC9375792CEE330700012F43 /* SocketIO */,
 			);
 			productName = BuddyBuddy;
 			productReference = C9C27A002CDA315500243744 /* BuddyBuddy.app */;
@@ -1019,6 +1034,7 @@
 				C908285C2CDA6FEC0096BA0D /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				C90828602CDA75CF0096BA0D /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
 				C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
+				DC9375782CEE330700012F43 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
 			);
 			productRefGroup = C9C27A012CDA315500243744 /* Products */;
 			projectDirPath = "";
@@ -1078,6 +1094,7 @@
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
+				DC9375732CEDF8A000012F43 /* UserInfoDTO.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
@@ -1101,6 +1118,7 @@
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
 				C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */,
+				DC9375712CEDC0B900012F43 /* SocketProtocol.swift in Sources */,
 				C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */,
 				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
 				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
@@ -1109,6 +1127,7 @@
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
+				DC9375752CEE081D00012F43 /* DefaultSocketRepository.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
 				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
 				DC9375602CEC67D900012F43 /* RealmTable.swift in Sources */,
@@ -1131,9 +1150,9 @@
 				C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */,
 				C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
+				DC93756F2CEDB19E00012F43 /* SocketService.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
 				C0BF42912CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift in Sources */,
-				DC93756A2CECBC8000012F43 /* DateFormatManager.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
@@ -1164,6 +1183,7 @@
 				DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */,
+				DC9375772CEE087B00012F43 /* SocketRepositoryInterface.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
@@ -1479,6 +1499,14 @@
 				minimumVersion = 2.23.0;
 			};
 		};
+		DC9375782CEE330700012F43 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/socketio/socket.io-client-swift.git";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 16.1.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1531,6 +1559,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C90828602CDA75CF0096BA0D /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */;
 			productName = RxKakaoSDKCommon;
+		};
+		DC9375792CEE330700012F43 /* SocketIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DC9375782CEE330700012F43 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
+			productName = SocketIO;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

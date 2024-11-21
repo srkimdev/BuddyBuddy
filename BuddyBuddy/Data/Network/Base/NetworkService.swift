@@ -47,3 +47,23 @@ final class NetworkService: NetworkProtocol {
         }
     }
 }
+
+extension NetworkProtocol {
+    func accessTokenRefresh(completionHandler: @escaping (Result<AccessToken, Error>) -> Void) {
+        do {
+            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
+            
+            NetworkService.session.request(request)
+                .responseDecodable(of: AccessTokenDTO.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        completionHandler(.success(value.toDomain()))
+                    case .failure(let error):
+                        print(error)
+                    }
+                }
+        } catch {
+            print(error)
+        }
+    }
+}

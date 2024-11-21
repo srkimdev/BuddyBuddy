@@ -11,6 +11,7 @@ import RxSwift
 
 final class DefaultDMUseCase: DMUseCaseInterface {
     @Dependency(DMRepositoryInterface.self) private var dmRepositoryInterface
+    @Dependency(SocketRepositoryInterface.self) private var socketRepositoryInterface
     
     func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], Error>> {
         return dmRepositoryInterface.fetchDMList(playgroundID: playgroundID)
@@ -38,5 +39,21 @@ final class DefaultDMUseCase: DMUseCaseInterface {
             roomID: roomID,
             after: after
         )
+    }
+    
+    func connectSocket(roomID: String) {
+        socketRepositoryInterface.connectSocket(roomID: roomID)
+    }
+    
+    func disConnectSocket() {
+        socketRepositoryInterface.disConnectSocket()
+    }
+    
+    func observeMessage() -> Observable<DMHistoryTable> {
+        return socketRepositoryInterface.observeMessage()
+    }
+    
+    func sendMessage(roomID: String, message: String) {
+        socketRepositoryInterface.sendMessage(roomID: roomID, message: message)
     }
 }

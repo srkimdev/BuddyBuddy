@@ -38,7 +38,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         profileImage.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView.safeAreaLayoutGuide).offset(12)
+            make.top.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
             make.size.equalTo(40)
         }
         userName.snp.makeConstraints { make in

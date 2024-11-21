@@ -12,7 +12,7 @@ import RxSwift
 final class DefaultDMRepository: DMRepositoryInterface {
     @Dependency(NetworkProtocol.self) private var service
     
-    func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], any Error>> {
+    func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], Error>> {
         return service.callRequest(
             router: DMRouter.dmList(playgroundID: playgroundID),
             responseType: [DMListDTO].self

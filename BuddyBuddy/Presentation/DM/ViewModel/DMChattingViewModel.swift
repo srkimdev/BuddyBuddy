@@ -15,7 +15,6 @@ final class DMChattingViewModel: ViewModelType {
     
     private let coordinator: DMCoordinator
     private let dmUseCase: DMUseCaseInterface
-    
     private let dmListInfo: DMListInfo
     private let realmRepository: RealmRepository<DMHistoryTable>
     
@@ -45,6 +44,7 @@ final class DMChattingViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMHistoryTable]>()
+        let receiveMessage = PublishSubject<Void>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -61,23 +61,41 @@ final class DMChattingViewModel: ViewModelType {
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let value):
-                    
                     let dmHistoryTable = value.map { $0.toTable() }
                     dmHistoryTable.forEach { owner.realmRepository.updateItem($0) }
                     
-                    let chatHistory = self.realmRepository.readAllItem().filter {
-                        $0.roomID == self.dmListInfo.roomID
+                    let chatHistory = owner.realmRepository.readAllItem().filter {
+                        $0.roomID == owner.dmListInfo.roomID
                     }
                     
                     updateDMListTableView.onNext(chatHistory)
                     
+                    owner.dmUseCase.connectSocket(roomID: owner.dmListInfo.roomID)
                 case .failure(let error):
                     print(error)
                 }
             }
             .disposed(by: disposeBag)
         
+        self.dmUseCase.observeMessage()
+            .bind(with: self) { owner, value in
+                owner.realmRepository.updateItem(value)
+                
+                let chatHistory = self.realmRepository.readAllItem().filter {
+                    $0.roomID == self.dmListInfo.roomID
+                }
+                
+                updateDMListTableView.onNext(chatHistory)
+            }
+            .disposed(by: disposeBag)
+            
         return Output(updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []))
+    }
+    
+    private func receiveChat() {
+//        socket.on("chat") { [weak self] data, ack in
+//            guard let message = data[0] as? String else { return }
+//        }
     }
     
 }

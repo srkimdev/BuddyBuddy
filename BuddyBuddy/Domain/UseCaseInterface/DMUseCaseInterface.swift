@@ -11,14 +11,24 @@ import RxSwift
 
 protocol DMUseCaseInterface {
     func fetchDMList(playgroundID: String) -> Single<Result<[DMList], Error>>
+    
     func fetchDMHistory(
         playgroundID: String,
         roomID: String,
         cursorDate: String
     ) -> Single<Result<[DMHistory], Error>>
+    
     func fetchDMUnRead(
         playgroundID: String,
         roomID: String,
         after: String
     ) -> Single<Result<DMUnRead, Error>>
+    
+    func connectSocket(roomID: String)
+    
+    func disConnectSocket()
+    
+    func observeMessage() -> Observable<DMHistoryTable>
+    
+    func sendMessage(roomID: String, message: String)
 }
