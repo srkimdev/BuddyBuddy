@@ -19,9 +19,26 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     func start() {
         let vc = SearchViewController(vm: SearchViewModel(
             coordinator: self,
-            useCase: PlaygroundUseCase()
+            playgroundUseCase: PlaygroundUseCase()
         ))
         navigationController.pushViewController(
+            vc,
+            animated: true
+        )
+    }
+    
+    func toProfile(userID: String) {
+        let vc = ProfileViewController(vm: ProfileViewModel(
+                coordinator: self,
+                userUseCase: UserUseCase(),
+                userID: userID
+            ))
+        vc.modalPresentationStyle = .pageSheet
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(
             vc,
             animated: true
         )

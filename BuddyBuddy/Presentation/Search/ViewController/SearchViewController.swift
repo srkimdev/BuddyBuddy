@@ -51,7 +51,9 @@ final class SearchViewController: BaseNavigationViewController {
             viewWillAppear: Observable.just(()),
             inputText: searchController.searchBar.rx.searchButtonClicked
                 .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
-            inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 }
+            inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 },
+            selectedCell: searchedResult.searchResultTableView.rx
+                .modelSelected(SearchResult.self).map { $0 }
         )
         let output = vm.transform(input: input)
         

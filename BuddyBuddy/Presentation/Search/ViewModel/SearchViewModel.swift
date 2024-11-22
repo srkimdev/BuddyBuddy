@@ -14,20 +14,21 @@ final class SearchViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let coordinator: SearchCoordinator
-    private let useCase: PlaygroundUseCaseInterface
+    private let playgroundUseCase: PlaygroundUseCaseInterface
     
     init(
         coordinator: SearchCoordinator,
-        useCase: PlaygroundUseCaseInterface
+        playgroundUseCase: PlaygroundUseCaseInterface
     ) {
         self.coordinator = coordinator
-        self.useCase = useCase
+        self.playgroundUseCase = playgroundUseCase
     }
     
     struct Input {
         let viewWillAppear: Observable<Void>
         let inputText: Observable<String>
         let inputSegIndex: Observable<Int>
+        let selectedCell: Observable<SearchResult>
     }
     
     struct Output {
@@ -52,24 +53,21 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.inputText
-            .bind(with: self) { owner, text in
-                owner.useCase.searchInPlayground(text: text)
-                    .subscribe { result in
-                        switch result {
-                        case .success(let value):
-                            selectedSegIndex.onNext(SearchState.channel.rawValue)
-                            searchResult = owner.mappingSearchResult(
-                                channel: value.channels,
-                                member: value.playgroundMembers
-                            )
-                            searchData.onNext(SearchImageType.channel)
-                            searchedResult.onNext(searchResult.filter { $0.state == .channel })
-                            emptyResult.onNext(searchResult.filter { $0.state == .channel }.isEmpty)
-                        case .failure(let error):
-                            print(error)
-                        }
-                    }
-                    .disposed(by: owner.disposeBag)
+            .withUnretained(self)
+            .flatMap { arg1 in
+                return arg1.0.playgroundUseCase.searchInPlayground(text: arg1.1)
+            }
+            .bind(with: self) { onwer, result in
+                switch result {
+                case .success(let value):
+                    selectedSegIndex.onNext(SearchState.channel.rawValue)
+                    searchResult = value
+                    searchData.onNext(SearchImageType.channel)
+                    searchedResult.onNext(searchResult.filter { $0.state == .channel })
+                    emptyResult.onNext(searchResult.filter { $0.state == .channel }.isEmpty)
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
         
@@ -88,32 +86,22 @@ final class SearchViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.selectedCell
+            .bind(with: self) { owner, selected in
+                switch selected.state {
+                case .channel:
+                    print("Channel", selected)
+                case .user:
+                    owner.coordinator.toProfile(userID: selected.id)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         return Output(
             selectedSegIndex: selectedSegIndex.asDriver(onErrorJustReturn: 0),
             searchData: searchData.asDriver(onErrorJustReturn: .channel),
             searchedResult: searchedResult.asDriver(onErrorJustReturn: []),
             emptyResult: emptyResult.asDriver(onErrorJustReturn: false)
         )
-    }
-    
-    private func mappingSearchResult(
-        channel: [PlaygroundChannel],
-        member: [PlaygroundMember]
-    ) -> [SearchResult] {
-        let channelResult: [SearchResult] = channel.map {
-            .init(
-                state: .channel,
-                id: $0.channelID,
-                name: $0.channelName
-            )
-        }
-        let memberResult: [SearchResult] = member.map {
-            .init(
-                state: .user,
-                id: $0.userID,
-                name: $0.nickname
-            )
-        }
-        return channelResult + memberResult
     }
 }

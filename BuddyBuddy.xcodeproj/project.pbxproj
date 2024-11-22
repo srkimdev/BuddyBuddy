@@ -64,6 +64,7 @@
 		C91F673C2CEE45CF00C84265 /* UserUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F673B2CEE45CF00C84265 /* UserUseCaseInterface.swift */; };
 		C91F673F2CEF2F6F00C84265 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F673E2CEF2F6F00C84265 /* SearchResult.swift */; };
 		C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67402CEF2F8700C84265 /* SearchState.swift */; };
+		C91F67442CF098C900C84265 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67432CF098C900C84265 /* Data+.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */; };
@@ -89,7 +90,6 @@
 		C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A992CECBC410044CD5C /* PlaygroundRouter.swift */; };
 		C9E44A9D2CECC1070044CD5C /* PlaygroundUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9C2CECC1070044CD5C /* PlaygroundUseCase.swift */; };
 		C9E44A9F2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9E2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift */; };
-		C9E44AA22CECE06D0044CD5C /* PlaygroundSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44AA12CECE06D0044CD5C /* PlaygroundSearch.swift */; };
 		C9E44AA52CEE38A30044CD5C /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44AA42CEE38A30044CD5C /* UserRouter.swift */; };
 		C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F392CDB5F070043351E /* TabKind.swift */; };
 		C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F3B2CDB5FFD0043351E /* TabBarViewController.swift */; };
@@ -206,6 +206,7 @@
 		C91F673B2CEE45CF00C84265 /* UserUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseInterface.swift; sourceTree = "<group>"; };
 		C91F673E2CEF2F6F00C84265 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C91F67402CEF2F8700C84265 /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
+		C91F67432CF098C900C84265 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableView.swift; sourceTree = "<group>"; };
@@ -233,7 +234,6 @@
 		C9E44A992CECBC410044CD5C /* PlaygroundRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundRouter.swift; sourceTree = "<group>"; };
 		C9E44A9C2CECC1070044CD5C /* PlaygroundUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundUseCase.swift; sourceTree = "<group>"; };
 		C9E44A9E2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundUseCaseInterface.swift; sourceTree = "<group>"; };
-		C9E44AA12CECE06D0044CD5C /* PlaygroundSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundSearch.swift; sourceTree = "<group>"; };
 		C9E44AA42CEE38A30044CD5C /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		C9F20F392CDB5F070043351E /* TabKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabKind.swift; sourceTree = "<group>"; };
 		C9F20F3B2CDB5FFD0043351E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
@@ -482,7 +482,6 @@
 			children = (
 				C91F67422CEF73AB00C84265 /* Search */,
 				C91F67322CEE443900C84265 /* User */,
-				C9E44AA02CECE0540044CD5C /* Playground */,
 				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
@@ -785,6 +784,7 @@
 				C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */,
 				C957EA662CE2095300B62A2A /* UIViewController+.swift */,
 				C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */,
+				C91F67432CF098C900C84265 /* Data+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -913,14 +913,6 @@
 			isa = PBXGroup;
 			children = (
 				C9E44A972CECB4DC0044CD5C /* SearchDTO.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
-		C9E44AA02CECE0540044CD5C /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				C9E44AA12CECE06D0044CD5C /* PlaygroundSearch.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -1308,6 +1300,7 @@
 				C91F672C2CEE425200C84265 /* UserRepository.swift in Sources */,
 				C9E44A9D2CECC1070044CD5C /* PlaygroundUseCase.swift in Sources */,
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
+				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
 				DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */,
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
@@ -1317,7 +1310,6 @@
 				C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
-				C9E44AA22CECE06D0044CD5C /* PlaygroundSearch.swift in Sources */,
 				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				DC9BC0D72CE8DB2C002AF523 /* DMHistoryRepositoryInterface.swift in Sources */,
