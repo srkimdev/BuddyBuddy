@@ -30,32 +30,18 @@ struct SearchDTO: Decodable {
 }
 
 extension SearchDTO {
-    func toDomain() -> PlaygroundSearch {
-        return .init(
-            playgroundID: playgroundID,
-            playgroundName: playgroundName,
-            description: description,
-            coverImage: coverImage,
-            ownerID: ownerID,
-            createdAt: createdAt,
-            channels: channels.map({
-                .init(
-                    channelID: $0.channelID,
-                    channelName: $0.channelName,
-                    coverImage: $0.coverImage,
-                    ownerID: $0.ownerID,
-                    createdAt: $0.createdAt
-                )
-            }),
-            playgroundMembers: playgroundMembers.map({
-                .init(
-                    userID: $0.userID,
-                    email: $0.email,
-                    nickname: $0.nickname,
-                    profileImage: $0.profileImage
-                )
-            })
-        )
+    func toDomain() -> [SearchResult] {
+        let playgroundChannel: [SearchResult] = channels.map { .init(
+                state: .channel,
+                id: $0.channelID,
+                name: $0.channelName
+            )}
+        let members: [SearchResult] = playgroundMembers.map { .init(
+            state: .user,
+            id: $0.userID,
+            name: $0.nickname
+        )}
+        return playgroundChannel + members
     }
 }
 

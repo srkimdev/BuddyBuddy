@@ -13,7 +13,7 @@ import RxSwift
 final class PlaygroundRepository: PlaygroundRepositoryInterface {
     @Dependency(NetworkProtocol.self) private var service
     
-    func searchPlaygournd(text: String) -> Single<Result<PlaygroundSearch, Error>> {
+    func searchPlaygournd(text: String) -> Single<Result<[SearchResult], Error>> {
         let query = SearchQuery(
             playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
             keyword: text
