@@ -13,7 +13,7 @@ import RxSwift
 final class PlaygroundUseCase: PlaygroundUseCaseInterface {
     @Dependency(PlaygroundRepositoryInterface.self) private var repository
     
-    func searchInPlayground(text: String) -> Single<Result<PlaygroundSearch, Error>> {
+    func searchInPlayground(text: String) -> Single<Result<[SearchResult], Error>> {
         return repository.searchPlaygournd(text: text)
     }
 }

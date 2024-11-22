@@ -11,5 +11,5 @@ import RxCocoa
 import RxSwift
 
 protocol PlaygroundRepositoryInterface: AnyObject {
-    func searchPlaygournd(text: String) -> Single<Result<PlaygroundSearch, Error>>
+    func searchPlaygournd(text: String) -> Single<Result<[SearchResult], Error>>
 }

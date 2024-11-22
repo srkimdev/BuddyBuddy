@@ -10,5 +10,5 @@ import Foundation
 import RxSwift
 
 protocol PlaygroundUseCaseInterface: AnyObject {
-    func searchInPlayground(text: String) -> Single<Result<PlaygroundSearch, Error>>
+    func searchInPlayground(text: String) -> Single<Result<[SearchResult], Error>>
 }

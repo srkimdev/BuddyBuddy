@@ -61,18 +61,6 @@ struct ChannelDTO: Decodable {
     }
 }
 
-extension ChannelDTO {
-    func toDomain() -> PlaygroundChannel {
-        return .init(
-            channelID: channelID,
-            channelName: channelName,
-            coverImage: coverImage,
-            ownerID: ownerID,
-            createdAt: createdAt
-        )
-    }
-}
-
 struct MemberDTO: Decodable {
     let userID: String
     let email: String
@@ -84,16 +72,5 @@ struct MemberDTO: Decodable {
         case email
         case nickname
         case profileImage
-    }
-}
-
-extension MemberDTO {
-    func toDomain() -> PlaygroundMember {
-        return .init(
-            userID: userID,
-            email: email,
-            nickname: nickname,
-            profileImage: profileImage
-        )
     }
 }
