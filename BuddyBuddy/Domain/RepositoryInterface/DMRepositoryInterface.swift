@@ -21,4 +21,9 @@ protocol DMRepositoryInterface {
         roomID: String,
         after: String
     ) -> Single<Result<DMUnRead, Error>>
+    func sendDM(
+        playgroundID: String,
+        roomID: String,
+        message: String
+    ) -> Single<Result<DMHistoryTable, Error>>
 }

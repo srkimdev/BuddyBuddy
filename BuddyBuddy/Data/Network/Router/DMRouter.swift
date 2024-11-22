@@ -11,7 +11,7 @@ import Alamofire
 
 enum DMRouter: TargetType {
     case dmList(playgroundID: String)
-    case dmSend(playgroundID: String, roomID: String)
+    case dmSend(playgroundID: String, roomID: String, message: String)
     case dmHistory(playgroundID: String, roomID: String, cursorDate: String)
     case dmUnRead(playgroundID: String, roomID: String, after: String)
     
@@ -23,7 +23,7 @@ enum DMRouter: TargetType {
         switch self {
         case .dmList(let playgroundID):
             return "workspaces/\(playgroundID)/dms"
-        case .dmSend(let playgroundID, let roomID):
+        case .dmSend(let playgroundID, let roomID, _):
             return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
         case .dmHistory(let playgroundID, let roomID, _):
             return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
@@ -62,14 +62,14 @@ enum DMRouter: TargetType {
     
     var body: Data? {
         switch self {
-//        case .dmSend(let playgroundID, let roomID):
-//            let encoder = JSONEncoder()
-//            do {
-//                let data = try encoder.encode()
-//                return data
-//            } catch {
-//                return nil
-//            }
+        case .dmSend(_, _, let query):
+            let encoder = JSONEncoder()
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
         default:
             return nil
         }

@@ -22,7 +22,6 @@ final class KeyChainManager: KeyChainProtocol {
             kSecAttrAccount as String: "accessToken",
             kSecValueData as String: tokenData
         ]
-
         SecItemAdd(query as CFDictionary, nil)
     }
 

@@ -22,7 +22,6 @@ final class DMChattingViewController: BaseNavigationViewController {
         )
         view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
-        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
         return view
     }()
     private let textFieldBackground: UIView = {
@@ -96,7 +95,8 @@ final class DMChattingViewController: BaseNavigationViewController {
     
     override func setConstraints() {
         dmChattingTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide)
+            make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
+            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(45)
         }
         textFieldBackground.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
@@ -123,7 +123,10 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func bind() {
         let viewdidLoadTrigger = Observable.just(())
         
-        let input = DMChattingViewModel.Input(viewWillAppearTrigger: viewdidLoadTrigger, sendBtnTapped: chatTextField.rx.text.orEmpty.asObservable())
+        let input = DMChattingViewModel.Input(
+            viewWillAppearTrigger: viewdidLoadTrigger,
+            sendBtnTapped: sendButton.rx.tap.asObservable(),
+            chatBarText: chatTextField.rx.text.orEmpty.asObservable())
         let output = vm.transform(input: input)
         
         output.updateDMListTableView
@@ -134,6 +137,17 @@ final class DMChattingViewController: BaseNavigationViewController {
                 )
             ) { (_, element, cell) in
                 cell.designCell(element)
+            }
+            .disposed(by: disposeBag)
+        
+        output.scrollToDown
+            .drive { [weak self] _ in
+                guard let self else { return }
+                let indexPath = IndexPath(row: dmChattingTableView.numberOfRows(inSection: 0) - 1, section: 0)
+                
+                if indexPath.row >= 0 {
+                    dmChattingTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+                }
             }
             .disposed(by: disposeBag)
     }

@@ -7,6 +7,7 @@
 
 import Foundation
 
+import UIKit
 import Alamofire
 import RxSwift
 
@@ -48,22 +49,44 @@ final class NetworkService: NetworkProtocol {
     }
 }
 
-extension NetworkProtocol {
-    func accessTokenRefresh(completionHandler: @escaping (Result<AccessToken, Error>) -> Void) {
-        do {
-            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
-            
-            NetworkService.session.request(request)
-                .responseDecodable(of: AccessTokenDTO.self) { response in
+extension NetworkService {
+    func callMultiPart<T: Decodable>(
+        router: TargetType,
+        responseType: T.Type,
+        content: String
+    ) -> Single<Result<T, Error>> {
+        return Single.create { observer -> Disposable in
+            do {
+                let request = try router.asURLRequest()
+                NetworkService.session.upload(multipartFormData: { multipartFormData in
+                    multipartFormData.append(content.data(using: .utf8)!, withName: "content")
+                    
+                    guard let image = UIImage(named: "spinner") else { return }
+                    guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
+                    let fileDataArray: [Data] = [imageData]
+                    
+                    for (index, data) in fileDataArray.enumerated() {
+                        multipartFormData.append(data,
+                                                 withName: "files",
+                                                 fileName: "file\(index + 1).jpg",
+                                                 mimeType: "image/jpeg"
+                        )
+                    }
+                }, with: request)
+                .validate(statusCode: 200..<300)
+                .responseDecodable(of: T.self) { response in
                     switch response.result {
                     case .success(let value):
-                        completionHandler(.success(value.toDomain()))
+                        observer(.success(.success(value)))
                     case .failure(let error):
-                        print(error)
+                        print(error, "here")
+                        observer(.success(.failure(error)))
                     }
                 }
-        } catch {
-            print(error)
+            } catch {
+                print(error)
+            }
+            return Disposables.create()
         }
     }
 }

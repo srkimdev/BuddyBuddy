@@ -13,5 +13,4 @@ protocol SocketRepositoryInterface {
     func connectSocket(roomID: String)
     func disConnectSocket()
     func observeMessage() -> Observable<DMHistoryTable>
-    func sendMessage(roomID: String, message: String)
 }

@@ -14,4 +14,10 @@ protocol NetworkProtocol {
         router: TargetType,
         responseType: T.Type
     ) -> Single<Result<T, Error>>
+    
+    func callMultiPart<T: Decodable>(
+        router: TargetType,
+        responseType: T.Type,
+        content: String
+    ) -> Single<Result<T, Error>>
 }

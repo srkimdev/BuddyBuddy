@@ -10,7 +10,7 @@ import Foundation
 struct DMHistoryDTO: Decodable {
     let dmID: String
     let roomID: String
-    let content: String
+    let content: String?
     let createdAt: String
     let files: [String]
     let user: UserInfoDTO
@@ -30,7 +30,7 @@ extension DMHistoryDTO {
         return DMHistory(
             dmID: dmID,
             roomID: roomID,
-            content: content,
+            content: content ?? "",
             createdAt: createdAt,
             files: files,
             user: user.toDomain()
@@ -41,7 +41,7 @@ extension DMHistoryDTO {
         let table = DMHistoryTable()
         table.dmID = self.dmID
         table.roomID = self.roomID
-        table.content = self.content
+        table.content = self.content ?? ""
         table.createdAt = self.createdAt
         table.files.append(objectsIn: self.files)
         table.user = self.user.toTable()

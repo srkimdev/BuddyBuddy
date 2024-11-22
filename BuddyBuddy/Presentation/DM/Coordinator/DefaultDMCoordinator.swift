@@ -34,6 +34,7 @@ final class DefaultDMCoordinator: DMCoordinator {
             dmListInfo: dmListInfo,
             realmRepository: RealmRepository()
         ))
+        vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(
             vc,
             animated: true

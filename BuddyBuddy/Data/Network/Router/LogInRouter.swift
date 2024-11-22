@@ -63,8 +63,8 @@ enum LogInRouter: TargetType {
         switch self {
         case .accessTokenRefresh:
             return [
-                Header.authorization.rawValue: KeyChainManager.shared.getRefreshToken() ?? "",
-                Header.contentType.rawValue: Header.json.rawValue,
+                Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
+                Header.refresh.rawValue: KeyChainManager.shared.getRefreshToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
         case .login:

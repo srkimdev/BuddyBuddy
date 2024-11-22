@@ -31,22 +31,27 @@ final class AuthIntercepter: RequestInterceptor {
         completion: @escaping (RetryResult) -> Void
     ) {
         guard let response = request.task?.response as? HTTPURLResponse, 
-                response.statusCode == 419 else {
+                response.statusCode == 400 else {
             completion(.doNotRetryWithError(error))
             return
         }
         
-//        NetworkService().accessTokenRefresh { [weak self] response in
-//            guard let self else { return }
-//            switch response {
-//            case .success(let value):
-//                KeyChainManager.shared.saveAccessToken(value.accessToken)
-//                completion(.retry)
-//                print("토큰 갱신 성공")
-//            case .failure:
-//                completion(.doNotRetryWithError(error))
-//                // 로그인 화면으로 이동
-//            }
+        print(response.statusCode, "statuscode")
+        
+//        do {
+//            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
+//            session.request(request)
+//                .responseDecodable(of: AccessTokenDTO.self) { response in
+//                    switch response.result {
+//                    case .success(let value):
+//                        KeyChainManager.shared.saveAccessToken(value.accessToken)
+//                        completion(.retry)
+//                    case .failure(let error):
+//                        completion(.doNotRetryWithError(error))
+//                    }
+//                }
+//        } catch {
+//            print(error)
 //        }
     }
 }

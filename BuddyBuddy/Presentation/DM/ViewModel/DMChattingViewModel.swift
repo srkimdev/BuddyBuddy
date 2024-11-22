@@ -36,16 +36,18 @@ final class DMChattingViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
-        let sendBtnTapped: Observable<String>
+        let sendBtnTapped: Observable<Void>
+        let chatBarText: Observable<String>
     }
     
     struct Output {
         let updateDMListTableView: Driver<[DMHistoryTable]>
+        let scrollToDown: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMHistoryTable]>()
-        let receiveMessage = PublishSubject<Void>()
+        let scrollToDown = PublishSubject<Void>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -70,6 +72,7 @@ final class DMChattingViewModel: ViewModelType {
                     }
                     
                     updateDMListTableView.onNext(chatHistory)
+                    scrollToDown.onNext(())
                     
                     owner.dmUseCase.connectSocket(roomID: owner.dmListInfo.roomID)
                 case .failure(let error):
@@ -87,23 +90,40 @@ final class DMChattingViewModel: ViewModelType {
                 }
                 
                 updateDMListTableView.onNext(chatHistory)
+                scrollToDown.onNext(())
             }
             .disposed(by: disposeBag)
         
         input.sendBtnTapped
-            .bind(with: self) { owner, value in
-//                owner.dmUseCase.sendMessage(roomID: self.dmListInfo.roomID, message: value)
-                
+            .withLatestFrom(input.chatBarText)
+            .flatMap { value -> Single<Result<DMHistoryTable, Error>> in
+                return self.dmUseCase.sendDM(
+                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                    roomID: self.dmListInfo.roomID,
+                    message: value
+//                    files
+                )
+            }
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let value):
+                    owner.realmRepository.updateItem(value)
+                    
+                    let chatHistory = self.realmRepository.readAllItem().filter {
+                        $0.roomID == self.dmListInfo.roomID
+                    }
+                    
+                    updateDMListTableView.onNext(chatHistory)
+                    scrollToDown.onNext(())
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
             
-        return Output(updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []))
+        return Output(
+            updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
+            scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ())
+        )
     }
-    
-    private func receiveChat() {
-//        socket.on("chat") { [weak self] data, ack in
-//            guard let message = data[0] as? String else { return }
-//        }
-    }
-    
 }

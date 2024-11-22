@@ -41,6 +41,18 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         )
     }
     
+    func sendDM(
+        playgroundID: String,
+        roomID: String,
+        message: String
+    ) -> Single<Result<DMHistoryTable, Error>> {
+        return dmRepositoryInterface.sendDM(
+            playgroundID: playgroundID,
+            roomID: roomID, 
+            message: message
+        )
+    }
+    
     func connectSocket(roomID: String) {
         socketRepositoryInterface.connectSocket(roomID: roomID)
     }
@@ -51,9 +63,5 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     
     func observeMessage() -> Observable<DMHistoryTable> {
         return socketRepositoryInterface.observeMessage()
-    }
-    
-    func sendMessage(roomID: String, message: String) {
-        socketRepositoryInterface.sendMessage(roomID: roomID, message: message)
     }
 }

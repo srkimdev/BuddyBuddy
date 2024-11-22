@@ -71,4 +71,28 @@ final class DefaultDMRepository: DMRepositoryInterface {
             }
         }
     }
+    
+    func sendDM(
+        playgroundID: String,
+        roomID: String,
+        message: String
+    ) -> Single<Result<DMHistoryTable, Error>> {
+        return service.callMultiPart(
+            router: DMRouter.dmSend(
+                playgroundID: playgroundID,
+                roomID: roomID,
+                message: message
+            ),
+            responseType: DMHistoryDTO.self,
+            content: message
+        )
+        .map { result in
+            switch result {
+            case .success(let dto):
+                return .success(dto.toTable())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
 }
