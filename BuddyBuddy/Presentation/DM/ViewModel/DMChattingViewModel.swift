@@ -36,6 +36,7 @@ final class DMChattingViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
+        let sendBtnTapped: Observable<String>
     }
     
     struct Output {
@@ -86,6 +87,13 @@ final class DMChattingViewModel: ViewModelType {
                 }
                 
                 updateDMListTableView.onNext(chatHistory)
+            }
+            .disposed(by: disposeBag)
+        
+        input.sendBtnTapped
+            .bind(with: self) { owner, value in
+//                owner.dmUseCase.sendMessage(roomID: self.dmListInfo.roomID, message: value)
+                
             }
             .disposed(by: disposeBag)
             

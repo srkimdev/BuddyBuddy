@@ -19,36 +19,42 @@ final class SocketService: SocketProtocol {
     private let eventSubject = PublishSubject<DMHistoryTable>()
     
     func updateURL(roomID: String) {
-        guard let url = url?.appendingPathComponent("ws-dm-\(roomID)") else { return }
+        guard let url else { return }
         manager = SocketManager(socketURL: url, config: [.log(true), .compress])
-        socket = manager.defaultSocket
+        socket = manager.socket(forNamespace: "/ws-dm-\(roomID)")
         socket.on(clientEvent: .connect) { data, ack in
             print("SOCKET IS CONNECTED", data, ack)
         }
-        
+    
         socket.on(clientEvent: .disconnect) { data, ack in
             print("SOCKET IS DISCONNECTED", data, ack)
         }
         
-        receiveMessage(roomID: roomID)
+        receiveMessage()
+        print("socketService")
     }
     
     func establishConnection() {
         socket.connect()
+        print("connect")
     }
     
     func closeConnection() {
         socket.disconnect()
+        
     }
     
-    func receiveMessage(roomID: String) {
-        socket.on(roomID) { [weak self] data, ack in
-            guard let self else { return }
+    func receiveMessage() {
+        socket.on("dm") { [weak self] datadict, _ in
+            print("here")
+            guard let self, let data = datadict[0] as? [String: Any] else { return }
             do {
+                print(data, "data")
                 let jsonData = try JSONSerialization.data(withJSONObject: data)
                 let result = try self.decoder.decode(DMHistoryDTO.self, from: jsonData)
                 let table = result.toTable()
                 eventSubject.onNext(table)
+                print(table)
             } catch {
                 print(error)
             }

@@ -22,6 +22,7 @@ final class DMChattingViewController: BaseNavigationViewController {
         )
         view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
+        view.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 44, right: 0)
         return view
     }()
     private let textFieldBackground: UIView = {
@@ -122,7 +123,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func bind() {
         let viewdidLoadTrigger = Observable.just(())
         
-        let input = DMChattingViewModel.Input(viewWillAppearTrigger: viewdidLoadTrigger)
+        let input = DMChattingViewModel.Input(viewWillAppearTrigger: viewdidLoadTrigger, sendBtnTapped: chatTextField.rx.text.orEmpty.asObservable())
         let output = vm.transform(input: input)
         
         output.updateDMListTableView
