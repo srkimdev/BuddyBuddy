@@ -33,6 +33,7 @@ final class UserRepository: UserRepositoryInterface {
             }
         }
     }
+    
     func checkUserProfile(userID: String) -> Single<Result<UserProfile, Error>> {
         let router = UserRouter.userProfile(query: userID)
         return networkService.callRequest(
@@ -47,5 +48,19 @@ final class UserRepository: UserRepositoryInterface {
                 return .failure(error)
             }
         }
+    }
+    
+    func getUserProfileImage(imagePath: String?) -> Single<Result<Data?, Error>> {
+        let router = UserRouter.userProfileImage(path: imagePath ?? "")
+        
+        return networkService.downloadImage(router: router)
+            .map { result in
+                switch result {
+                case .success(let data):
+                    return .success(data)
+                case .failure(let error):
+                    return .failure(error)
+                }
+            }
     }
 }

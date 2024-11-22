@@ -18,8 +18,7 @@ final class ProfileViewController: BaseViewController {
     
     private let profileImgView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFit
-        view.image = UIImage(systemName: "person")
+        view.contentMode = .scaleToFill
         return view
     }()
     private let profileBottmView: ProfileBottomView = ProfileBottomView()
@@ -31,7 +30,27 @@ final class ProfileViewController: BaseViewController {
     }
     
     override func bind() {
+        let input = ProfileViewModel.Input(viewWillAppear: rx.viewWillAppear)
+        let output = vm.transform(input: input)
         
+        output.userProfile
+            .drive(with: self) { owner, user in
+                owner.profileBottmView.setProfileView(
+                    name: user.nickname,
+                    email: user.email
+                )
+            }
+            .disposed(by: disposeBag)
+        
+        output.userProfileImage
+            .drive(with: self) { owner, imageData in
+                if imageData == nil {
+                    owner.profileImgView.image = UIImage(named: "BasicProfileImage")
+                } else {
+                    owner.profileImgView.image = imageData
+                }
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setHierarchy() {
@@ -51,9 +70,5 @@ final class ProfileViewController: BaseViewController {
             make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
         }
-        profileBottmView.setProfileView(
-            name: "함지수",
-            email: "compose@coffee.com"
-        )
     }
 }

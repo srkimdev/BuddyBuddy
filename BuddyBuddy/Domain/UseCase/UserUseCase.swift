@@ -16,7 +16,20 @@ final class UserUseCase: UserUseCaseInterface {
     func checkMyProfile() -> Single<Result<MyProfile, Error>> {
         return repository.checkMyProfile()
     }
+    
     func checkUserProfile(userID: String) -> Single<Result<UserProfile, Error>> {
         return repository.checkUserProfile(userID: userID)
+    }
+    
+    func getUserProfileImage(imagePath: String?) -> Single<Data?> {
+        return repository.getUserProfileImage(imagePath: imagePath)
+            .flatMap { result in
+                switch result {
+                case .success(let data):
+                    return Single.just(data)
+                case .failure(let error):
+                    return Single.just(nil)
+                }
+            }
     }
 }
