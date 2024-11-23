@@ -58,21 +58,30 @@ extension NetworkService {
         return Single.create { observer -> Disposable in
             do {
                 let request = try router.asURLRequest()
-                NetworkService.session.upload(multipartFormData: { multipartFormData in
-                    multipartFormData.append(content.data(using: .utf8)!, withName: "content")
-                    
-                    guard let image = UIImage(named: "spinner") else { return }
-                    guard let imageData = image.jpegData(compressionQuality: 0.5) else { return }
-                    let fileDataArray: [Data] = [imageData]
-                    
-                    for (index, data) in fileDataArray.enumerated() {
-                        multipartFormData.append(data,
-                                                 withName: "files",
-                                                 fileName: "file\(index + 1).jpg",
-                                                 mimeType: "image/jpeg"
+                NetworkService.session.upload(
+                    multipartFormData: { multipartFormData in
+                        multipartFormData.append(
+                            content.data(using: .utf8)!,
+                            withName: "content"
                         )
-                    }
-                }, with: request)
+                        
+                        guard let image = UIImage(named: "spinner") else { return }
+                        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+                            return
+                        }
+                        let fileDataArray: [Data] = [imageData]
+                        
+                        for (index, data) in fileDataArray.enumerated() {
+                            multipartFormData.append(data,
+                                                     withName: "files",
+                                                     fileName: "file\(index + 1).jpg",
+                                                     mimeType: "image/jpeg"
+                            )
+                        }
+                    }, 
+                    with: request,
+                    interceptor: AuthIntercepter()
+                )
                 .validate(statusCode: 200..<300)
                 .responseDecodable(of: T.self) { response in
                     switch response.result {

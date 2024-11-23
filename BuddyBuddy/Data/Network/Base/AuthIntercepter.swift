@@ -19,7 +19,7 @@ final class AuthIntercepter: RequestInterceptor {
         var urlRequest = urlRequest
         urlRequest.setValue(
             KeyChainManager.shared.getAccessToken(),
-            forHTTPHeaderField: "accept"
+            forHTTPHeaderField: "Authorization"
         )
         completion(.success(urlRequest))
     }
@@ -38,20 +38,20 @@ final class AuthIntercepter: RequestInterceptor {
         
         print(response.statusCode, "statuscode")
         
-//        do {
-//            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
-//            session.request(request)
-//                .responseDecodable(of: AccessTokenDTO.self) { response in
-//                    switch response.result {
-//                    case .success(let value):
-//                        KeyChainManager.shared.saveAccessToken(value.accessToken)
-//                        completion(.retry)
-//                    case .failure(let error):
-//                        completion(.doNotRetryWithError(error))
-//                    }
-//                }
-//        } catch {
-//            print(error)
-//        }
+        do {
+            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
+            session.request(request)
+                .responseDecodable(of: AccessTokenDTO.self) { response in
+                    switch response.result {
+                    case .success(let value):
+                        KeyChainManager.shared.saveAccessToken(value.accessToken)
+                        completion(.retry)
+                    case .failure(let error):
+                        completion(.doNotRetryWithError(error))
+                    }
+                }
+        } catch {
+            print(error)
+        }
     }
 }

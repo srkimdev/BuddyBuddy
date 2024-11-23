@@ -37,17 +37,21 @@ final class DMChattingViewModel: ViewModelType {
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
         let sendBtnTapped: Observable<Void>
+        let plusBtnTapped: Observable<Void>
         let chatBarText: Observable<String>
     }
     
     struct Output {
         let updateDMListTableView: Driver<[DMHistoryTable]>
         let scrollToDown: Driver<Void>
+        let removeChattingBarText: Driver<Void>
+        let plusBtnTapped: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMHistoryTable]>()
         let scrollToDown = PublishSubject<Void>()
+        let removeChattingBarText = PublishSubject<Void>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -115,6 +119,7 @@ final class DMChattingViewModel: ViewModelType {
                     
                     updateDMListTableView.onNext(chatHistory)
                     scrollToDown.onNext(())
+                    removeChattingBarText.onNext(())
                 case .failure(let error):
                     print(error)
                 }
@@ -123,7 +128,9 @@ final class DMChattingViewModel: ViewModelType {
             
         return Output(
             updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
-            scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ())
+            scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
+            removeChattingBarText: removeChattingBarText.asDriver(onErrorJustReturn: ()),
+            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ())
         )
     }
 }

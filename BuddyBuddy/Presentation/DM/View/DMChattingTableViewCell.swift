@@ -38,7 +38,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         profileImage.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+            make.top.leading.equalToSuperview().offset(12)
             make.size.equalTo(40)
         }
         userName.snp.makeConstraints { make in
@@ -48,12 +48,12 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         speechBubble.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.bottom.equalToSuperview().inset(8)
         }
         chatTime.snp.makeConstraints { make in
             make.bottom.equalTo(speechBubble.snp.bottom)
             make.leading.equalTo(speechBubble.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualTo(contentView.safeAreaLayoutGuide).inset(30)
+            make.trailing.lessThanOrEqualToSuperview().inset(30)
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 import RxSwift
 import SnapKit
@@ -96,7 +97,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func setConstraints() {
         dmChattingTableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(view.safeAreaLayoutGuide).inset(45)
+            make.bottom.equalTo(textFieldBackground.snp.top)
         }
         textFieldBackground.snp.makeConstraints { make in
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
@@ -126,6 +127,7 @@ final class DMChattingViewController: BaseNavigationViewController {
         let input = DMChattingViewModel.Input(
             viewWillAppearTrigger: viewdidLoadTrigger,
             sendBtnTapped: sendButton.rx.tap.asObservable(),
+            plusBtnTapped: plusButton.rx.tap.asObservable(),
             chatBarText: chatTextField.rx.text.orEmpty.asObservable())
         let output = vm.transform(input: input)
         
@@ -143,12 +145,55 @@ final class DMChattingViewController: BaseNavigationViewController {
         output.scrollToDown
             .drive { [weak self] _ in
                 guard let self else { return }
-                let indexPath = IndexPath(row: dmChattingTableView.numberOfRows(inSection: 0) - 1, section: 0)
+                let indexPath = IndexPath(
+                    row: dmChattingTableView.numberOfRows(inSection: 0) - 1,
+                    section: 0
+                )
                 
                 if indexPath.row >= 0 {
                     dmChattingTableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
                 }
             }
             .disposed(by: disposeBag)
+        
+        output.removeChattingBarText
+            .drive { [weak self] _ in
+                guard let self else { return }
+                chatTextField.text = ""
+            }
+            .disposed(by: disposeBag)
+        
+        output.plusBtnTapped
+            .drive { [weak self] _ in
+                guard let self else { return }
+                showPickerView()
+            }
+            .disposed(by: disposeBag)
+    }
+}
+
+extension DMChattingViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        guard let itemProvider = results.first?.itemProvider, itemProvider.canLoadObject(ofClass: UIImage.self) else {
+            return
+        }
+        
+        itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+            if let image = image as? UIImage {
+                // 선택된 이미지를 ViewModel에 전달
+//                self?.viewModel.selectedImage.accept(image)
+            }
+        }
+    }
+    
+    private func showPickerView() {
+        var configuration = PHPickerConfiguration()
+        configuration.selectionLimit = 5
+        configuration.filter = .any(of: [.screenshots, .images])
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        
+        present(picker, animated: true)
     }
 }

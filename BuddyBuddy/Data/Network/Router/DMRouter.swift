@@ -61,18 +61,7 @@ enum DMRouter: TargetType {
     }
     
     var body: Data? {
-        switch self {
-        case .dmSend(_, _, let query):
-            let encoder = JSONEncoder()
-            do {
-                let data = try encoder.encode(query)
-                return data
-            } catch {
-                return nil
-            }
-        default:
-            return nil
-        }
+        return nil
     }
 
     var header: [String: String] {
