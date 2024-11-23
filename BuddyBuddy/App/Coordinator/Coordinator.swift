@@ -16,6 +16,7 @@ protocol Coordinator: AnyObject {
     func finish()
     func popVC()
     func dismissVC()
+    func selectTab(_ tabKind: TabKind)
 }
 
 extension Coordinator {
@@ -33,5 +34,13 @@ extension Coordinator {
     }
     func dismissVC() {
         navigationController.dismiss(animated: true)
+    }
+    func selectTab(_ tabKind: TabKind) {
+        guard let tabBarController = navigationController
+            .viewControllers.first as? TabBarViewController,
+              let index = TabKind.allCases.firstIndex(of: tabKind) else {
+            return
+        }
+        tabBarController.selectedIndex = index
     }
 }

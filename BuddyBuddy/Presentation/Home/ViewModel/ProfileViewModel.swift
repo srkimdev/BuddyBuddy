@@ -36,6 +36,7 @@ final class ProfileViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppear: Observable<Void>
+        let dmBtnTapped: Observable<Void>
     }
     
     struct Output {
@@ -61,7 +62,7 @@ final class ProfileViewModel: ViewModelType {
                             switch data {
                             case .success(let data):
                                 userProfileImage.onNext(data?.toUIImage())
-                            case .failure(let error):
+                            case .failure(_):
                                 userProfileImage.onNext(nil)
                             }
                         }
@@ -69,6 +70,13 @@ final class ProfileViewModel: ViewModelType {
                 case .failure(let error):
                     print(error)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.dmBtnTapped
+            .bind(with: self) { owner, _ in
+                owner.coordinator.dismissVC()
+                owner.coordinator.parent?.selectTab(.dm)
             }
             .disposed(by: disposeBag)
         

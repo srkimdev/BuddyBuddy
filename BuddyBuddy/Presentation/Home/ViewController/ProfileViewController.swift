@@ -21,7 +21,7 @@ final class ProfileViewController: BaseViewController {
         view.contentMode = .scaleToFill
         return view
     }()
-    private let profileBottmView: ProfileBottomView = ProfileBottomView()
+    private let profileBottomView: ProfileBottomView = ProfileBottomView()
     
     init(vm: ProfileViewModel) {
         self.vm = vm
@@ -30,12 +30,15 @@ final class ProfileViewController: BaseViewController {
     }
     
     override func bind() {
-        let input = ProfileViewModel.Input(viewWillAppear: rx.viewWillAppear)
+        let input = ProfileViewModel.Input(
+            viewWillAppear: rx.viewWillAppear,
+            dmBtnTapped: profileBottomView.dmBtn.rx.tap.map { () }
+        )
         let output = vm.transform(input: input)
         
         output.userProfile
             .drive(with: self) { owner, user in
-                owner.profileBottmView.setProfileView(
+                owner.profileBottomView.setProfileView(
                     name: user.nickname,
                     email: user.email
                 )
@@ -54,7 +57,7 @@ final class ProfileViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        [profileImgView, profileBottmView].forEach {
+        [profileImgView, profileBottomView].forEach {
             view.addSubview($0)
         }
     }
@@ -62,10 +65,10 @@ final class ProfileViewController: BaseViewController {
     override func setConstraints() {
         profileImgView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalToSuperview()
-            make.bottom.equalTo(profileBottmView.snp.top)
+            make.bottom.equalTo(profileBottomView.snp.top)
         }
         
-        profileBottmView.snp.makeConstraints { make in
+        profileBottomView.snp.makeConstraints { make in
             make.top.equalTo(profileImgView.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
             make.height.equalToSuperview().multipliedBy(0.3)
