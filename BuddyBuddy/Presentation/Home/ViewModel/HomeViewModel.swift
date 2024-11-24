@@ -123,7 +123,6 @@ final class HomeViewModel: ViewModelType {
                 case 0:
                     let isFold = updateChannelState.value[2].items.isEmpty
                     isChannelFold.accept(!isFold)
-                    print(isFold, "🐤🐤")
                 case 1:
                     owner.coordinator.toChannelDM()
                 case 2:
@@ -163,7 +162,7 @@ final class HomeViewModel: ViewModelType {
                 let titleItem = ChannelItem.title(isChannelFold.value ? .caret : .arrow)
                 let listItem = isChannelFold.value ? [] : list.map { ChannelItem.channel($0) }
                 let addItem = isChannelFold.value ? [] : [ChannelItem.add("Add Channel".localized())]
-                print("🐷", listItem)
+                
                 updateChannelState.accept([.title(item: titleItem),
                                            .list(items: listItem),
                                            .add(items: addItem)])
@@ -176,4 +175,3 @@ final class HomeViewModel: ViewModelType {
         )
     }
 }
-

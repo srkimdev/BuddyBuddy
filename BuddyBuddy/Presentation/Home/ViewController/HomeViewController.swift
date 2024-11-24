@@ -234,7 +234,6 @@ final class HomeViewController: BaseNavigationViewController {
 // MARK: RxDataSource
 extension HomeViewController {
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChannelSectionModel> {
-        print("🐶")
         return RxTableViewSectionedReloadDataSource<ChannelSectionModel> { [weak self] datasource, _, indexpath, _ in
             guard let self else { return UITableViewCell() }
             
@@ -252,7 +251,7 @@ extension HomeViewController {
                     withIdentifier: ChannelTableViewCell.identifier,
                     for: indexpath
                 ) as? ChannelTableViewCell else { return UITableViewCell() }
-                print("🐸")
+                
                 configureChannelCell.accept(item)
                 cell.configureCell(data: item)
                 cell.selectionStyle = .none
@@ -270,7 +269,6 @@ extension HomeViewController {
     }
     
     private func updateTableViewHeight(sections: [ChannelSectionModel]) {
-        print("🐭", sections)
         channelTableView.snp.remakeConstraints { make in
             let heights = [56, 41, 48]
             var totalHeight = 0
