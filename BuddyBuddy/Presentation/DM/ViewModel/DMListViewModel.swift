@@ -35,6 +35,7 @@ final class DMListViewModel: ViewModelType {
     
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
+        let toDMChatting: Observable<DMListInfo>
     }
     
     struct Output {
@@ -99,6 +100,12 @@ final class DMListViewModel: ViewModelType {
                     updateDMListTableView.onNext(response)
                     viewState.onNext(.chatting)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.toDMChatting
+            .bind(with: self) { owner, value in
+                owner.toDMChatting(value)
             }
             .disposed(by: disposeBag)
         

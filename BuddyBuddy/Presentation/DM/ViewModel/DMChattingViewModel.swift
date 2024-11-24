@@ -46,6 +46,7 @@ final class DMChattingViewModel: ViewModelType {
         let scrollToDown: Driver<Void>
         let removeChattingBarText: Driver<Void>
         let plusBtnTapped: Driver<Void>
+        let chatBarText: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -100,6 +101,7 @@ final class DMChattingViewModel: ViewModelType {
         
         input.sendBtnTapped
             .withLatestFrom(input.chatBarText)
+            .filter { !$0.isEmpty }
             .flatMap { value -> Single<Result<DMHistoryTable, Error>> in
                 return self.dmUseCase.sendDM(
                     playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
@@ -130,7 +132,8 @@ final class DMChattingViewModel: ViewModelType {
             updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
             scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
             removeChattingBarText: removeChattingBarText.asDriver(onErrorJustReturn: ()),
-            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ())
+            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
+            chatBarText: input.chatBarText.asDriver(onErrorJustReturn: "")
         )
     }
 }

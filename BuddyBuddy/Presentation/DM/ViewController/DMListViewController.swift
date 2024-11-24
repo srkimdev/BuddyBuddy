@@ -21,6 +21,8 @@ final class DMListViewController: BaseNavigationViewController {
             forCellReuseIdentifier: DMListTableViewCell.identifier
         )
         view.rowHeight = 70
+        view.separatorStyle = .none
+        view.showsVerticalScrollIndicator = true
         return view
     }()
     private let noChatListImage: UIImageView = {
@@ -67,8 +69,12 @@ final class DMListViewController: BaseNavigationViewController {
     
     override func bind() {
         let viewdidLoadTrigger = Observable.just(())
+        let toDMChattingTrigger = PublishSubject<DMListInfo>()
         
-        let input = DMListViewModel.Input(viewWillAppearTrigger: viewdidLoadTrigger)
+        let input = DMListViewModel.Input(
+            viewWillAppearTrigger: viewdidLoadTrigger,
+            toDMChatting: toDMChattingTrigger
+        )
         let output = vm.transform(input: input)
         
         output.updateDMListTableView
@@ -98,7 +104,7 @@ final class DMListViewController: BaseNavigationViewController {
             
         dmListTableView.rx.modelSelected(DMListInfo.self)
             .bind(with: self) { owner, value in
-                owner.vm.toDMChatting(value)
+                toDMChattingTrigger.onNext(value)
             }
             .disposed(by: disposeBag)
     }

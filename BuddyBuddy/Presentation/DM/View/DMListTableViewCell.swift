@@ -55,13 +55,14 @@ final class DMListTableViewCell: BaseTableViewCell {
         lastText.snp.makeConstraints { make in
             make.bottom.equalTo(profileImage.snp.bottom).inset(4)
             make.leading.equalTo(profileImage.snp.trailing).offset(16)
+            make.trailing.equalTo(unreadCount.snp.leading).offset(-16)
         }
         lastTime.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top).offset(4)
             make.trailing.equalToSuperview().inset(16)
         }
         unreadCount.snp.makeConstraints { make in
-            make.bottom.equalTo(profileImage.snp.bottom).inset(4)
+            make.top.equalTo(lastTime.snp.bottom).offset(8)
             make.trailing.equalToSuperview().inset(16)
         }
     }
