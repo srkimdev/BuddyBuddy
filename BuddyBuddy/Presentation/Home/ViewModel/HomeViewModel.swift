@@ -77,7 +77,6 @@ final class HomeViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.configureChannelCell
-            .distinctUntilChanged()
             .flatMap { [weak self] channel -> Single<Result<UnreadCountOfChannel, any Error>> in
                 // TODO: faliure 반환하며 early exit
                 guard let self else {
@@ -93,14 +92,15 @@ final class HomeViewModel: ViewModelType {
                     after: nil
                 )
             }
-            .bind(with: self) { owner, result in
+            .bind(with: self) { _, result in
                 switch result {
                 case .success(let value):
                     var channels = channelList.value
                     var current = channels.filter { $0.channelID == value.channelID }
                     current[0].unreadCount = value.count
                     
-                    if let index = channels.firstIndex(where: { $0.channelID == value.channelID }) {
+                    if let index = channels.firstIndex(where: { $0.channelID == value.channelID }),
+                       channels != channelList.value {
                         channels[index] = current[0]
                         channelList.accept(channels)
                      }
