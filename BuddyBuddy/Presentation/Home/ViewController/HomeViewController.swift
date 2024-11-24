@@ -169,10 +169,11 @@ final class HomeViewController: BaseNavigationViewController {
             .disposed(by: disposeBag)
         
         output.updateChannelState
-            .drive(with: self) { owner, sections in
-                print("😝😝😝😝")
-                owner.bindTableView(sections: Observable.just(sections))
-            }
+            .do(onNext: { [weak self] sections in
+                guard let self else { return }
+                updateTableViewHeight(sections: sections)
+            })
+            .drive(channelTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
     }
     
@@ -251,6 +252,7 @@ extension HomeViewController {
                     withIdentifier: ChannelTableViewCell.identifier,
                     for: indexpath
                 ) as? ChannelTableViewCell else { return UITableViewCell() }
+                print("🐸")
                 configureChannelCell.accept(item)
                 cell.configureCell(data: item)
                 cell.selectionStyle = .none
@@ -267,24 +269,8 @@ extension HomeViewController {
         }
     }
     
-    private func bindTableView(sections: Observable<[ChannelSectionModel]>) {
-        guard !isTableViewBound else { return }
-        isTableViewBound = true
-        print("🐱")
-        sections
-            .bind(to: channelTableView.rx.items(dataSource: datasource))
-            .disposed(by: disposeBag)
-        
-        sections
-            .subscribe(onNext: { [weak self] sections in
-                guard let self else { return }
-                updateTableViewHeight(sections: sections)
-            })
-            .disposed(by: disposeBag)
-    }
-    
     private func updateTableViewHeight(sections: [ChannelSectionModel]) {
-        print("🐭")
+        print("🐭", sections)
         channelTableView.snp.remakeConstraints { make in
             let heights = [56, 41, 48]
             var totalHeight = 0

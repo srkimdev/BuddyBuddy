@@ -9,7 +9,7 @@ import Foundation
 
 typealias MyChannelList = [MyChannel]
 
-struct MyChannel {
+struct MyChannel: Equatable {
     let channelID: String
     let name: String
     let description: String?

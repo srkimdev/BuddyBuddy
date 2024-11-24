@@ -50,8 +50,9 @@ final class HomeViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let navigationTitle = PublishRelay<String>()
-        let updateChannelState = PublishRelay<[ChannelSectionModel]>()
+        let updateChannelState = BehaviorRelay<[ChannelSectionModel]>(value: [])
         let channelList = BehaviorRelay<MyChannelList>(value: [])
+        let isChannelFold = BehaviorRelay(value: false)
         
         input.viewWillAppearTrigger
             .bind(with: self) { owner, _ in
@@ -75,20 +76,8 @@ final class HomeViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        channelList
-            .bind(with: self) { owner, list in
-                let isFold = false
-                let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
-                let listItem = isFold ? [] : list.map { ChannelItem.channel($0) }
-                let addItem = isFold ? [] : [ChannelItem.add("Add Channel".localized())]
-                
-                updateChannelState.accept([.title(item: titleItem),
-                                           .list(items: listItem),
-                                           .add(items: addItem)])
-            }
-            .disposed(by: disposeBag)
-        
         input.configureChannelCell
+            .distinctUntilChanged()
             .flatMap { [weak self] channel -> Single<Result<UnreadCountOfChannel, any Error>> in
                 // TODO: faliure 반환하며 early exit
                 guard let self else {
@@ -107,12 +96,10 @@ final class HomeViewModel: ViewModelType {
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
-//                    var list = unreadCountList.value
-//                    list.append(value)
-//                    unreadCountList.accept(list)
                     var channels = channelList.value
                     var current = channels.filter { $0.channelID == value.channelID }
                     current[0].unreadCount = value.count
+                    
                     if let index = channels.firstIndex(where: { $0.channelID == value.channelID }) {
                         channels[index] = current[0]
                         channelList.accept(channels)
@@ -131,7 +118,18 @@ final class HomeViewModel: ViewModelType {
         
         input.channelItemDidSelected
             .bind(with: self) { owner, indexPath in
-                // TODO: 화면전환
+                switch indexPath.section {
+                case 0:
+                    let isFold = updateChannelState.value[2].items.isEmpty
+                    isChannelFold.accept(!isFold)
+                    print(isFold, "🐤🐤")
+                case 1:
+                    print("채널 채팅")
+                case 2:
+                    print("채널 추가")
+                default:
+                    break
+                }
             }
             .disposed(by: disposeBag)
         
@@ -144,6 +142,30 @@ final class HomeViewModel: ViewModelType {
         input.floatingBtnDidTap
             .bind(with: self) { owner, _ in
                 // TODO: 화면전환
+            }
+            .disposed(by: disposeBag)
+        
+        isChannelFold
+            .bind(with: self) { owner, isFold in
+                let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
+                let listItem = isFold ? [] : channelList.value.map { ChannelItem.channel($0) }
+                let addItem = isFold ? [] : [ChannelItem.add("Add Channel".localized())]
+                
+                updateChannelState.accept([.title(item: titleItem),
+                                           .list(items: listItem),
+                                           .add(items: addItem)])
+            }
+            .disposed(by: disposeBag)
+        
+        channelList
+            .bind(with: self) { owner, list in
+                let titleItem = ChannelItem.title(isChannelFold.value ? .caret : .arrow)
+                let listItem = isChannelFold.value ? [] : list.map { ChannelItem.channel($0) }
+                let addItem = isChannelFold.value ? [] : [ChannelItem.add("Add Channel".localized())]
+                print("🐷", listItem)
+                updateChannelState.accept([.title(item: titleItem),
+                                           .list(items: listItem),
+                                           .add(items: addItem)])
             }
             .disposed(by: disposeBag)
         
