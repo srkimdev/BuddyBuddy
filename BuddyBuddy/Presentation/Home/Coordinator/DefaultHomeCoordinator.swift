@@ -73,4 +73,16 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             animated: true
         )
     }
+   
+    func toChannelDM() {
+        // TODO: 채널 디엠 화면 전환
+    }
+    
+    func toAddChannel() {
+        // TODO: 채널 생성 화면 전환
+    }
+    
+    func toPlayground() {
+        // TODO: 플레이그라운드 목록 화면 전환
+    }
 }

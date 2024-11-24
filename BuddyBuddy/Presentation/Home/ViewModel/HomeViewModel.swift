@@ -113,6 +113,7 @@ final class HomeViewModel: ViewModelType {
         input.menuBtnDidTap
             .bind(with: self) { owner, _ in
                 // TODO: 화면전환
+                owner.coordinator.to
             }
             .disposed(by: disposeBag)
         
@@ -124,9 +125,9 @@ final class HomeViewModel: ViewModelType {
                     isChannelFold.accept(!isFold)
                     print(isFold, "🐤🐤")
                 case 1:
-                    print("채널 채팅")
+                    owner.coordinator.toChannelDM()
                 case 2:
-                    print("채널 추가")
+                    owner.coordinator.toAddChannel()
                 default:
                     break
                 }
@@ -135,7 +136,7 @@ final class HomeViewModel: ViewModelType {
         
         input.addMemeberBtnDidTap
             .bind(with: self) { owner, _ in
-                // TODO: 화면전환
+                owner.coordinator.toInviteMember()
             }
             .disposed(by: disposeBag)
         
