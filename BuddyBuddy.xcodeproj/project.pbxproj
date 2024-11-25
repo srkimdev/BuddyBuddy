@@ -124,7 +124,6 @@
 		C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */; };
 		C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D3F2CDCE51600271295 /* DIContainer.swift */; };
 		C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D412CDCE5E300271295 /* Dependency.swift */; };
-		C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */; };
 		C9F96D652CDD295300271295 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D642CDD295300271295 /* UIFont+.swift */; };
 		C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D662CDD2A5400271295 /* AppDelegate+Register.swift */; };
 		DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DC213A7F2CE1EEAE00E2A2F7 /* Secrets.xcconfig */; };
@@ -162,6 +161,8 @@
 		DC9375752CEE081D00012F43 /* DefaultSocketRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */; };
 		DC9375772CEE087B00012F43 /* SocketRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */; };
 		DC93757A2CEE330700012F43 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DC9375792CEE330700012F43 /* SocketIO */; };
+		DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */; };
+		DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
@@ -282,7 +283,6 @@
 		C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthCoordinator.swift; sourceTree = "<group>"; };
 		C9F96D3F2CDCE51600271295 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		C9F96D412CDCE5E300271295 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
-		C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = UserDefaultsEmpty; sourceTree = "<group>"; };
 		C9F96D622CDD28D000271295 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
 		C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C9F96D642CDD295300271295 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
@@ -319,6 +319,8 @@
 		DC9375722CEDF8A000012F43 /* UserInfoDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoDTO.swift; sourceTree = "<group>"; };
 		DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSocketRepository.swift; sourceTree = "<group>"; };
 		DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketRepositoryInterface.swift; sourceTree = "<group>"; };
+		DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserDefaults.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
@@ -1063,7 +1065,8 @@
 		C9F96D5B2CDD26ED00271295 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				C9F96D5C2CDD26F800271295 /* UserDefaultsEmpty */,
+				DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */,
+				DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -1236,7 +1239,6 @@
 				C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */,
 				C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */,
 				C9C27A132CDA315600243744 /* Base in Resources */,
-				C9F96D5D2CDD26F800271295 /* UserDefaultsEmpty in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1303,6 +1305,7 @@
 				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
 				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
 				C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */,
+				DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
@@ -1349,6 +1352,7 @@
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
 				C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
+				DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */,
 				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,
