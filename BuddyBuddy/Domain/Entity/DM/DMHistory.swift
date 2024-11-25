@@ -14,13 +14,17 @@ struct DMHistory {
     let createdAt: String
     let files: [String]
     let user: UserInfo
-    
-    enum CodingKeys: String, CodingKey {
-        case dmID = "dm_id"
-        case roomID = "room_id"
-        case content
-        case createdAt
-        case files
-        case user
+}
+
+extension DMHistory {
+    func toTable() -> DMHistoryTable {
+        let table = DMHistoryTable()
+        table.dmID = self.dmID
+        table.roomID = self.roomID
+        table.content = self.content
+        table.createdAt = self.createdAt
+        table.files.append(objectsIn: self.files)
+        table.user = self.user.toTable()
+        return table
     }
 }

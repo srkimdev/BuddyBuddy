@@ -127,9 +127,8 @@ final class HomeViewController: BaseNavigationViewController {
         self.vm = vm
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-        
+    override func viewDidLoad() {
+        super.viewDidLoad()
         Observable.just(())
             .flatMap {
                 let login = LoginQuery(email: "compose@coffee.com", password: "1q2w3e4rQ!")
@@ -138,7 +137,7 @@ final class HomeViewController: BaseNavigationViewController {
                     responseType: LogInDTO.self
                 )
             }
-            .bind(with: self) { owner, response in
+            .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
                     print(value)
@@ -149,6 +148,9 @@ final class HomeViewController: BaseNavigationViewController {
                 }
             }
             .disposed(by: disposeBag)
+        
+        let repo = RealmRepository<DMHistoryTable>()
+        repo.detectRealmURL()
     }
     
     override func bind() {

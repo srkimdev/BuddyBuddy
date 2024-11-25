@@ -13,20 +13,18 @@ extension AppDelegate {
      */
     func registerDependencies() {
         DIContainer.register(type: NetworkProtocol.self, NetworkService())
+        DIContainer.register(type: SocketProtocol.self, SocketService())
         
         DIContainer.register(
-            type: DMListRepositoryInterface.self,
-            DefaultDMListRepository()
-        )
-        DIContainer.register(
-            type: DMHistoryRepositoryInterface.self,
-            DefaultDMHistoryRepository()
-        )
-        DIContainer.register(
-            type: DMUnReadRepositoryInterface.self,
-            DefaultDMUnReadRepository()
+            type: DMRepositoryInterface.self,
+            DefaultDMRepository()
         )
         
+        DIContainer.register(
+            type: SocketRepositoryInterface.self,
+            DefaultSocketRepository()
+        )
+      
         DIContainer.register(
             type: PlaygroundRepositoryInterface.self,
             PlaygroundRepository()

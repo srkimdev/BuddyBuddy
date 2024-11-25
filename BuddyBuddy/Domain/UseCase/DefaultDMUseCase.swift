@@ -10,22 +10,11 @@ import Foundation
 import RxSwift
 
 final class DefaultDMUseCase: DMUseCaseInterface {
-    private let dmListRepositoryInterface: DMListRepositoryInterface
-    private let dmHistoryRepositoryInterface: DMHistoryRepositoryInterface
-    private let dmUnReadRepositoryInterface: DMUnReadRepositoryInterface
-    
-    init(
-        dmListRepositoryInterface: DMListRepositoryInterface,
-        dmHistoryRepositoryInterface: DMHistoryRepositoryInterface,
-        dmUnReadRepositoryInterface: DMUnReadRepositoryInterface
-    ) {
-        self.dmListRepositoryInterface = dmListRepositoryInterface
-        self.dmHistoryRepositoryInterface = dmHistoryRepositoryInterface
-        self.dmUnReadRepositoryInterface = dmUnReadRepositoryInterface
-    }
+    @Dependency(DMRepositoryInterface.self) private var dmRepositoryInterface
+    @Dependency(SocketRepositoryInterface.self) private var socketRepositoryInterface
     
     func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], Error>> {
-        return dmListRepositoryInterface.fetchDMList(playgroundID: playgroundID)
+        return dmRepositoryInterface.fetchDMList(playgroundID: playgroundID)
     }
     
     func fetchDMHistory(
@@ -33,7 +22,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         roomID: String,
         cursorDate: String
     ) -> Single<Result<[DMHistory], Error>> {
-        return dmHistoryRepositoryInterface.fetchDMHistory(
+        return dmRepositoryInterface.fetchDMHistory(
             playgroundID: playgroundID,
             roomID: roomID,
             cursorDate: cursorDate
@@ -45,10 +34,34 @@ final class DefaultDMUseCase: DMUseCaseInterface {
         roomID: String,
         after: String
     ) -> Single<Result<DMUnRead, Error>> {
-        return dmUnReadRepositoryInterface.fetchDMNoRead(
+        return dmRepositoryInterface.fetchDMNoRead(
             playgroundID: playgroundID,
             roomID: roomID,
             after: after
         )
+    }
+    
+    func sendDM(
+        playgroundID: String,
+        roomID: String,
+        message: String
+    ) -> Single<Result<DMHistoryTable, Error>> {
+        return dmRepositoryInterface.sendDM(
+            playgroundID: playgroundID,
+            roomID: roomID, 
+            message: message
+        )
+    }
+    
+    func connectSocket(roomID: String) {
+        socketRepositoryInterface.connectSocket(roomID: roomID)
+    }
+    
+    func disConnectSocket() {
+        socketRepositoryInterface.disConnectSocket()
+    }
+    
+    func observeMessage() -> Observable<DMHistoryTable> {
+        return socketRepositoryInterface.observeMessage()
     }
 }

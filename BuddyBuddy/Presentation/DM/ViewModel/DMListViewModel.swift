@@ -20,18 +20,22 @@ struct DMListInfo {
 }
 
 final class DMListViewModel: ViewModelType {
-    @Dependency(DMUseCaseInterface.self) private var dmUseCase
-    
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let coordinator: DMCoordinator
+    private let dmUseCase: DMUseCaseInterface
     
-    init(coordinator: DMCoordinator) {
+    init(
+        coordinator: DMCoordinator,
+        dmUseCase: DMUseCaseInterface
+    ) {
         self.coordinator = coordinator
+        self.dmUseCase = dmUseCase
     }
     
     struct Input {
         let viewWillAppearTrigger: Observable<Void>
+        let toDMChatting: Observable<DMListInfo>
     }
     
     struct Output {
@@ -96,6 +100,12 @@ final class DMListViewModel: ViewModelType {
                     updateDMListTableView.onNext(response)
                     viewState.onNext(.chatting)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.toDMChatting
+            .bind(with: self) { owner, value in
+                owner.toDMChatting(value)
             }
             .disposed(by: disposeBag)
         

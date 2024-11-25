@@ -44,8 +44,8 @@ final class DMListTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         profileImage.snp.makeConstraints { make in
-            make.centerY.equalTo(contentView.safeAreaLayoutGuide)
-            make.leading.equalTo(contentView.safeAreaLayoutGuide).offset(16)
+            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(16)
             make.size.equalTo(50)
         }
         userName.snp.makeConstraints { make in
@@ -55,14 +55,15 @@ final class DMListTableViewCell: BaseTableViewCell {
         lastText.snp.makeConstraints { make in
             make.bottom.equalTo(profileImage.snp.bottom).inset(4)
             make.leading.equalTo(profileImage.snp.trailing).offset(16)
+            make.trailing.equalTo(unreadCount.snp.leading).offset(-16)
         }
         lastTime.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top).offset(4)
-            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.trailing.equalToSuperview().inset(16)
         }
         unreadCount.snp.makeConstraints { make in
-            make.centerY.equalTo(lastText)
-            make.trailing.equalTo(contentView.safeAreaLayoutGuide).inset(16)
+            make.top.equalTo(lastTime.snp.bottom).offset(8)
+            make.trailing.equalToSuperview().inset(16)
         }
     }
     
@@ -73,5 +74,4 @@ final class DMListTableViewCell: BaseTableViewCell {
         lastTime.text = "PM 06:12"
         unreadCount.updateCount(transition.unReadCount)
     }
-    
 }

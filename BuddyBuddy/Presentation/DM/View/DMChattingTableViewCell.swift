@@ -27,8 +27,14 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     private let chatTime: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 12)
+        view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        speechBubble.content.text = nil
+    }
     
     override func setHierarchy() {
         [profileImage, userName, speechBubble, chatTime].forEach {
@@ -38,28 +44,33 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     
     override func setConstraints() {
         profileImage.snp.makeConstraints { make in
-            make.top.leading.equalTo(contentView.safeAreaLayoutGuide).offset(12)
+            make.top.equalToSuperview().offset(12)
+            make.leading.equalToSuperview().offset(16)
             make.size.equalTo(40)
         }
         userName.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(15)
         }
         speechBubble.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.bottom.equalTo(contentView.safeAreaLayoutGuide).inset(4)
+            make.bottom.equalToSuperview().inset(8)
+//            make.trailing.lessThanOrEqualTo(chatTime.snp.leading).offset(-8)
+//            make.width.greaterThanOrEqualToSuperview().multipliedBy(0.6)
         }
         chatTime.snp.makeConstraints { make in
             make.bottom.equalTo(speechBubble.snp.bottom)
             make.leading.equalTo(speechBubble.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualTo(contentView.safeAreaLayoutGuide).inset(30)
+            make.trailing.lessThanOrEqualToSuperview().inset(30)
         }
     }
     
-    func designCell(_ transition: DMHistory) {
+    func designCell(_ transition: DMHistoryTable) {
         profileImage.backgroundColor = .lightGray
-        userName.text = transition.user.nickname
+        userName.text = transition.user?.nickname
         chatTime.text = "11:55 오전"
         speechBubble.updateText(transition.content)
     }
