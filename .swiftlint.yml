@@ -9,7 +9,7 @@ disabled_rules: # 제외 룰
     - identifier_name
 opt_in_rules:
     - empty_string
-    - empty_count # isEmpty 사용
+#    - empty_count # isEmpty 사용
     - switch_case_on_newline # case문은 새로운 줄에서 시작
     - force_unwrapping # 강제 언래핑
 included: # 린트 검사에 포함할 파일 경로

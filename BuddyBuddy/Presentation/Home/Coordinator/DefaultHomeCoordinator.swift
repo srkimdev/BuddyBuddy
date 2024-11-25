@@ -17,7 +17,10 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func start() {
-        let vc = HomeViewController(vm: HomeViewModel(coordinator: self))
+        let vc = HomeViewController(vm: HomeViewModel(
+            coordinator: self,
+            channelUseCase: DefaultChannelUseCase())
+        )
         navigationController.pushViewController(
             vc,
             animated: true
@@ -73,5 +76,17 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             vc,
             animated: true
         )
+    }
+   
+    func toChannelDM() {
+        // TODO: 채널 디엠 화면 전환
+    }
+    
+    func toAddChannel() {
+        // TODO: 채널 생성 화면 전환
+    }
+    
+    func toPlayground() {
+        // TODO: 플레이그라운드 목록 화면 전환
     }
 }

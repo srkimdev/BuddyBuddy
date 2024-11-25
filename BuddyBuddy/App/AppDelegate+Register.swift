@@ -51,5 +51,9 @@ extension AppDelegate {
             )
         )
         
+        DIContainer.register(
+            type: ChannelRepositoryInterface.self,
+            DefaultChannelRepository(service: NetworkService())
+        )
     }
 }
