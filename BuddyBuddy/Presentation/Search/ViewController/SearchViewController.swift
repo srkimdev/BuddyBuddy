@@ -53,7 +53,8 @@ final class SearchViewController: BaseNavigationViewController {
                 .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
             inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 },
             selectedCell: searchedResult.searchResultTableView.rx
-                .modelSelected(SearchResult.self).map { $0 }
+                .modelSelected(SearchResult.self).map { $0 },
+            searchCancelBtnTapped: searchController.searchBar.rx.cancelButtonClicked.map { () }
         )
         let output = vm.transform(input: input)
         

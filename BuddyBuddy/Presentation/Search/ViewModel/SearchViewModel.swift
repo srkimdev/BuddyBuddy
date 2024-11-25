@@ -29,6 +29,7 @@ final class SearchViewModel: ViewModelType {
         let inputText: Observable<String>
         let inputSegIndex: Observable<Int>
         let selectedCell: Observable<SearchResult>
+        let searchCancelBtnTapped: Observable<Void>
     }
     
     struct Output {
@@ -45,26 +46,60 @@ final class SearchViewModel: ViewModelType {
         let emptyResult = PublishSubject<Bool>()
         
         var searchResult: [SearchResult] = []
+        var totalInfo: [SearchResult] = []
         
         input.viewWillAppear
-            .bind { _ in
-                // TODO: 전체 채널 목록 + 유저 목록
+            .withUnretained(self)
+            .flatMap { (viewModel, _) in
+                return viewModel.playgroundUseCase.fetchPlaygroundInfo()
+            }
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let value):
+                    searchResult = value
+                    totalInfo = value
+                    owner.updateSearchData(
+                        state: .channel,
+                        searchResult: searchResult,
+                        searchData: searchData,
+                        searchedResult: searchedResult,
+                        emptyResult: emptyResult
+                    )
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.searchCancelBtnTapped
+            .bind(with: self) { owner, _ in
+                owner.updateSearchData(
+                    state: .channel,
+                    searchResult: totalInfo,
+                    searchData: searchData,
+                    searchedResult: searchedResult,
+                    emptyResult: emptyResult
+                )
+                selectedSegIndex.onNext(0)
             }
             .disposed(by: disposeBag)
         
         input.inputText
             .withUnretained(self)
-            .flatMap { arg1 in
-                return arg1.0.playgroundUseCase.searchInPlayground(text: arg1.1)
+            .flatMap { (viewModel, inputText) in
+                return viewModel.playgroundUseCase.searchInPlayground(text: inputText)
             }
-            .bind(with: self) { onwer, result in
+            .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
-                    selectedSegIndex.onNext(SearchState.channel.rawValue)
                     searchResult = value
-                    searchData.onNext(SearchImageType.channel)
-                    searchedResult.onNext(searchResult.filter { $0.state == .channel })
-                    emptyResult.onNext(searchResult.filter { $0.state == .channel }.isEmpty)
+                    owner.updateSearchData(
+                        state: .channel,
+                        searchResult: searchResult,
+                        searchData: searchData,
+                        searchedResult: searchedResult,
+                        emptyResult: emptyResult
+                    )
                 case .failure(let error):
                     print(error)
                 }
@@ -72,17 +107,15 @@ final class SearchViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.inputSegIndex
-            .bind { segIndex in
-                if segIndex == 1 {
-                    // TODO: 국가 변환
-                    searchData.onNext(SearchImageType.country(emoji: .kr))
-                    searchedResult.onNext(searchResult.filter { $0.state == .user })
-                    emptyResult.onNext(searchResult.filter { $0.state == .user }.isEmpty)
-                } else if segIndex == 0 {
-                    searchData.onNext(SearchImageType.channel)
-                    searchedResult.onNext(searchResult.filter { $0.state == .channel })
-                    emptyResult.onNext(searchResult.filter { $0.state == .channel }.isEmpty)
-                }
+            .bind(with: self) { owner, segIndex in
+                let state: SearchState = (segIndex == 0) ? .channel : .user
+                owner.updateSearchData(
+                    state: state,
+                    searchResult: searchResult,
+                    searchData: searchData, 
+                    searchedResult: searchedResult,
+                    emptyResult: emptyResult
+                )
             }
             .disposed(by: disposeBag)
         
@@ -103,5 +136,20 @@ final class SearchViewModel: ViewModelType {
             searchedResult: searchedResult.asDriver(onErrorJustReturn: []),
             emptyResult: emptyResult.asDriver(onErrorJustReturn: false)
         )
+    }
+    
+    private func updateSearchData(
+        state: SearchState,
+        searchResult: [SearchResult],
+        searchData: PublishSubject<SearchImageType>,
+        searchedResult: PublishSubject<[SearchResult]>,
+        emptyResult: PublishSubject<Bool>
+    ) {
+        let filteredResults = searchResult.filter { $0.state == state }
+        let imageType: SearchImageType = state == .channel ? .channel : .country(emoji: .kr)
+        
+        searchData.onNext(imageType)
+        searchedResult.onNext(filteredResults)
+        emptyResult.onNext(filteredResults.isEmpty)
     }
 }
