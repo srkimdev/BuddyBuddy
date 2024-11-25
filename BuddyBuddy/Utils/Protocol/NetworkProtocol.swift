@@ -20,4 +20,6 @@ protocol NetworkProtocol {
         responseType: T.Type,
         content: String
     ) -> Single<Result<T, Error>>
+
+    func downloadImage(router: TargetType) -> Single<Result<Data?, Error>>
 }

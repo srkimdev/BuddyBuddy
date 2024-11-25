@@ -1,5 +1,5 @@
 //
-//  UnreadChannelTableViewCell.swift
+//  ChannelTableViewCell.swift
 //  BuddyBuddy
 //
 //  Created by 아라 on 11/13/24.
@@ -9,17 +9,9 @@ import UIKit
 
 import SnapKit
 
-final class UnreadChannelTableViewCell: BaseTableViewCell {
-    private let iconImgView: UIImageView = {
-        let view = UIImageView()
-        view.image = .unread
-        return  view
-    }()
-    private let titleLabel: UILabel = {
-        let view = UILabel()
-        view.font = UIFont.bodyBold
-        return view
-    }()
+final class ChannelTableViewCell: BaseTableViewCell {
+    private let iconImgView: UIImageView = UIImageView()
+    private let titleLabel: UILabel = UILabel()
     private let notificationView: UIView = {
         let view = UIView()
         view.backgroundColor = .primary
@@ -51,7 +43,11 @@ final class UnreadChannelTableViewCell: BaseTableViewCell {
         }
     }
     
-    func configureCell(data: String) {
-        titleLabel.text = data
+    func configureCell(data: MyChannel) {
+        titleLabel.text = data.name
+        iconImgView.image = data.unreadCount == 0 ? .read : .unread
+        titleLabel.font = data.unreadCount == 0 ?.body : .bodyBold
+        titleLabel.textColor = data.unreadCount == 0 ?.gray1 : .black
+        notificationView.isHidden = data.unreadCount == 0
     }
 }

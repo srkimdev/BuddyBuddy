@@ -47,6 +47,28 @@ final class NetworkService: NetworkProtocol {
             return Disposables.create()
         }
     }
+    
+    func downloadImage(router: TargetType) -> Single<Result<Data?, Error>> {
+        return Single.create { observer -> Disposable in
+            do {
+                let request = try router.asURLRequest()
+                NetworkService.session.download(request)
+                    .validate(statusCode: 200..<300)
+                    .responseData { response in
+                        switch response.result {
+                        case .success(let value):
+                            observer(.success(.success(value)))
+                        case .failure(_):
+                            observer(.success(.success(nil)))
+                        }
+                    }
+            } catch {
+                print(error)
+            }
+            
+            return Disposables.create()
+        }
+    }
 }
 
 extension NetworkService {

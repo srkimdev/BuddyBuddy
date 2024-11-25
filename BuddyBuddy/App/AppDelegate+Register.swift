@@ -24,5 +24,34 @@ extension AppDelegate {
             type: SocketRepositoryInterface.self,
             DefaultSocketRepository()
         )
+      
+        DIContainer.register(
+            type: PlaygroundRepositoryInterface.self,
+            PlaygroundRepository()
+        )
+        
+        DIContainer.register(
+            type: UserRepositoryInterface.self,
+            UserRepository()
+        )
+        
+        DIContainer.register(
+            type: DMUseCaseInterface.self,
+            DefaultDMUseCase(
+               dmListRepositoryInterface: DIContainer.resolve(
+                   type: DMListRepositoryInterface.self
+               ),
+               dmHistoryRepositoryInterface: DIContainer.resolve(
+                   type: DMHistoryRepositoryInterface.self
+               ),
+               dmUnReadRepositoryInterface: DIContainer.resolve(
+                   type: DMUnReadRepositoryInterface.self)
+            )
+        )
+        
+        DIContainer.register(
+            type: ChannelRepositoryInterface.self,
+            DefaultChannelRepository(service: NetworkService())
+        )
     }
 }

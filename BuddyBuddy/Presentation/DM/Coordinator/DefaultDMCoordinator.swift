@@ -40,4 +40,8 @@ final class DefaultDMCoordinator: DMCoordinator {
             animated: true
         )
     }
+    
+    func toDMChatting(userID: String) {
+        // 화면 전환
+    }
 }

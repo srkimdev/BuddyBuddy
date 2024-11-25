@@ -166,7 +166,7 @@
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "최근 검색어가 없어요!"
+            "value" : "검색 결과가 없어요!"
           }
         }
       }
@@ -269,6 +269,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "채널 혹은 사용자를 검색해보세요"
+          }
+        }
+      }
+    },
+    "User" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "사용자"
           }
         }
       }

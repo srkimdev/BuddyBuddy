@@ -7,6 +7,7 @@
 
 import UIKit
 
+import RxCocoa
 import RxDataSources
 import RxSwift
 import SnapKit
@@ -51,12 +52,8 @@ final class HomeViewController: BaseNavigationViewController {
             forCellReuseIdentifier: ChannelTitleTableViewCell.identifier
         )
         view.register(
-            ReadChannelTableViewCell.self,
-            forCellReuseIdentifier: ReadChannelTableViewCell.identifier
-        )
-        view.register(
-            UnreadChannelTableViewCell.self,
-            forCellReuseIdentifier: UnreadChannelTableViewCell.identifier
+            ChannelTableViewCell.self,
+            forCellReuseIdentifier: ChannelTableViewCell.identifier
         )
         view.register(
             ChannelAddTableViewCell.self,
@@ -122,6 +119,9 @@ final class HomeViewController: BaseNavigationViewController {
         )
         return view
     }()
+    private lazy var datasource = createDataSource()
+    private var isTableViewBound = false
+    private let configureChannelCell = PublishRelay<MyChannel>()
     
     init(vm: HomeViewModel) {
         self.vm = vm
@@ -154,13 +154,33 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func bind() {
-        bindTableView()
+        let input = HomeViewModel.Input(
+            viewWillAppearTrigger: rx.viewWillAppear,
+            configureChannelCell: configureChannelCell.asObservable(),
+            menuBtnDidTap: menuBtn.rx.tap.map { _ in }.asObservable(),
+            channelItemDidSelected: channelTableView.rx.itemSelected.asObservable(),
+            addMemeberBtnDidTap: memberAddBtn.rx.tap.map { _ in }.asObservable(),
+            floatingBtnDidTap: floatingBtn.rx.tap.map { _ in }.asObservable()
+        )
+        let output = vm.transform(input: input)
+        
+        output.navigationTitle
+            .drive(with: self) { owner, title in
+                owner.title = title
+            }
+            .disposed(by: disposeBag)
+        
+        output.updateChannelState
+            .do(onNext: { [weak self] sections in
+                guard let self else { return }
+                updateTableViewHeight(sections: sections)
+            })
+            .drive(channelTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
     }
     
     override func setNavigation() {
         super.setNavigation()
-        
-        title = "영어 마스터 할 사람 모여라"
         
         let appearance = UINavigationBarAppearance()
         appearance.titlePositionAdjustment = UIOffset(
@@ -229,23 +249,15 @@ extension HomeViewController {
                 cell.selectionStyle = .none
                 return cell
             case .channel(let item):
-                if item.isRead {
-                    guard let cell = channelTableView.dequeueReusableCell(
-                        withIdentifier: ReadChannelTableViewCell.identifier,
-                        for: indexpath
-                    ) as? ReadChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(title: item.title)
-                    cell.selectionStyle = .none
-                    return cell
-                } else {
-                    guard let cell = channelTableView.dequeueReusableCell(
-                        withIdentifier: UnreadChannelTableViewCell.identifier,
-                        for: indexpath
-                    ) as? UnreadChannelTableViewCell else { return UITableViewCell() }
-                    cell.configureCell(data: item.title)
-                    cell.selectionStyle = .none
-                    return cell
-                }
+                guard let cell = channelTableView.dequeueReusableCell(
+                    withIdentifier: ChannelTableViewCell.identifier,
+                    for: indexpath
+                ) as? ChannelTableViewCell else { return UITableViewCell() }
+                
+                configureChannelCell.accept(item)
+                cell.configureCell(data: item)
+                cell.selectionStyle = .none
+                return cell
             case .add(let item):
                 guard let cell = channelTableView.dequeueReusableCell(
                     withIdentifier: ChannelAddTableViewCell.identifier,
@@ -258,25 +270,7 @@ extension HomeViewController {
         }
     }
     
-    private func bindTableView() {
-        let datasource = createDataSource()
-        let sections: [ChannelSectionModel] = [.title(item: .title(.caret)),
-                                               .list(items: [.channel(Channel(
-                                                title: "받아쓰기 할 사람들 모여라",
-                                                isRead: true
-                                               )), .channel(Channel(
-                                                title: "스크립트 외우기",
-                                                isRead: false
-                                               )), .channel(Channel(
-                                                title: "오픽 딸 사람덜~ 여기 모여요",
-                                                isRead: true)
-                                               )]),
-                                               .add(items: [.add("Add Channel".localized())])]
-        
-        Observable.just(sections)
-            .bind(to: channelTableView.rx.items(dataSource: datasource))
-            .disposed(by: disposeBag)
-        
+    private func updateTableViewHeight(sections: [ChannelSectionModel]) {
         channelTableView.snp.remakeConstraints { make in
             let heights = [56, 41, 48]
             var totalHeight = 0
