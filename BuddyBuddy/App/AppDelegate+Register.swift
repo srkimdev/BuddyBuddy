@@ -12,46 +12,43 @@ extension AppDelegate {
      의존성 주입을 위한 객체 등록 메서드
      */
     func registerDependencies() {
-        DIContainer.register(type: NetworkProtocol.self, NetworkService())
-        DIContainer.register(type: SocketProtocol.self, SocketService())
+        let networkService: NetworkProtocol = NetworkService()
+        let socketService: SocketProtocol = SocketService()
+        
+        // MARK: 기능 추가시 빠질 형태.
+        DIContainer.register(
+            type: NetworkProtocol.self,
+            NetworkService()
+        )
         
         DIContainer.register(
             type: DMRepositoryInterface.self,
-            DefaultDMRepository()
+            DefaultDMRepository(networkService: networkService)
         )
         
         DIContainer.register(
             type: SocketRepositoryInterface.self,
-            DefaultSocketRepository()
+            DefaultSocketRepository(socketService: socketService)
         )
       
         DIContainer.register(
             type: PlaygroundRepositoryInterface.self,
-            PlaygroundRepository()
+            DefaultPlaygroundRepository(networkService: networkService)
         )
         
         DIContainer.register(
             type: UserRepositoryInterface.self,
-            UserRepository()
+            DefaultUserRepository(networkService: networkService)
         )
         
         DIContainer.register(
             type: DMUseCaseInterface.self,
-            DefaultDMUseCase(
-               dmListRepositoryInterface: DIContainer.resolve(
-                   type: DMListRepositoryInterface.self
-               ),
-               dmHistoryRepositoryInterface: DIContainer.resolve(
-                   type: DMHistoryRepositoryInterface.self
-               ),
-               dmUnReadRepositoryInterface: DIContainer.resolve(
-                   type: DMUnReadRepositoryInterface.self)
-            )
+            DefaultDMUseCase()
         )
         
         DIContainer.register(
             type: ChannelRepositoryInterface.self,
-            DefaultChannelRepository(service: NetworkService())
+            DefaultChannelRepository(networkService: networkService)
         )
     }
 }
