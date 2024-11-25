@@ -28,6 +28,16 @@ extension AppDelegate {
         )
         
         DIContainer.register(
+            type: PlaygroundRepositoryInterface.self,
+            PlaygroundRepository()
+        )
+        
+        DIContainer.register(
+            type: UserRepositoryInterface.self,
+            UserRepository()
+        )
+        
+        DIContainer.register(
             type: DMUseCaseInterface.self,
             DefaultDMUseCase(
                dmListRepositoryInterface: DIContainer.resolve(

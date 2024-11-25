@@ -14,4 +14,5 @@ protocol NetworkProtocol {
         router: TargetType,
         responseType: T.Type
     ) -> Single<Result<T, Error>>
+    func downloadImage(router: TargetType) -> Single<Result<Data?, Error>>
 }

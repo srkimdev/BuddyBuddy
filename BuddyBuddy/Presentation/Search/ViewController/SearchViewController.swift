@@ -34,8 +34,6 @@ final class SearchViewController: BaseNavigationViewController {
         searchTextField.layer.borderColor = UIColor.primary.withAlphaComponent(0.3).cgColor
         return controller
     }()
-    private let searchEmptyView: SearchEmptyView = SearchEmptyView()
-    private let recentSearchView: RecentSearchTableView = RecentSearchTableView()
     private let searchedResult: SearchResultView = SearchResultView()
     
     init(vm: SearchViewModel) {
@@ -50,34 +48,42 @@ final class SearchViewController: BaseNavigationViewController {
     
     override func bind() {
         let input = SearchViewModel.Input(
-            viewWillAppear: rx.viewWillAppear,
-            inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 }
+            viewWillAppear: Observable.just(()),
+            inputText: searchController.searchBar.rx.searchButtonClicked
+                .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
+            inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 },
+            selectedCell: searchedResult.searchResultTableView.rx
+                .modelSelected(SearchResult.self).map { $0 }
         )
         let output = vm.transform(input: input)
-        var imageType: SearchImageType = .clock
+        
+        var imageType = SearchImageType.channel
+        
         output.searchData
-            .drive { imgType in
-                imageType = imgType
-            }
-            .disposed(by: disposeBag)
-        output.searchState
-            .drive(with: self) { owner, state in
-                owner.updateSearchUI(state)
-            }
-            .disposed(by: disposeBag)
-        output.recentSearchList
-            .drive(searchedResult.searchResultTableView.rx.items(
-                    cellIdentifier: SearchItemTableViewCell.identifier,
-                    cellType: SearchItemTableViewCell.self
-            )) { _, terms, cell in
-                cell.setupUI(text: terms)
-                cell.setupImageUI(imgType: imageType)
+            .drive { image in
+                imageType = image
             }
             .disposed(by: disposeBag)
         
         output.selectedSegIndex
             .drive(with: self) { owner, segIndex in
                 owner.searchedResult.segmentedControl.selectedSegmentIndex = segIndex
+            }
+            .disposed(by: disposeBag)
+        
+        output.searchedResult
+            .drive(searchedResult.searchResultTableView.rx.items(
+                cellIdentifier: SearchItemTableViewCell.identifier,
+                cellType: SearchItemTableViewCell.self
+            )) { _, data, cell in
+                cell.setupUI(text: data.name)
+                cell.setupImageUI(imgType: imageType)
+            }
+            .disposed(by: disposeBag)
+        
+        output.emptyResult
+            .drive(with: self) { owner, isEmpty in
+                owner.searchedResult.showEmptyView(isEmpty)
             }
             .disposed(by: disposeBag)
     }
@@ -91,33 +97,14 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        [searchEmptyView, recentSearchView, searchedResult]
-            .forEach { view.addSubview($0) }
+        [searchedResult].forEach {
+            view.addSubview($0)
+        }
     }
     
     override func setConstraints() {
-        searchEmptyView.snp.makeConstraints { make in
-            make.edges.equalTo(safeArea)
-        }
-        recentSearchView.snp.makeConstraints { make in
-            make.edges.equalTo(safeArea)
-        }
         searchedResult.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
-        }
-    }
-    
-    private func updateSearchUI(_ state: SearchState) {
-        switch state {
-        case .empty:
-            recentSearchView.isHidden = true
-            searchedResult.isHidden = true
-        case .recentSearch:
-            searchEmptyView.isHidden = true
-            searchedResult.isHidden = true
-        case .searchResult:
-            searchEmptyView.isHidden = true
-            recentSearchView.isHidden = true
         }
     }
 }

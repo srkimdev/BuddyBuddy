@@ -61,8 +61,12 @@ final class DefaultHomeCoordinator: HomeCoordinator {
             animated: true
         )
     }
-    func toProfile() {
-        let vc = ProfileViewController(vm: ProfileViewModel(coordinator: self))
+    func toProfile(userID: String) {
+        let vc = ProfileViewController(vm: ProfileViewModel(
+            coordinator: self,
+            userUseCase: UserUseCase(),
+            userID: userID
+        ))
         vc.modalPresentationStyle = .pageSheet
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.large()]

@@ -13,7 +13,6 @@ final class SearchItemTableViewCell: BaseTableViewCell {
     private let searchedImg: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
-        view.tintColor = .black
         return view
     }()
     
@@ -33,9 +32,8 @@ final class SearchItemTableViewCell: BaseTableViewCell {
     override func setConstraints() {
         searchedImg.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.size.equalTo(15)
+            make.size.equalTo(20)
             make.leading.equalToSuperview().inset(16)
-            
         }
         searchedTerms.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
@@ -49,7 +47,7 @@ final class SearchItemTableViewCell: BaseTableViewCell {
     }
     
     func setupImageUI(imgType: SearchImageType) {
-        searchedImg.image = UIImage(systemName: imgType.toImgTitle)
+        searchedImg.image = UIImage(named: imgType.toImgTitle)
     }
     
     override func prepareForReuse() {

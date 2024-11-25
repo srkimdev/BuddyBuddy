@@ -56,7 +56,7 @@ final class ProfileBottomView: BaseView {
         emailView.setUI(
             label: email,
             font: .body,
-            fontColor: .gray2
+            fontColor: .black
         )
     }
 }

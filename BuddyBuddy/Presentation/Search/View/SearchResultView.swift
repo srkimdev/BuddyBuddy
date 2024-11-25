@@ -11,7 +11,7 @@ import SnapKit
 
 final class SearchResultView: BaseView {
     let segmentedControl: UISegmentedControl = {
-        let view = UnderlineSegmentedControl(items: ["채널", "사용자"])
+        let view = UnderlineSegmentedControl(items: ["Channel".localized(), "User".localized()])
         view.selectedSegmentIndex = 0
         return view
     }()
@@ -25,9 +25,10 @@ final class SearchResultView: BaseView {
         view.showsVerticalScrollIndicator = false
         return view
     }()
+    private let emptyView = SearchEmptyView()
     
     override func setHierarchy() {
-        [segmentedControl, searchResultTableView]
+        [segmentedControl, searchResultTableView, emptyView]
             .forEach { addSubview($0) }
     }
     
@@ -41,6 +42,19 @@ final class SearchResultView: BaseView {
         searchResultTableView.snp.makeConstraints { make in
             make.top.equalTo(segmentedControl.snp.bottom)
             make.horizontalEdges.bottom.equalToSuperview()
+        }
+        emptyView.snp.makeConstraints { make in
+            make.top.equalTo(segmentedControl.snp.bottom)
+            make.horizontalEdges.bottom.equalToSuperview()
+        }
+    }
+    func showEmptyView(_ isResultEmpty: Bool) {
+        if isResultEmpty {
+            emptyView.isHidden = false
+            searchResultTableView.isHidden = true
+        } else {
+            emptyView.isHidden = true
+            searchResultTableView.isHidden = false
         }
     }
 }

@@ -8,5 +8,5 @@
 import Foundation
 
 protocol SearchCoordinator: Coordinator {
-    
+    func toProfile(userID: String)
 }

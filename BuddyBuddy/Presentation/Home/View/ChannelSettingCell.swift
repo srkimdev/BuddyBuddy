@@ -44,7 +44,7 @@ final class ChannelSettingCell: BaseTableViewCell {
         }
     }
     
-    func setProfileUI(profileImg: UIImage, profileName: String) {
+    func setProfileUI(profileImg: UIImage?, profileName: String) {
         // TODO: 프로필 이미지 없을 때 처리 필요
         profileImgView.image = profileImg
         nameLabel.text = profileName
