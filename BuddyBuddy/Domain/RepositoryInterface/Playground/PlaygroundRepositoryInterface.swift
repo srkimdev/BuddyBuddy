@@ -12,4 +12,5 @@ import RxSwift
 
 protocol PlaygroundRepositoryInterface: AnyObject {
     func searchPlaygournd(text: String) -> Single<Result<[SearchResult], Error>>
+    func fetchPlaygroundInfo() -> Single<Result<[SearchResult], Error>>
 }

@@ -11,6 +11,8 @@ import RxCocoa
 import RxSwift
 
 final class DefaultPlaygroundRepository: PlaygroundRepositoryInterface {
+    typealias Router = PlaygroundRouter
+    
     private let networkService: NetworkProtocol
     
     init(networkService: NetworkProtocol) {
@@ -19,18 +21,36 @@ final class DefaultPlaygroundRepository: PlaygroundRepositoryInterface {
     
     func searchPlaygournd(text: String) -> Single<Result<[SearchResult], Error>> {
         let query = SearchQuery(
-            playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+            playgroundID: UserDefaultsManager.playgroundID,
             keyword: text
         )
-        let router = PlaygroundRouter.search(query: query)
-        return networkService.callRequest(router: router, responseType: SearchDTO.self)
-            .map { result in
-                switch result {
-                case .success(let value):
-                    return .success(value.toDomain())
-                case .failure(let error):
-                    return .failure(error)
-                }
+        let router = Router.search(query: query)
+        return networkService.callRequest(
+            router: router,
+            responseType: SearchDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                return .success(value.toDomain())
+            case .failure(let error):
+                return .failure(error)
             }
+        }
+    }
+    
+    func fetchPlaygroundInfo() -> Single<Result<[SearchResult], Error>> {
+        return networkService.callRequest(
+            router: Router.specificPlaygroundInfo,
+            responseType: SearchDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                return .success(value.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
     }
 }

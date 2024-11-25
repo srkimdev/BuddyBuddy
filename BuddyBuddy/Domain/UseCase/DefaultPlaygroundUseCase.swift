@@ -16,4 +16,7 @@ final class DefaultPlaygroundUseCase: PlaygroundUseCaseInterface {
     func searchInPlayground(text: String) -> Single<Result<[SearchResult], Error>> {
         return repository.searchPlaygournd(text: text)
     }
+    func fetchPlaygroundInfo() -> Single<Result<[SearchResult], Error>> {
+        return repository.fetchPlaygroundInfo()
+    }
 }
