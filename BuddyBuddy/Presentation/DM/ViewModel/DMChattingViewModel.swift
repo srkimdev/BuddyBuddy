@@ -46,7 +46,6 @@ final class DMChattingViewModel: ViewModelType {
         let scrollToDown: Driver<Void>
         let removeChattingBarText: Driver<Void>
         let plusBtnTapped: Driver<Void>
-        let chatBarText: Driver<String>
     }
     
     func transform(input: Input) -> Output {
@@ -132,8 +131,7 @@ final class DMChattingViewModel: ViewModelType {
             updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
             scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
             removeChattingBarText: removeChattingBarText.asDriver(onErrorJustReturn: ()),
-            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
-            chatBarText: input.chatBarText.asDriver(onErrorJustReturn: "")
+            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ())
         )
     }
 }

@@ -17,10 +17,13 @@ final class SpeechBubbleView: BaseView {
         view.layer.borderColor = UIColor.lightGray.cgColor // ??
         return view
     }()
-    private let content: UILabel = {
+    let content: UILabel = {
         let view = UILabel()
-        view.numberOfLines = 0
         view.font = .systemFont(ofSize: 13)
+        view.numberOfLines = 0
+        view.lineBreakMode = .byWordWrapping
+//        view.setContentHuggingPriority(.required, for: .horizontal)
+//        view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
     

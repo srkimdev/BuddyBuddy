@@ -27,8 +27,14 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     private let chatTime: UILabel = {
         let view = UILabel()
         view.font = .systemFont(ofSize: 12)
+        view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        speechBubble.content.text = nil
+    }
     
     override func setHierarchy() {
         [profileImage, userName, speechBubble, chatTime].forEach {
@@ -52,11 +58,13 @@ final class DMChattingTableViewCell: BaseTableViewCell {
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.bottom.equalToSuperview().inset(8)
+//            make.trailing.lessThanOrEqualTo(chatTime.snp.leading).offset(-8)
+//            make.width.greaterThanOrEqualToSuperview().multipliedBy(0.6)
         }
         chatTime.snp.makeConstraints { make in
             make.bottom.equalTo(speechBubble.snp.bottom)
             make.leading.equalTo(speechBubble.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().inset(30)
+            make.trailing.lessThanOrEqualToSuperview().inset(30)
         }
     }
     

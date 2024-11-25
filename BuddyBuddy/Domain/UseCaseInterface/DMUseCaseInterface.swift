@@ -24,7 +24,11 @@ protocol DMUseCaseInterface {
         after: String
     ) -> Single<Result<DMUnRead, Error>>
     
-    func sendDM(playgroundID: String, roomID: String, message: String) -> Single<Result<DMHistoryTable, Error>>
+    func sendDM(
+        playgroundID: String,
+        roomID: String,
+        message: String
+    ) -> Single<Result<DMHistoryTable, Error>>
     
     func connectSocket(roomID: String)
     

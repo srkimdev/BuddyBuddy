@@ -34,10 +34,11 @@ final class DMChattingViewController: BaseNavigationViewController {
     }()
     private let chatTextView: UITextView = {
         let view = UITextView()
-        view.isScrollEnabled = false
+//        view.isScrollEnabled = false
+        view.showsVerticalScrollIndicator = false
         view.font = .systemFont(ofSize: 15)
         view.backgroundColor = .gray3
-        view.textContainerInset = .zero
+//        view.textContainerInset = .zero
         view.textContainer.lineFragmentPadding = 0
         view.textContainer.lineBreakMode = .byWordWrapping
         return view
@@ -103,22 +104,24 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func setConstraints() {
         dmChattingTableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(chatBarBackground.snp.top)
+            make.bottom.equalTo(chatBarBackground.snp.top).priority(.high)
         }
         chatBarBackground.snp.makeConstraints { make in
+            make.top.equalTo(dmChattingTableView.snp.bottom)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
-            make.height.equalTo(44)
         }
         plusButton.snp.makeConstraints { make in
             make.leading.equalTo(chatBarBackground.snp.leading).offset(8)
             make.verticalEdges.equalToSuperview()
             make.width.equalTo(44)
         }
+        
+        let height = chatTextView.font!.lineHeight + chatTextView.layoutMargins.top + chatTextView.layoutMargins.bottom
         chatTextView.snp.makeConstraints { make in
             make.leading.equalTo(plusButton.snp.trailing)
             make.trailing.equalTo(sendButton.snp.leading)
-            make.height.lessThanOrEqualTo(60)
+            make.height.equalTo(height)
             make.verticalEdges.equalToSuperview().inset(8)
         }
         sendButton.snp.makeConstraints { make in
@@ -184,38 +187,11 @@ final class DMChattingViewController: BaseNavigationViewController {
         chatTextView.rx
             .didChange
             .bind(with: self) { owner, _ in
-                let size = CGSize(width: owner.chatTextView.frame.width, height: .infinity)
-                let estimatedSize = owner.chatTextView.sizeThatFits(size)
-                print(estimatedSize)
-                
-                let chatTextViewHeight = min(max(28, estimatedSize.height), 54)
-                let chatBarHeight = chatTextViewHeight + 16
-                print(chatTextViewHeight)
-
-                let isMaxHeight = estimatedSize.height > 54
-                owner.chatTextView.isScrollEnabled = isMaxHeight
-                
-                // 4. chatBarBackground 제약 조건 업데이트
-                owner.chatBarBackground.snp.updateConstraints { make in
-                    make.height.equalTo(chatBarHeight)
+                if owner.chatTextView.contentSize.height < owner.chatTextView.font!.lineHeight * 4 {
+                    owner.chatTextView.snp.updateConstraints { make in
+                        make.height.equalTo(owner.chatTextView.contentSize.height)
+                    }
                 }
-
-                // 5. 레이아웃 강제 업데이트
-                owner.view.layoutIfNeeded()
-                
-//                let isMaxHeight = estimatedSize.height >= 60
-                
-//                guard isMaxHeight != owner.chatTextView.isScrollEnabled else { return }
-//                owner.chatTextView.isScrollEnabled = isMaxHeight
-//                
-//                owner.chatBarBackground.snp.makeConstraints { make in
-//                    make.height.equalTo(estimatedSize.height + 8)
-//                }
-//            
-//                owner.chatTextView.reloadInputViews()
-//                owner.chatTextView.setNeedsUpdateConstraints()
-//                
-//                owner.chatBarBackground.layoutIfNeeded()
             }
             .disposed(by: disposeBag)
     }
@@ -234,6 +210,7 @@ extension DMChattingViewController: PHPickerViewControllerDelegate {
         }
         
         itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
+            guard let self else { return }
             if let image = image as? UIImage {
 //                self?.viewModel.selectedImage.accept(image)
             }

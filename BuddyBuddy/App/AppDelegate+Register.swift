@@ -24,6 +24,5 @@ extension AppDelegate {
             type: SocketRepositoryInterface.self,
             DefaultSocketRepository()
         )
-        
     }
 }

@@ -31,5 +31,3 @@ extension UserInfoDTO {
         return table
     }
 }
-
-
