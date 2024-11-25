@@ -404,6 +404,43 @@
 			path = Channel;
 			sourceTree = "<group>";
 		};
+		C0CF50C12CF4824400F131A0 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		C0CF50C22CF4824800F131A0 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */,
+				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
+				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
+				C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		C0CF50C32CF4828100F131A0 /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
+				C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */,
+				C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		C0CF50C42CF4831700F131A0 /* Admin */ = {
+			isa = PBXGroup;
+			children = (
+				C91BBC202CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift */,
+			);
+			path = Admin;
+			sourceTree = "<group>";
+		};
 		C90827CC2CDA4CA30096BA0D /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,7 +532,6 @@
 				DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */,
 				C9E44A8F2CECB2D10044CD5C /* PlaygroundRepository.swift */,
 				C09FA9012CEC715800613FEA /* Channel */,
-				DC213A972CE369AB00E2A2F7 /* DM */,
 				C91F672B2CEE425200C84265 /* UserRepository.swift */,
 			);
 			path = Repository;
@@ -526,7 +562,6 @@
 				DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */,
 				C9E44A912CECB2E80044CD5C /* Playground */,
 				C09FA8FE2CEC6F9B00613FEA /* Channel */,
-				DC213A9A2CE36AED00E2A2F7 /* DM */,
 				C91F672D2CEE427600C84265 /* UserRepositoryInterface.swift */,
 			);
 			path = RepositoryInterface;
@@ -633,16 +668,11 @@
 		C90827E12CDA64040096BA0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C0CF50C42CF4831700F131A0 /* Admin */,
+				C0CF50C32CF4828100F131A0 /* Channel */,
+				C0CF50C22CF4824800F131A0 /* Setting */,
+				C0CF50C12CF4824400F131A0 /* Profile */,
 				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
-				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
-				C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */,
-				C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */,
-				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
-				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
-				C91BBC182CE487BA001EFC70 /* ChannelSettingBottomView.swift */,
-				C91BBC202CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift */,
-				C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */,
-				C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1345,7 +1375,6 @@
 				DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
-				DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */,
 				C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
