@@ -17,7 +17,7 @@ enum ChannelSectionModel: Equatable {
 
 enum ChannelItem: Equatable {
     case title(Accordion)
-    case channel(Channel)
+    case channel(MyChannel)
     case add(String)
     
     static func == (
@@ -48,12 +48,6 @@ extension ChannelSectionModel: SectionModelType {
     ) {
         self = original
     }
-}
-
-struct Channel {
-    let title: String
-    let image: String = "number"
-    let isRead: Bool
 }
 
 enum Accordion: String {

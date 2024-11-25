@@ -9,18 +9,27 @@
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
+		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
+		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
+		C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */; };
+		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
+		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
+		C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */; };
+		C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8F42CEC673400613FEA /* MyChannelList.swift */; };
+		C09FA8FB2CEC6DD200613FEA /* UnreadCountOfChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */; };
+		C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */; };
+		C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */; };
+		C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */; };
 		C0BF42882CE211BB00C5B5B4 /* ChannelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
-		C0BF42912CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */; };
-		C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */; };
+		C0BF42932CE47A6100C5B5B4 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */; };
 		C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */; };
 		C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */; };
 		C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90827F72CDA64B70096BA0D /* RealmEmpty */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
 		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
-		C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C90828402CDA66DB0096BA0D /* FormatterEmpty */; };
 		C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C908284C2CDA6B760096BA0D /* RxCocoa */; };
 		C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C908284E2CDA6B760096BA0D /* RxSwift */; };
 		C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C90828512CDA6BD90096BA0D /* Alamofire */; };
@@ -145,16 +154,25 @@
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
+		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
+		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
+		C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDateFormatter.swift; sourceTree = "<group>"; };
+		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
+		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
+		C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelListResponseDTO.swift; sourceTree = "<group>"; };
+		C09FA8F42CEC673400613FEA /* MyChannelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChannelList.swift; sourceTree = "<group>"; };
+		C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannel.swift; sourceTree = "<group>"; };
+		C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannelResponseDTO.swift; sourceTree = "<group>"; };
+		C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRepositoryInterface.swift; sourceTree = "<group>"; };
+		C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelRepository.swift; sourceTree = "<group>"; };
 		C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelView.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
-		C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadChannelTableViewCell.swift; sourceTree = "<group>"; };
-		C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadChannelTableViewCell.swift; sourceTree = "<group>"; };
+		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
 		C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAddTableViewCell.swift; sourceTree = "<group>"; };
 		C90827F72CDA64B70096BA0D /* RealmEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = RealmEmpty; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
 		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
-		C90828402CDA66DB0096BA0D /* FormatterEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = FormatterEmpty; sourceTree = "<group>"; };
 		C908285E2CDA72B50096BA0D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
@@ -299,6 +317,49 @@
 			path = NetworkLogger;
 			sourceTree = "<group>";
 		};
+		C09FA8ED2CEC660E00613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8EE2CEC664300613FEA /* Response */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		C09FA8EE2CEC664300613FEA /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */,
+				C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
+		C09FA8F32CEC66D900613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
+				C09FA8F42CEC673400613FEA /* MyChannelList.swift */,
+				C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		C09FA8FE2CEC6F9B00613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
+		C09FA9012CEC715800613FEA /* Channel */ = {
+			isa = PBXGroup;
+			children = (
+				C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */,
+			);
+			path = Channel;
+			sourceTree = "<group>";
+		};
 		C90827CC2CDA4CA30096BA0D /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -352,7 +413,6 @@
 			isa = PBXGroup;
 			children = (
 				C9F20F382CDB5F030043351E /* Enum */,
-				C908283F2CDA668E0096BA0D /* Formatter */,
 				C908283D2CDA66850096BA0D /* Protocol */,
 				C908283C2CDA667E0096BA0D /* Extension */,
 			);
@@ -376,6 +436,7 @@
 			children = (
 				DC213AB32CE4874F00E2A2F7 /* LogIn */,
 				DC213AAD2CE4847A00E2A2F7 /* AccessToken */,
+				C09FA8ED2CEC660E00613FEA /* Channel */,
 				DC213AA02CE36DFC00E2A2F7 /* DM */,
 			);
 			path = DTO;
@@ -384,6 +445,7 @@
 		C90827D42CDA63190096BA0D /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				C09FA9012CEC715800613FEA /* Channel */,
 				DC213A972CE369AB00E2A2F7 /* DM */,
 			);
 			path = Repository;
@@ -410,6 +472,7 @@
 		C90827D72CDA63750096BA0D /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
+				C09FA8FE2CEC6F9B00613FEA /* Channel */,
 				DC213A9A2CE36AED00E2A2F7 /* DM */,
 			);
 			path = RepositoryInterface;
@@ -418,6 +481,7 @@
 		C90827D82CDA63810096BA0D /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
+				C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */,
 				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
 			);
 			path = UseCase;
@@ -426,6 +490,7 @@
 		C90827D92CDA63860096BA0D /* UseCaseInterface */ = {
 			isa = PBXGroup;
 			children = (
+				C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */,
 				DC213AA32CE3744300E2A2F7 /* DMUseCaseInterface.swift */,
 			);
 			path = UseCaseInterface;
@@ -434,8 +499,8 @@
 		C90827DA2CDA638F0096BA0D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
+				C09FA8F32CEC66D900613FEA /* Channel */,
 				DC213A9D2CE36CA000E2A2F7 /* DM */,
 			);
 			path = Entity;
@@ -510,8 +575,7 @@
 			children = (
 				C0BF42872CE211BB00C5B5B4 /* ChannelView.swift */,
 				C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */,
-				C0BF42902CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift */,
-				C0BF42922CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift */,
+				C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */,
 				C91BBC142CE472CA001EFC70 /* ChannelSettingCell.swift */,
 				C91BBC162CE47F66001EFC70 /* ChannelSettingTopView.swift */,
 				C91BBC1A2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift */,
@@ -736,6 +800,7 @@
 				C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */,
 				C957EA662CE2095300B62A2A /* UIViewController+.swift */,
 				C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */,
+				C09FA8E32CEC62A200613FEA /* Date+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -761,14 +826,6 @@
 				C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */,
 			);
 			path = Base;
-			sourceTree = "<group>";
-		};
-		C908283F2CDA668E0096BA0D /* Formatter */ = {
-			isa = PBXGroup;
-			children = (
-				C90828402CDA66DB0096BA0D /* FormatterEmpty */,
-			);
-			path = Formatter;
 			sourceTree = "<group>";
 		};
 		C908284A2CDA68AB0096BA0D /* Core */ = {
@@ -835,6 +892,7 @@
 				C91BBC062CE37265001EFC70 /* SearchImageType.swift */,
 				C91BBC0A2CE3B162001EFC70 /* AlertType.swift */,
 				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
+				C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -969,6 +1027,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */,
+				C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */,
 				DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */,
 			);
 			path = Router;
@@ -1060,7 +1119,6 @@
 				C91BBC092CE396B6001EFC70 /* Pretendard-Medium.otf in Resources */,
 				DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */,
 				C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */,
-				C90828412CDA66DB0096BA0D /* FormatterEmpty in Resources */,
 				C90827F82CDA64B70096BA0D /* RealmEmpty in Resources */,
 				C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */,
 				C9C27A102CDA315600243744 /* Assets.xcassets in Resources */,
@@ -1102,6 +1160,7 @@
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
+				C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
 				DC9BC0E12CE9BB95002AF523 /* DefaultDMUnReadRepository.swift in Sources */,
@@ -1115,6 +1174,7 @@
 				DC9BC0E32CE9BBAF002AF523 /* DMUnReadRepositoryInterface.swift in Sources */,
 				DC9BC0D92CE8DD97002AF523 /* DefaultDMHistoryRepository.swift in Sources */,
 				C9F20F6C2CDB73470043351E /* DefaultSettingCoordinator.swift in Sources */,
+				C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */,
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
@@ -1132,13 +1192,14 @@
 				C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */,
 				C91BBC272CE4E343001EFC70 /* ModalNavigationView.swift in Sources */,
 				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
+				C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
-				C0BF42932CE47A6100C5B5B4 /* UnreadChannelTableViewCell.swift in Sources */,
+				C0BF42932CE47A6100C5B5B4 /* ChannelTableViewCell.swift in Sources */,
 				DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
@@ -1159,15 +1220,17 @@
 				C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				C9F20F442CDB62530043351E /* HomeViewModel.swift in Sources */,
-				C0BF42912CE4774B00C5B5B4 /* ReadChannelTableViewCell.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
+				C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C957EA6D2CE21B2500B62A2A /* SearchState.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
+				C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
+				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,
 				DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */,
@@ -1178,6 +1241,7 @@
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
 				DC213A9C2CE36B1600E2A2F7 /* DMListRepositoryInterface.swift in Sources */,
+				C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
@@ -1189,6 +1253,9 @@
 				DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
+				C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */,
+				C09FA8FB2CEC6DD200613FEA /* UnreadCountOfChannel.swift in Sources */,
+				C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
 				C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */,
@@ -1206,6 +1273,7 @@
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
+				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
