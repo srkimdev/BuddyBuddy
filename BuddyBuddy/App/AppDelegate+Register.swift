@@ -42,11 +42,6 @@ extension AppDelegate {
         )
         
         DIContainer.register(
-            type: DMUseCaseInterface.self,
-            DefaultDMUseCase()
-        )
-        
-        DIContainer.register(
             type: ChannelRepositoryInterface.self,
             DefaultChannelRepository(networkService: networkService)
         )
