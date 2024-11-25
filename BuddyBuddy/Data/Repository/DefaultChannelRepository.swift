@@ -11,15 +11,14 @@ import RxSwift
 
 final class DefaultChannelRepository: ChannelRepositoryInterface {
     private typealias Router = ChannelRouter
+    private let networkService: NetworkProtocol
     
-    private let service: NetworkProtocol
-    
-    init(service: NetworkProtocol) {
-        self.service = service
+    init(networkService: NetworkProtocol) {
+        self.networkService = networkService
     }
     
     func fetchMyChannelList(playgroundID: String) -> Single<Result<MyChannelList, any Error>> {
-        service.callRequest(
+        networkService.callRequest(
             router: Router.myChannelList(playgroundID: playgroundID),
             responseType: MyChannelListResponseDTO.self
         )
@@ -38,7 +37,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         channelID: String,
         after: Date?
     ) -> Single<Result<UnreadCountOfChannel, any Error>> {
-        service.callRequest(
+        networkService.callRequest(
             router: Router.unreadCount(
                 playgroundID: playgroundID,
                 channelID: channelID,

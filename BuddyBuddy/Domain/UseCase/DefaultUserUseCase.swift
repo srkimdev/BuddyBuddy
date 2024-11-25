@@ -1,5 +1,5 @@
 //
-//  UserUseCase.swift
+//  DefaultUserUseCase.swift
 //  BuddyBuddy
 //
 //  Created by Jisoo Ham on 11/21/24.
@@ -10,7 +10,7 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class UserUseCase: UserUseCaseInterface {
+final class DefaultUserUseCase: UserUseCaseInterface {
     @Dependency(UserRepositoryInterface.self) private var repository
     
     func checkMyProfile() -> Single<Result<MyProfile, Error>> {

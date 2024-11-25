@@ -10,10 +10,14 @@ import Foundation
 import RxSwift
 
 final class DefaultDMRepository: DMRepositoryInterface {
-    @Dependency(NetworkProtocol.self) private var service
+    private let networkService: NetworkProtocol
+    
+    init(networkService: NetworkProtocol) {
+        self.networkService = networkService
+    }
     
     func fetchDMList(playgroundID: String) -> RxSwift.Single<Result<[DMList], Error>> {
-        return service.callRequest(
+        return networkService.callRequest(
             router: DMRouter.dmList(playgroundID: playgroundID),
             responseType: [DMListDTO].self
         )
@@ -32,7 +36,7 @@ final class DefaultDMRepository: DMRepositoryInterface {
         roomID: String,
         cursorDate: String
     ) -> RxSwift.Single<Result<[DMHistory], Error>> {
-        return service.callRequest(
+        return networkService.callRequest(
             router: DMRouter.dmHistory(
                 playgroundID: playgroundID,
                 roomID: roomID,
@@ -55,7 +59,7 @@ final class DefaultDMRepository: DMRepositoryInterface {
         roomID: String,
         after: String
     ) -> RxSwift.Single<Result<DMUnRead, Error>> {
-        return service.callRequest(
+        return networkService.callRequest(
             router: DMRouter.dmUnRead(
                 playgroundID: playgroundID,
                 roomID: roomID,
@@ -77,7 +81,7 @@ final class DefaultDMRepository: DMRepositoryInterface {
         roomID: String,
         message: String
     ) -> Single<Result<DMHistoryTable, Error>> {
-        return service.callMultiPart(
+        return networkService.callMultiPart(
             router: DMRouter.dmSend(
                 playgroundID: playgroundID,
                 roomID: roomID,

@@ -61,13 +61,13 @@
 		C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC282CE4F370001EFC70 /* TitledTextField.swift */; };
 		C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */; };
 		C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */; };
-		C91F672C2CEE425200C84265 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F672B2CEE425200C84265 /* UserRepository.swift */; };
+		C91F672C2CEE425200C84265 /* DefaultUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F672B2CEE425200C84265 /* DefaultUserRepository.swift */; };
 		C91F672E2CEE427600C84265 /* UserRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F672D2CEE427600C84265 /* UserRepositoryInterface.swift */; };
 		C91F67312CEE439A00C84265 /* ProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67302CEE439A00C84265 /* ProfileDTO.swift */; };
 		C91F67342CEE444500C84265 /* MyProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67332CEE444500C84265 /* MyProfile.swift */; };
 		C91F67362CEE44EC00C84265 /* UserProfileDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67352CEE44EC00C84265 /* UserProfileDTO.swift */; };
 		C91F67382CEE452500C84265 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67372CEE452500C84265 /* UserProfile.swift */; };
-		C91F673A2CEE45B300C84265 /* UserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67392CEE45B300C84265 /* UserUseCase.swift */; };
+		C91F673A2CEE45B300C84265 /* DefaultUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67392CEE45B300C84265 /* DefaultUserUseCase.swift */; };
 		C91F673C2CEE45CF00C84265 /* UserUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F673B2CEE45CF00C84265 /* UserUseCaseInterface.swift */; };
 		C91F673F2CEF2F6F00C84265 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F673E2CEF2F6F00C84265 /* SearchResult.swift */; };
 		C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67402CEF2F8700C84265 /* SearchState.swift */; };
@@ -90,12 +90,12 @@
 		C9C27A062CDA315500243744 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C27A052CDA315500243744 /* SceneDelegate.swift */; };
 		C9C27A102CDA315600243744 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9C27A0F2CDA315600243744 /* Assets.xcassets */; };
 		C9C27A132CDA315600243744 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C9C27A122CDA315600243744 /* Base */; };
-		C9E44A902CECB2D10044CD5C /* PlaygroundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A8F2CECB2D10044CD5C /* PlaygroundRepository.swift */; };
+		C9E44A902CECB2D10044CD5C /* DefaultPlaygroundRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A8F2CECB2D10044CD5C /* DefaultPlaygroundRepository.swift */; };
 		C9E44A932CECB2F40044CD5C /* PlaygroundRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A922CECB2F40044CD5C /* PlaygroundRepositoryInterface.swift */; };
 		C9E44A952CECB45D0044CD5C /* SearchQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A942CECB45D0044CD5C /* SearchQuery.swift */; };
 		C9E44A982CECB4DC0044CD5C /* SearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A972CECB4DC0044CD5C /* SearchDTO.swift */; };
 		C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A992CECBC410044CD5C /* PlaygroundRouter.swift */; };
-		C9E44A9D2CECC1070044CD5C /* PlaygroundUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9C2CECC1070044CD5C /* PlaygroundUseCase.swift */; };
+		C9E44A9D2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9C2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift */; };
 		C9E44A9F2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9E2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift */; };
 		C9E44AA52CEE38A30044CD5C /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44AA42CEE38A30044CD5C /* UserRouter.swift */; };
 		C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F392CDB5F070043351E /* TabKind.swift */; };
@@ -215,13 +215,13 @@
 		C91BBC282CE4F370001EFC70 /* TitledTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitledTextField.swift; sourceTree = "<group>"; };
 		C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberViewController.swift; sourceTree = "<group>"; };
 		C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InviteMemberViewModel.swift; sourceTree = "<group>"; };
-		C91F672B2CEE425200C84265 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		C91F672B2CEE425200C84265 /* DefaultUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserRepository.swift; sourceTree = "<group>"; };
 		C91F672D2CEE427600C84265 /* UserRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoryInterface.swift; sourceTree = "<group>"; };
 		C91F67302CEE439A00C84265 /* ProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDTO.swift; sourceTree = "<group>"; };
 		C91F67332CEE444500C84265 /* MyProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyProfile.swift; sourceTree = "<group>"; };
 		C91F67352CEE44EC00C84265 /* UserProfileDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileDTO.swift; sourceTree = "<group>"; };
 		C91F67372CEE452500C84265 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
-		C91F67392CEE45B300C84265 /* UserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCase.swift; sourceTree = "<group>"; };
+		C91F67392CEE45B300C84265 /* DefaultUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserUseCase.swift; sourceTree = "<group>"; };
 		C91F673B2CEE45CF00C84265 /* UserUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUseCaseInterface.swift; sourceTree = "<group>"; };
 		C91F673E2CEF2F6F00C84265 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C91F67402CEF2F8700C84265 /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
@@ -246,12 +246,12 @@
 		C9C27A0F2CDA315600243744 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9C27A122CDA315600243744 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C9C27A142CDA315600243744 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9E44A8F2CECB2D10044CD5C /* PlaygroundRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundRepository.swift; sourceTree = "<group>"; };
+		C9E44A8F2CECB2D10044CD5C /* DefaultPlaygroundRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlaygroundRepository.swift; sourceTree = "<group>"; };
 		C9E44A922CECB2F40044CD5C /* PlaygroundRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundRepositoryInterface.swift; sourceTree = "<group>"; };
 		C9E44A942CECB45D0044CD5C /* SearchQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchQuery.swift; sourceTree = "<group>"; };
 		C9E44A972CECB4DC0044CD5C /* SearchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDTO.swift; sourceTree = "<group>"; };
 		C9E44A992CECBC410044CD5C /* PlaygroundRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundRouter.swift; sourceTree = "<group>"; };
-		C9E44A9C2CECC1070044CD5C /* PlaygroundUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundUseCase.swift; sourceTree = "<group>"; };
+		C9E44A9C2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlaygroundUseCase.swift; sourceTree = "<group>"; };
 		C9E44A9E2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundUseCaseInterface.swift; sourceTree = "<group>"; };
 		C9E44AA42CEE38A30044CD5C /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
 		C9F20F392CDB5F070043351E /* TabKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabKind.swift; sourceTree = "<group>"; };
@@ -394,14 +394,6 @@
 			path = Channel;
 			sourceTree = "<group>";
 		};
-		C09FA9012CEC715800613FEA /* Channel */ = {
-			isa = PBXGroup;
-			children = (
-				C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */,
-			);
-			path = Channel;
-			sourceTree = "<group>";
-		};
 		C0CF50C12CF4824400F131A0 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -528,9 +520,9 @@
 			children = (
 				DC9375652CECAAF100012F43 /* DefaultDMRepository.swift */,
 				DC9375742CEE081D00012F43 /* DefaultSocketRepository.swift */,
-				C9E44A8F2CECB2D10044CD5C /* PlaygroundRepository.swift */,
-				C09FA9012CEC715800613FEA /* Channel */,
-				C91F672B2CEE425200C84265 /* UserRepository.swift */,
+				C9E44A8F2CECB2D10044CD5C /* DefaultPlaygroundRepository.swift */,
+				C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */,
+				C91F672B2CEE425200C84265 /* DefaultUserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -570,8 +562,8 @@
 			children = (
 				C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */,
 				DC213AA52CE374A700E2A2F7 /* DefaultDMUseCase.swift */,
-				C9E44A9C2CECC1070044CD5C /* PlaygroundUseCase.swift */,
-				C91F67392CEE45B300C84265 /* UserUseCase.swift */,
+				C9E44A9C2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift */,
+				C91F67392CEE45B300C84265 /* DefaultUserUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -1374,7 +1366,7 @@
 				C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
-				C9E44A902CECB2D10044CD5C /* PlaygroundRepository.swift in Sources */,
+				C9E44A902CECB2D10044CD5C /* DefaultPlaygroundRepository.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
 				DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */,
 				C9F20F602CDB6E7E0043351E /* DefaultHomeCoordinator.swift in Sources */,
@@ -1392,8 +1384,8 @@
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
 				C91BBC1B2CE48E7B001EFC70 /* ChannelSettingMiddleView.swift in Sources */,
-				C91F672C2CEE425200C84265 /* UserRepository.swift in Sources */,
-				C9E44A9D2CECC1070044CD5C /* PlaygroundUseCase.swift in Sources */,
+				C91F672C2CEE425200C84265 /* DefaultUserRepository.swift in Sources */,
+				C9E44A9D2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift in Sources */,
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
@@ -1409,7 +1401,7 @@
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
-				C91F673A2CEE45B300C84265 /* UserUseCase.swift in Sources */,
+				C91F673A2CEE45B300C84265 /* DefaultUserUseCase.swift in Sources */,
 				C91F67362CEE44EC00C84265 /* UserProfileDTO.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,

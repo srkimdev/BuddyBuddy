@@ -10,22 +10,26 @@ import Foundation
 import RxSwift
 
 final class DefaultSocketRepository: SocketRepositoryInterface {
-    @Dependency(SocketProtocol.self) private var socket
+    private let socketService: SocketProtocol
+    
+    init(socketService: SocketProtocol) {
+        self.socketService = socketService
+    }
     
     func connectSocket(roomID: String) {
-        socket.updateURL(roomID: roomID)
-        socket.establishConnection()
+        socketService.updateURL(roomID: roomID)
+        socketService.establishConnection()
     }
     
     func disConnectSocket() {
-        socket.closeConnection()
+        socketService.closeConnection()
     }
     
     func observeMessage() -> Observable<DMHistoryTable> {
-        return socket.observeMessage()
+        return socketService.observeMessage()
     }
     
     func sendMessage(roomID: String, message: String) {
-        socket.sendMessage(to: roomID, message: message)
+        socketService.sendMessage(to: roomID, message: message)
     }
 }

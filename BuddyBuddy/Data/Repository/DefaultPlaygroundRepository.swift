@@ -1,5 +1,5 @@
 //
-//  PlaygroundRepository.swift
+//  DefaultPlaygroundRepository.swift
 //  BuddyBuddy
 //
 //  Created by Jisoo Ham on 11/19/24.
@@ -10,8 +10,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class PlaygroundRepository: PlaygroundRepositoryInterface {
-    @Dependency(NetworkProtocol.self) private var service
+final class DefaultPlaygroundRepository: PlaygroundRepositoryInterface {
+    private let networkService: NetworkProtocol
+    
+    init(networkService: NetworkProtocol) {
+        self.networkService = networkService
+    }
     
     func searchPlaygournd(text: String) -> Single<Result<[SearchResult], Error>> {
         let query = SearchQuery(
@@ -19,7 +23,7 @@ final class PlaygroundRepository: PlaygroundRepositoryInterface {
             keyword: text
         )
         let router = PlaygroundRouter.search(query: query)
-        return service.callRequest(router: router, responseType: SearchDTO.self)
+        return networkService.callRequest(router: router, responseType: SearchDTO.self)
             .map { result in
                 switch result {
                 case .success(let value):

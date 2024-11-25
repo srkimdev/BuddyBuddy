@@ -1,5 +1,5 @@
 //
-//  UserRepository.swift
+//  DefaultUserRepository.swift
 //  BuddyBuddy
 //
 //  Created by Jisoo Ham on 11/21/24.
@@ -10,13 +10,12 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-final class UserRepository: UserRepositoryInterface {
-    @Dependency(NetworkProtocol.self) private var networkService
-//    private let networkService: NetworkProtocol
-//    
-//    init(networkService: NetworkProtocol) {
-//        self.networkService = networkService
-//    }
+final class DefaultUserRepository: UserRepositoryInterface {
+    private let networkService: NetworkProtocol
+    
+    init(networkService: NetworkProtocol) {
+        self.networkService = networkService
+    }
     
     func checkMyProfile() -> Single<Result<MyProfile, Error>> {
         let router = UserRouter.myProfile

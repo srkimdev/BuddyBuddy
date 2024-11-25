@@ -64,7 +64,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     func toProfile(userID: String) {
         let vc = ProfileViewController(vm: ProfileViewModel(
             coordinator: self,
-            userUseCase: UserUseCase(),
+            userUseCase: DefaultUserUseCase(),
             userID: userID
         ))
         vc.modalPresentationStyle = .pageSheet
