@@ -19,7 +19,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     func start() {
         let vc = SearchViewController(vm: SearchViewModel(
             coordinator: self,
-            playgroundUseCase: PlaygroundUseCase()
+            playgroundUseCase: DefaultPlaygroundUseCase()
         ))
         navigationController.pushViewController(
             vc,
@@ -30,7 +30,7 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     func toProfile(userID: String) {
         let vc = ProfileViewController(vm: ProfileViewModel(
                 coordinator: self,
-                userUseCase: UserUseCase(),
+                userUseCase: DefaultUserUseCase(),
                 userID: userID
             ))
         vc.modalPresentationStyle = .pageSheet
