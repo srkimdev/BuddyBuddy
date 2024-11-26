@@ -7,6 +7,8 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 final class BuddyAlert: BaseView {
@@ -53,6 +55,11 @@ final class BuddyAlert: BaseView {
     let leftButton: RoundedButton = RoundedButton(btnType: .alertBtn)
     /// 오른쪽 버튼
     let rightButton: RoundedButton = RoundedButton(btnType: .alertBtn)
+    private lazy var tapGesture = UITapGestureRecognizer(
+        target: self,
+        action: #selector(handleTap)
+    )
+    let tapGestureTrigger = PublishRelay<Void>()
     
     init(
         title: String,
@@ -80,6 +87,8 @@ final class BuddyAlert: BaseView {
         [leftButton, rightButton].forEach {
             buttonStackView.addArrangedSubview($0)
         }
+        
+        addGestureRecognizer(tapGesture)
     }
     
     override func setConstraints() {
@@ -123,5 +132,12 @@ final class BuddyAlert: BaseView {
     
     func setMessageBody(_ text: AlertLiteral) {
         messageLabel.text = text.toText
+    }
+    
+    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
+        let tapLocation = gesture.location(in: self)
+        if !containerView.frame.contains(tapLocation) {
+            tapGestureTrigger.accept(())
+        }
     }
 }

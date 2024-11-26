@@ -37,6 +37,7 @@ final class SearchViewModel: ViewModelType {
         let searchCancelBtnTapped: Observable<Void>
         let leftButtonTapped: Observable<Void>
         let rightButtonTapped: Observable<Void>
+        let tappedAroundAlert: Observable<Void>
     }
     
     struct Output {
@@ -187,6 +188,12 @@ final class SearchViewModel: ViewModelType {
                 case .failure(let error):
                     print(error)
                 }
+            }
+            .disposed(by: disposeBag)
+        
+        input.tappedAroundAlert
+            .bind { _ in
+                channelAlert.onNext((true, ""))
             }
             .disposed(by: disposeBag)
         

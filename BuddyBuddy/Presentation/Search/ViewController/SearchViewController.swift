@@ -61,7 +61,8 @@ final class SearchViewController: BaseNavigationViewController {
                 .modelSelected(SearchResult.self).map { $0 },
             searchCancelBtnTapped: searchController.searchBar.rx.cancelButtonClicked.map { () },
             leftButtonTapped: channelAlert.leftButton.rx.tap.map {()},
-            rightButtonTapped: channelAlert.rightButton.rx.tap.map {()}
+            rightButtonTapped: channelAlert.rightButton.rx.tap.map {()},
+            tappedAroundAlert: channelAlert.tapGestureTrigger.asObservable()
         )
         let output = vm.transform(input: input)
         
@@ -137,8 +138,9 @@ final class SearchViewController: BaseNavigationViewController {
 extension SearchViewController {
     private func setAlertHidden(_ isHidden: Bool, animated: Bool = true) {
         if animated {
+            let duration: TimeInterval = isHidden ? 0.1 : 0.18
             UIView.animate(
-                withDuration: 0.18,
+                withDuration: duration,
                 animations: { [weak self] in
                     guard let self else { return }
                     channelAlert.alpha = isHidden ? 0 : 1
