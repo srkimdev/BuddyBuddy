@@ -24,6 +24,8 @@ final class ProfileViewModel: ViewModelType {
         profileImage: ""
     )
     
+    weak var delegate: NavigateTabDelegate?
+    
     init(
         coordinator: Coordinator,
         userUseCase: UserUseCaseInterface,
@@ -48,6 +50,8 @@ final class ProfileViewModel: ViewModelType {
         let userProfile = PublishSubject<UserProfile>()
         let userProfileImage = PublishSubject<UIImage?>()
         
+        var selectedUser = UserProfile(userID: "", email: "", nickname: "", profileImage: "")
+        
         input.viewWillAppear
             .withUnretained(self)
             .flatMap { arg1 in
@@ -56,6 +60,7 @@ final class ProfileViewModel: ViewModelType {
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let user):
+                    selectedUser = user
                     userProfile.onNext(user)
                     owner.userUseCase.getUserProfileImage(imagePath: user.profileImage)
                         .subscribe { data in
@@ -75,8 +80,7 @@ final class ProfileViewModel: ViewModelType {
         
         input.dmBtnTapped
             .bind(with: self) { owner, _ in
-                owner.coordinator.dismissVC()
-                owner.coordinator.parent?.selectTab(.dm)
+                owner.delegate?.tappedDMButton(with: selectedUser.userID)
             }
             .disposed(by: disposeBag)
         

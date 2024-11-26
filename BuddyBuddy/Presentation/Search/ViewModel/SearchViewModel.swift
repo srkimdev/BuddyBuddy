@@ -17,6 +17,8 @@ final class SearchViewModel: ViewModelType {
     private let playgroundUseCase: PlaygroundUseCaseInterface
     private let channelUseCase: ChannelUseCaseInterface
     
+    weak var delegate: NavigateTabDelegate?
+    
     init(
         coordinator: SearchCoordinator,
         playgroundUseCase: PlaygroundUseCaseInterface,
@@ -51,7 +53,7 @@ final class SearchViewModel: ViewModelType {
         let searchedResult = PublishSubject<[SearchResult]>()
         let emptyResult = PublishSubject<Bool>()
         let channelAlert = BehaviorSubject<(Bool, String)>(value: (true, ""))
-        
+
         var searchResult: [SearchResult] = []
         var totalInfo: [SearchResult] = []
         var myChannels = MyChannelList()
@@ -149,10 +151,11 @@ final class SearchViewModel: ViewModelType {
             .bind(with: self) { owner, selected in
                 switch selected.state {
                 case .channel:
+                    // 이미 참여한 Channel tap
                     if myChannels.contains(where: { $0.channelID == selected.id }) {
-                        print("여기용")
+                        owner.delegate?.tappedChannelChat(with: selected.id)
                     } else {
-                        print("여기지롱")
+                        // 참여하지 않은 Channel tap
                         channelID = selected.id
                         channelAlert.onNext((false, selected.name))
                     }
@@ -179,8 +182,8 @@ final class SearchViewModel: ViewModelType {
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
-                    channelAlert.onNext((true, ""))
-                    owner.coordinator.parent?.selectTab(.home)
+                    channelAlert.onNext((value, ""))
+                    owner.delegate?.tappedChannelChat(with: channelID)
                 case .failure(let error):
                     print(error)
                 }

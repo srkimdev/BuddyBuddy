@@ -42,6 +42,7 @@
 		C90FEE762CF5D065008819AF /* AlertLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE752CF5D065008819AF /* AlertLiteral.swift */; };
 		C90FEE782CF60386008819AF /* ChannelChatQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE772CF60386008819AF /* ChannelChatQuery.swift */; };
 		C90FEE7A2CF604DF008819AF /* ChannelChatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE792CF604DF008819AF /* ChannelChatResponseDTO.swift */; };
+		C90FEE7C2CF62091008819AF /* NavigateTabDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE7B2CF62091008819AF /* NavigateTabDelegate.swift */; };
 		C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */; };
 		C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */; };
 		C91BBC052CE37093001EFC70 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC042CE37093001EFC70 /* SearchResultView.swift */; };
@@ -203,6 +204,7 @@
 		C90FEE752CF5D065008819AF /* AlertLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLiteral.swift; sourceTree = "<group>"; };
 		C90FEE772CF60386008819AF /* ChannelChatQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelChatQuery.swift; sourceTree = "<group>"; };
 		C90FEE792CF604DF008819AF /* ChannelChatResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelChatResponseDTO.swift; sourceTree = "<group>"; };
+		C90FEE7B2CF62091008819AF /* NavigateTabDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateTabDelegate.swift; sourceTree = "<group>"; };
 		C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		C91BBC042CE37093001EFC70 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -778,6 +780,7 @@
 			children = (
 				C9F20F652CDB72A60043351E /* SearchCoordinator.swift */,
 				C9F20F672CDB72C30043351E /* DefaultSearchCoordinator.swift */,
+				C90FEE7B2CF62091008819AF /* NavigateTabDelegate.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -1415,6 +1418,7 @@
 				C91F67342CEE444500C84265 /* MyProfile.swift in Sources */,
 				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */,
+				C90FEE7C2CF62091008819AF /* NavigateTabDelegate.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,
