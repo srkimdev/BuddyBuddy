@@ -163,6 +163,7 @@
 		DC93757A2CEE330700012F43 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DC9375792CEE330700012F43 /* SocketIO */; };
 		DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */; };
 		DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */; };
+		DC9375882CF5E08500012F43 /* BubbleImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
@@ -321,6 +322,7 @@
 		DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserDefaults.swift; sourceTree = "<group>"; };
+		DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageStackView.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
@@ -956,6 +958,7 @@
 				C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */,
 				DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */,
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
+				DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1406,6 +1409,7 @@
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91F673A2CEE45B300C84265 /* DefaultUserUseCase.swift in Sources */,
+				DC9375882CF5E08500012F43 /* BubbleImageStackView.swift in Sources */,
 				C91F67362CEE44EC00C84265 /* UserProfileDTO.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,

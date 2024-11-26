@@ -20,8 +20,8 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 13)
         return view
     }()
-    private let speechBubble: SpeechBubbleView = {
-        let view = SpeechBubbleView(text: "")
+    private var bubbleImageStackView: BubbleImageStackView = {
+        let view = BubbleImageStackView()
         return view
     }()
     private let chatTime: UILabel = {
@@ -31,13 +31,8 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         return view
     }()
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        speechBubble.content.text = nil
-    }
-    
     override func setHierarchy() {
-        [profileImage, userName, speechBubble, chatTime].forEach {
+        [profileImage, userName, bubbleImageStackView, chatTime].forEach {
             contentView.addSubview($0)
         }
     }
@@ -52,19 +47,16 @@ final class DMChattingTableViewCell: BaseTableViewCell {
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.trailing.equalToSuperview().inset(30)
-            make.height.equalTo(15)
         }
-        speechBubble.snp.makeConstraints { make in
+        bubbleImageStackView.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.bottom.equalToSuperview().inset(8)
-//            make.trailing.lessThanOrEqualTo(chatTime.snp.leading).offset(-8)
-//            make.width.greaterThanOrEqualToSuperview().multipliedBy(0.6)
         }
         chatTime.snp.makeConstraints { make in
-            make.bottom.equalTo(speechBubble.snp.bottom)
-            make.leading.equalTo(speechBubble.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualToSuperview().inset(30)
+            make.bottom.equalTo(bubbleImageStackView.snp.bottom)
+            make.leading.equalTo(bubbleImageStackView.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(30)
         }
     }
     
@@ -72,6 +64,13 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         profileImage.backgroundColor = .lightGray
         userName.text = transition.user?.nickname
         chatTime.text = "11:55 오전"
-        speechBubble.updateText(transition.content)
+        
+        
+        bubbleImageStackView.speechBubble.updateText(transition.content)
+//        speechBubble.updateText(transition.content)
     }
+}
+
+extension DMChattingTableViewCell {
+    
 }

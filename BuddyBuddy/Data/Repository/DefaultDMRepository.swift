@@ -63,7 +63,7 @@ final class DefaultDMRepository: DMRepositoryInterface {
             router: DMRouter.dmUnRead(
                 playgroundID: playgroundID,
                 roomID: roomID,
-                after: ""
+                after: after
             ),
             responseType: DMUnReadDTO.self)
         .map { result in
