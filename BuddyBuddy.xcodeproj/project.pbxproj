@@ -11,6 +11,8 @@
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
+		C08644D12CF62C5E00862523 /* AddChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */; };
+		C08644D32CF6358000862523 /* ButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D22CF6358000862523 /* ButtonState.swift */; };
 		C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */; };
 		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
@@ -178,6 +180,8 @@
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
+		C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewModel.swift; sourceTree = "<group>"; };
+		C08644D22CF6358000862523 /* ButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonState.swift; sourceTree = "<group>"; };
 		C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDateFormatter.swift; sourceTree = "<group>"; };
 		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
@@ -688,6 +692,7 @@
 				C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */,
 				C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */,
 				C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */,
+				C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1018,6 +1023,7 @@
 				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
 				C91F67402CEF2F8700C84265 /* SearchState.swift */,
 				C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */,
+				C08644D22CF6358000862523 /* ButtonState.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1277,6 +1283,7 @@
 				C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
+				C08644D32CF6358000862523 /* ButtonState.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
 				C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */,
@@ -1410,6 +1417,7 @@
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
+				C08644D12CF62C5E00862523 /* AddChannelViewModel.swift in Sources */,
 				DC9375682CECAB5D00012F43 /* DMRepositoryInterface.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
