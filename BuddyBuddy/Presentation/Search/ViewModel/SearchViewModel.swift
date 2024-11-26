@@ -15,13 +15,16 @@ final class SearchViewModel: ViewModelType {
     
     private let coordinator: SearchCoordinator
     private let playgroundUseCase: PlaygroundUseCaseInterface
+    private let channelUseCase: ChannelUseCaseInterface
     
     init(
         coordinator: SearchCoordinator,
-        playgroundUseCase: PlaygroundUseCaseInterface
+        playgroundUseCase: PlaygroundUseCaseInterface,
+        channelUseCase: ChannelUseCaseInterface
     ) {
         self.coordinator = coordinator
         self.playgroundUseCase = playgroundUseCase
+        self.channelUseCase = channelUseCase
     }
     
     struct Input {
@@ -30,6 +33,8 @@ final class SearchViewModel: ViewModelType {
         let inputSegIndex: Observable<Int>
         let selectedCell: Observable<SearchResult>
         let searchCancelBtnTapped: Observable<Void>
+        let leftButtonTapped: Observable<Void>
+        let rightButtonTapped: Observable<Void>
     }
     
     struct Output {
@@ -37,6 +42,7 @@ final class SearchViewModel: ViewModelType {
         let searchData: Driver<SearchImageType>
         let searchedResult: Driver<[SearchResult]>
         let emptyResult: Driver<Bool>
+        let channelAlert: Driver<(Bool, String)>
     }
     
     func transform(input: Input) -> Output {
@@ -44,9 +50,12 @@ final class SearchViewModel: ViewModelType {
         let searchData = PublishSubject<SearchImageType>()
         let searchedResult = PublishSubject<[SearchResult]>()
         let emptyResult = PublishSubject<Bool>()
+        let channelAlert = BehaviorSubject<(Bool, String)>(value: (true, ""))
         
         var searchResult: [SearchResult] = []
         var totalInfo: [SearchResult] = []
+        var myChannels = MyChannelList()
+        var channelID: String = ""
         
         input.viewWillAppear
             .withUnretained(self)
@@ -71,11 +80,28 @@ final class SearchViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
+        input.viewWillAppear
+            .withUnretained(self)
+            .flatMap { (owner, _) in
+                owner.channelUseCase
+                    .fetchMyChannelList(playgroundID: UserDefaultsManager.playgroundID)
+            }
+            .bind { result in
+                switch result {
+                case .success(let channels):
+                    myChannels = channels
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
         input.searchCancelBtnTapped
             .bind(with: self) { owner, _ in
+                searchResult = totalInfo
                 owner.updateSearchData(
                     state: .channel,
-                    searchResult: totalInfo,
+                    searchResult: searchResult,
                     searchData: searchData,
                     searchedResult: searchedResult,
                     emptyResult: emptyResult
@@ -112,7 +138,7 @@ final class SearchViewModel: ViewModelType {
                 owner.updateSearchData(
                     state: state,
                     searchResult: searchResult,
-                    searchData: searchData, 
+                    searchData: searchData,
                     searchedResult: searchedResult,
                     emptyResult: emptyResult
                 )
@@ -123,9 +149,40 @@ final class SearchViewModel: ViewModelType {
             .bind(with: self) { owner, selected in
                 switch selected.state {
                 case .channel:
-                    print("Channel", selected)
+                    if myChannels.contains(where: { $0.channelID == selected.id }) {
+                        print("여기용")
+                    } else {
+                        print("여기지롱")
+                        channelID = selected.id
+                        channelAlert.onNext((false, selected.name))
+                    }
                 case .user:
                     owner.coordinator.toProfile(userID: selected.id)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.leftButtonTapped
+            .bind { _ in
+                channelAlert.onNext((true, ""))
+            }
+            .disposed(by: disposeBag)
+        
+        input.rightButtonTapped
+            .withUnretained(self)
+            .flatMap({ (owner, _) in
+                owner.channelUseCase.fetchChannelChats(
+                    channelID: channelID,
+                    date: nil
+                )
+            })
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let value):
+                    channelAlert.onNext((true, ""))
+                    owner.coordinator.parent?.selectTab(.home)
+                case .failure(let error):
+                    print(error)
                 }
             }
             .disposed(by: disposeBag)
@@ -134,7 +191,8 @@ final class SearchViewModel: ViewModelType {
             selectedSegIndex: selectedSegIndex.asDriver(onErrorJustReturn: 0),
             searchData: searchData.asDriver(onErrorJustReturn: .channel),
             searchedResult: searchedResult.asDriver(onErrorJustReturn: []),
-            emptyResult: emptyResult.asDriver(onErrorJustReturn: false)
+            emptyResult: emptyResult.asDriver(onErrorJustReturn: false),
+            channelAlert: channelAlert.asDriver(onErrorJustReturn: (false, ""))
         )
     }
     
@@ -149,7 +207,11 @@ final class SearchViewModel: ViewModelType {
         let imageType: SearchImageType = state == .channel ? .channel : .country(emoji: .kr)
         
         searchData.onNext(imageType)
-        searchedResult.onNext(filteredResults)
+        if state == .user {
+            searchedResult.onNext(filteredResults.filter { $0.id != UserDefaultsManager.userID})
+        } else {
+            searchedResult.onNext(filteredResults)
+        }
         emptyResult.onNext(filteredResults.isEmpty)
     }
 }

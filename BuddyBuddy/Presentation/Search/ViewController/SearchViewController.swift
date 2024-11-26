@@ -35,6 +35,11 @@ final class SearchViewController: BaseNavigationViewController {
         return controller
     }()
     private let searchedResult: SearchResultView = SearchResultView()
+    private let channelAlert: BuddyAlert = BuddyAlert(
+        title: "채널 참여",
+        leftButtonTitle: "취소",
+        rightButtonTitle: "확인"
+    )
     
     init(vm: SearchViewModel) {
         self.vm = vm
@@ -48,13 +53,15 @@ final class SearchViewController: BaseNavigationViewController {
     
     override func bind() {
         let input = SearchViewModel.Input(
-            viewWillAppear: Observable.just(()),
+            viewWillAppear: rx.viewWillAppear,
             inputText: searchController.searchBar.rx.searchButtonClicked
                 .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
             inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 },
             selectedCell: searchedResult.searchResultTableView.rx
                 .modelSelected(SearchResult.self).map { $0 },
-            searchCancelBtnTapped: searchController.searchBar.rx.cancelButtonClicked.map { () }
+            searchCancelBtnTapped: searchController.searchBar.rx.cancelButtonClicked.map { () },
+            leftButtonTapped: channelAlert.leftButton.rx.tap.map {()},
+            rightButtonTapped: channelAlert.rightButton.rx.tap.map {()}
         )
         let output = vm.transform(input: input)
         
@@ -87,6 +94,16 @@ final class SearchViewController: BaseNavigationViewController {
                 owner.searchedResult.showEmptyView(isEmpty)
             }
             .disposed(by: disposeBag)
+        
+        output.channelAlert
+            .drive(with: self) { owner, aboutChannels in
+                let showAlert = aboutChannels.0
+                let channelName = aboutChannels.1
+                owner.setAlertHidden(showAlert)
+                owner.channelAlert
+                    .setMessageBody(AlertLiteral.joinChannel(channelName: channelName))
+            }
+            .disposed(by: disposeBag)
     }
     
     override func setNavigation() {
@@ -98,14 +115,42 @@ final class SearchViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        [searchedResult].forEach {
+        [searchedResult, channelAlert].forEach {
             view.addSubview($0)
         }
+        
+        /// alert 숨김
+        setAlertHidden(true, animated: false)
     }
     
     override func setConstraints() {
         searchedResult.snp.makeConstraints { make in
             make.edges.equalTo(safeArea)
+        }
+        
+        channelAlert.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+    }
+}
+
+extension SearchViewController {
+    private func setAlertHidden(_ isHidden: Bool, animated: Bool = true) {
+        if animated {
+            UIView.animate(
+                withDuration: 0.18,
+                animations: { [weak self] in
+                    guard let self else { return }
+                    channelAlert.alpha = isHidden ? 0 : 1
+                },
+                completion: { [weak self] _ in
+                    guard let self else { return }
+                    channelAlert.isHidden = isHidden
+                }
+            )
+        } else {
+            channelAlert.isHidden = isHidden
+            channelAlert.alpha = isHidden ? 0 : 1
         }
     }
 }

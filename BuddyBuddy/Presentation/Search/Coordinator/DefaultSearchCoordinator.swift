@@ -19,7 +19,8 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     func start() {
         let vc = SearchViewController(vm: SearchViewModel(
             coordinator: self,
-            playgroundUseCase: DefaultPlaygroundUseCase()
+            playgroundUseCase: DefaultPlaygroundUseCase(),
+            channelUseCase: DefaultChannelUseCase()
         ))
         navigationController.pushViewController(
             vc,
