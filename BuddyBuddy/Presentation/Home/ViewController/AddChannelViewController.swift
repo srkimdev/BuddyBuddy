@@ -10,15 +10,22 @@ import UIKit
 import SnapKit
 
 final class AddChannelViewController: BaseViewController {
-    private let navigationView: ModalNavigationView = ModalNavigationView(title: "채널 생성")
+    private let navigationView: ModalNavigationView
+    = ModalNavigationView(title: "CreateChannel".localized())
     private let channelNameTextField: TitledTextField = TitledTextField(
-        title: "채널 이름",
-        placeholder: "채널 이름을 입력하세요 (필수)"
+        title: "ChannelName".localized(),
+        placeholder: "ChannelNamePlaceholder".localized()
     )
     private let channelContentTextField: TitledTextField = TitledTextField(
-        title: "채널 이름",
-        placeholder: "채널 이름을 입력하세요 (필수)"
+        title: "ChannelContent".localized(),
+        placeholder: "ChannelContentPlaceholder".localized()
     )
+    
+    override func setView() {
+        super.setView()
+        
+        view.backgroundColor = .gray3
+    }
     
     override func setHierarchy() {
         [navigationView, channelNameTextField, channelContentTextField].forEach {
