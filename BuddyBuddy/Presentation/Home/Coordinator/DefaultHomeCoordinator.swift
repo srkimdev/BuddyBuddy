@@ -83,7 +83,16 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toAddChannel() {
-        // TODO: 채널 생성 화면 전환
+        let vc = AddChannelViewController()
+        vc.modalPresentationStyle = .pageSheet
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(
+            vc,
+            animated: true
+        )
     }
     
     func toPlayground() {
