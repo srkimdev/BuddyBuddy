@@ -7,9 +7,14 @@
 
 import UIKit
 
+import RxCocoa
+import RxSwift
 import SnapKit
 
 final class AddChannelViewController: BaseViewController {
+    private let disposeBag = DisposeBag()
+    private let vm: AddChannelViewModel
+    
     private let navigationView: ModalNavigationView
     = ModalNavigationView(title: "CreateChannel".localized())
     private let channelNameTextField: TitledTextField = TitledTextField(
@@ -31,6 +36,39 @@ final class AddChannelViewController: BaseViewController {
         view.isEnabled = false
         return view
     }()
+    
+    init(vm: AddChannelViewModel) {
+        self.vm = vm
+        super.init()
+    }
+    
+    override func bind() {
+        let input = AddChannelViewModel.Input(
+            nameInputText: channelNameTextField.textField.rx.text.orEmpty.asObservable(),
+            contentInputText: channelContentTextField.textField.rx.text.orEmpty.asObservable(),
+            okBtnTapped: okBtn.rx.tap.asObservable()
+        )
+        let output = vm.transform(input: input)
+        
+        output.okBtnState
+            .drive(with: self) { owner, type in
+                switch type {
+                case .disable:
+                    owner.okBtn.isEnabled = false
+                    owner.okBtn.updateBtn(
+                        bgColor: .gray2,
+                        txtColor: .gray1
+                    )
+                case .enable:
+                    owner.okBtn.isEnabled = true
+                    owner.okBtn.updateBtn(
+                        bgColor: .primary,
+                        txtColor: .secondary
+                    )
+                }
+            }
+            .disposed(by: disposeBag)
+    }
     
     override func setView() {
         super.setView()

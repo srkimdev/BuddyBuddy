@@ -34,7 +34,7 @@ final class AddChannelViewModel: ViewModelType {
                 okBtnState.accept((1...30) ~= input.count ? .enable : .disable)
             }.disposed(by: disposeBag)
         
-        contentInputText
+        input.contentInputText
             .bind(to: contentInputText)
             .disposed(by: disposeBag)
         
