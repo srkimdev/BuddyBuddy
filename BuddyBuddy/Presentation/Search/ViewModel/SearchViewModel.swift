@@ -62,8 +62,8 @@ final class SearchViewModel: ViewModelType {
         
         input.viewWillAppear
             .withUnretained(self)
-            .flatMap { (viewModel, _) in
-                return viewModel.playgroundUseCase.fetchPlaygroundInfo()
+            .flatMap { (owner, _) in
+                return owner.playgroundUseCase.fetchPlaygroundInfo()
             }
             .bind(with: self) { owner, result in
                 switch result {
