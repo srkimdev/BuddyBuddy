@@ -16,4 +16,8 @@ protocol ChannelUseCaseInterface {
         channelID: String,
         after: Date?
     ) -> Single<Result<UnreadCountOfChannel, Error>>
+    func fetchChannelChats(
+        channelID: String,
+        date: String?
+    ) -> Single<Result<Bool, any Error>>
 }

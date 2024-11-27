@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DefaultSearchCoordinator: SearchCoordinator {
+final class DefaultSearchCoordinator: SearchCoordinator, NavigateTabDelegate {
     var parent: Coordinator?
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
@@ -17,10 +17,13 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     }
     
     func start() {
-        let vc = SearchViewController(vm: SearchViewModel(
+        let vm = SearchViewModel(
             coordinator: self,
-            playgroundUseCase: DefaultPlaygroundUseCase()
-        ))
+            playgroundUseCase: DefaultPlaygroundUseCase(),
+            channelUseCase: DefaultChannelUseCase()
+        )
+        vm.delegate = self
+        let vc = SearchViewController(vm: vm)
         navigationController.pushViewController(
             vc,
             animated: true
@@ -28,11 +31,13 @@ final class DefaultSearchCoordinator: SearchCoordinator {
     }
     
     func toProfile(userID: String) {
-        let vc = ProfileViewController(vm: ProfileViewModel(
-                coordinator: self,
-                userUseCase: DefaultUserUseCase(),
-                userID: userID
-            ))
+        let vm = ProfileViewModel(
+            coordinator: self,
+            userUseCase: DefaultUserUseCase(),
+            userID: userID
+        )
+        vm.delegate = self
+        let vc = ProfileViewController(vm: vm)
         vc.modalPresentationStyle = .pageSheet
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.large()]
@@ -42,5 +47,22 @@ final class DefaultSearchCoordinator: SearchCoordinator {
             vc,
             animated: true
         )
+    }
+    
+    func tappedDMButton(with userID: String) {
+        dismissVC()
+        parent?.selectTab(.dm)
+        
+        if let tabCoordi = parent as? TabBarCoordinator {
+            tabCoordi.navigateToDMChatRoom(chatID: userID)
+        }
+    }
+    
+    func tappedChannelChat(with channelID: String) {
+        parent?.selectTab(.home)
+        
+        if let tabCoordi = parent as? TabBarCoordinator {
+            tabCoordi.navigateToChannelChatRoom(channelID: channelID)
+        }
     }
 }

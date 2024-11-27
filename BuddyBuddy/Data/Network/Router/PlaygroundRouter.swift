@@ -11,6 +11,7 @@ import Alamofire
 
 enum PlaygroundRouter {
     case search(query: SearchQuery)
+    case specificPlaygroundInfo
 }
 
 extension PlaygroundRouter: TargetType {
@@ -20,7 +21,7 @@ extension PlaygroundRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .search(_):
+        case .search(_), .specificPlaygroundInfo:
             return .get
         }
     }
@@ -29,12 +30,14 @@ extension PlaygroundRouter: TargetType {
         switch self {
         case .search(let query):
             return "workspaces/\(query.playgroundID)/search"
+        case .specificPlaygroundInfo:
+            return "workspaces/\(UserDefaultsManager.playgroundID)"
         }
     }
     
     var header: [String: String] {
         switch self {
-        case .search(_):
+        case .search(_), .specificPlaygroundInfo:
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.authorization.rawValue: KeyChainManager.shared.getRefreshToken() ?? "",
@@ -51,12 +54,14 @@ extension PlaygroundRouter: TargetType {
         switch self {
         case .search(let query):
             return [URLQueryItem(name: "keyword", value: query.keyword)]
+        case .specificPlaygroundInfo:
+            return nil
         }
     }
     
     var body: Data? {
         switch self {
-        case .search(_):
+        case .search(_), .specificPlaygroundInfo:
             return nil
         }
     }

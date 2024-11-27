@@ -75,11 +75,20 @@ extension TabBarCoordinator {
         childs.append(coordinator)
         coordinator.start()
     }
+    
     func navigateToDMChatRoom(chatID: String) {
         guard let dmCoordinator = childs.first(where: { $0 is DefaultDMCoordinator })
                 as? DefaultDMCoordinator else {
             return
         }
         dmCoordinator.toDMChatting(userID: chatID)
+    }
+    
+    func navigateToChannelChatRoom(channelID: String) {
+        guard let homeCoordinator = childs.first(where: { $0 is DefaultHomeCoordinator })
+                as? DefaultHomeCoordinator else {
+            return
+        }
+        homeCoordinator.toChannelDM()
     }
 }

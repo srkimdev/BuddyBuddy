@@ -28,4 +28,14 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
             after: after
         )
     }
+    
+    func fetchChannelChats(
+        channelID: String,
+        date: String?
+    ) -> Single<Result<Bool, any Error>> {
+        return repository.fetchChannelChats(
+            channelID: channelID,
+            date: date
+        )
+    }
 }
