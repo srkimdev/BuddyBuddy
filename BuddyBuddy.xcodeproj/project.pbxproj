@@ -23,6 +23,7 @@
 		C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */; };
 		C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */; };
 		C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */; };
+		C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E012CF786CA00B41E60 /* RegularExpression.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
@@ -193,6 +194,7 @@
 		C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannelResponseDTO.swift; sourceTree = "<group>"; };
 		C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRepositoryInterface.swift; sourceTree = "<group>"; };
 		C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelRepository.swift; sourceTree = "<group>"; };
+		C0A35E012CF786CA00B41E60 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
@@ -1027,6 +1029,7 @@
 				C91F67402CEF2F8700C84265 /* SearchState.swift */,
 				C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */,
 				C08644D22CF6358000862523 /* ButtonState.swift */,
+				C0A35E012CF786CA00B41E60 /* RegularExpression.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1410,6 +1413,7 @@
 				C91F67342CEE444500C84265 /* MyProfile.swift in Sources */,
 				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */,
+				C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,

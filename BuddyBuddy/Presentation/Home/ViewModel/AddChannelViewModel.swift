@@ -32,7 +32,25 @@ final class AddChannelViewModel: ViewModelType {
             .bind(with: self) { owner, input in
                 nameInputText.accept(input)
                 okBtnState.accept((1...30) ~= input.count ? .enable : .disable)
+                do {
+                    let isValid = try input.isVaild(type: .name)
+                    print("Is valid email: \(isValid)")
+                } catch {
+                    print("Error validating email: \(error)")
+                }
             }.disposed(by: disposeBag)
+        
+//        input.nameInputText
+//            .bind(with: self) { _, input in
+//                nameInputText.accept(input)
+//                do {
+//                    let isValid = try input.isVaild(type: .name)
+//                    okBtnState.accept(isValid ? .enable : .disable)
+//                } catch {
+//                    print("Error validating channel name: \(error)")
+//                    okBtnState.accept(.disable)
+//                }
+//            }.disposed(by: disposeBag)
         
         input.contentInputText
             .bind(to: contentInputText)
