@@ -38,7 +38,8 @@ final class SearchViewController: BaseNavigationViewController {
     private let channelAlert: BuddyAlert = BuddyAlert(
         title: "채널 참여",
         leftButtonTitle: "취소",
-        rightButtonTitle: "확인"
+        rightButtonTitle: "확인",
+        hasTwoButton: true
     )
     
     init(vm: SearchViewModel) {

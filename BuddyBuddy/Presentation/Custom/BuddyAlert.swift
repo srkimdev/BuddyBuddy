@@ -60,12 +60,16 @@ final class BuddyAlert: BaseView {
         action: #selector(handleTap)
     )
     let tapGestureTrigger = PublishRelay<Void>()
+    private let hasTwoButton: Bool
     
     init(
         title: String,
-        leftButtonTitle: String,
-        rightButtonTitle: String
+        leftButtonTitle: String? = nil,
+        rightButtonTitle: String,
+        hasTwoButton: Bool
     ) {
+        self.hasTwoButton = hasTwoButton
+        
         super.init()
         
         titleLabel.text = title
@@ -84,8 +88,13 @@ final class BuddyAlert: BaseView {
         [titleLabel, messageLabel].forEach {
             labelStackView.addArrangedSubview($0)
         }
-        [leftButton, rightButton].forEach {
-            buttonStackView.addArrangedSubview($0)
+        
+        if hasTwoButton {
+            [leftButton, rightButton].forEach {
+                buttonStackView.addArrangedSubview($0)
+            }
+        } else {
+            buttonStackView.addArrangedSubview(rightButton)
         }
         
         addGestureRecognizer(tapGesture)
@@ -113,11 +122,11 @@ final class BuddyAlert: BaseView {
     }
     
     func setButtonTitle(
-        left: String,
+        left: String?,
         right: String
     ) {
         leftButton.setupBtn(
-            title: left,
+            title: left ?? "",
             bgColor: .gray2,
             txtColor: .secondary,
             btnType: .alertBtn
