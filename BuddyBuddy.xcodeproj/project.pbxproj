@@ -13,6 +13,7 @@
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
 		C08644D12CF62C5E00862523 /* AddChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */; };
 		C08644D32CF6358000862523 /* ButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D22CF6358000862523 /* ButtonState.swift */; };
+		C08644D52CF6E3C300862523 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D42CF6E3C300862523 /* AddChannelViewController.swift */; };
 		C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */; };
 		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
@@ -182,6 +183,7 @@
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
 		C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewModel.swift; sourceTree = "<group>"; };
 		C08644D22CF6358000862523 /* ButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonState.swift; sourceTree = "<group>"; };
+		C08644D42CF6E3C300862523 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
 		C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDateFormatter.swift; sourceTree = "<group>"; };
 		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 				C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */,
 				C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */,
 				C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */,
+				C08644D42CF6E3C300862523 /* AddChannelViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1400,6 +1403,7 @@
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
+				C08644D52CF6E3C300862523 /* AddChannelViewController.swift in Sources */,
 				DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */,
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
