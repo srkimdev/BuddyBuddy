@@ -20,6 +20,17 @@ final class AddChannelViewController: BaseViewController {
         title: "ChannelContent".localized(),
         placeholder: "ChannelContentPlaceholder".localized()
     )
+    private let okBtn: RoundedButton = {
+        let view = RoundedButton(
+            title: "OK".localized(),
+            bgColor: .gray2,
+            txtColor: .gray1,
+            btnType: .generalBtn
+        )
+        
+        view.isEnabled = false
+        return view
+    }()
     
     override func setView() {
         super.setView()
@@ -28,7 +39,7 @@ final class AddChannelViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        [navigationView, channelNameTextField, channelContentTextField].forEach {
+        [navigationView, channelNameTextField, channelContentTextField, okBtn].forEach {
             view.addSubview($0)
         }
     }
@@ -48,6 +59,11 @@ final class AddChannelViewController: BaseViewController {
             make.top.equalTo(channelNameTextField.snp.bottom).offset(24)
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(76)
+        }
+        okBtn.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview().inset(24)
+            make.bottom.equalTo(safeArea).inset(12)
+            make.height.equalTo(44)
         }
     }
 }
