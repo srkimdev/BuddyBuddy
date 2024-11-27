@@ -49,9 +49,9 @@ final class ChannelAdminViewController: BaseViewController {
     
     override func setConstraints() {
         topView.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(10)
+            make.top.equalToSuperview()
             make.horizontalEdges.equalToSuperview()
-            make.height.equalTo(44)
+            make.height.equalTo(54)
         }
         userTableView.snp.makeConstraints { make in
             make.top.equalTo(topView.snp.bottom)
