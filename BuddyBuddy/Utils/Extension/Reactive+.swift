@@ -41,7 +41,7 @@ extension Reactive where Base: BuddyAlert {
         
         return tapGesture.rx.event
             .filter { [weak base] gesture in
-                guard let base else { return false}
+                guard let base else { return false }
                 let tapLocation = gesture.location(in: base)
                 return !base.containerView.frame.contains(tapLocation)
             }

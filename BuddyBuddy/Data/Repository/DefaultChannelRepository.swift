@@ -71,7 +71,6 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         .map { result in
             switch result {
             case .success(let value):
-                print(value)
                 return .success(true)
             case .failure(let error):
                 return .failure(error)
