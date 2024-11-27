@@ -31,3 +31,21 @@ extension Reactive where Base: UIViewController {
             .map { _ in () }
     }
 }
+
+extension Reactive where Base: BuddyAlert {
+    var tap: Observable<Void> {
+        let tapGesture = UITapGestureRecognizer()
+        
+        base.addGestureRecognizer(tapGesture)
+        base.isUserInteractionEnabled = true
+        
+        return tapGesture.rx.event
+            .filter { [weak base] gesture in
+                guard let base else { return false}
+                let tapLocation = gesture.location(in: base)
+                return !base.containerView.frame.contains(tapLocation)
+            }
+            .map { _ in () }
+            .asObservable()
+    }
+}

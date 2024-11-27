@@ -12,7 +12,7 @@ import RxSwift
 import SnapKit
 
 final class BuddyAlert: BaseView {
-    private let containerView: UIView = {
+    let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 16
         view.backgroundColor = .white
@@ -55,11 +55,6 @@ final class BuddyAlert: BaseView {
     let leftButton: RoundedButton = RoundedButton(btnType: .alertBtn)
     /// 오른쪽 버튼
     let rightButton: RoundedButton = RoundedButton(btnType: .alertBtn)
-    private lazy var tapGesture = UITapGestureRecognizer(
-        target: self,
-        action: #selector(handleTap)
-    )
-    let tapGestureTrigger = PublishRelay<Void>()
     private let hasTwoButton: Bool
     
     init(
@@ -96,14 +91,12 @@ final class BuddyAlert: BaseView {
         } else {
             buttonStackView.addArrangedSubview(rightButton)
         }
-        
-        addGestureRecognizer(tapGesture)
     }
     
     override func setConstraints() {
         containerView.snp.makeConstraints { make in
             make.center.equalToSuperview()
-            make.width.equalTo(344)
+            make.horizontalEdges.equalToSuperview().inset(24)
             make.height.greaterThanOrEqualTo(138)
         }
         labelStackView.snp.makeConstraints { make in
@@ -141,12 +134,5 @@ final class BuddyAlert: BaseView {
     
     func setMessageBody(_ text: AlertLiteral) {
         messageLabel.text = text.toText
-    }
-    
-    @objc func handleTap(_ gesture: UITapGestureRecognizer) {
-        let tapLocation = gesture.location(in: self)
-        if !containerView.frame.contains(tapLocation) {
-            tapGestureTrigger.accept(())
-        }
     }
 }
