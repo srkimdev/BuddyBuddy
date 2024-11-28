@@ -43,7 +43,7 @@ final class DMChattingViewModel: ViewModelType {
     }
     
     struct Output {
-        let updateDMListTableView: Driver<[DMHistoryTable]>
+        let updateDMListTableView: Driver<[ChatSection]>
         let scrollToDown: Driver<Void>
         let removeChattingBarText: Driver<Void>
         let plusBtnTapped: Driver<Void>
@@ -51,7 +51,7 @@ final class DMChattingViewModel: ViewModelType {
     }
     
     func transform(input: Input) -> Output {
-        let updateDMListTableView = PublishSubject<[DMHistoryTable]>()
+        let updateDMListTableView = PublishSubject<[ChatSection]>()
         let scrollToDown = PublishSubject<Void>()
         let removeChattingBarText = PublishSubject<Void>()
         
@@ -75,9 +75,9 @@ final class DMChattingViewModel: ViewModelType {
                     
                     let chatHistory = owner.realmRepository.readAllItem().filter {
                         $0.roomID == owner.dmListInfo.roomID
-                    }
+                    }.map { $0.toChatType() }
                     
-                    updateDMListTableView.onNext(chatHistory)
+                    updateDMListTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
                     
                     owner.dmUseCase.connectSocket(roomID: owner.dmListInfo.roomID)
@@ -95,20 +95,20 @@ final class DMChattingViewModel: ViewModelType {
                     $0.roomID == self.dmListInfo.roomID
                 }
                 
-                updateDMListTableView.onNext(chatHistory)
+//                updateDMListTableView.onNext(chatHistory)
                 scrollToDown.onNext(())
             }
             .disposed(by: disposeBag)
         
         input.sendBtnTapped
-            .withLatestFrom(input.chatBarText)
-            .filter { !$0.isEmpty }
-            .flatMap { value -> Single<Result<DMHistoryTable, Error>> in
+            .withLatestFrom(Observable.combineLatest(input.chatBarText, input.imagePicker))
+            .filter { !$0.0.isEmpty }
+            .flatMap { (text, images) -> Single<Result<DMHistoryTable, Error>> in
                 return self.dmUseCase.sendDM(
                     playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
                     roomID: self.dmListInfo.roomID,
-                    message: value
-//                    files
+                    message: text,
+                    files: self.imageToData(imageArray: images)
                 )
             }
             .bind(with: self) { owner, result in
@@ -120,7 +120,7 @@ final class DMChattingViewModel: ViewModelType {
                         $0.roomID == self.dmListInfo.roomID
                     }
                     
-                    updateDMListTableView.onNext(chatHistory)
+//                    updateDMListTableView.onNext(chatHistory)
                     scrollToDown.onNext(())
                     removeChattingBarText.onNext(())
                 case .failure(let error):
@@ -136,5 +136,20 @@ final class DMChattingViewModel: ViewModelType {
             plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
             imagePicker: input.imagePicker.asDriver(onErrorJustReturn: [])
         )
+    }
+}
+
+extension DMChattingViewModel {
+    func imageToData(imageArray: [UIImage]) -> [Data] {
+        var dataArray: [Data] = []
+        
+        for item in imageArray {
+            if let data = item.jpegData(compressionQuality: 0.5) {
+                dataArray.append(data)
+            } else {
+                return []
+            }
+        }
+        return dataArray
     }
 }

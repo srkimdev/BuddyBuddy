@@ -20,8 +20,14 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 13)
         return view
     }()
-    private var bubbleImageStackView: BubbleImageStackView = {
-        let view = BubbleImageStackView()
+    private let speechBubble: SpeechBubbleView = {
+        let view = SpeechBubbleView(text: "")
+        return view
+    }()
+    private let pickerImage: UIImageView = {
+        let view = UIImageView()
+        view.backgroundColor = .gray
+        view.layer.cornerRadius = 10
         return view
     }()
     private let chatTime: UILabel = {
@@ -30,16 +36,25 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
+    private let chatImageStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 4
+        return view
+    }()
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        bubbleImageStackView.speechBubble.updateText("")
-        bubbleImageStackView.imageView.updateLayout(imageViews: [])
+//        bubbleImageStackView.speechBubble.updateText("")
+//        bubbleImageStackView.imageView.updateLayout(imageViews: [])
     }
     
     override func setHierarchy() {
-        [profileImage, userName, bubbleImageStackView, chatTime].forEach {
+        [profileImage, userName, chatImageStackView, chatTime].forEach {
             contentView.addSubview($0)
+        }
+        [speechBubble, pickerImage].forEach {
+            chatImageStackView.addArrangedSubview($0)
         }
     }
     
@@ -55,16 +70,20 @@ final class DMChattingTableViewCell: BaseTableViewCell {
             make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(15)
         }
-        bubbleImageStackView.snp.makeConstraints { make in
+        chatImageStackView.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.bottom.equalToSuperview().inset(8)
         }
         chatTime.snp.makeConstraints { make in
-            make.bottom.equalTo(bubbleImageStackView.snp.bottom)
-            make.leading.equalTo(bubbleImageStackView.snp.trailing).offset(8)
-//            make.trailing.lessThanOrEqualToSuperview().inset(30)
-            make.trailing.equalToSuperview().inset(30)
+            make.bottom.equalTo(chatImageStackView.snp.bottom)
+            make.leading.equalTo(chatImageStackView.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualToSuperview().inset(30)
+//            make.trailing.equalToSuperview().inset(30)
+        }
+        pickerImage.snp.makeConstraints { make in
+//            make.height.equalTo(80)
+            make.horizontalEdges.equalToSuperview()
         }
     }
     
@@ -73,6 +92,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         userName.text = transition.user?.nickname
         chatTime.text = "11:55 오전"
         
+        speechBubble.updateText(transition.content)
         updateCellByMessageType(transition)
     }
 }
@@ -80,14 +100,29 @@ final class DMChattingTableViewCell: BaseTableViewCell {
 extension DMChattingTableViewCell {
     func updateCellByMessageType(_ transition: DMHistoryTable) {
         if transition.content.isEmpty && !transition.files.isEmpty {
-            bubbleImageStackView.speechBubble.isHidden = true
-            bubbleImageStackView.imageView.updateLayout(imageViews: Array(transition.files))
-        } else if !transition.content.isEmpty && !transition.content.isEmpty {
-            bubbleImageStackView.speechBubble.updateText(transition.content)
-            bubbleImageStackView.imageView.updateLayout(imageViews: Array(transition.files))
+            speechBubble.isHidden = true
+//            chatTime.snp.remakeConstraints { make in
+//                make.bottom.equalTo(chatImageStackView.snp.bottom)
+//                make.leading.equalTo(chatImageStackView.snp.trailing).offset(8)
+////                make.trailing.lessThanOrEqualToSuperview().inset(30)
+//                make.trailing.equalToSuperview().inset(30)
+//            }
+            print("1")
+//            chatImageStackView.snp.remakeConstraints { make in
+//                make.top.equalTo(userName.snp.bottom).offset(8)
+//                make.leading.equalTo(profileImage.snp.trailing).offset(8)
+//                make.bottom.equalToSuperview().inset(8)
+//                make.trailing.equalToSuperview().inset(38 + chatTime.frame.width)
+//            }
+        } else if !transition.content.isEmpty && !transition.files.isEmpty {
+//            speechBubble.updateText(transition.content)
+//            pickerImage.image = transition.files[0]
+//            bubbleImageStackView.imageView.updateLayout(imageViews: Array(transition.files))
+            print("2")
         } else {
-            bubbleImageStackView.imageView.isHidden = true
-            bubbleImageStackView.speechBubble.updateText(transition.content)
+            pickerImage.isHidden = true
+//            speechBubble.updateText(transition.content)
+            print("3")
         }
     }
 }

@@ -8,6 +8,7 @@
 import UIKit
 import PhotosUI
 
+import RxDataSources
 import RxSwift
 import SnapKit
 
@@ -15,12 +16,21 @@ final class DMChattingViewController: BaseNavigationViewController {
     private let disposeBag = DisposeBag()
     private let vm: DMChattingViewModel
     private let imagePicker = BehaviorSubject<[UIImage]>(value: [])
+    private lazy var datasource = createDataSource()
     
     private let dmChattingTableView: UITableView = {
         let view = UITableView()
         view.register(
-            DMChattingTableViewCell.self,
-            forCellReuseIdentifier: DMChattingTableViewCell.identifier
+            DMTextTableViewCell.self,
+            forCellReuseIdentifier: DMTextTableViewCell.identifier
+        )
+        view.register(
+            DMImageTableViewCell.self,
+            forCellReuseIdentifier: DMImageTableViewCell.identifier
+        )
+        view.register(
+            DMTextImageTableViewCell.self,
+            forCellReuseIdentifier: DMTextImageTableViewCell.identifier
         )
         view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
@@ -51,12 +61,6 @@ final class DMChattingViewController: BaseNavigationViewController {
         config.preferredSymbolConfigurationForImage = imgConfig
         config.image = UIImage(systemName: "plus")
         config.baseForegroundColor = .black
-        config.contentInsets = .init(
-            top: 0,
-            leading: 0,
-            bottom: 0,
-            trailing: 0
-        )
         
         view.configuration = config
         view.backgroundColor = .gray3
@@ -71,12 +75,6 @@ final class DMChattingViewController: BaseNavigationViewController {
         config.preferredSymbolConfigurationForImage = imgConfig
         config.image = UIImage(named: "send")
         config.baseForegroundColor = .black
-        config.contentInsets = .init(
-            top: 0,
-            leading: 0,
-            bottom: 0,
-            trailing: 0
-        )
         
         view.configuration = config
         view.backgroundColor = .clear
@@ -169,14 +167,7 @@ final class DMChattingViewController: BaseNavigationViewController {
         let output = vm.transform(input: input)
         
         output.updateDMListTableView
-            .drive(
-                dmChattingTableView.rx.items(
-                    cellIdentifier: DMChattingTableViewCell.identifier,
-                    cellType: DMChattingTableViewCell.self
-                )
-            ) { (_, element, cell) in
-                cell.designCell(element)
-            }
+            .drive(dmChattingTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
         
         output.scrollToDown
@@ -199,7 +190,7 @@ final class DMChattingViewController: BaseNavigationViewController {
         output.removeChattingBarText
             .drive { [weak self] _ in
                 guard let self else { return }
-                chatTextView.text = ""
+                chatTextView.text = nil
             }
             .disposed(by: disposeBag)
         
@@ -249,7 +240,6 @@ final class DMChattingViewController: BaseNavigationViewController {
             .bind(with: self) { owner, _ in
                 let size = CGSize(width: owner.chatTextView.frame.width, height: .infinity)
                 let estimatedSize = owner.chatTextView.sizeThatFits(size)
-                print(estimatedSize, "estimatedSize")
 
                 if estimatedSize.height > 70 {
                     owner.chatTextView.isScrollEnabled = true
@@ -328,5 +318,39 @@ extension DMChattingViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
+    }
+}
+
+extension DMChattingViewController {
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChatSection> {
+        return RxTableViewSectionedReloadDataSource<ChatSection> { [weak self] datasource, tableView, indexpath, item in
+            guard let self else { return UITableViewCell() }
+            
+            switch item {
+            case .onlyText(let table):
+                guard let cell = dmChattingTableView.dequeueReusableCell(
+                    withIdentifier: DMTextTableViewCell.identifier,
+                    for: indexpath
+                ) as? DMTextTableViewCell else { return UITableViewCell() }
+                cell.designCell(table)
+                return cell
+            
+            case .onlyImage(let table):
+                guard let cell = dmChattingTableView.dequeueReusableCell(
+                    withIdentifier: DMImageTableViewCell.identifier,
+                    for: indexpath
+                ) as? DMImageTableViewCell else { return UITableViewCell() }
+                cell.designCell(table)
+                return cell
+                
+            case .TextAndImage(let table):
+                guard let cell = dmChattingTableView.dequeueReusableCell(
+                    withIdentifier: DMTextImageTableViewCell.identifier,
+                    for: indexpath
+                ) as? DMTextImageTableViewCell else { return UITableViewCell() }
+                cell.designCell(table)
+                return cell
+            }
+        }
     }
 }

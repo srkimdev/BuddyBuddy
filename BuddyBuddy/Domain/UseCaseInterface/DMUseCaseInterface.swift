@@ -27,7 +27,8 @@ protocol DMUseCaseInterface {
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
+        message: String,
+        files: [Data]
     ) -> Single<Result<DMHistoryTable, Error>>
     
     func connectSocket(roomID: String)

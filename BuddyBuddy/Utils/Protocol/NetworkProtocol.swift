@@ -18,7 +18,8 @@ protocol NetworkProtocol {
     func callMultiPart<T: Decodable>(
         router: TargetType,
         responseType: T.Type,
-        content: String
+        content: String,
+        files: [Data]
     ) -> Single<Result<T, Error>>
 
     func downloadImage(router: TargetType) -> Single<Result<Data?, Error>>

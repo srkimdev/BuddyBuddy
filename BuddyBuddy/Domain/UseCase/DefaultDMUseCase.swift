@@ -44,12 +44,14 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
+        message: String,
+        files: [Data]
     ) -> Single<Result<DMHistoryTable, Error>> {
         return dmRepositoryInterface.sendDM(
             playgroundID: playgroundID,
             roomID: roomID, 
-            message: message
+            message: message,
+            files: files
         )
     }
     

@@ -11,7 +11,7 @@ import Alamofire
 
 enum DMRouter: TargetType {
     case dmList(playgroundID: String)
-    case dmSend(playgroundID: String, roomID: String, message: String)
+    case dmSend(playgroundID: String, roomID: String)
     case dmHistory(playgroundID: String, roomID: String, cursorDate: String)
     case dmUnRead(playgroundID: String, roomID: String, after: String)
     
@@ -23,7 +23,7 @@ enum DMRouter: TargetType {
         switch self {
         case .dmList(let playgroundID):
             return "workspaces/\(playgroundID)/dms"
-        case .dmSend(let playgroundID, let roomID, _):
+        case .dmSend(let playgroundID, let roomID):
             return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
         case .dmHistory(let playgroundID, let roomID, _):
             return "workspaces/\(playgroundID)/dms/\(roomID)/chats"

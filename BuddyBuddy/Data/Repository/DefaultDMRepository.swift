@@ -79,16 +79,17 @@ final class DefaultDMRepository: DMRepositoryInterface {
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
+        message: String,
+        files: [Data]
     ) -> Single<Result<DMHistoryTable, Error>> {
         return networkService.callMultiPart(
             router: DMRouter.dmSend(
                 playgroundID: playgroundID,
-                roomID: roomID,
-                message: message
+                roomID: roomID
             ),
             responseType: DMHistoryDTO.self,
-            content: message
+            content: message,
+            files: files
         )
         .map { result in
             switch result {

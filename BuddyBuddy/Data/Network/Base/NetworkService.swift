@@ -75,7 +75,8 @@ extension NetworkService {
     func callMultiPart<T: Decodable>(
         router: TargetType,
         responseType: T.Type,
-        content: String
+        content: String,
+        files: [Data]
     ) -> Single<Result<T, Error>> {
         return Single.create { observer -> Disposable in
             do {
@@ -87,13 +88,13 @@ extension NetworkService {
                             withName: "content"
                         )
                         
-                        guard let image = UIImage(named: "spinner") else { return }
-                        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-                            return
-                        }
-                        let fileDataArray: [Data] = [imageData]
+//                        guard let image = UIImage(named: "spinner") else { return }
+//                        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
+//                            return
+//                        }
+//                        let fileDataArray: [Data] = [imageData]
                         
-                        for (index, data) in fileDataArray.enumerated() {
+                        for (index, data) in files.enumerated() {
                             multipartFormData.append(data,
                                                      withName: "files",
                                                      fileName: "file\(index + 1).jpg",
@@ -110,7 +111,6 @@ extension NetworkService {
                     case .success(let value):
                         observer(.success(.success(value)))
                     case .failure(let error):
-                        print(error, "here")
                         observer(.success(.failure(error)))
                     }
                 }
