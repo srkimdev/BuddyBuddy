@@ -38,7 +38,9 @@ final class ChannelSettingViewController: BaseViewController {
     override func bind() {
         let input = ChannelSettingViewModel.Input(
             viewWillAppear: rx.viewWillAppear,
-            blindViewTapped: tapGesture.map { () }
+            blindViewTapped: tapGesture.map { () },
+            exitBtnTapped: bottomView.exitBtn.rx.tap.map { () },
+            changeAdminBtnTapped: bottomView.adminBtn.rx.tap.map {()}
         )
         let output = vm.transform(input: input)
         
@@ -46,7 +48,10 @@ final class ChannelSettingViewController: BaseViewController {
             .drive(with: self) { owner, value in
                 let name = value.0
                 let description = value.1
-                owner.topView.setChannelInfo(name: name, intro: description ?? "")
+                owner.topView.setChannelInfo(
+                    name: name,
+                    intro: description ?? ""
+                )
             }
             .disposed(by: disposeBag)
         
@@ -62,7 +67,16 @@ final class ChannelSettingViewController: BaseViewController {
                 cellType: ChannelSettingCell.self
             )) { _, data, cell in
                 // TODO: Profile Image 통신
-                cell.setProfileUI(profileImg: nil, profileName: data.nickname)
+                cell.setProfileUI(
+                    profileImg: nil,
+                    profileName: data.nickname
+                )
+            }
+            .disposed(by: disposeBag)
+        
+        output.showChangeAdminBtn
+            .drive(with: self) { owner, isAdmin in
+                owner.bottomView.showAdminBtn(isAdmin)
             }
             .disposed(by: disposeBag)
     }
