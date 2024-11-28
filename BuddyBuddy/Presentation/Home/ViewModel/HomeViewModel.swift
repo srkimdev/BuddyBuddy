@@ -21,6 +21,7 @@ final class HomeViewModel: ViewModelType {
     private let coordinator: HomeCoordinator
     private let channelUseCase: ChannelUseCaseInterface
     private let channelList = BehaviorRelay<MyChannelList>(value: [])
+    private let showToastMessage = PublishRelay<Void>()
     private let playground: Playground
     
     init(
@@ -47,6 +48,7 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let navigationTitle: Driver<String>
         let updateChannelState: Driver<[ChannelSectionModel]>
+        let showToastMessage: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
@@ -171,7 +173,8 @@ final class HomeViewModel: ViewModelType {
         
         return Output(
             navigationTitle: navigationTitle.asDriver(onErrorJustReturn: "Buddy Buddy"),
-            updateChannelState: updateChannelState.asDriver(onErrorDriveWith: .empty())
+            updateChannelState: updateChannelState.asDriver(onErrorDriveWith: .empty()),
+            showToastMessage: showToastMessage.asDriver(onErrorDriveWith: .empty())
         )
     }
 }
@@ -183,6 +186,7 @@ extension HomeViewModel: ModalDelegate {
                 switch result {
                 case .success(let value):
                     owner.channelList.accept(value)
+                    owner.showToastMessage.accept(())
                 case .failure(let error):
                     print(error)
                 }

@@ -122,6 +122,7 @@ final class HomeViewController: BaseNavigationViewController {
     private let toastMsgLabel: ToastMessageLabel = {
         let view = ToastMessageLabel()
         view.text = "채널이 생성되었습니다"
+        view.isHidden = true
         return view
     }()
     private lazy var datasource = createDataSource()
@@ -181,6 +182,18 @@ final class HomeViewController: BaseNavigationViewController {
                 updateTableViewHeight(sections: sections)
             })
             .drive(channelTableView.rx.items(dataSource: datasource))
+            .disposed(by: disposeBag)
+        
+        output.showToastMessage
+            .drive(with: self) { owner, _ in
+                UIView.animate(withDuration: 1.5, delay: 0.5) {
+                    self.toastMsgLabel.isHidden = false
+                    self.toastMsgLabel.alpha = 0
+                } completion: { _ in
+                    self.toastMsgLabel.alpha = 1
+                    self.toastMsgLabel.isHidden = true
+                }
+            }
             .disposed(by: disposeBag)
     }
     
