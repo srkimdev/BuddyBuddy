@@ -69,6 +69,30 @@ final class NetworkService: NetworkProtocol {
             return Disposables.create()
         }
     }
+    
+    func callRequest(router: TargetType) -> Single<Result<Void, Error>> {
+        return Single.create { observer -> Disposable in
+            do {
+                let request = try router.asURLRequest()
+                NetworkService.session.request(
+                    request,
+                    interceptor: AuthIntercepter()
+                )
+                .validate(statusCode: 200..<300)
+                .response { response in
+                    switch response.result {
+                    case .success:
+                        observer(.success(.success(())))
+                    case .failure(let error):
+                        observer(.success(.failure(error)))
+                    }
+                }
+            } catch {
+                print(error)
+            }
+            return Disposables.create()
+        }
+    }
 }
 
 extension NetworkService {

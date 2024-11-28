@@ -22,4 +22,8 @@ protocol NetworkProtocol {
     ) -> Single<Result<T, Error>>
 
     func downloadImage(router: TargetType) -> Single<Result<Data?, Error>>
+    
+    func callRequest(
+        router: TargetType
+    ) -> Single<Result<Void, Error>>
 }
