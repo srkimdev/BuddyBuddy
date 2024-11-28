@@ -13,9 +13,15 @@ import RxSwift
 final class AddChannelViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     private let channelUseCase: ChannelUseCaseInterface
+    private let coordinator: HomeCoordinator
+    weak var delegate: ModalDelegate?
     
-    init(channelUseCase: ChannelUseCaseInterface) {
+    init(
+        channelUseCase: ChannelUseCaseInterface,
+        coordinator: HomeCoordinator
+    ) {
         self.channelUseCase = channelUseCase
+        self.coordinator = coordinator
     }
     
     struct Input {
@@ -62,8 +68,8 @@ final class AddChannelViewModel: ViewModelType {
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let response):
-                    // TODO: 화면 전환
-                    print(response)
+                    owner.coordinator.dismissVC()
+                    owner.delegate?.dismissModal()
                 case .failure(let error):
                     print(error)
                 }

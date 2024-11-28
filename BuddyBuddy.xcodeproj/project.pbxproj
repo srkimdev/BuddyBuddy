@@ -27,6 +27,7 @@
 		C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */; };
 		C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */; };
 		C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E082CF860F400B41E60 /* AddChannel.swift */; };
+		C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
@@ -201,6 +202,7 @@
 		C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelReqeustDTO.swift; sourceTree = "<group>"; };
 		C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelResponseDTO.swift; sourceTree = "<group>"; };
 		C0A35E082CF860F400B41E60 /* AddChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannel.swift; sourceTree = "<group>"; };
+		C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
@@ -922,6 +924,7 @@
 				DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */,
 				DC9375702CEDC0B900012F43 /* SocketProtocol.swift */,
 				DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */,
+				C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -1385,6 +1388,7 @@
 				C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */,
+				C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */,
 				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,

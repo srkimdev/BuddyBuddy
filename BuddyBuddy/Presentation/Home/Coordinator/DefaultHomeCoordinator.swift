@@ -12,15 +12,17 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
     
+    private lazy var homeVM = HomeViewModel(
+        coordinator: self,
+        channelUseCase: DefaultChannelUseCase()
+    )
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let vc = HomeViewController(vm: HomeViewModel(
-            coordinator: self,
-            channelUseCase: DefaultChannelUseCase())
-        )
+        let vc = HomeViewController(vm: homeVM)
         navigationController.pushViewController(
             vc,
             animated: true
@@ -83,7 +85,12 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toAddChannel() {
-        let vc = AddChannelViewController(vm: AddChannelViewModel(channelUseCase: DefaultChannelUseCase()))
+        let vm = AddChannelViewModel(
+            channelUseCase: DefaultChannelUseCase(),
+            coordinator: self)
+        vm.delegate = homeVM
+        
+        let vc = AddChannelViewController(vm: vm)
         vc.modalPresentationStyle = .pageSheet
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.large()]
