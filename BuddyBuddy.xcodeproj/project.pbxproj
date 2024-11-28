@@ -24,6 +24,9 @@
 		C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */; };
 		C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */; };
 		C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E012CF786CA00B41E60 /* RegularExpression.swift */; };
+		C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */; };
+		C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */; };
+		C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E082CF860F400B41E60 /* AddChannel.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
@@ -195,6 +198,9 @@
 		C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRepositoryInterface.swift; sourceTree = "<group>"; };
 		C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelRepository.swift; sourceTree = "<group>"; };
 		C0A35E012CF786CA00B41E60 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
+		C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelReqeustDTO.swift; sourceTree = "<group>"; };
+		C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelResponseDTO.swift; sourceTree = "<group>"; };
+		C0A35E082CF860F400B41E60 /* AddChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannel.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
@@ -373,6 +379,7 @@
 			isa = PBXGroup;
 			children = (
 				C09FA8EE2CEC664300613FEA /* Response */,
+				C0A35E032CF8515300B41E60 /* Request */,
 			);
 			path = Channel;
 			sourceTree = "<group>";
@@ -382,6 +389,7 @@
 			children = (
 				C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */,
 				C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */,
+				C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -392,6 +400,7 @@
 				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				C09FA8F42CEC673400613FEA /* MyChannelList.swift */,
 				C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */,
+				C0A35E082CF860F400B41E60 /* AddChannel.swift */,
 			);
 			path = Channel;
 			sourceTree = "<group>";
@@ -402,6 +411,14 @@
 				C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */,
 			);
 			path = Channel;
+			sourceTree = "<group>";
+		};
+		C0A35E032CF8515300B41E60 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		C0CF50C12CF4824400F131A0 /* Profile */ = {
@@ -1282,6 +1299,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */,
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
@@ -1311,6 +1329,7 @@
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
+				C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
 				C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */,
 				DC9375712CEDC0B900012F43 /* SocketProtocol.swift in Sources */,
@@ -1430,6 +1449,7 @@
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
 				DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */,
+				C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

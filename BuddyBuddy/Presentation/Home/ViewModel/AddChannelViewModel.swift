@@ -12,6 +12,11 @@ import RxSwift
 
 final class AddChannelViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
+    private let channelUseCase: ChannelUseCaseInterface
+    
+    init(channelUseCase: ChannelUseCaseInterface) {
+        self.channelUseCase = channelUseCase
+    }
     
     struct Input {
         let nameInputText: Observable<String>
@@ -57,8 +62,23 @@ final class AddChannelViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.okBtnTapped
-            .bind(with: self) { owner, _ in
-                // TODO: API 통신
+            .withUnretained(self)
+            .flatMap { _ in
+                return self.channelUseCase.createChannel(
+                    request: AddChannelReqeustDTO(
+                        name: nameInputText.value,
+                        description: contentInputText.value.isEmpty ? nil : contentInputText.value
+                    )
+                )
+            }
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let response):
+                    // TODO: 화면 전환
+                    print(response)
+                case .failure(let error):
+                    print(error)
+                }
             }.disposed(by: disposeBag)
         
         return Output(okBtnState: okBtnState.asDriver(onErrorJustReturn: .disable))

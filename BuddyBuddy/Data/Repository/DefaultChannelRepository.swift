@@ -54,4 +54,19 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
             }
         }
     }
+    
+    func createChannel(request: AddChannelReqeustDTO) -> Single<Result<AddChannel, any Error>> {
+        networkService.callRequest(
+            router: Router.createChannel(request: request),
+            responseType: AddChannelResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let dto):
+                return .success(dto.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
 }

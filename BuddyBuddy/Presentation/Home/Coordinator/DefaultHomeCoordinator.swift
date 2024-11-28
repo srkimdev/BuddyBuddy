@@ -83,7 +83,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toAddChannel() {
-        let vc = AddChannelViewController(vm: AddChannelViewModel())
+        let vc = AddChannelViewController(vm: AddChannelViewModel(channelUseCase: DefaultChannelUseCase()))
         vc.modalPresentationStyle = .pageSheet
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.large()]
