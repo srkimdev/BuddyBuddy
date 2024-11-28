@@ -100,7 +100,7 @@ final class AddChannelViewController: BaseViewController {
         }
         okBtn.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(24)
-            make.bottom.equalTo(safeArea).inset(12)
+            make.bottom.equalTo(keyboardLayout.snp.top).offset(-12)
             make.height.equalTo(44)
         }
     }
