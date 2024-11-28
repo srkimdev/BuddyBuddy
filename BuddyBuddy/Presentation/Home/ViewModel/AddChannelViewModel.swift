@@ -31,17 +31,26 @@ final class AddChannelViewModel: ViewModelType {
     }
     
     struct Output {
+        let nameText: Driver<String>
+        let contentText: Driver<String>
         let okBtnState: Driver<ButtonState>
     }
     
     func transform(input: Input) -> Output {
-        let nameInputText = BehaviorRelay(value: "")
-        let contentInputText = BehaviorRelay(value: "")
+        let nameText = BehaviorRelay(value: "")
+        let contentText = BehaviorRelay(value: "")
         let okBtnState = BehaviorRelay<ButtonState>(value: .disable)
         
         input.nameInputText
             .bind(with: self) { _, input in
-                nameInputText.accept(input)
+                var input = input
+                
+                while input.first == " " {
+                    input.removeFirst()
+                }
+                
+                nameText.accept(input)
+                
                 do {
                     let isValid = try input.isVaild(type: .name)
                     okBtnState.accept(isValid ? .enable : .disable)
@@ -52,7 +61,15 @@ final class AddChannelViewModel: ViewModelType {
             }.disposed(by: disposeBag)
         
         input.contentInputText
-            .bind(to: contentInputText)
+            .bind(with: self) { _, input in
+                var input = input
+                
+                while input.first == " " {
+                    input.removeFirst()
+                }
+                
+                contentText.accept(input)
+            }
             .disposed(by: disposeBag)
         
         input.okBtnTapped
@@ -60,8 +77,8 @@ final class AddChannelViewModel: ViewModelType {
             .flatMap { _ in
                 return self.channelUseCase.createChannel(
                     request: AddChannelReqeustDTO(
-                        name: nameInputText.value,
-                        description: contentInputText.value.isEmpty ? nil : contentInputText.value
+                        name: nameText.value,
+                        description: contentText.value.isEmpty ? nil : contentText.value
                     )
                 )
             }
@@ -75,6 +92,10 @@ final class AddChannelViewModel: ViewModelType {
                 }
             }.disposed(by: disposeBag)
         
-        return Output(okBtnState: okBtnState.asDriver(onErrorJustReturn: .disable))
+        return Output(
+            nameText: nameText.asDriver(onErrorJustReturn: ""),
+            contentText: contentText.asDriver(onErrorJustReturn: ""),
+            okBtnState: okBtnState.asDriver(onErrorJustReturn: .disable)
+        )
     }
 }

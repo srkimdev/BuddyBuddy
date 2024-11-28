@@ -50,6 +50,18 @@ final class AddChannelViewController: BaseViewController {
         )
         let output = vm.transform(input: input)
         
+        output.nameText
+            .drive(with: self) { owner, text in
+                owner.channelNameTextField.textField.text = text
+            }
+            .disposed(by: disposeBag)
+        
+        output.contentText
+            .drive(with: self) { owner, text in
+                owner.channelContentTextField.textField.text = text
+            }
+            .disposed(by: disposeBag)
+        
         output.okBtnState
             .drive(with: self) { owner, type in
                 switch type {
