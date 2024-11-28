@@ -25,4 +25,6 @@ protocol ChannelUseCaseInterface {
         channelID: String,
         selectedUserID: String
     ) -> Single<Result<Bool, Error>>
+    func exitChannel(channelID: String) -> Single<Result<Void, Error>>
+    func deleteChannel(channelID: String) -> Single<Result<Void, Error>>
 }

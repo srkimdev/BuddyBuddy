@@ -116,4 +116,37 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
             }
         }
     }
+    
+    func exitChannel(channelID: String) -> Single<Result<Void, Error>> {
+        return networkService.callRequest(
+            router: Router.exitChannel(
+                playgroundID: UserDefaultsManager.playgroundID,
+                channelID: channelID
+            ),
+            responseType: MyChannelListResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func deleteChannel(channelID: String) -> Single<Result<Void, Error>> {
+        return networkService.callRequest(router: Router.deleteChannel(
+            playgroundID: UserDefaultsManager.playgroundID, 
+            channelID: channelID
+        ))
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
 }

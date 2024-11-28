@@ -15,6 +15,8 @@ enum ChannelRouter {
     case fetchChannelChat(query: ChannelChatQuery)
     case specificChannel(playgroundID: String, channelID: String)
     case changeChannelAdmin(playgroundID: String, channelID: String, ownerID: String)
+    case deleteChannel(playgroundID: String, channelID: String)
+    case exitChannel(playgroundID: String, channelID: String)
 }
 
 extension ChannelRouter: TargetType {
@@ -24,10 +26,12 @@ extension ChannelRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel:
+        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel, .exitChannel:
             return .get
         case .changeChannelAdmin:
             return .put
+        case .deleteChannel:
+            return .delete
         }
     }
     
@@ -43,12 +47,17 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(playgroundID)/channels/\(channelID)"
         case .changeChannelAdmin(let playgroundID, let channelID, _):
             return "workspaces/\(playgroundID)/channels/\(channelID)/transfer/ownership"
+        case .deleteChannel(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)"
+        case .exitChannel(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)/exit"
         }
     }
     
     var header: [String : String] {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel:
+        case .myChannelList, .unreadCount, .fetchChannelChat,
+                .specificChannel, .exitChannel, .deleteChannel:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
@@ -68,7 +77,7 @@ extension ChannelRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .myChannelList, .specificChannel, .changeChannelAdmin:
+        case .myChannelList, .specificChannel, .changeChannelAdmin, .deleteChannel, .exitChannel:
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }

@@ -52,4 +52,11 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
             selectedUserID: selectedUserID
         )
     }
+    
+    func deleteChannel(channelID: String) -> Single<Result<Void, any Error>> {
+        return repository.deleteChannel(channelID: channelID)
+    }
+    func exitChannel(channelID: String) -> Single<Result<Void, any Error>> {
+        return repository.exitChannel(channelID: channelID)
+    }
 }
