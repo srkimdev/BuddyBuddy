@@ -42,4 +42,14 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
     func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, any Error>> {
         return repository.fetchSpecificChannel(channelID: channelID)
     }
+    
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>> {
+        return repository.changeChannelAdmin(
+            channelID: channelID,
+            selectedUserID: selectedUserID
+        )
+    }
 }

@@ -13,7 +13,8 @@ enum ChannelRouter {
     case myChannelList(playgroundID: String)
     case unreadCount(playgroundID: String, channelID: String, after: Date?)
     case fetchChannelChat(query: ChannelChatQuery)
-    case specificChannel(playgroundID: String, channelId: String)
+    case specificChannel(playgroundID: String, channelID: String)
+    case changeChannelAdmin(playgroundID: String, channelID: String, ownerID: String)
 }
 
 extension ChannelRouter: TargetType {
@@ -25,6 +26,8 @@ extension ChannelRouter: TargetType {
         switch self {
         case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel:
             return .get
+        case .changeChannelAdmin:
+            return .put
         }
     }
     
@@ -38,6 +41,8 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
         case .specificChannel(let playgroundID, let channelID):
             return "workspaces/\(playgroundID)/channels/\(channelID)"
+        case .changeChannelAdmin(let playgroundID, let channelID, _):
+            return "workspaces/\(playgroundID)/channels/\(channelID)/transfer/ownership"
         }
     }
     
@@ -48,6 +53,12 @@ extension ChannelRouter: TargetType {
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
+        case .changeChannelAdmin:
+            return [
+                Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
+                Header.Key.rawValue: APIKey.Key,
+                Header.contentType.rawValue: Header.json.rawValue
+            ]
         }
     }
     
@@ -57,7 +68,7 @@ extension ChannelRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .myChannelList, .specificChannel:
+        case .myChannelList, .specificChannel, .changeChannelAdmin:
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }
@@ -69,6 +80,18 @@ extension ChannelRouter: TargetType {
     }
     
     var body: Data? {
-        return nil
+        switch self {
+        case .changeChannelAdmin(_, _, let ownerID):
+            let query = ChangeChannelQuery(ownerID: ownerID)
+            let encoder = JSONEncoder()
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
+        default:
+            return nil
+        }
     }
 }

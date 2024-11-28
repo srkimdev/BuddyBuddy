@@ -21,4 +21,8 @@ protocol ChannelUseCaseInterface {
         date: String?
     ) -> Single<Result<Bool, any Error>>
     func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, Error>>
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>>
 }

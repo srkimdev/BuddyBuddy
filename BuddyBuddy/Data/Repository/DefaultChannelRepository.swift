@@ -70,7 +70,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         )
         .map { result in
             switch result {
-            case .success(let value):
+            case .success(_):
                 return .success(true)
             case .failure(let error):
                 return .failure(error)
@@ -82,7 +82,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         return networkService.callRequest(
             router: Router.specificChannel(
                 playgroundID: UserDefaultsManager.playgroundID,
-                channelId: channelID
+                channelID: channelID
             ),
             responseType: SpecificChannelResponseDTO.self
         )
@@ -90,6 +90,27 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
             switch result {
             case .success(let value):
                 return .success(value.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>> {
+        return networkService.callRequest(
+            router: Router.changeChannelAdmin(
+                playgroundID: UserDefaultsManager.playgroundID,
+                channelID: channelID,
+                ownerID: selectedUserID
+            ),
+            responseType: MyChannelDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(true)
             case .failure(let error):
                 return .failure(error)
             }
