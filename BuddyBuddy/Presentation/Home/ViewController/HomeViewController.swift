@@ -119,6 +119,11 @@ final class HomeViewController: BaseNavigationViewController {
         )
         return view
     }()
+    private let toastMsgLabel: ToastMessageLabel = {
+        let view = ToastMessageLabel()
+        view.text = "채널이 생성되었습니다"
+        return view
+    }()
     private lazy var datasource = createDataSource()
     private var isTableViewBound = false
     private let configureChannelCell = PublishRelay<MyChannel>()
@@ -200,7 +205,7 @@ final class HomeViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        [scrollView, floatingBtn].forEach {
+        [scrollView, floatingBtn, toastMsgLabel].forEach {
             view.addSubview($0)
         }
         
@@ -229,6 +234,10 @@ final class HomeViewController: BaseNavigationViewController {
         floatingBtn.snp.makeConstraints { make in
             make.trailing.bottom.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.size.equalTo(50)
+        }
+        toastMsgLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.bottom.equalTo(safeArea).offset(-12)
         }
     }
 }
