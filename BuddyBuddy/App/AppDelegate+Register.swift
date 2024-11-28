@@ -45,5 +45,10 @@ extension AppDelegate {
             type: ChannelRepositoryInterface.self,
             DefaultChannelRepository(networkService: networkService)
         )
+        
+        DIContainer.register(
+            type: ChannelUseCaseInterface.self,
+            DefaultChannelUseCase()
+        )
     }
 }

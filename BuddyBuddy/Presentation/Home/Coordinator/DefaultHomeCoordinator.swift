@@ -8,13 +8,15 @@
 import UIKit
 
 final class DefaultHomeCoordinator: HomeCoordinator {
+    @Dependency(ChannelUseCaseInterface.self)
+    private var channelUseCase: ChannelUseCaseInterface
     var parent: Coordinator?
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
     
     private lazy var homeVM = HomeViewModel(
         coordinator: self,
-        channelUseCase: DefaultChannelUseCase()
+        channelUseCase: channelUseCase
     )
     
     init(navigationController: UINavigationController) {
@@ -86,7 +88,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     
     func toAddChannel() {
         let vm = AddChannelViewModel(
-            channelUseCase: DefaultChannelUseCase(),
+            channelUseCase: channelUseCase,
             coordinator: self)
         vm.delegate = homeVM
         
