@@ -38,4 +38,8 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
             date: date
         )
     }
+    
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, any Error>> {
+        return repository.fetchSpecificChannel(channelID: channelID)
+    }
 }

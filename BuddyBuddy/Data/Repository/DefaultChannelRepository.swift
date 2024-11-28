@@ -77,4 +77,22 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
             }
         }
     }
+    
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, Error>> {
+        return networkService.callRequest(
+            router: Router.specificChannel(
+                playgroundID: UserDefaultsManager.playgroundID,
+                channelId: channelID
+            ),
+            responseType: SpecificChannelResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                return .success(value.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
 }

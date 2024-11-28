@@ -13,6 +13,7 @@ enum ChannelRouter {
     case myChannelList(playgroundID: String)
     case unreadCount(playgroundID: String, channelID: String, after: Date?)
     case fetchChannelChat(query: ChannelChatQuery)
+    case specificChannel(playgroundID: String, channelId: String)
 }
 
 extension ChannelRouter: TargetType {
@@ -22,7 +23,7 @@ extension ChannelRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat:
+        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel:
             return .get
         }
     }
@@ -35,12 +36,14 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(playgroundID)/channels/\(channelID)/unreads"
         case .fetchChannelChat(let query):
             return "workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
+        case .specificChannel(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)"
         }
     }
     
     var header: [String : String] {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat:
+        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
@@ -54,7 +57,7 @@ extension ChannelRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .myChannelList:
+        case .myChannelList, .specificChannel:
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }
