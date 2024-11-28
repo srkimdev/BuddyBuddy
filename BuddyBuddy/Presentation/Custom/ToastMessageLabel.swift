@@ -43,4 +43,16 @@ class ToastMessageLabel: UILabel {
         layer.cornerRadius = 12
         clipsToBounds = true
     }
+    
+    func animation() {
+        UIView.animate(withDuration: 1.5, delay: 0.5) { [weak self] in
+            guard let self else { return }
+            isHidden = false
+            alpha = 0
+        } completion: { [weak self] _ in
+            guard let self else { return }
+            alpha = 1
+            isHidden = true
+        }
+    }
 }

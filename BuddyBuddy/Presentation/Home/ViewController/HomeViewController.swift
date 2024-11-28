@@ -186,13 +186,7 @@ final class HomeViewController: BaseNavigationViewController {
         
         output.showToastMessage
             .drive(with: self) { owner, _ in
-                UIView.animate(withDuration: 1.5, delay: 0.5) {
-                    self.toastMsgLabel.isHidden = false
-                    self.toastMsgLabel.alpha = 0
-                } completion: { _ in
-                    self.toastMsgLabel.alpha = 1
-                    self.toastMsgLabel.isHidden = true
-                }
+                owner.toastMsgLabel.animation()
             }
             .disposed(by: disposeBag)
     }
