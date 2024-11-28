@@ -7,13 +7,14 @@
 
 import UIKit
 
+import SnapKit
+
 final class ChannelSettingMiddleView: BaseView {
     private let memberCount: UILabel = {
         let view = UILabel()
         view.font = .title2
         view.textColor = .black
         view.textAlignment = .left
-        view.text = "멤버(14)"
         return view
     }()
     let memberTableView: UITableView = {
@@ -25,6 +26,7 @@ final class ChannelSettingMiddleView: BaseView {
         view.backgroundColor = .white
         view.showsVerticalScrollIndicator = false
         view.rowHeight = 56
+        view.separatorStyle = .none
         return view
     }()
     

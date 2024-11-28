@@ -36,8 +36,35 @@ final class ChannelSettingViewController: BaseViewController {
     }
     
     override func bind() {
-        let input = ChannelSettingViewModel.Input(blindViewTapped: tapGesture.map { () })
+        let input = ChannelSettingViewModel.Input(
+            viewWillAppear: rx.viewWillAppear,
+            blindViewTapped: tapGesture.map { () }
+        )
         let output = vm.transform(input: input)
+        
+        output.channelInfo
+            .drive(with: self) { owner, value in
+                let name = value.0
+                let description = value.1
+                owner.topView.setChannelInfo(name: name, intro: description ?? "")
+            }
+            .disposed(by: disposeBag)
+        
+        output.channelMembers
+            .drive(with: self) { owner, members in
+                owner.middleView.setMemebrCount(count: members.count)
+            }
+            .disposed(by: disposeBag)
+        
+        output.channelMembers
+            .drive(middleView.memberTableView.rx.items(
+                cellIdentifier: ChannelSettingCell.identifier,
+                cellType: ChannelSettingCell.self
+            )) { _, data, cell in
+                // TODO: Profile Image 통신
+                cell.setProfileUI(profileImg: nil, profileName: data.nickname)
+            }
+            .disposed(by: disposeBag)
     }
     
     override func viewWillAppear(_ animated: Bool) {
