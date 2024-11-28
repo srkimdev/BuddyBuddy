@@ -9,7 +9,7 @@ import Foundation
 
 enum AlertLiteral {
     case joinChannel(channelName: String)
-    case exitChannel
+    case exitChannel(isMyChannel: Bool)
     case changeChannelAdmin(userName: String)
     
     var toTitle: String {
@@ -27,8 +27,12 @@ enum AlertLiteral {
         switch self {
         case .joinChannel(let channelName):
             return "[\(channelName)] 채널에 참여하시겠습니까?"
-        case .exitChannel:
-            return ""
+        case .exitChannel(let isMyChannel):
+            if isMyChannel {
+                return "ExitMyChannel".localized()
+            } else {
+                return "JustExitChannel".localized()
+            }
         case .changeChannelAdmin:
             return "ChangeChannelAdminAlertMessage".localized()
         }
