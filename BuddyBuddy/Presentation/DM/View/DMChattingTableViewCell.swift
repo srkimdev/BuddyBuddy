@@ -31,6 +31,12 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         return view
     }()
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        bubbleImageStackView.speechBubble.updateText("")
+        bubbleImageStackView.imageView.updateLayout(imageViews: [])
+    }
+    
     override func setHierarchy() {
         [profileImage, userName, bubbleImageStackView, chatTime].forEach {
             contentView.addSubview($0)
@@ -47,6 +53,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.trailing.equalToSuperview().inset(30)
+            make.height.equalTo(15)
         }
         bubbleImageStackView.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
@@ -56,6 +63,7 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         chatTime.snp.makeConstraints { make in
             make.bottom.equalTo(bubbleImageStackView.snp.bottom)
             make.leading.equalTo(bubbleImageStackView.snp.trailing).offset(8)
+//            make.trailing.lessThanOrEqualToSuperview().inset(30)
             make.trailing.equalToSuperview().inset(30)
         }
     }
@@ -65,12 +73,21 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         userName.text = transition.user?.nickname
         chatTime.text = "11:55 오전"
         
-        
-        bubbleImageStackView.speechBubble.updateText(transition.content)
-//        speechBubble.updateText(transition.content)
+        updateCellByMessageType(transition)
     }
 }
 
 extension DMChattingTableViewCell {
-    
+    func updateCellByMessageType(_ transition: DMHistoryTable) {
+        if transition.content.isEmpty && !transition.files.isEmpty {
+            bubbleImageStackView.speechBubble.isHidden = true
+            bubbleImageStackView.imageView.updateLayout(imageViews: Array(transition.files))
+        } else if !transition.content.isEmpty && !transition.content.isEmpty {
+            bubbleImageStackView.speechBubble.updateText(transition.content)
+            bubbleImageStackView.imageView.updateLayout(imageViews: Array(transition.files))
+        } else {
+            bubbleImageStackView.imageView.isHidden = true
+            bubbleImageStackView.speechBubble.updateText(transition.content)
+        }
+    }
 }

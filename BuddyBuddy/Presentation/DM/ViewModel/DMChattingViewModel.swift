@@ -5,7 +5,7 @@
 //  Created by 김성률 on 11/12/24.
 //
 
-import Foundation
+import UIKit
 
 import RxCocoa
 import RxSwift
@@ -39,6 +39,7 @@ final class DMChattingViewModel: ViewModelType {
         let sendBtnTapped: Observable<Void>
         let plusBtnTapped: Observable<Void>
         let chatBarText: Observable<String>
+        let imagePicker: Observable<[UIImage]>
     }
     
     struct Output {
@@ -46,6 +47,7 @@ final class DMChattingViewModel: ViewModelType {
         let scrollToDown: Driver<Void>
         let removeChattingBarText: Driver<Void>
         let plusBtnTapped: Driver<Void>
+        let imagePicker: Driver<[UIImage]>
     }
     
     func transform(input: Input) -> Output {
@@ -131,7 +133,8 @@ final class DMChattingViewModel: ViewModelType {
             updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
             scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
             removeChattingBarText: removeChattingBarText.asDriver(onErrorJustReturn: ()),
-            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ())
+            plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
+            imagePicker: input.imagePicker.asDriver(onErrorJustReturn: [])
         )
     }
 }

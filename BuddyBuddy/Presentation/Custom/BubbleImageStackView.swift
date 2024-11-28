@@ -14,8 +14,8 @@ final class BubbleImageStackView: UIStackView {
         let view = SpeechBubbleView(text: "")
         return view
     }()
-    private let imageView: UIImageView = {
-        let view = UIImageView()
+    let imageView: DynamicImageStackView = {
+        let view = DynamicImageStackView()
         view.backgroundColor = .gray
         view.layer.cornerRadius = 10
         return view
@@ -34,16 +34,21 @@ final class BubbleImageStackView: UIStackView {
     private func setStackView() {
         axis = .vertical
         alignment = .leading
-        spacing = 10
+        spacing = 4
         
         addArrangedSubview(speechBubble)
         addArrangedSubview(imageView)
+        
+//        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+//        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
     }
     
     private func setConstraints() {
         imageView.snp.makeConstraints { make in
-            make.width.equalToSuperview()
-            make.height.equalTo(80)
+            make.width.equalTo(self)
+//            make.height.equalTo(80).priority(.medium)
+//            make.height.lessThanOrEqualTo(80)
+            make.height.equalTo(160)
         }
     }
 }

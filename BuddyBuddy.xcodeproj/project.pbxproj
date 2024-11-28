@@ -164,6 +164,8 @@
 		DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */; };
 		DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */; };
 		DC9375882CF5E08500012F43 /* BubbleImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */; };
+		DC93758A2CF5E80600012F43 /* DynamicImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375892CF5E80600012F43 /* DynamicImageStackView.swift */; };
+		DC93758C2CF7000100012F43 /* ImagePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
@@ -323,6 +325,8 @@
 		DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserDefaults.swift; sourceTree = "<group>"; };
 		DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageStackView.swift; sourceTree = "<group>"; };
+		DC9375892CF5E80600012F43 /* DynamicImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicImageStackView.swift; sourceTree = "<group>"; };
+		DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
@@ -726,6 +730,7 @@
 			children = (
 				DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */,
 				DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */,
+				DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -959,6 +964,7 @@
 				DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */,
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
 				DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */,
+				DC9375892CF5E80600012F43 /* DynamicImageStackView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1322,6 +1328,7 @@
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C91F67382CEE452500C84265 /* UserProfile.swift in Sources */,
 				C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */,
+				DC93758A2CF5E80600012F43 /* DynamicImageStackView.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C91F67312CEE439A00C84265 /* ProfileDTO.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
@@ -1365,6 +1372,7 @@
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
 				C9E44A982CECB4DC0044CD5C /* SearchDTO.swift in Sources */,
 				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
+				DC93758C2CF7000100012F43 /* ImagePickerCollectionViewCell.swift in Sources */,
 				DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
 				DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */,
