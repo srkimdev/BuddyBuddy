@@ -29,6 +29,7 @@
 		C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E082CF860F400B41E60 /* AddChannel.swift */; };
 		C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */; };
 		C0A35E0D2CF8AAEC00B41E60 /* ToastMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */; };
+		C0A35E0F2CF8CB0B00B41E60 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
@@ -205,6 +206,7 @@
 		C0A35E082CF860F400B41E60 /* AddChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannel.swift; sourceTree = "<group>"; };
 		C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
 		C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageLabel.swift; sourceTree = "<group>"; };
+		C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
@@ -1053,6 +1055,7 @@
 				C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */,
 				C08644D22CF6358000862523 /* ButtonState.swift */,
 				C0A35E012CF786CA00B41E60 /* RegularExpression.swift */,
+				C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1308,6 +1311,7 @@
 				C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */,
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
+				C0A35E0F2CF8CB0B00B41E60 /* ToastMessage.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				DC9375732CEDF8A000012F43 /* UserInfoDTO.swift in Sources */,
 				C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */,

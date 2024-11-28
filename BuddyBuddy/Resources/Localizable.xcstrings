@@ -137,6 +137,23 @@
         }
       }
     },
+    "ChannelCreateSuccess" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Successfully created the channel"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "채널이 생성되었습니다"
+          }
+        }
+      }
+    },
     "ChannelName" : {
       "extractionState" : "manual",
       "localizations" : {

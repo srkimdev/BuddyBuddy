@@ -121,7 +121,7 @@ final class HomeViewController: BaseNavigationViewController {
     }()
     private let toastMsgLabel: ToastMessageLabel = {
         let view = ToastMessageLabel()
-        view.text = "채널이 생성되었습니다"
+        view.text = ToastMessage.createChannel.localized
         view.isHidden = true
         return view
     }()
