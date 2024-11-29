@@ -12,6 +12,7 @@ import Alamofire
 enum ChannelRouter {
     case myChannelList(playgroundID: String)
     case unreadCount(playgroundID: String, channelID: String, after: Date?)
+    case createChannel(request: AddChannelReqeustDTO)
     case fetchChannelChat(query: ChannelChatQuery)
     case specificChannel(playgroundID: String, channelID: String)
     case changeChannelAdmin(playgroundID: String, channelID: String, ownerID: String)
@@ -32,6 +33,8 @@ extension ChannelRouter: TargetType {
             return .put
         case .deleteChannel:
             return .delete
+        case .createChannel:
+            return .post
         }
     }
     
@@ -41,6 +44,8 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(playgroundID)/my-channels"
         case .unreadCount(let playgroundID, let channelID, _):
             return "workspaces/\(playgroundID)/channels/\(channelID)/unreads"
+        case .createChannel:
+            return "workspaces/\(UserDefaultsManager.playgroundID)/channels"
         case .fetchChannelChat(let query):
             return "workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
         case .specificChannel(let playgroundID, let channelID):
@@ -54,7 +59,7 @@ extension ChannelRouter: TargetType {
         }
     }
     
-    var header: [String : String] {
+    var header: [String: String] {
         switch self {
         case .myChannelList, .unreadCount, .fetchChannelChat,
                 .specificChannel, .exitChannel, .deleteChannel:
@@ -62,7 +67,7 @@ extension ChannelRouter: TargetType {
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
-        case .changeChannelAdmin:
+        case .createChannel, .changeChannelAdmin:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key,
@@ -77,7 +82,8 @@ extension ChannelRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .myChannelList, .specificChannel, .changeChannelAdmin, .deleteChannel, .exitChannel:
+        case .myChannelList, .specificChannel, .createChannel,
+                .changeChannelAdmin, .deleteChannel, .exitChannel:
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }
@@ -97,6 +103,14 @@ extension ChannelRouter: TargetType {
                 let data = try encoder.encode(query)
                 return data
             } catch {
+                return nil
+            }
+        case .createChannel(let request):
+            let encoder = JSONEncoder()
+            do {
+                return try encoder.encode(request)
+            } catch {
+                print(error)
                 return nil
             }
         default:

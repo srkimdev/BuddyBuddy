@@ -48,10 +48,10 @@ final class ModalNavigationView: BaseView {
         backBtn.snp.makeConstraints { make in
             make.size.equalTo(20)
             make.leading.equalToSuperview().inset(14)
-            make.centerY.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview().offset(3)
         }
         titleLabel.snp.makeConstraints { make in
-            make.centerY.equalToSuperview().offset(10)
+            make.centerY.equalToSuperview().offset(3)
             make.centerX.equalToSuperview()
         }
         bottomBar.snp.makeConstraints { make in

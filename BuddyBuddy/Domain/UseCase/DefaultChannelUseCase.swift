@@ -29,6 +29,10 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
         )
     }
     
+    func createChannel(request: AddChannelReqeustDTO) -> Single<Result<AddChannel, any Error>> {
+        repository.createChannel(request: request)
+    }
+    
     func fetchChannelChats(
         channelID: String,
         date: String?

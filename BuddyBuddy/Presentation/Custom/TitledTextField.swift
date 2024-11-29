@@ -52,7 +52,7 @@ final class TitledTextField: BaseView {
     override func setView() {
         super.setView()
         
-        backgroundColor = .gray2
+        backgroundColor = .gray3
     }
     
     override func setConstraints() {
