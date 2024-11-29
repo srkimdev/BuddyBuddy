@@ -49,7 +49,7 @@ final class ChannelSettingMiddleView: BaseView {
         }
     }
     
-    func setMemebrCount(count: Int) {
+    func setMemberCount(count: Int) {
         memberCount.text = "멤버(\(count))"
     }
 }

@@ -47,8 +47,8 @@ final class ChannelAdminViewController: BaseViewController {
             backBtnTapped: topView.backBtn.rx.tap.map { () },
             viewWillAppear: rx.viewWillAppear,
             selectedUser: userTableView.rx.modelSelected(UserProfile.self).map { $0 },
-            cancelBtnTapped: adminAlert.leftButton.rx.tap.map {()},
-            changeBtnTapped: adminAlert.rightButton.rx.tap.map {()}
+            cancelBtnTapped: adminAlert.leftButton.rx.tap.map { () },
+            changeBtnTapped: adminAlert.rightButton.rx.tap.map { () }
         )
         let output = vm.transform(input: input)
         

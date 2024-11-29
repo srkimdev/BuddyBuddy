@@ -14,10 +14,10 @@ enum ChannelRouter {
     case unreadCount(playgroundID: String, channelID: String, after: String?)
     case createChannel(request: AddChannelReqeustDTO)
     case fetchChannelChat(query: ChannelChatQuery)
-    case specificChannel(playgroundID: String, channelID: String)
-    case changeChannelAdmin(playgroundID: String, channelID: String, ownerID: String)
-    case deleteChannel(playgroundID: String, channelID: String)
-    case exitChannel(playgroundID: String, channelID: String)
+    case specificChannel(channelID: String)
+    case changeChannelAdmin(channelID: String, ownerID: String)
+    case deleteChannel(channelID: String)
+    case exitChannel(channelID: String)
 }
 
 extension ChannelRouter: TargetType {
@@ -48,14 +48,14 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(UserDefaultsManager.playgroundID)/channels"
         case .fetchChannelChat(let query):
             return "workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
-        case .specificChannel(let playgroundID, let channelID):
-            return "workspaces/\(playgroundID)/channels/\(channelID)"
-        case .changeChannelAdmin(let playgroundID, let channelID, _):
-            return "workspaces/\(playgroundID)/channels/\(channelID)/transfer/ownership"
-        case .deleteChannel(let playgroundID, let channelID):
-            return "workspaces/\(playgroundID)/channels/\(channelID)"
-        case .exitChannel(let playgroundID, let channelID):
-            return "workspaces/\(playgroundID)/channels/\(channelID)/exit"
+        case .specificChannel(let channelID):
+            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
+        case .changeChannelAdmin(let channelID, _):
+            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/transfer/ownership"
+        case .deleteChannel(let channelID):
+            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
+        case .exitChannel(let channelID):
+            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/exit"
         }
     }
     
@@ -95,7 +95,7 @@ extension ChannelRouter: TargetType {
     
     var body: Data? {
         switch self {
-        case .changeChannelAdmin(_, _, let ownerID):
+        case .changeChannelAdmin(_, let ownerID):
             let query = ChangeChannelQuery(ownerID: ownerID)
             let encoder = JSONEncoder()
             do {
