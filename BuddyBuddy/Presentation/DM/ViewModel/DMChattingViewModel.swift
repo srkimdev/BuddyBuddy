@@ -45,7 +45,7 @@ final class DMChattingViewModel: ViewModelType {
     struct Output {
         let updateDMListTableView: Driver<[ChatSection]>
         let scrollToDown: Driver<Void>
-        let removeChattingBarText: Driver<Void>
+        let removeChattingBarTextAndImage: Driver<Void>
         let plusBtnTapped: Driver<Void>
         let imagePicker: Driver<[UIImage]>
     }
@@ -54,6 +54,7 @@ final class DMChattingViewModel: ViewModelType {
         let updateDMListTableView = PublishSubject<[ChatSection]>()
         let scrollToDown = PublishSubject<Void>()
         let removeChattingBarText = PublishSubject<Void>()
+        let imageLoad = PublishSubject<[DMHistoryTable]>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -93,9 +94,9 @@ final class DMChattingViewModel: ViewModelType {
                 
                 let chatHistory = self.realmRepository.readAllItem().filter {
                     $0.roomID == self.dmListInfo.roomID
-                }
+                }.map { $0.toChatType() }
                 
-//                updateDMListTableView.onNext(chatHistory)
+                updateDMListTableView.onNext([ChatSection(items: chatHistory)])
                 scrollToDown.onNext(())
             }
             .disposed(by: disposeBag)
@@ -118,11 +119,12 @@ final class DMChattingViewModel: ViewModelType {
                     
                     let chatHistory = self.realmRepository.readAllItem().filter {
                         $0.roomID == self.dmListInfo.roomID
-                    }
+                    }.map { $0.toChatType() }
                     
-//                    updateDMListTableView.onNext(chatHistory)
+                    updateDMListTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
                     removeChattingBarText.onNext(())
+                    
                 case .failure(let error):
                     print(error)
                 }
@@ -132,7 +134,7 @@ final class DMChattingViewModel: ViewModelType {
         return Output(
             updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
             scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
-            removeChattingBarText: removeChattingBarText.asDriver(onErrorJustReturn: ()),
+            removeChattingBarTextAndImage: removeChattingBarText.asDriver(onErrorJustReturn: ()),
             plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
             imagePicker: input.imagePicker.asDriver(onErrorJustReturn: [])
         )

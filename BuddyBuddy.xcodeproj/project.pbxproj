@@ -130,7 +130,6 @@
 		DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */; };
 		DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */; };
 		DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A852CE307F200E2A2F7 /* DMChattingViewController.swift */; };
-		DC213A882CE3086300E2A2F7 /* DMChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */; };
 		DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */; };
 		DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */; };
 		DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */; };
@@ -298,7 +297,6 @@
 		DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListTableViewCell.swift; sourceTree = "<group>"; };
 		DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCountView.swift; sourceTree = "<group>"; };
 		DC213A852CE307F200E2A2F7 /* DMChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingViewController.swift; sourceTree = "<group>"; };
-		DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingTableViewCell.swift; sourceTree = "<group>"; };
 		DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
 		DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingViewModel.swift; sourceTree = "<group>"; };
 		DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -737,7 +735,6 @@
 			isa = PBXGroup;
 			children = (
 				DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */,
-				DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */,
 				DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */,
 				DC93758D2CF88F4800012F43 /* DMTextTableViewCell.swift */,
 				DC93758F2CF88F6600012F43 /* DMImageTableViewCell.swift */,
@@ -1309,7 +1306,6 @@
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
-				DC213A882CE3086300E2A2F7 /* DMChattingTableViewCell.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C91F672E2CEE427600C84265 /* UserRepositoryInterface.swift in Sources */,

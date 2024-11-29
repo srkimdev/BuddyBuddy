@@ -20,8 +20,25 @@ final class DMImageTableViewCell: BaseTableViewCell {
         view.font = .systemFont(ofSize: 13)
         return view
     }()
-    private let pickerImage: UIImageView = {
-        let view = UIImageView()
+    private let pickerImageStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.spacing = 4
+        view.distribution = .fillEqually
+        return view
+    }()
+    private let topImageStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.spacing = 4
+        view.distribution = .fillEqually
+        return view
+    }()
+    private let bottomImageStackView: UIStackView = {
+        let view = UIStackView()
+        view.axis = .horizontal
+        view.spacing = 4
+        view.distribution = .fillEqually
         return view
     }()
     private let chatTime: UILabel = {
@@ -36,8 +53,11 @@ final class DMImageTableViewCell: BaseTableViewCell {
     }
     
     override func setHierarchy() {
-        [profileImage, userName, pickerImage, chatTime].forEach {
+        [profileImage, userName, pickerImageStackView, chatTime].forEach {
             contentView.addSubview($0)
+        }
+        [topImageStackView, bottomImageStackView].forEach {
+            pickerImageStackView.addArrangedSubview($0)
         }
     }
     
@@ -53,14 +73,19 @@ final class DMImageTableViewCell: BaseTableViewCell {
             make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(15)
         }
-        pickerImage.snp.makeConstraints { make in
+        pickerImageStackView.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.height.equalTo(80)
             make.bottom.equalToSuperview().inset(8)
         }
+        topImageStackView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+        }
+        bottomImageStackView.snp.makeConstraints { make in
+            make.height.equalTo(80)
+        }
         chatTime.snp.makeConstraints { make in
-            make.leading.equalTo(pickerImage.snp.trailing).offset(8)
+            make.leading.equalTo(pickerImageStackView.snp.trailing).offset(8)
             make.trailing.equalToSuperview().inset(30)
             make.bottom.equalToSuperview().inset(8)
         }
@@ -71,6 +96,6 @@ final class DMImageTableViewCell: BaseTableViewCell {
         userName.text = transition.user?.nickname
         chatTime.text = "11:55 오전"
         
-        pickerImage.backgroundColor = .gray
+        pickerImageStackView.backgroundColor = .gray
     }
 }

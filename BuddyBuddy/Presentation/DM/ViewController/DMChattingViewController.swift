@@ -94,12 +94,6 @@ final class DMChattingViewController: BaseNavigationViewController {
         view.backgroundColor = .gray3
         return view
     }()
-    private let chatImageStackView: UIStackView = {
-        let view = UIStackView()
-        view.axis = .vertical
-        view.distribution = .fillEqually
-        return view
-    }()
     
     init(vm: DMChattingViewModel) {
         self.vm = vm
@@ -171,56 +165,58 @@ final class DMChattingViewController: BaseNavigationViewController {
             .disposed(by: disposeBag)
         
         output.scrollToDown
-            .drive { [weak self] _ in
-                guard let self else { return }
+            .drive(with: self) { owner, _ in
                 let indexPath = IndexPath(
-                    row: dmChattingTableView.numberOfRows(inSection: 0) - 1,
+                    row: owner.dmChattingTableView.numberOfRows(inSection: 0) - 1,
                     section: 0
                 )
                 
                 if indexPath.row >= 0 {
-                    dmChattingTableView.scrollToRow(
-                        at: indexPath, at: .bottom,
+                    owner.dmChattingTableView.scrollToRow(
+                        at: indexPath, 
+                        at: .bottom,
                         animated: false
                     )
                 }
             }
             .disposed(by: disposeBag)
         
-        output.removeChattingBarText
-            .drive { [weak self] _ in
-                guard let self else { return }
-                chatTextView.text = nil
+        output.removeChattingBarTextAndImage
+            .drive(with: self) { owner, _ in
+                owner.chatTextView.text = nil
+                
+                owner.imagePickerCollectionView.constraints.forEach { constraint in
+                    if constraint.firstAttribute == .height {
+                        constraint.constant = 0
+                    }
+                }
             }
             .disposed(by: disposeBag)
         
         output.plusBtnTapped
-            .drive { [weak self] _ in
-                guard let self else { return }
-                showPickerView()
+            .drive(with: self) { owner, _ in
+                owner.showPickerView()
             }
             .disposed(by: disposeBag)
         
         output.imagePicker
-            .drive { [weak self] value in
-                guard let self else { return }
+            .drive(with: self) { owner, value in
                 
-                imagePickerCollectionView.isHidden = value.isEmpty
+                owner.imagePickerCollectionView.isHidden = value.isEmpty
                 
                 if value.isEmpty {
-//                    imagePickerCollectionView.constraints.forEach { constraint in
-//                        if constraint.firstAttribute == .height {
-//                            constraint.constant = 0
-//                        }
-//                    }
-                } else {
-                    imagePickerCollectionView.constraints.forEach { constraint in
+                    owner.imagePickerCollectionView.constraints.forEach { constraint in
                         if constraint.firstAttribute == .height {
-                            constraint.constant = self.imagePickerCollectionView.frame.width / 5
+                            constraint.constant = 0
+                        }
+                    }
+                } else {
+                    owner.imagePickerCollectionView.constraints.forEach { constraint in
+                        if constraint.firstAttribute == .height {
+                            constraint.constant = owner.imagePickerCollectionView.frame.width / 5
                         }
                     }
                 }
-                
             }
             .disposed(by: disposeBag)
         
