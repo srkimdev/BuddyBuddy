@@ -56,6 +56,6 @@ final class InviteMemberViewController: BaseViewController {
     override func setView() {
         super.setView()
         
-        view.backgroundColor = .gray2
+        view.backgroundColor = .gray3
     }
 }
