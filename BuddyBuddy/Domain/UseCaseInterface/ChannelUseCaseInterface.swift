@@ -14,7 +14,7 @@ protocol ChannelUseCaseInterface {
     func fetchUnreadCountOfChannel(
         playgroundID: String,
         channelID: String,
-        after: Date?
+        after: String?
     ) -> Single<Result<UnreadCountOfChannel, Error>>
     func createChannel(request: AddChannelReqeustDTO) -> Single<Result<AddChannel, Error>>
     func fetchChannelChats(

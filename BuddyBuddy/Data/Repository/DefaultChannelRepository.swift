@@ -35,7 +35,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     func fetchUnreadCountOfChannel(
         playgroundID: String,
         channelID: String,
-        after: Date?
+        after: String?
     ) -> Single<Result<UnreadCountOfChannel, any Error>> {
         networkService.callRequest(
             router: Router.unreadCount(

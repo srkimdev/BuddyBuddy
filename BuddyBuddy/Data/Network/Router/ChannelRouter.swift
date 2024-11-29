@@ -11,7 +11,7 @@ import Alamofire
 
 enum ChannelRouter {
     case myChannelList(playgroundID: String)
-    case unreadCount(playgroundID: String, channelID: String, after: Date?)
+    case unreadCount(playgroundID: String, channelID: String, after: String?)
     case createChannel(request: AddChannelReqeustDTO)
     case fetchChannelChat(query: ChannelChatQuery)
     case specificChannel(playgroundID: String, channelID: String)
@@ -87,8 +87,7 @@ extension ChannelRouter: TargetType {
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }
-            let afterValue = after.toString(format: .defaultDate)
-            return [URLQueryItem(name: "after", value: afterValue)]
+            return [URLQueryItem(name: "after", value: after)]
         case .fetchChannelChat(let query):
             return [URLQueryItem(name: "cursor_date", value: query.cursorDate)]
         }
