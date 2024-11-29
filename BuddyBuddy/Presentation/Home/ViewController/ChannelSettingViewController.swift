@@ -77,7 +77,7 @@ final class ChannelSettingViewController: BaseViewController {
         
         output.channelMembers
             .drive(with: self) { owner, members in
-                owner.middleView.setMemebrCount(count: members.count)
+                owner.middleView.setMemberCount(count: members.count)
             }
             .disposed(by: disposeBag)
         
