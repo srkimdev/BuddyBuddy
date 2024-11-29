@@ -14,6 +14,10 @@ enum ChannelRouter {
     case unreadCount(playgroundID: String, channelID: String, after: Date?)
     case createChannel(request: AddChannelReqeustDTO)
     case fetchChannelChat(query: ChannelChatQuery)
+    case specificChannel(playgroundID: String, channelID: String)
+    case changeChannelAdmin(playgroundID: String, channelID: String, ownerID: String)
+    case deleteChannel(playgroundID: String, channelID: String)
+    case exitChannel(playgroundID: String, channelID: String)
 }
 
 extension ChannelRouter: TargetType {
@@ -23,8 +27,12 @@ extension ChannelRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat:
+        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel, .exitChannel:
             return .get
+        case .changeChannelAdmin:
+            return .put
+        case .deleteChannel:
+            return .delete
         case .createChannel:
             return .post
         }
@@ -40,17 +48,26 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(UserDefaultsManager.playgroundID)/channels"
         case .fetchChannelChat(let query):
             return "workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
+        case .specificChannel(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)"
+        case .changeChannelAdmin(let playgroundID, let channelID, _):
+            return "workspaces/\(playgroundID)/channels/\(channelID)/transfer/ownership"
+        case .deleteChannel(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)"
+        case .exitChannel(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)/exit"
         }
     }
     
     var header: [String: String] {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat:
+        case .myChannelList, .unreadCount, .fetchChannelChat,
+                .specificChannel, .exitChannel, .deleteChannel:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
-        case .createChannel:
+        case .createChannel, .changeChannelAdmin:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key,
@@ -65,7 +82,8 @@ extension ChannelRouter: TargetType {
     
     var queryItems: [URLQueryItem]? {
         switch self {
-        case .myChannelList, .createChannel:
+        case .myChannelList, .specificChannel, .createChannel,
+                .changeChannelAdmin, .deleteChannel, .exitChannel:
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }
@@ -78,6 +96,15 @@ extension ChannelRouter: TargetType {
     
     var body: Data? {
         switch self {
+        case .changeChannelAdmin(_, _, let ownerID):
+            let query = ChangeChannelQuery(ownerID: ownerID)
+            let encoder = JSONEncoder()
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
         case .createChannel(let request):
             let encoder = JSONEncoder()
             do {
@@ -86,7 +113,7 @@ extension ChannelRouter: TargetType {
                 print(error)
                 return nil
             }
-        default: 
+        default:
             return nil
         }
     }

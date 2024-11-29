@@ -31,8 +31,12 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         )
     }
     
-    func toChannelSetting() {
-        let vc = ChannelSettingViewController(vm: ChannelSettingViewModel(coordinator: self))
+    func toChannelSetting(channelID: String) {
+        let vc = ChannelSettingViewController(vm: ChannelSettingViewModel(
+            coordinator: self, 
+            useCase: DefaultChannelUseCase(),
+            channelID: channelID
+        ))
         vc.hidesBottomBarWhenPushed = true
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
         navigationController.pushViewController(
@@ -41,8 +45,12 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         )
     }
     
-    func toChannelAdmin() {
-        let vc = ChannelAdminViewController(vm: ChangeAdminViewModel(coordinator: self))
+    func toChannelAdmin(channelID: String) {
+        let vc = ChannelAdminViewController(vm: ChangeAdminViewModel(
+            coordinator: self,
+            useCase: DefaultChannelUseCase(),
+            channelID: channelID
+        ))
         vc.modalPresentationStyle = .pageSheet
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.large()]

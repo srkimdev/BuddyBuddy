@@ -52,7 +52,7 @@ final class ChannelAdminTableViewCell: BaseTableViewCell {
         profileImgView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16)
             make.centerY.equalToSuperview()
-            make.size.equalTo(44)
+            make.size.equalTo(40)
         }
         labelContainerView.snp.makeConstraints { make in
             make.leading.equalTo(profileImgView.snp.trailing).offset(8)
@@ -68,11 +68,15 @@ final class ChannelAdminTableViewCell: BaseTableViewCell {
     }
     
     func setUserProfile(
-        img: UIImage,
+        img: UIImage?,
         name: String,
         email: String
     ) {
-        profileImgView.image = img
+        if img == nil {
+            profileImgView.image = UIImage(named: "BasicProfileImage")
+        } else {
+            profileImgView.image = img
+        }
         profileNameLabel.text = name
         emailLabel.text = email
     }

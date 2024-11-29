@@ -16,7 +16,6 @@ final class ChannelSettingTopView: BaseView {
         view.textAlignment = .left
         view.textColor = .black
         view.numberOfLines = .zero
-        view.text = "# 아라,성률,지수와 함께하는 얼렁뚱땅 언어교환앱"
         return view
     }()
     private let channelIntro: UILabel = {
@@ -25,9 +24,6 @@ final class ChannelSettingTopView: BaseView {
         view.numberOfLines = .zero
         view.textColor = .gray1
         view.textAlignment = .left
-        view.text = """
-안녕하세요 새싹 여러분? 심심하셨죠? 이 채널은 나머지 모든 것을 위한 채널이에요. 팀원들이 농담하거나 순간적인 아이디어를 공유하는 곳이죠! 마음껏 즐기세요!
-"""
         return view
     }()
     
@@ -53,9 +49,13 @@ final class ChannelSettingTopView: BaseView {
     
     func setChannelInfo(
         name: String,
-        intro: String
+        intro: String?
     ) {
         channelNameLabel.text = name
-        channelIntro.text = intro
+        if intro == nil {
+            channelIntro.text = "채널 소개글이 없습니다."
+        } else {
+            channelIntro.text = intro
+        }
     }
 }

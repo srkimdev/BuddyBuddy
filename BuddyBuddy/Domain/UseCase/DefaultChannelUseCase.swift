@@ -42,4 +42,25 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
             date: date
         )
     }
+    
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, any Error>> {
+        return repository.fetchSpecificChannel(channelID: channelID)
+    }
+    
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>> {
+        return repository.changeChannelAdmin(
+            channelID: channelID,
+            selectedUserID: selectedUserID
+        )
+    }
+    
+    func deleteChannel(channelID: String) -> Single<Result<Void, any Error>> {
+        return repository.deleteChannel(channelID: channelID)
+    }
+    func exitChannel(channelID: String) -> Single<Result<Void, any Error>> {
+        return repository.exitChannel(channelID: channelID)
+    }
 }

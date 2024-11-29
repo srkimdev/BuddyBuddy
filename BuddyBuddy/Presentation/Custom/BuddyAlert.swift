@@ -48,7 +48,7 @@ final class BuddyAlert: BaseView {
         view.font = .body
         view.textColor = .gray1
         view.textAlignment = .center
-        view.text = "하이루"
+        view.numberOfLines = .zero
         return view
     }()
     /// 왼쪽 버튼
@@ -133,6 +133,10 @@ final class BuddyAlert: BaseView {
     }
     
     func setMessageBody(_ text: AlertLiteral) {
-        messageLabel.text = text.toText
+        messageLabel.text = text.toMessage
+    }
+    
+    func setTitleBody(_ text: AlertLiteral) {
+        titleLabel.text = text.toTitle
     }
 }

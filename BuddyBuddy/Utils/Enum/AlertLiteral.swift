@@ -9,23 +9,32 @@ import Foundation
 
 enum AlertLiteral {
     case joinChannel(channelName: String)
-    case exitChannel
-    case deleteChannel
-    case changeChannelAdmin
-    case selectChannelAdmin
+    case exitChannel(isMyChannel: Bool)
+    case changeChannelAdmin(userName: String)
     
-    var toText: String {
+    var toTitle: String {
+        switch self {
+        case .joinChannel:
+            return "JoinChannel".localized()
+        case .exitChannel:
+            return "ExitChannel".localized()
+        case .changeChannelAdmin(let userName):
+            return "ChangeChannelAdminAlertTitle".localized(userName)
+        }
+    }
+    
+    var toMessage: String {
         switch self {
         case .joinChannel(let channelName):
             return "[\(channelName)] 채널에 참여하시겠습니까?"
-        case .exitChannel:
-            return ""
-        case .deleteChannel:
-            return ""
+        case .exitChannel(let isMyChannel):
+            if isMyChannel {
+                return "ExitMyChannel".localized()
+            } else {
+                return "JustExitChannel".localized()
+            }
         case .changeChannelAdmin:
-            return ""
-        case .selectChannelAdmin:
-            return ""
+            return "ChangeChannelAdminAlertMessage".localized()
         }
     }
 }

@@ -85,8 +85,80 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
         )
         .map { result in
             switch result {
-            case .success(let value):
+            case .success(_):
                 return .success(true)
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, Error>> {
+        return networkService.callRequest(
+            router: Router.specificChannel(
+                playgroundID: UserDefaultsManager.playgroundID,
+                channelID: channelID
+            ),
+            responseType: SpecificChannelResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                return .success(value.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>> {
+        return networkService.callRequest(
+            router: Router.changeChannelAdmin(
+                playgroundID: UserDefaultsManager.playgroundID,
+                channelID: channelID,
+                ownerID: selectedUserID
+            ),
+            responseType: MyChannelDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(true)
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func exitChannel(channelID: String) -> Single<Result<Void, Error>> {
+        return networkService.callRequest(
+            router: Router.exitChannel(
+                playgroundID: UserDefaultsManager.playgroundID,
+                channelID: channelID
+            ),
+            responseType: MyChannelListResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func deleteChannel(channelID: String) -> Single<Result<Void, Error>> {
+        return networkService.callRequest(router: Router.deleteChannel(
+            playgroundID: UserDefaultsManager.playgroundID, 
+            channelID: channelID
+        ))
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(())
             case .failure(let error):
                 return .failure(error)
             }
