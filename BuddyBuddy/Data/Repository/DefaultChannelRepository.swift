@@ -69,4 +69,27 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
             }
         }
     }
+    
+    func fetchChannelChats(
+        channelID: String,
+        date: String?
+    ) -> Single<Result<Bool, any Error>> {
+        let query = ChannelChatQuery(
+            cursorDate: date,
+            channelID: channelID,
+            playgroundID: UserDefaultsManager.playgroundID
+        )
+        return networkService.callRequest(
+            router: Router.fetchChannelChat(query: query),
+            responseType: ChannelChatList.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                return .success(true)
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
 }

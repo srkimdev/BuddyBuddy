@@ -32,4 +32,14 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
     func createChannel(request: AddChannelReqeustDTO) -> Single<Result<AddChannel, any Error>> {
         repository.createChannel(request: request)
     }
+    
+    func fetchChannelChats(
+        channelID: String,
+        date: String?
+    ) -> Single<Result<Bool, any Error>> {
+        return repository.fetchChannelChats(
+            channelID: channelID,
+            date: date
+        )
+    }
 }

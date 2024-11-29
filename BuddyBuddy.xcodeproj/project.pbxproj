@@ -49,6 +49,10 @@
 		C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */ = {isa = PBXBuildFile; productRef = C90828632CDA75CF0096BA0D /* RxKakaoSDKCommon */; };
 		C90828662CDA780D0096BA0D /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C90828652CDA780D0096BA0D /* Localizable.xcstrings */; };
 		C90828682CDA78770096BA0D /* String+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90828672CDA78770096BA0D /* String+.swift */; };
+		C90FEE762CF5D065008819AF /* AlertLiteral.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE752CF5D065008819AF /* AlertLiteral.swift */; };
+		C90FEE782CF60386008819AF /* ChannelChatQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE772CF60386008819AF /* ChannelChatQuery.swift */; };
+		C90FEE7A2CF604DF008819AF /* ChannelChatResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE792CF604DF008819AF /* ChannelChatResponseDTO.swift */; };
+		C90FEE7C2CF62091008819AF /* NavigateTabDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C90FEE7B2CF62091008819AF /* NavigateTabDelegate.swift */; };
 		C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */; };
 		C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */; };
 		C91BBC052CE37093001EFC70 /* SearchResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91BBC042CE37093001EFC70 /* SearchResultView.swift */; };
@@ -108,6 +112,7 @@
 		C9E44A9D2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9C2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift */; };
 		C9E44A9F2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44A9E2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift */; };
 		C9E44AA52CEE38A30044CD5C /* UserRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E44AA42CEE38A30044CD5C /* UserRouter.swift */; };
+		C9E818CC2CF5B02200034660 /* BuddyAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E818CB2CF5B02200034660 /* BuddyAlert.swift */; };
 		C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F392CDB5F070043351E /* TabKind.swift */; };
 		C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F3B2CDB5FFD0043351E /* TabBarViewController.swift */; };
 		C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F20F412CDB61F50043351E /* HomeViewController.swift */; };
@@ -216,6 +221,10 @@
 		C908285E2CDA72B50096BA0D /* .swiftlint.yml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C90828652CDA780D0096BA0D /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		C90828672CDA78770096BA0D /* String+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+.swift"; sourceTree = "<group>"; };
+		C90FEE752CF5D065008819AF /* AlertLiteral.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertLiteral.swift; sourceTree = "<group>"; };
+		C90FEE772CF60386008819AF /* ChannelChatQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelChatQuery.swift; sourceTree = "<group>"; };
+		C90FEE792CF604DF008819AF /* ChannelChatResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelChatResponseDTO.swift; sourceTree = "<group>"; };
+		C90FEE7B2CF62091008819AF /* NavigateTabDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateTabDelegate.swift; sourceTree = "<group>"; };
 		C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
 		C91BBBF62CE358C8001EFC70 /* UnderlineSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlineSegmentedControl.swift; sourceTree = "<group>"; };
 		C91BBC042CE37093001EFC70 /* SearchResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultView.swift; sourceTree = "<group>"; };
@@ -275,6 +284,7 @@
 		C9E44A9C2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlaygroundUseCase.swift; sourceTree = "<group>"; };
 		C9E44A9E2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundUseCaseInterface.swift; sourceTree = "<group>"; };
 		C9E44AA42CEE38A30044CD5C /* UserRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRouter.swift; sourceTree = "<group>"; };
+		C9E818CB2CF5B02200034660 /* BuddyAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyAlert.swift; sourceTree = "<group>"; };
 		C9F20F392CDB5F070043351E /* TabKind.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabKind.swift; sourceTree = "<group>"; };
 		C9F20F3B2CDB5FFD0043351E /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		C9F20F412CDB61F50043351E /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -396,6 +406,7 @@
 				C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */,
 				C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */,
 				C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */,
+				C90FEE792CF604DF008819AF /* ChannelChatResponseDTO.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -802,6 +813,7 @@
 			children = (
 				C9F20F652CDB72A60043351E /* SearchCoordinator.swift */,
 				C9F20F672CDB72C30043351E /* DefaultSearchCoordinator.swift */,
+				C90FEE7B2CF62091008819AF /* NavigateTabDelegate.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -991,6 +1003,7 @@
 				DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */,
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
 				C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */,
+				C9E818CB2CF5B02200034660 /* BuddyAlert.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1056,6 +1069,7 @@
 				C08644D22CF6358000862523 /* ButtonState.swift */,
 				C0A35E012CF786CA00B41E60 /* RegularExpression.swift */,
 				C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */,
+				C90FEE752CF5D065008819AF /* AlertLiteral.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1078,6 +1092,7 @@
 			children = (
 				DC213AAB2CE47A8900E2A2F7 /* LoginQuery.swift */,
 				C9E44A942CECB45D0044CD5C /* SearchQuery.swift */,
+				C90FEE772CF60386008819AF /* ChannelChatQuery.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1372,6 +1387,7 @@
 				C9F20F462CDB625A0043351E /* ViewModelType.swift in Sources */,
 				C9E44A952CECB45D0044CD5C /* SearchQuery.swift in Sources */,
 				C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */,
+				C90FEE762CF5D065008819AF /* AlertLiteral.swift in Sources */,
 				DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */,
 				C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
@@ -1393,6 +1409,7 @@
 				DC9375622CEC73B800012F43 /* RealmRepository.swift in Sources */,
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
 				C09FA8F52CEC673400613FEA /* MyChannelList.swift in Sources */,
+				C90FEE7A2CF604DF008819AF /* ChannelChatResponseDTO.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */,
 				C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */,
@@ -1425,9 +1442,11 @@
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */,
 				DC9375772CEE087B00012F43 /* SocketRepositoryInterface.swift in Sources */,
+				C9E818CC2CF5B02200034660 /* BuddyAlert.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,
 				C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */,
 				C09FA8FB2CEC6DD200613FEA /* UnreadCountOfChannel.swift in Sources */,
+				C90FEE782CF60386008819AF /* ChannelChatQuery.swift in Sources */,
 				C09FA8F02CEC668800613FEA /* MyChannelListResponseDTO.swift in Sources */,
 				C9F20F502CDB64770043351E /* SettingViewController.swift in Sources */,
 				C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */,
@@ -1445,6 +1464,7 @@
 				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */,
 				C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */,
+				C90FEE7C2CF62091008819AF /* NavigateTabDelegate.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,
