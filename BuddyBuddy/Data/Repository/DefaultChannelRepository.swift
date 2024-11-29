@@ -95,10 +95,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     
     func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, Error>> {
         return networkService.callRequest(
-            router: Router.specificChannel(
-                playgroundID: UserDefaultsManager.playgroundID,
-                channelID: channelID
-            ),
+            router: Router.specificChannel(channelID: channelID),
             responseType: SpecificChannelResponseDTO.self
         )
         .map { result in
@@ -116,7 +113,6 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     ) -> Single<Result<Bool, Error>> {
         return networkService.callRequest(
             router: Router.changeChannelAdmin(
-                playgroundID: UserDefaultsManager.playgroundID,
                 channelID: channelID,
                 ownerID: selectedUserID
             ),
@@ -134,10 +130,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     
     func exitChannel(channelID: String) -> Single<Result<Void, Error>> {
         return networkService.callRequest(
-            router: Router.exitChannel(
-                playgroundID: UserDefaultsManager.playgroundID,
-                channelID: channelID
-            ),
+            router: Router.exitChannel(channelID: channelID),
             responseType: MyChannelListResponseDTO.self
         )
         .map { result in
@@ -151,17 +144,14 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     }
     
     func deleteChannel(channelID: String) -> Single<Result<Void, Error>> {
-        return networkService.callRequest(router: Router.deleteChannel(
-            playgroundID: UserDefaultsManager.playgroundID, 
-            channelID: channelID
-        ))
-        .map { result in
-            switch result {
-            case .success(_):
-                return .success(())
-            case .failure(let error):
-                return .failure(error)
+        return networkService.callRequest(router: Router.deleteChannel(channelID: channelID))
+            .map { result in
+                switch result {
+                case .success(_):
+                    return .success(())
+                case .failure(let error):
+                    return .failure(error)
+                }
             }
-        }
     }
 }

@@ -61,8 +61,8 @@ final class SearchViewController: BaseNavigationViewController {
             selectedCell: searchedResult.searchResultTableView.rx
                 .modelSelected(SearchResult.self).map { $0 },
             searchCancelBtnTapped: searchController.searchBar.rx.cancelButtonClicked.map { () },
-            leftButtonTapped: channelAlert.leftButton.rx.tap.map {()},
-            rightButtonTapped: channelAlert.rightButton.rx.tap.map {()},
+            leftButtonTapped: channelAlert.leftButton.rx.tap.map { () },
+            rightButtonTapped: channelAlert.rightButton.rx.tap.map { () },
             tappedAroundAlert: channelAlert.rx.tap
         )
         let output = vm.transform(input: input)

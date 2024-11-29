@@ -41,14 +41,26 @@ final class ChannelSettingViewController: BaseViewController {
         super.init()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+    }
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+    }
+    
     override func bind() {
         let input = ChannelSettingViewModel.Input(
             viewWillAppear: rx.viewWillAppear,
             blindViewTapped: tapGesture.map { () },
             exitBtnTapped: bottomView.exitBtn.rx.tap.map { () },
-            changeAdminBtnTapped: bottomView.adminBtn.rx.tap.map {()},
-            cancelBtnTapped: exitAlert.leftButton.rx.tap.map { ()},
-            exitAlertBtnTapped: exitAlert.rightButton.rx.tap.map { ()}
+            changeAdminBtnTapped: bottomView.adminBtn.rx.tap.map { () },
+            cancelBtnTapped: exitAlert.leftButton.rx.tap.map { () },
+            exitAlertBtnTapped: exitAlert.rightButton.rx.tap.map { () }
         )
         let output = vm.transform(input: input)
         
@@ -99,18 +111,6 @@ final class ChannelSettingViewController: BaseViewController {
                 owner.exitAlert.setMessageBody(info)
             }
             .disposed(by: disposeBag)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = true
-    }
-    override func viewDidDisappear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-        
-        navigationController?.navigationBar.isHidden = false
-        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     override func setHierarchy() {
