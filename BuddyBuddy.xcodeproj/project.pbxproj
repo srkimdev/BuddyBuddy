@@ -11,6 +11,9 @@
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
+		C08644D12CF62C5E00862523 /* AddChannelViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */; };
+		C08644D32CF6358000862523 /* ButtonState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D22CF6358000862523 /* ButtonState.swift */; };
+		C08644D52CF6E3C300862523 /* AddChannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C08644D42CF6E3C300862523 /* AddChannelViewController.swift */; };
 		C09FA8E22CEC620700613FEA /* BuddyDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */; };
 		C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E32CEC62A200613FEA /* Date+.swift */; };
 		C09FA8E62CEC635D00613FEA /* ChannelRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */; };
@@ -20,6 +23,13 @@
 		C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */; };
 		C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */; };
 		C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */; };
+		C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E012CF786CA00B41E60 /* RegularExpression.swift */; };
+		C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */; };
+		C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */; };
+		C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E082CF860F400B41E60 /* AddChannel.swift */; };
+		C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */; };
+		C0A35E0D2CF8AAEC00B41E60 /* ToastMessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */; };
+		C0A35E0F2CF8CB0B00B41E60 /* ToastMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */; };
 		C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428A2CE4721600C5B5B4 /* Differentiator */; };
 		C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */ = {isa = PBXBuildFile; productRef = C0BF428C2CE4721600C5B5B4 /* RxDataSources */; };
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
@@ -183,6 +193,9 @@
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
+		C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewModel.swift; sourceTree = "<group>"; };
+		C08644D22CF6358000862523 /* ButtonState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonState.swift; sourceTree = "<group>"; };
+		C08644D42CF6E3C300862523 /* AddChannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelViewController.swift; sourceTree = "<group>"; };
 		C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuddyDateFormatter.swift; sourceTree = "<group>"; };
 		C09FA8E32CEC62A200613FEA /* Date+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+.swift"; sourceTree = "<group>"; };
 		C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRouter.swift; sourceTree = "<group>"; };
@@ -192,6 +205,13 @@
 		C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnreadCountOfChannelResponseDTO.swift; sourceTree = "<group>"; };
 		C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRepositoryInterface.swift; sourceTree = "<group>"; };
 		C09FA9022CEC716500613FEA /* DefaultChannelRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelRepository.swift; sourceTree = "<group>"; };
+		C0A35E012CF786CA00B41E60 /* RegularExpression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegularExpression.swift; sourceTree = "<group>"; };
+		C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelReqeustDTO.swift; sourceTree = "<group>"; };
+		C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannelResponseDTO.swift; sourceTree = "<group>"; };
+		C0A35E082CF860F400B41E60 /* AddChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChannel.swift; sourceTree = "<group>"; };
+		C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModalDelegate.swift; sourceTree = "<group>"; };
+		C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessageLabel.swift; sourceTree = "<group>"; };
+		C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastMessage.swift; sourceTree = "<group>"; };
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
@@ -375,6 +395,7 @@
 			isa = PBXGroup;
 			children = (
 				C09FA8EE2CEC664300613FEA /* Response */,
+				C0A35E032CF8515300B41E60 /* Request */,
 			);
 			path = Channel;
 			sourceTree = "<group>";
@@ -384,6 +405,7 @@
 			children = (
 				C09FA8EF2CEC668800613FEA /* MyChannelListResponseDTO.swift */,
 				C09FA8FC2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift */,
+				C0A35E062CF8606300B41E60 /* AddChannelResponseDTO.swift */,
 				C90FEE792CF604DF008819AF /* ChannelChatResponseDTO.swift */,
 			);
 			path = Response;
@@ -395,6 +417,7 @@
 				C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */,
 				C09FA8F42CEC673400613FEA /* MyChannelList.swift */,
 				C09FA8FA2CEC6DD200613FEA /* UnreadCountOfChannel.swift */,
+				C0A35E082CF860F400B41E60 /* AddChannel.swift */,
 			);
 			path = Channel;
 			sourceTree = "<group>";
@@ -405,6 +428,14 @@
 				C09FA8FF2CEC6FAF00613FEA /* ChannelRepositoryInterface.swift */,
 			);
 			path = Channel;
+			sourceTree = "<group>";
+		};
+		C0A35E032CF8515300B41E60 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */,
+			);
+			path = Request;
 			sourceTree = "<group>";
 		};
 		C0CF50C12CF4824400F131A0 /* Profile */ = {
@@ -687,6 +718,7 @@
 				C91BBC222CE4CF97001EFC70 /* ChannelAdminViewController.swift */,
 				C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */,
 				C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */,
+				C08644D42CF6E3C300862523 /* AddChannelViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -699,6 +731,7 @@
 				C91BBC242CE4D25C001EFC70 /* ChangeAdminViewModel.swift */,
 				C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */,
 				C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */,
+				C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -907,6 +940,7 @@
 				DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */,
 				DC9375702CEDC0B900012F43 /* SocketProtocol.swift */,
 				DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */,
+				C0A35E0A2CF8A3C600B41E60 /* ModalDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -968,6 +1002,7 @@
 				C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */,
 				DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */,
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
+				C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */,
 				C9E818CB2CF5B02200034660 /* BuddyAlert.swift */,
 			);
 			path = Custom;
@@ -1031,6 +1066,9 @@
 				C91BBC122CE3B62D001EFC70 /* RoundedButtonType.swift */,
 				C91F67402CEF2F8700C84265 /* SearchState.swift */,
 				C09FA8E12CEC620700613FEA /* BuddyDateFormatter.swift */,
+				C08644D22CF6358000862523 /* ButtonState.swift */,
+				C0A35E012CF786CA00B41E60 /* RegularExpression.swift */,
+				C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */,
 				C90FEE752CF5D065008819AF /* AlertLiteral.swift */,
 			);
 			path = Enum;
@@ -1285,13 +1323,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */,
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
+				C0A35E0F2CF8CB0B00B41E60 /* ToastMessage.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				DC9375732CEDF8A000012F43 /* UserInfoDTO.swift in Sources */,
 				C09FA8FD2CEC6DFD00613FEA /* UnreadCountOfChannelResponseDTO.swift in Sources */,
 				DC213AA62CE374A700E2A2F7 /* DefaultDMUseCase.swift in Sources */,
 				DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */,
+				C08644D32CF6358000862523 /* ButtonState.swift in Sources */,
 				C9F20F522CDB64890043351E /* SettingViewModel.swift in Sources */,
 				C9F20F5A2CDB66270043351E /* AppCoordinator.swift in Sources */,
 				C91BBC292CE4F370001EFC70 /* TitledTextField.swift in Sources */,
@@ -1313,6 +1354,7 @@
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
+				C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
 				C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */,
 				DC9375712CEDC0B900012F43 /* SocketProtocol.swift in Sources */,
@@ -1370,6 +1412,7 @@
 				C90FEE7A2CF604DF008819AF /* ChannelChatResponseDTO.swift in Sources */,
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */,
+				C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */,
 				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,
@@ -1379,6 +1422,7 @@
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
 				C9E44A982CECB4DC0044CD5C /* SearchDTO.swift in Sources */,
 				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
+				C0A35E0D2CF8AAEC00B41E60 /* ToastMessageLabel.swift in Sources */,
 				DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */,
 				C9F20F6E2CDB743D0043351E /* AuthCoordinator.swift in Sources */,
 				DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */,
@@ -1412,12 +1456,14 @@
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
+				C08644D52CF6E3C300862523 /* AddChannelViewController.swift in Sources */,
 				DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */,
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
 				C91F67342CEE444500C84265 /* MyProfile.swift in Sources */,
 				C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */,
 				C9E44A9A2CECBC410044CD5C /* PlaygroundRouter.swift in Sources */,
+				C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */,
 				C90FEE7C2CF62091008819AF /* NavigateTabDelegate.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
@@ -1430,10 +1476,12 @@
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,
 				DC213AAF2CE4848B00E2A2F7 /* AccessTokenDTO.swift in Sources */,
+				C08644D12CF62C5E00862523 /* AddChannelViewModel.swift in Sources */,
 				DC9375682CECAB5D00012F43 /* DMRepositoryInterface.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
 				DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */,
+				C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
