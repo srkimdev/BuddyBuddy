@@ -20,7 +20,7 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
     func fetchUnreadCountOfChannel(
         playgroundID: String,
         channelID: String,
-        after: Date? = nil
+        after: String? = nil
     ) -> Single<Result<UnreadCountOfChannel, any Error>> {
         repository.fetchUnreadCountOfChannel(
             playgroundID: playgroundID,

@@ -74,8 +74,8 @@ final class AddChannelViewModel: ViewModelType {
         
         input.okBtnTapped
             .withUnretained(self)
-            .flatMap { _ in
-                return self.channelUseCase.createChannel(
+            .flatMap { ( owner, _ ) in
+                return owner.channelUseCase.createChannel(
                     request: AddChannelReqeustDTO(
                         name: nameText.value,
                         description: contentText.value.isEmpty ? nil : contentText.value
@@ -90,7 +90,8 @@ final class AddChannelViewModel: ViewModelType {
                 case .failure(let error):
                     print(error)
                 }
-            }.disposed(by: disposeBag)
+            }
+            .disposed(by: disposeBag)
         
         return Output(
             nameText: nameText.asDriver(onErrorJustReturn: ""),

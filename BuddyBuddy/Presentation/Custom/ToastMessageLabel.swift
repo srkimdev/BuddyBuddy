@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ToastMessageLabel: UILabel {
+final class ToastMessageLabel: UILabel {
     private var padding = UIEdgeInsets(
         top: 13.0,
         left: 16.0,
