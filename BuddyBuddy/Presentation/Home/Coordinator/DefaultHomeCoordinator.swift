@@ -97,7 +97,8 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     func toAddChannel() {
         let vm = AddChannelViewModel(
             channelUseCase: channelUseCase,
-            coordinator: self)
+            coordinator: self
+        )
         vm.delegate = homeVM
         
         let vc = AddChannelViewController(vm: vm)

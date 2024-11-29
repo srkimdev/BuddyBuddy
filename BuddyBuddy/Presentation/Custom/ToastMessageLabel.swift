@@ -8,7 +8,12 @@
 import UIKit
 
 class ToastMessageLabel: UILabel {
-    private var padding = UIEdgeInsets(top: 13.0, left: 16.0, bottom: 13.0, right: 16.0)
+    private var padding = UIEdgeInsets(
+        top: 13.0,
+        left: 16.0,
+        bottom: 13.0,
+        right: 16.0
+    )
 
     convenience init(padding: UIEdgeInsets) {
         self.init(frame: .zero)
@@ -45,7 +50,10 @@ class ToastMessageLabel: UILabel {
     }
     
     func animation() {
-        UIView.animate(withDuration: 1.5, delay: 0.5) { [weak self] in
+        UIView.animate(
+            withDuration: 1.5,
+            delay: 0.5
+        ) { [weak self] in
             guard let self else { return }
             isHidden = false
             alpha = 0

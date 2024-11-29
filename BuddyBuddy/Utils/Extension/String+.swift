@@ -30,7 +30,12 @@ extension String {
         } else {
             let regex = try NSRegularExpression(pattern: type.rawValue)
             let range = NSRange(location: 0, length: self.utf16.count)
-            return regex.firstMatch(in: self, options: [], range: range) != nil
+            let firstMatch = regex.firstMatch(
+                in: self,
+                options: [],
+                range: range
+            )
+            return firstMatch != nil
         }
     }
 }

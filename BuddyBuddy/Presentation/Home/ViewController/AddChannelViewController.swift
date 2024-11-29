@@ -25,7 +25,7 @@ final class AddChannelViewController: BaseViewController {
         title: "ChannelContent".localized(),
         placeholder: "ChannelContentPlaceholder".localized()
     )
-    private let okBtn: RoundedButton = {
+    private let okButton: RoundedButton = {
         let view = RoundedButton(
             title: "OK".localized(),
             bgColor: .gray2,
@@ -46,7 +46,7 @@ final class AddChannelViewController: BaseViewController {
         let input = AddChannelViewModel.Input(
             nameInputText: channelNameTextField.textField.rx.text.orEmpty.asObservable(),
             contentInputText: channelContentTextField.textField.rx.text.orEmpty.asObservable(),
-            okBtnTapped: okBtn.rx.tap.asObservable()
+            okBtnTapped: okButton.rx.tap.asObservable()
         )
         let output = vm.transform(input: input)
         
@@ -66,14 +66,14 @@ final class AddChannelViewController: BaseViewController {
             .drive(with: self) { owner, type in
                 switch type {
                 case .disable:
-                    owner.okBtn.isEnabled = false
-                    owner.okBtn.updateBtn(
+                    owner.okButton.isEnabled = false
+                    owner.okButton.updateBtn(
                         bgColor: .gray2,
                         txtColor: .gray1
                     )
                 case .enable:
-                    owner.okBtn.isEnabled = true
-                    owner.okBtn.updateBtn(
+                    owner.okButton.isEnabled = true
+                    owner.okButton.updateBtn(
                         bgColor: .primary,
                         txtColor: .secondary
                     )
@@ -89,7 +89,7 @@ final class AddChannelViewController: BaseViewController {
     }
     
     override func setHierarchy() {
-        [navigationView, channelNameTextField, channelContentTextField, okBtn].forEach {
+        [navigationView, channelNameTextField, channelContentTextField, okButton].forEach {
             view.addSubview($0)
         }
     }
@@ -110,7 +110,7 @@ final class AddChannelViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview()
             make.height.equalTo(76)
         }
-        okBtn.snp.makeConstraints { make in
+        okButton.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(24)
             make.bottom.equalTo(keyboardLayout.snp.top).offset(-12)
             make.height.equalTo(44)
