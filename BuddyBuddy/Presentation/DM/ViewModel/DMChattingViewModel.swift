@@ -16,18 +16,15 @@ final class DMChattingViewModel: ViewModelType {
     private let coordinator: DMCoordinator
     private let dmUseCase: DMUseCaseInterface
     private let dmListInfo: DMListInfo
-    private let realmRepository: RealmRepository<DMHistoryTable>
     
     init(
         coordinator: DMCoordinator,
         dmUseCase: DMUseCaseInterface,
-        dmListInfo: DMListInfo,
-        realmRepository: RealmRepository<DMHistoryTable>
+        dmListInfo: DMListInfo
     ) {
         self.coordinator = coordinator
         self.dmUseCase = dmUseCase
         self.dmListInfo = dmListInfo
-        self.realmRepository = realmRepository
     }
     
     deinit {
@@ -58,25 +55,16 @@ final class DMChattingViewModel: ViewModelType {
         
         input.viewWillAppearTrigger
             .flatMap {
-                let chatHistory = self.realmRepository.readAllItem().filter {
-                    $0.roomID == self.dmListInfo.roomID
-                }/*.sorted(by: { $0.createdAt < $1.createdAt })*/
-                
                 return self.dmUseCase.fetchDMHistory(
                     playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                    roomID: self.dmListInfo.roomID,
-                    cursorDate: chatHistory.last?.createdAt ?? ""
+                    roomID: self.dmListInfo.roomID
                 )
             }
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let value):
-                    let dmHistoryTable = value.map { $0.toTable() }
-                    dmHistoryTable.forEach { owner.realmRepository.updateItem($0) }
-                    
-                    let chatHistory = owner.realmRepository.readAllItem().filter {
-                        $0.roomID == owner.dmListInfo.roomID
-                    }.map { $0.toChatType() }
+                    let chatHistory = value.map { $0.toChatType() }
+                    print(chatHistory)
                     
                     updateDMListTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
@@ -88,23 +76,22 @@ final class DMChattingViewModel: ViewModelType {
             }
             .disposed(by: disposeBag)
         
-        self.dmUseCase.observeMessage()
-            .bind(with: self) { owner, value in
-                owner.realmRepository.updateItem(value)
-                
-                let chatHistory = self.realmRepository.readAllItem().filter {
-                    $0.roomID == self.dmListInfo.roomID
-                }.map { $0.toChatType() }
-                
-                updateDMListTableView.onNext([ChatSection(items: chatHistory)])
-                scrollToDown.onNext(())
+        self.dmUseCase.observeMessage(roomID: self.dmListInfo.roomID)
+            .subscribe(with: self) { _, response in
+                switch response {
+                case .success(let value):
+                    let chatHistory = value.map { $0.toChatType() }
+                    updateDMListTableView.onNext([ChatSection(items: chatHistory)])
+                case .failure(let error):
+                    print(error)
+                }
             }
             .disposed(by: disposeBag)
         
         input.sendBtnTapped
             .withLatestFrom(Observable.combineLatest(input.chatBarText, input.imagePicker))
             .filter { !$0.0.isEmpty }
-            .flatMap { (text, images) -> Single<Result<DMHistoryTable, Error>> in
+            .flatMap { (text, images) -> Single<Result<[DMHistory], Error>> in
                 return self.dmUseCase.sendDM(
                     playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
                     roomID: self.dmListInfo.roomID,
@@ -112,19 +99,16 @@ final class DMChattingViewModel: ViewModelType {
                     files: self.imageToData(imageArray: images)
                 )
             }
-            .bind(with: self) { owner, result in
+            .bind(with: self) { _, result in
                 switch result {
                 case .success(let value):
-                    owner.realmRepository.updateItem(value)
-                    
-                    let chatHistory = self.realmRepository.readAllItem().filter {
-                        $0.roomID == self.dmListInfo.roomID
-                    }.map { $0.toChatType() }
-                    
+                    let chatHistory = value.map { $0.toChatType() }
                     updateDMListTableView.onNext([ChatSection(items: chatHistory)])
+
                     scrollToDown.onNext(())
                     removeChattingBarText.onNext(())
                     
+//                    owner.dmUseCase.disConnectSocket()
                 case .failure(let error):
                     print(error)
                 }

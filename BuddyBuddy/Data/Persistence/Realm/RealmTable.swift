@@ -24,17 +24,3 @@ final class UserTable: Object, Codable {
     @Persisted var nickname: String
     @Persisted var profileImage: String?
 }
-
-extension DMHistoryTable {
-    func toChatType() -> ChatType {
-        if !content.isEmpty && !files.isEmpty {
-            return .TextAndImage(self)
-        } else if !content.isEmpty && files.isEmpty {
-            return .onlyText(self)
-        } else if content.isEmpty && !files.isEmpty {
-            return .onlyImage(self)
-        } else {
-            return .onlyText(self)
-        }
-    }
-}

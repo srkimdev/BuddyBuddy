@@ -10,9 +10,9 @@ import Foundation
 import RxDataSources
 
 enum ChatType {
-    case onlyText(DMHistoryTable)
-    case onlyImage(DMHistoryTable)
-    case TextAndImage(DMHistoryTable)
+    case onlyText(DMHistory)
+    case onlyImage(DMHistory)
+    case TextAndImage(DMHistory)
 }
 
 struct ChatSection {

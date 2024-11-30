@@ -11,9 +11,15 @@ import RxSwift
 
 final class DefaultSocketRepository: SocketRepositoryInterface {
     private let socketService: SocketProtocol
+    private let realmRepository: RealmRepository<DMHistoryTable>
+    private let disposeBag = DisposeBag()
     
-    init(socketService: SocketProtocol) {
+    init(
+        socketService: SocketProtocol,
+        realmRepository: RealmRepository<DMHistoryTable>
+    ) {
         self.socketService = socketService
+        self.realmRepository = realmRepository
     }
     
     func connectSocket(roomID: String) {
@@ -25,11 +31,11 @@ final class DefaultSocketRepository: SocketRepositoryInterface {
         socketService.closeConnection()
     }
     
-    func observeMessage() -> Observable<DMHistoryTable> {
+    func observeMessage() -> Observable<Void> {
         return socketService.observeMessage()
-    }
-    
-    func sendMessage(roomID: String, message: String) {
-        socketService.sendMessage(to: roomID, message: message)
+            .do(onNext: { dto in
+                self.realmRepository.updateItem(dto.toTable())
+            })
+            .map { _ in () }
     }
 }

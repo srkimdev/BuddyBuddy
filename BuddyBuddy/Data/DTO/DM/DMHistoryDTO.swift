@@ -26,8 +26,8 @@ struct DMHistoryDTO: Decodable {
 }
 
 extension DMHistoryDTO {
-    func toDomain() -> DMHistory {
-        return DMHistory(
+    func toDomain() -> DMHistoryString {
+        return DMHistoryString(
             dmID: dmID,
             roomID: roomID,
             content: content ?? "",

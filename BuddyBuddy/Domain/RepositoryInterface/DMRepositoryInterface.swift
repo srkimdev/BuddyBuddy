@@ -12,11 +12,10 @@ import RxSwift
 protocol DMRepositoryInterface {
     func fetchDMList(playgroundID: String) -> Single<Result<[DMList], Error>>
     
-    func fetchDMHistory(
+    func fetchDMHistoryString(
         playgroundID: String,
-        roomID: String,
-        cursorDate: String
-    ) -> Single<Result<[DMHistory], Error>>
+        roomID: String
+    ) -> Single<Result<[DMHistoryString], Error>>
     
     func fetchDMNoRead(
         playgroundID: String,
@@ -29,5 +28,7 @@ protocol DMRepositoryInterface {
         roomID: String,
         message: String,
         files: [Data]
-    ) -> Single<Result<DMHistoryTable, Error>>
+    ) -> Single<Result<DMHistoryString, Error>>
+    
+    func convertToDMHistoryArray(roomID: String) -> Single<Result<[DMHistory], Error>>
 }

@@ -91,9 +91,9 @@ final class DMImageTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: DMHistoryTable) {
+    func designCell(_ transition: DMHistory) {
         profileImage.backgroundColor = .lightGray
-        userName.text = transition.user?.nickname
+        userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         
         pickerImageStackView.backgroundColor = .gray

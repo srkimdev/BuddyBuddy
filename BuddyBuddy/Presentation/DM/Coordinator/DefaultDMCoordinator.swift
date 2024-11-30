@@ -31,8 +31,7 @@ final class DefaultDMCoordinator: DMCoordinator {
         let vc = DMChattingViewController(vm: DMChattingViewModel(
             coordinator: self,
             dmUseCase: DefaultDMUseCase(),
-            dmListInfo: dmListInfo,
-            realmRepository: RealmRepository()
+            dmListInfo: dmListInfo
         ))
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(

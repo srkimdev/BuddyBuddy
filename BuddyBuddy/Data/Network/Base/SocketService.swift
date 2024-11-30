@@ -16,7 +16,7 @@ final class SocketService: SocketProtocol {
     private var url = URL(string: APIKey.baseURL)
     
     private let decoder = JSONDecoder()
-    private let eventSubject = PublishSubject<DMHistoryTable>()
+    private let eventSubject = PublishSubject<DMHistoryDTO>()
     
     func updateURL(roomID: String) {
         guard let url else { return }
@@ -31,7 +31,6 @@ final class SocketService: SocketProtocol {
         }
         
         receiveMessage()
-        print("socketService")
     }
     
     func establishConnection() {
@@ -46,26 +45,18 @@ final class SocketService: SocketProtocol {
     
     func receiveMessage() {
         socket.on("dm") { [weak self] datadict, _ in
-            print("here")
             guard let self, let data = datadict[0] as? [String: Any] else { return }
             do {
-                print(data, "data")
                 let jsonData = try JSONSerialization.data(withJSONObject: data)
                 let result = try self.decoder.decode(DMHistoryDTO.self, from: jsonData)
-                let table = result.toTable()
-                eventSubject.onNext(table)
-                print(table)
+                eventSubject.onNext(result)
             } catch {
                 print(error)
             }
         }
     }
     
-    func observeMessage() -> Observable<DMHistoryTable> {
-        return eventSubject.asObservable()
-    }
-    
-    func sendMessage(to roomID: String, message: String) {
-        socket.emit(roomID, message)
+    func observeMessage() -> Observable<DMHistoryDTO> {
+        eventSubject.asObservable()
     }
 }

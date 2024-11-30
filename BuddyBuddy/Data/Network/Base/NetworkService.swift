@@ -88,12 +88,6 @@ extension NetworkService {
                             withName: "content"
                         )
                         
-//                        guard let image = UIImage(named: "spinner") else { return }
-//                        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-//                            return
-//                        }
-//                        let fileDataArray: [Data] = [imageData]
-                        
                         for (index, data) in files.enumerated() {
                             multipartFormData.append(data,
                                                      withName: "files",
