@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
+		C02D93BB2CFB47FA003471B9 /* PlaygroundBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
@@ -193,6 +194,7 @@
 
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundBottomView.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
@@ -395,6 +397,14 @@
 				C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */,
 			);
 			path = NetworkLogger;
+			sourceTree = "<group>";
+		};
+		C02D93B92CFB47A0003471B9 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */,
+			);
+			path = Playground;
 			sourceTree = "<group>";
 		};
 		C09FA8ED2CEC660E00613FEA /* Channel */ = {
@@ -710,6 +720,7 @@
 		C90827E12CDA64040096BA0D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C02D93B92CFB47A0003471B9 /* Playground */,
 				C0CF50C42CF4831700F131A0 /* Admin */,
 				C0CF50C32CF4828100F131A0 /* Channel */,
 				C0CF50C22CF4824800F131A0 /* Setting */,
@@ -1438,6 +1449,7 @@
 				DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */,
 				C9F20F702CDB74550043351E /* DefaultAuthCoordinator.swift in Sources */,
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
+				C02D93BB2CFB47FA003471B9 /* PlaygroundBottomView.swift in Sources */,
 				C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
