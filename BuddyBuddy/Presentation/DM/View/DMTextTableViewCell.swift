@@ -33,8 +33,7 @@ final class DMTextTableViewCell: BaseTableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        bubbleImageStackView.speechBubble.updateText("")
-//        bubbleImageStackView.imageView.updateLayout(imageViews: [])
+        speechBubble.content.text = nil
     }
     
     override func setHierarchy() {
