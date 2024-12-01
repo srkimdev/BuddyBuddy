@@ -28,7 +28,6 @@ final class DMTextImageTableViewCell: BaseTableViewCell {
         let view = UIStackView()
         view.axis = .vertical
         view.spacing = 4
-//        view.distribution = .fillEqually
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         return view
@@ -225,6 +224,7 @@ final class DMTextImageTableViewCell: BaseTableViewCell {
                 }
             }
         default: break
+            
         }
     }
 }

@@ -30,5 +30,15 @@ protocol DMRepositoryInterface {
         files: [Data]
     ) -> Single<Result<DMHistoryString, Error>>
     
-    func convertToDMHistoryArray(roomID: String) -> Single<Result<[DMHistory], Error>>
+    func convertArrayToDMHistory(
+        roomID: String,
+        dmHistoryStringArray: [DMHistoryString]
+    ) -> Single<Result<[DMHistory], Error>>
+    
+    func convertObjectToDMHistory(
+        roomID: String,
+        dmHistoryString: DMHistoryString
+    ) -> Single<Result<DMHistory, Error>> 
+    
+    func fetchDMHistoryTable(roomID: String) -> Single<Result<[DMHistory], Error>>
 }

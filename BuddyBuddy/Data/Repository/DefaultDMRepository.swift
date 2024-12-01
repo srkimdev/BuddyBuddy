@@ -7,6 +7,7 @@
 
 import Foundation
 
+import RealmSwift
 import RxSwift
 
 final class DefaultDMRepository: DMRepositoryInterface {
@@ -54,9 +55,6 @@ final class DefaultDMRepository: DMRepositoryInterface {
         .map { result in
             switch result {
             case .success(let dto):
-                let dmHistoryTable = dto.map { $0.toTable() }
-                dmHistoryTable.forEach { self.realmRepository.updateItem($0) }
-                    
                 return .success(dto.map { $0.toDomain() })
             case .failure(let error):
                 return .failure(error)
@@ -104,7 +102,6 @@ final class DefaultDMRepository: DMRepositoryInterface {
         .map { result in
             switch result {
             case .success(let dto):
-                self.realmRepository.updateItem(dto.toTable())
                 return .success(dto.toDomain())
             case .failure(let error):
                 return .failure(error)
@@ -112,13 +109,12 @@ final class DefaultDMRepository: DMRepositoryInterface {
         }
     }
     
-    func convertToDMHistoryArray(roomID: String) -> Single<Result<[DMHistory], Error>> {
-        let dmHistoryTables = realmRepository.readAllItem().filter {
-            $0.roomID == roomID
-        }
-        
-        let dmHistoryTasks = dmHistoryTables.map { dmHistoryTable in
-            Single.zip(dmHistoryTable.files.map { filePath in
+    func convertArrayToDMHistory(
+        roomID: String,
+        dmHistoryStringArray: [DMHistoryString]
+    ) -> Single<Result<[DMHistory], Error>> {
+        let dmHistoryTasks = dmHistoryStringArray.map { dmHistoryString in
+            Single.zip(dmHistoryString.files.map { filePath in
                 self.networkService.downloadImage(router: DMRouter.dmImage(path: filePath))
             })
             .map { results -> [Data] in
@@ -133,29 +129,98 @@ final class DefaultDMRepository: DMRepositoryInterface {
                 }
                 return fileDataArray
             }
-            .map { fileDataResult -> DMHistory in
-                let dmHistory = DMHistory(
-                    dmID: dmHistoryTable.dmID,
-                    roomID: dmHistoryTable.roomID,
-                    content: dmHistoryTable.content,
-                    createdAt: dmHistoryTable.createdAt,
-                    files: fileDataResult,
-                    user: UserInfo(
-                        userID: dmHistoryTable.user?.userID ?? "",
-                        email: dmHistoryTable.user?.email ?? "",
-                        nickname: dmHistoryTable.user?.nickname ?? "",
-                        profileImage: dmHistoryTable.user?.profileImage
+            .map { fileDataResult -> DMHistoryTable in
+                let list = List<Data>()
+                list.append(objectsIn: fileDataResult)
+                
+                let dmHistoryTable = DMHistoryTable(
+                    dmID: dmHistoryString.dmID,
+                    roomID: dmHistoryString.roomID,
+                    content: dmHistoryString.content,
+                    createdAt: dmHistoryString.createdAt,
+                    files: list,
+                    user: UserTable(
+                        userID: dmHistoryString.user.userID,
+                        email: dmHistoryString.user.email,
+                        nickname: dmHistoryString.user.nickname,
+                        profileImage: dmHistoryString.user.profileImage ?? ""
                     )
                 )
-                return dmHistory
+                self.realmRepository.updateItem(dmHistoryTable)
+                return dmHistoryTable
             }
         }
         return Single.zip(dmHistoryTasks)
-            .map { results in
-                return .success(results)
+            .map { dmHistoryTables in
+                let histories = dmHistoryTables.map { table in
+                    table.toDomain()
+                }
+                return .success(histories)
             }
             .catch { error in
                 return .just(.failure(error))
             }
+    }
+    
+    func convertObjectToDMHistory(
+        roomID: String,
+        dmHistoryString: DMHistoryString
+    ) -> Single<Result<DMHistory, any Error>> {
+        Single.zip(dmHistoryString.files.map { filePath in
+            self.networkService.downloadImage(router: DMRouter.dmImage(path: filePath))
+        })
+        .map { results -> [Data] in
+            let fileDataArray = results.compactMap { result in
+                switch result {
+                case .success(let value):
+                    return value
+                case .failure(let error):
+                    print(error)
+                    return nil
+                }
+            }
+            return fileDataArray
+        }
+        .map { fileDataResult -> DMHistory in
+            let list = List<Data>()
+            list.append(objectsIn: fileDataResult)
+            
+            let dmHistoryTable = DMHistoryTable(
+                dmID: dmHistoryString.dmID,
+                roomID: dmHistoryString.roomID,
+                content: dmHistoryString.content,
+                createdAt: dmHistoryString.createdAt,
+                files: list,
+                user: UserTable(
+                    userID: dmHistoryString.user.userID,
+                    email: dmHistoryString.user.email,
+                    nickname: dmHistoryString.user.nickname,
+                    profileImage: dmHistoryString.user.profileImage ?? ""
+                )
+            )
+            self.realmRepository.updateItem(dmHistoryTable)
+            
+            return dmHistoryTable.toDomain()
+        }
+        .map { dmhistory in
+            return .success(dmhistory)
+        }
+        .catch { error in
+            return .just(.failure(error))
+        }
+    }
+    
+    func fetchDMHistoryTable(roomID: String) -> Single<Result<[DMHistory], Error>> {
+        return Single.create { single in
+            let realmResults = self.realmRepository.readAllItem().filter { $0.roomID == roomID }
+                .sorted { $0.createdAt < $1.createdAt }
+
+            let histories = realmResults.map { table in
+                table.toDomain()
+            }
+
+            single(.success(.success(histories)))
+            return Disposables.create()
+        }
     }
 }

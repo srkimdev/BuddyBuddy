@@ -1,13 +1,13 @@
 //
-//  UserInfo.swift
+//  UserInfoString.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/19/24.
+//  Created by 김성률 on 12/1/24.
 //
 
 import Foundation
 
-struct UserInfo {
+struct UserInfoString {
     let userID: String
     let email: String
     let nickname: String

@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 final class AuthIntercepter: RequestInterceptor {
-    
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
@@ -19,7 +18,7 @@ final class AuthIntercepter: RequestInterceptor {
         var urlRequest = urlRequest
         urlRequest.setValue(
             KeyChainManager.shared.getAccessToken(),
-            forHTTPHeaderField: "Authorization"
+            forHTTPHeaderField: Header.authorization.rawValue
         )
         completion(.success(urlRequest))
     }

@@ -13,18 +13,5 @@ struct DMHistoryString {
     let content: String
     let createdAt: String
     let files: [String]
-    let user: UserInfo
-}
-
-extension DMHistoryString {
-    func toTable() -> DMHistoryTable {
-        let table = DMHistoryTable()
-        table.dmID = self.dmID
-        table.roomID = self.roomID
-        table.content = self.content
-        table.createdAt = self.createdAt
-        table.files.append(objectsIn: self.files)
-        table.user = self.user.toTable()
-        return table
-    }
+    let user: UserInfoString
 }

@@ -22,12 +22,12 @@ struct UserInfoDTO: Decodable {
 }
 
 extension UserInfoDTO {
-    func toTable() -> UserTable {
-        let table = UserTable()
-        table.userID = self.userID
-        table.email = self.email
-        table.nickname = self.nickname
-        table .profileImage = self.profileImage
-        return table
+    func toDomain() -> UserInfoString {
+        return UserInfoString(
+            userID: userID,
+            email: email,
+            nickname: nickname,
+            profileImage: profileImage
+        )
     }
 }

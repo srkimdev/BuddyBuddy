@@ -162,8 +162,6 @@
 		DC93757A2CEE330700012F43 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DC9375792CEE330700012F43 /* SocketIO */; };
 		DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */; };
 		DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */; };
-		DC9375882CF5E08500012F43 /* BubbleImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */; };
-		DC93758A2CF5E80600012F43 /* DynamicImageStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375892CF5E80600012F43 /* DynamicImageStackView.swift */; };
 		DC93758C2CF7000100012F43 /* ImagePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */; };
 		DC93758E2CF88F4800012F43 /* DMTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758D2CF88F4800012F43 /* DMTextTableViewCell.swift */; };
 		DC9375902CF88F6600012F43 /* DMImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758F2CF88F6600012F43 /* DMImageTableViewCell.swift */; };
@@ -178,6 +176,7 @@
 		DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */; };
 		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
 		DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */; };
+		DC9E80E52CFC552900CF0A54 /* UserInfoString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -327,8 +326,6 @@
 		DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserDefaults.swift; sourceTree = "<group>"; };
-		DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubbleImageStackView.swift; sourceTree = "<group>"; };
-		DC9375892CF5E80600012F43 /* DynamicImageStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DynamicImageStackView.swift; sourceTree = "<group>"; };
 		DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionViewCell.swift; sourceTree = "<group>"; };
 		DC93758D2CF88F4800012F43 /* DMTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTextTableViewCell.swift; sourceTree = "<group>"; };
 		DC93758F2CF88F6600012F43 /* DMImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -343,6 +340,7 @@
 		DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadDTO.swift; sourceTree = "<group>"; };
 		DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnRead.swift; sourceTree = "<group>"; };
 		DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
+		DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -973,8 +971,6 @@
 				C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */,
 				DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */,
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
-				DC9375872CF5E08400012F43 /* BubbleImageStackView.swift */,
-				DC9375892CF5E80600012F43 /* DynamicImageStackView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1111,10 +1107,11 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9E2CE36CA700E2A2F7 /* DMList.swift */,
-				DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */,
 				DC9375972CF9E3EC00012F43 /* DMHistory.swift */,
+				DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */,
 				DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */,
 				DC9375632CEC7E6500012F43 /* UserInfo.swift */,
+				DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */,
 				DC9375932CF8973100012F43 /* ChatSection.swift */,
 			);
 			path = DM;
@@ -1339,7 +1336,7 @@
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C91F67382CEE452500C84265 /* UserProfile.swift in Sources */,
 				C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */,
-				DC93758A2CF5E80600012F43 /* DynamicImageStackView.swift in Sources */,
+				DC9E80E52CFC552900CF0A54 /* UserInfoString.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C91F67312CEE439A00C84265 /* ProfileDTO.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
@@ -1433,7 +1430,6 @@
 				C98363DC2CE58AA200AC51CA /* ProfileViewController.swift in Sources */,
 				C91BBC112CE3B416001EFC70 /* RoundedButton.swift in Sources */,
 				C91F673A2CEE45B300C84265 /* DefaultUserUseCase.swift in Sources */,
-				DC9375882CF5E08500012F43 /* BubbleImageStackView.swift in Sources */,
 				C91F67362CEE44EC00C84265 /* UserProfileDTO.swift in Sources */,
 				C91BBC1D2CE49366001EFC70 /* ChannelSettingViewController.swift in Sources */,
 				C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */,

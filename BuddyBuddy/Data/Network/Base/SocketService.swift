@@ -7,7 +7,7 @@
 
 import Foundation
 
-import RxSwift
+import RxCocoa
 import SocketIO
 
 final class SocketService: SocketProtocol {
@@ -16,11 +16,14 @@ final class SocketService: SocketProtocol {
     private var url = URL(string: APIKey.baseURL)
     
     private let decoder = JSONDecoder()
-    private let eventSubject = PublishSubject<DMHistoryDTO>()
+    let eventRelay = PublishRelay<DMHistoryDTO>()
     
     func updateURL(roomID: String) {
         guard let url else { return }
-        manager = SocketManager(socketURL: url, config: [.log(true), .compress])
+        manager = SocketManager(
+            socketURL: url,
+            config: [.log(true), .compress]
+        )
         socket = manager.socket(forNamespace: "/ws-dm-\(roomID)")
         socket.on(clientEvent: .connect) { data, ack in
             print("SOCKET IS CONNECTED", data, ack)
@@ -35,12 +38,10 @@ final class SocketService: SocketProtocol {
     
     func establishConnection() {
         socket.connect()
-        print("connect")
     }
     
     func closeConnection() {
         socket.disconnect()
-        
     }
     
     func receiveMessage() {
@@ -48,15 +49,18 @@ final class SocketService: SocketProtocol {
             guard let self, let data = datadict[0] as? [String: Any] else { return }
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: data)
-                let result = try self.decoder.decode(DMHistoryDTO.self, from: jsonData)
-                eventSubject.onNext(result)
+                let result = try self.decoder.decode(
+                    DMHistoryDTO.self,
+                    from: jsonData
+                )
+                eventRelay.accept(result)
             } catch {
                 print(error)
             }
         }
     }
     
-    func observeMessage() -> Observable<DMHistoryDTO> {
-        eventSubject.asObservable()
+    func observeMessage() -> PublishRelay<DMHistoryDTO> {
+        return eventRelay
     }
 }

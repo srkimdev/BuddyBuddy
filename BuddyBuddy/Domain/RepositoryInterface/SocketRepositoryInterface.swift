@@ -12,5 +12,5 @@ import RxSwift
 protocol SocketRepositoryInterface {
     func connectSocket(roomID: String)
     func disConnectSocket()
-    func observeMessage() -> Observable<Void>
+    func observeMessage() -> Observable<DMHistoryString>
 }

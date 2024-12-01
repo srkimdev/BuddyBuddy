@@ -7,7 +7,6 @@
 
 import Foundation
 
-import UIKit
 import Alamofire
 import RxSwift
 
@@ -83,16 +82,21 @@ extension NetworkService {
                 let request = try router.asURLRequest()
                 NetworkService.session.upload(
                     multipartFormData: { multipartFormData in
-                        multipartFormData.append(
-                            content.data(using: .utf8)!,
-                            withName: "content"
-                        )
+                        if let contentData = content.data(using: .utf8) {
+                            multipartFormData.append(
+                                contentData,
+                                withName: "content"
+                            )
+                        } else {
+                            print("content를 Data로 변환할 수 없습니다.")
+                        }
                         
                         for (index, data) in files.enumerated() {
-                            multipartFormData.append(data,
-                                                     withName: "files",
-                                                     fileName: "file\(index + 1).jpg",
-                                                     mimeType: "image/jpeg"
+                            multipartFormData.append(
+                                data,
+                                withName: "files",
+                                fileName: "file\(index + 1).jpg",
+                                mimeType: "image/jpeg"
                             )
                         }
                     }, 

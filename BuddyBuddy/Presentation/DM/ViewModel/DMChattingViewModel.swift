@@ -51,7 +51,6 @@ final class DMChattingViewModel: ViewModelType {
         let updateDMListTableView = PublishSubject<[ChatSection]>()
         let scrollToDown = PublishSubject<Void>()
         let removeChattingBarText = PublishSubject<Void>()
-        let imageLoad = PublishSubject<[DMHistoryTable]>()
         
         input.viewWillAppearTrigger
             .flatMap {
@@ -64,7 +63,6 @@ final class DMChattingViewModel: ViewModelType {
                 switch response {
                 case .success(let value):
                     let chatHistory = value.map { $0.toChatType() }
-                    print(chatHistory)
                     
                     updateDMListTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
@@ -77,11 +75,13 @@ final class DMChattingViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         self.dmUseCase.observeMessage(roomID: self.dmListInfo.roomID)
-            .subscribe(with: self) { _, response in
+            .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
                     let chatHistory = value.map { $0.toChatType() }
                     updateDMListTableView.onNext([ChatSection(items: chatHistory)])
+                    
+                    scrollToDown.onNext(())
                 case .failure(let error):
                     print(error)
                 }
@@ -89,8 +89,10 @@ final class DMChattingViewModel: ViewModelType {
             .disposed(by: disposeBag)
         
         input.sendBtnTapped
-            .withLatestFrom(Observable.combineLatest(input.chatBarText, input.imagePicker))
-            .filter { !$0.0.isEmpty }
+            .withLatestFrom(Observable.combineLatest(
+                input.chatBarText,
+                input.imagePicker
+            ))
             .flatMap { (text, images) -> Single<Result<[DMHistory], Error>> in
                 return self.dmUseCase.sendDM(
                     playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",

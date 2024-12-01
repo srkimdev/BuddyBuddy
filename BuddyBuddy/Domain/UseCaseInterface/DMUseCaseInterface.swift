@@ -34,5 +34,5 @@ protocol DMUseCaseInterface {
     
     func disConnectSocket()
     
-    func observeMessage(roomID: String) -> Single<Result<[DMHistory], Error>>
+    func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>>
 }

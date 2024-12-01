@@ -24,7 +24,6 @@ final class DMImageTableViewCell: BaseTableViewCell {
         let view = UIStackView()
         view.axis = .vertical
         view.spacing = 4
-        view.distribution = .fillEqually
         view.layer.cornerRadius = 10
         view.layer.masksToBounds = true
         return view
@@ -80,8 +79,14 @@ final class DMImageTableViewCell: BaseTableViewCell {
             $0.image = nil
         }
         topImageView.image = nil
+        
         resetStackView(stackView: middleImageStackView)
         resetStackView(stackView: bottomImageStackView)
+        
+        [topImageView, middleImageStackView, bottomImageStackView].forEach {
+            $0.isHidden = false
+        }
+        contentView.layoutIfNeeded()
     }
     
     override func setHierarchy() {
@@ -130,8 +135,6 @@ final class DMImageTableViewCell: BaseTableViewCell {
         profileImage.backgroundColor = .lightGray
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
-        
-        pickerImageStackView.backgroundColor = .gray
         
         imageType(dataArray: transition.files)
     }
@@ -198,13 +201,15 @@ final class DMImageTableViewCell: BaseTableViewCell {
             }
             topImageView.isHidden = true
             
-            let imageViews: [UIImageView] = [firstImage, secondImage, thirdImage, fourthImage, fifthImage]
+            let imageViews: [UIImageView] = [firstImage, secondImage, thirdImage, 
+                                             fourthImage, fifthImage]
             for (imageView, data) in zip(imageViews, dataArray) {
                 if let image = UIImage(data: data) {
                     imageView.image = image
                 }
             }
         default: break
+            
         }
     }
 }

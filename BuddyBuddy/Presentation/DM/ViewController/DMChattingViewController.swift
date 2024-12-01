@@ -116,7 +116,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func setConstraints() {
         dmChattingTableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(chatBarBackground.snp.top).priority(.high)
+            make.bottom.equalTo(chatBarBackground.snp.top)
         }
         chatBarBackground.snp.makeConstraints { make in
             make.top.equalTo(dmChattingTableView.snp.bottom)
@@ -234,7 +234,10 @@ final class DMChattingViewController: BaseNavigationViewController {
         chatTextView.rx
             .didChange
             .bind(with: self) { owner, _ in
-                let size = CGSize(width: owner.chatTextView.frame.width, height: .infinity)
+                let size = CGSize(
+                    width: owner.chatTextView.frame.width,
+                    height: .infinity
+                )
                 let estimatedSize = owner.chatTextView.sizeThatFits(size)
 
                 if estimatedSize.height > 70 {
@@ -287,7 +290,10 @@ extension DMChattingViewController: PHPickerViewControllerDelegate {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         
-        present(picker, animated: true)
+        present(
+            picker,
+            animated: true
+        )
     }
 }
 
@@ -298,8 +304,12 @@ extension DMChattingViewController {
             heightDimension: .fractionalHeight(1.0)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        item.contentInsets = NSDirectionalEdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 5)
-        
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 5,
+            leading: 0,
+            bottom: 0,
+            trailing: 5
+        )
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
             heightDimension: .fractionalHeight(1.0)
@@ -319,7 +329,8 @@ extension DMChattingViewController {
 
 extension DMChattingViewController {
     private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChatSection> {
-        return RxTableViewSectionedReloadDataSource<ChatSection> { [weak self] datasource, tableView, indexpath, item in
+        return RxTableViewSectionedReloadDataSource<ChatSection>
+        { [weak self] _, _, indexpath, item in
             guard let self else { return UITableViewCell() }
             
             switch item {
