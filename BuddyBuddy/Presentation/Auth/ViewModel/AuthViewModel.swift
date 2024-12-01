@@ -19,7 +19,9 @@ final class AuthViewModel: ViewModelType {
     }
     
     struct Input {
-        
+        let appleLoginTapped: Observable<Void>
+        let kakaoLoginTapped: Observable<Void>
+        let emailLoginTapped: Observable<Void>
     }
     
     struct Output {
