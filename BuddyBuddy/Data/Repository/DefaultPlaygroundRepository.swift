@@ -53,4 +53,19 @@ final class DefaultPlaygroundRepository: PlaygroundRepositoryInterface {
             }
         }
     }
+    
+    func fetchPlaygroundList() -> Single<Result<PlaygroundList, Error>> {
+        return networkService.callRequest(
+            router: Router.playgroundList,
+            responseType: PlaygroundListResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let dto):
+                return .success(dto.map { $0.toDomain() })
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
 }

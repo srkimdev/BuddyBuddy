@@ -11,6 +11,8 @@
 		C02D93BB2CFB47FA003471B9 /* PlaygroundBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */; };
 		C02D93BD2CFB4DDD003471B9 /* PlaygroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */; };
 		C02D93BF2CFC4EBA003471B9 /* LeftAlignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */; };
+		C02D93C12CFC5F01003471B9 /* PlaygrondListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */; };
+		C02D93C42CFC5F92003471B9 /* PlaygroundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
@@ -199,6 +201,8 @@
 		C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundBottomView.swift; sourceTree = "<group>"; };
 		C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewController.swift; sourceTree = "<group>"; };
 		C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeftAlignButton.swift; path = BuddyBuddy/Presentation/DM/LeftAlignButton.swift; sourceTree = SOURCE_ROOT; };
+		C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygrondListResponseDTO.swift; sourceTree = "<group>"; };
+		C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundList.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
@@ -407,6 +411,14 @@
 			isa = PBXGroup;
 			children = (
 				C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		C02D93C22CFC5F87003471B9 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -648,6 +660,7 @@
 		C90827DA2CDA638F0096BA0D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				C02D93C22CFC5F87003471B9 /* Playground */,
 				C91F67422CEF73AB00C84265 /* Search */,
 				C91F67322CEE443900C84265 /* User */,
 				DC213AB02CE484B600E2A2F7 /* AccessToken */,
@@ -1077,6 +1090,7 @@
 			isa = PBXGroup;
 			children = (
 				C9E44A972CECB4DC0044CD5C /* SearchDTO.swift */,
+				C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -1432,6 +1446,7 @@
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
+				C02D93C42CFC5F92003471B9 /* PlaygroundList.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
 				DC9375622CEC73B800012F43 /* RealmRepository.swift in Sources */,
 				C91BBC252CE4D25C001EFC70 /* ChangeAdminViewModel.swift in Sources */,
@@ -1462,6 +1477,7 @@
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
 				C9E44A902CECB2D10044CD5C /* DefaultPlaygroundRepository.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
+				C02D93C12CFC5F01003471B9 /* PlaygrondListResponseDTO.swift in Sources */,
 				DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */,
 				C9F20F602CDB6E7E0043351E /* DefaultHomeCoordinator.swift in Sources */,
 				C91BBC152CE472CA001EFC70 /* ChannelSettingCell.swift in Sources */,
