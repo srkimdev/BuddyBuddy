@@ -17,7 +17,10 @@ final class DefaultAuthCoordinator: AuthCoordinator {
     }
     
     func start() {
-        let vc = AuthViewController(vm: AuthViewModel(coordinator: self))
+        let vc = AuthViewController(vm: AuthViewModel(
+            coordinator: self,
+            userUseCase: DefaultUserUseCase()
+        ))
         navigationController.pushViewController(
             vc,
             animated: true

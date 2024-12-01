@@ -27,9 +27,18 @@ final class DefaultUserUseCase: UserUseCaseInterface {
                 switch result {
                 case .success(let data):
                     return Single.just(data)
-                case .failure(let error):
+                case .failure(_):
                     return Single.just(nil)
                 }
             }
+    }
+    
+    func loginWithApple(_ user: AppleUser) -> Single<Result<Bool, Error>> {
+        let query = AppleLoginQuery(
+            idToken: String(data: user.token ?? Data(), encoding: .utf8) ?? "",
+            nickname: user.nickname,
+            deviceToken: ""
+        )
+        return repository.loginWithApple(query: query)
     }
 }

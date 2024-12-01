@@ -62,4 +62,21 @@ final class DefaultUserRepository: UserRepositoryInterface {
                 }
             }
     }
+    
+    func loginWithApple(query: AppleLoginQuery) -> Single<Result<Bool, Error>> {
+        return networkService.callRequest(
+            router: UserRouter.appleLogin(query: query),
+            responseType: LogInDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                KeyChainManager.shared.saveAccessToken(value.token.accessToken)
+                KeyChainManager.shared.saveRefreshToken(value.token.refreshToken)
+                return .success(true)
+            case .failure(let error):
+                return .success(false)
+            }
+        }
+    }
 }

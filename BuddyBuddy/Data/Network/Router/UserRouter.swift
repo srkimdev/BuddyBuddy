@@ -17,6 +17,7 @@ enum UserRouter {
     case editMyProfileImage(query: Data)
     case userProfile(query: String)
     case userProfileImage(path: String)
+    case appleLogin(query: AppleLoginQuery)
 }
 
 extension UserRouter: TargetType {
@@ -26,7 +27,7 @@ extension UserRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .signIn, .deviceToken:
+        case .signIn, .deviceToken, .appleLogin:
             return .post
         case .myProfile, .userProfileImage:
             return .get
@@ -51,12 +52,14 @@ extension UserRouter: TargetType {
             return "/users/\(userID)"
         case .userProfileImage(let path):
             return path
+        case .appleLogin:
+            return "/users/login/apple"
         }
     }
     
     var header: [String: String] {
         switch self {
-        case .signIn, .deviceToken:
+        case .signIn, .deviceToken, .appleLogin:
             return [
                 Header.contentType.rawValue: Header.json.rawValue,
                 Header.Key.rawValue: APIKey.Key
@@ -93,6 +96,14 @@ extension UserRouter: TargetType {
         switch self {
         case .editMyProfileImage(let query):
             return query
+        case .appleLogin(let query):
+            let encoder = JSONEncoder()
+            do {
+                let data = try encoder.encode(query)
+                return data
+            } catch {
+                return nil
+            }
         default:
             return nil
         }
