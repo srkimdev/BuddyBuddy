@@ -114,6 +114,11 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toPlayground() {
-        // TODO: 플레이그라운드 목록 화면 전환
+        let vc = PlaygroundViewController()
+        vc.modalPresentationStyle = .custom
+        navigationController.present(
+            vc,
+            animated: true
+        )
     }
 }

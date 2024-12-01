@@ -114,7 +114,6 @@ final class HomeViewModel: ViewModelType {
         
         input.menuBtnDidTap
             .bind(with: self) { owner, _ in
-                // TODO: 화면전환
                 owner.coordinator.toPlayground()
             }
             .disposed(by: disposeBag)
