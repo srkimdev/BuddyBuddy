@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C02D93BB2CFB47FA003471B9 /* PlaygroundBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */; };
+		C02D93BD2CFB4DDD003471B9 /* PlaygroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
@@ -195,6 +196,7 @@
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundBottomView.swift; sourceTree = "<group>"; };
+		C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewController.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
@@ -738,6 +740,7 @@
 				C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */,
 				C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */,
 				C08644D42CF6E3C300862523 /* AddChannelViewController.swift */,
+				C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1480,6 +1483,7 @@
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
+				C02D93BD2CFB4DDD003471B9 /* PlaygroundViewController.swift in Sources */,
 				C08644D52CF6E3C300862523 /* AddChannelViewController.swift in Sources */,
 				DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */,
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
