@@ -528,6 +528,23 @@
         }
       }
     },
+    "SimpleDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MM.dd.yy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yy.MM.dd"
+          }
+        }
+      }
+    },
     "User" : {
       "extractionState" : "manual",
       "localizations" : {
