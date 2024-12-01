@@ -7,6 +7,7 @@
 
 import UIKit
 
+import Nuke
 import SnapKit
 
 final class PlaygroundTableViewCell: BaseTableViewCell {
@@ -74,5 +75,10 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
             make.trailing.equalToSuperview().inset(8)
             make.size.equalTo(40)
         }
+    }
+    
+    func configureCell(_ data: Workspace) {
+        titleLable.text = data.name
+        dateLabel.text = data.createdAt.toDate(format: .defaultDate)?.toString(format: .simpleDate)
     }
 }
