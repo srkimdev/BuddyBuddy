@@ -13,6 +13,7 @@
 		C02D93BF2CFC4EBA003471B9 /* LeftAlignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */; };
 		C02D93C12CFC5F01003471B9 /* PlaygrondListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */; };
 		C02D93C42CFC5F92003471B9 /* PlaygroundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */; };
+		C02D93C62CFC67EC003471B9 /* PlaygroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
@@ -203,6 +204,7 @@
 		C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeftAlignButton.swift; path = BuddyBuddy/Presentation/DM/LeftAlignButton.swift; sourceTree = SOURCE_ROOT; };
 		C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygrondListResponseDTO.swift; sourceTree = "<group>"; };
 		C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundList.swift; sourceTree = "<group>"; };
+		C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundTableViewCell.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
@@ -411,6 +413,7 @@
 			isa = PBXGroup;
 			children = (
 				C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */,
+				C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */,
 			);
 			path = Playground;
 			sourceTree = "<group>";
@@ -1435,6 +1438,7 @@
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
 				C91BBC232CE4CF97001EFC70 /* ChannelAdminViewController.swift in Sources */,
 				C91BBBF72CE358C8001EFC70 /* UnderlineSegmentedControl.swift in Sources */,
+				C02D93C62CFC67EC003471B9 /* PlaygroundTableViewCell.swift in Sources */,
 				C91BBC072CE37265001EFC70 /* SearchImageType.swift in Sources */,
 				C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */,
 				DC93756F2CEDB19E00012F43 /* SocketService.swift in Sources */,
