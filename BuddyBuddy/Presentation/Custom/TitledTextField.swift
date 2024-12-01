@@ -49,6 +49,12 @@ final class TitledTextField: BaseView {
         }
     }
     
+    override func setView() {
+        super.setView()
+        
+        backgroundColor = .gray3
+    }
+    
     override func setConstraints() {
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview()

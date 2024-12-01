@@ -12,8 +12,8 @@ import SnapKit
 final class ChannelSettingCell: BaseTableViewCell {
     private let profileImgView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFill
         view.clipsToBounds = true
+        view.contentMode = .scaleAspectFit
         return view
     }()
     
@@ -33,7 +33,7 @@ final class ChannelSettingCell: BaseTableViewCell {
     override func setConstraints() {
         profileImgView.snp.makeConstraints { make in
             make.leading.equalToSuperview().inset(16)
-            make.horizontalEdges.equalToSuperview().inset(8)
+            make.top.bottom.equalToSuperview().inset(10)
             make.width.equalTo(profileImgView.snp.height)
         }
         nameLabel.snp.makeConstraints { make in
@@ -45,8 +45,11 @@ final class ChannelSettingCell: BaseTableViewCell {
     }
     
     func setProfileUI(profileImg: UIImage?, profileName: String) {
-        // TODO: 프로필 이미지 없을 때 처리 필요
-        profileImgView.image = profileImg
+        if profileImg == nil {
+            profileImgView.image = UIImage(named: "BasicProfileImage")
+        } else {
+            profileImgView.image = profileImg
+        }
         nameLabel.text = profileName
     }
     

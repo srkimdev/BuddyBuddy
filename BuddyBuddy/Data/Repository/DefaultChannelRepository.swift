@@ -35,7 +35,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     func fetchUnreadCountOfChannel(
         playgroundID: String,
         channelID: String,
-        after: Date?
+        after: String?
     ) -> Single<Result<UnreadCountOfChannel, any Error>> {
         networkService.callRequest(
             router: Router.unreadCount(
@@ -53,5 +53,105 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
                 return .failure(error)
             }
         }
+    }
+    
+    func createChannel(request: AddChannelReqeustDTO) -> Single<Result<AddChannel, any Error>> {
+        networkService.callRequest(
+            router: Router.createChannel(request: request),
+            responseType: AddChannelResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let dto):
+                return .success(dto.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func fetchChannelChats(
+        channelID: String,
+        date: String?
+    ) -> Single<Result<Bool, any Error>> {
+        let query = ChannelChatQuery(
+            cursorDate: date,
+            channelID: channelID,
+            playgroundID: UserDefaultsManager.playgroundID
+        )
+        return networkService.callRequest(
+            router: Router.fetchChannelChat(query: query),
+            responseType: ChannelChatList.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(true)
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, Error>> {
+        return networkService.callRequest(
+            router: Router.specificChannel(channelID: channelID),
+            responseType: SpecificChannelResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(let value):
+                return .success(value.toDomain())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>> {
+        return networkService.callRequest(
+            router: Router.changeChannelAdmin(
+                channelID: channelID,
+                ownerID: selectedUserID
+            ),
+            responseType: MyChannelDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(true)
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func exitChannel(channelID: String) -> Single<Result<Void, Error>> {
+        return networkService.callRequest(
+            router: Router.exitChannel(channelID: channelID),
+            responseType: MyChannelListResponseDTO.self
+        )
+        .map { result in
+            switch result {
+            case .success(_):
+                return .success(())
+            case .failure(let error):
+                return .failure(error)
+            }
+        }
+    }
+    
+    func deleteChannel(channelID: String) -> Single<Result<Void, Error>> {
+        return networkService.callRequest(router: Router.deleteChannel(channelID: channelID))
+            .map { result in
+                switch result {
+                case .success(_):
+                    return .success(())
+                case .failure(let error):
+                    return .failure(error)
+                }
+            }
     }
 }

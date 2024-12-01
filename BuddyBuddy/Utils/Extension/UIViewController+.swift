@@ -11,4 +11,8 @@ extension UIViewController {
     var safeArea: UILayoutGuide {
         return view.safeAreaLayoutGuide
     }
+    
+    var keyboardLayout: UILayoutGuide {
+        return view.keyboardLayoutGuide
+    }
 }

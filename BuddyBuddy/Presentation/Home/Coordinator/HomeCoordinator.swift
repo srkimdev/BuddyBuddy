@@ -8,8 +8,8 @@
 import Foundation
 
 protocol HomeCoordinator: Coordinator {
-    func toChannelSetting()
-    func toChannelAdmin()
+    func toChannelSetting(channelID: String)
+    func toChannelAdmin(channelID: String)
     func toInviteMember()
     func toProfile(userID: String)
     func toChannelDM()

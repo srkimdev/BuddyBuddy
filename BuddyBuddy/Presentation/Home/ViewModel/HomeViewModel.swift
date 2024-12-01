@@ -20,6 +20,8 @@ final class HomeViewModel: ViewModelType {
     
     private let coordinator: HomeCoordinator
     private let channelUseCase: ChannelUseCaseInterface
+    private let channelList = BehaviorRelay<MyChannelList>(value: [])
+    private let showToastMessage = PublishRelay<Void>()
     private let playground: Playground
     
     init(
@@ -46,12 +48,12 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let navigationTitle: Driver<String>
         let updateChannelState: Driver<[ChannelSectionModel]>
+        let showToastMessage: Driver<Void>
     }
     
     func transform(input: Input) -> Output {
         let navigationTitle = PublishRelay<String>()
         let updateChannelState = BehaviorRelay<[ChannelSectionModel]>(value: [])
-        let channelList = BehaviorRelay<MyChannelList>(value: [])
         let isChannelFold = BehaviorRelay(value: false)
         
         input.viewWillAppearTrigger
@@ -69,7 +71,7 @@ final class HomeViewModel: ViewModelType {
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
-                    channelList.accept(value)
+                    owner.channelList.accept(value)
                 case .failure(let error):
                     print(error)
                 }
@@ -92,18 +94,18 @@ final class HomeViewModel: ViewModelType {
                     after: nil
                 )
             }
-            .bind(with: self) { _, result in
+            .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
-                    var channels = channelList.value
+                    var channels = owner.channelList.value
                     var current = channels.filter { $0.channelID == value.channelID }
                     current[0].unreadCount = value.count
                     
                     if let index = channels.firstIndex(where: { $0.channelID == value.channelID }),
-                       channels != channelList.value {
+                       channels != owner.channelList.value {
                         channels[index] = current[0]
-                        channelList.accept(channels)
-                     }
+                        owner.channelList.accept(channels)
+                    }
                 case .failure(let error):
                     print(error)
                 }
@@ -148,7 +150,7 @@ final class HomeViewModel: ViewModelType {
         isChannelFold
             .bind(with: self) { owner, isFold in
                 let titleItem = ChannelItem.title(isFold ? .caret : .arrow)
-                let listItem = isFold ? [] : channelList.value.map { ChannelItem.channel($0) }
+                let listItem = isFold ? [] : owner.channelList.value.map { ChannelItem.channel($0) }
                 let addItem = isFold ? [] : [ChannelItem.add("Add Channel".localized())]
                 
                 updateChannelState.accept([.title(item: titleItem),
@@ -171,7 +173,29 @@ final class HomeViewModel: ViewModelType {
         
         return Output(
             navigationTitle: navigationTitle.asDriver(onErrorJustReturn: "Buddy Buddy"),
-            updateChannelState: updateChannelState.asDriver(onErrorDriveWith: .empty())
+            updateChannelState: updateChannelState.asDriver(onErrorDriveWith: .empty()),
+            showToastMessage: showToastMessage.asDriver(onErrorDriveWith: .empty())
         )
+    }
+}
+
+extension HomeViewModel: ModalDelegate {
+    func dismissModal() {
+        channelUseCase.fetchMyChannelList(playgroundID: playground.id)
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let value):
+                    owner.channelList.accept(value)
+                    owner.showToastMessage.accept(())
+                case .failure(let error):
+                    print(error)
+                }
+            } onFailure: { _, error in
+                print(error)
+            } onDisposed: { _ in
+                print("disposed")
+            }
+            .disposed(by: disposeBag)
+
     }
 }

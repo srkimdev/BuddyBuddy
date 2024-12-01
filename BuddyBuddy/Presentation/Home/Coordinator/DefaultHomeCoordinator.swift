@@ -8,27 +8,35 @@
 import UIKit
 
 final class DefaultHomeCoordinator: HomeCoordinator {
+    @Dependency(ChannelUseCaseInterface.self)
+    private var channelUseCase: ChannelUseCaseInterface
     var parent: Coordinator?
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
+    
+    private lazy var homeVM = HomeViewModel(
+        coordinator: self,
+        channelUseCase: channelUseCase
+    )
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let vc = HomeViewController(vm: HomeViewModel(
-            coordinator: self,
-            channelUseCase: DefaultChannelUseCase())
-        )
+        let vc = HomeViewController(vm: homeVM)
         navigationController.pushViewController(
             vc,
             animated: true
         )
     }
     
-    func toChannelSetting() {
-        let vc = ChannelSettingViewController(vm: ChannelSettingViewModel(coordinator: self))
+    func toChannelSetting(channelID: String) {
+        let vc = ChannelSettingViewController(vm: ChannelSettingViewModel(
+            coordinator: self, 
+            useCase: DefaultChannelUseCase(),
+            channelID: channelID
+        ))
         vc.hidesBottomBarWhenPushed = true
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
         navigationController.pushViewController(
@@ -37,8 +45,12 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         )
     }
     
-    func toChannelAdmin() {
-        let vc = ChannelAdminViewController(vm: ChangeAdminViewModel(coordinator: self))
+    func toChannelAdmin(channelID: String) {
+        let vc = ChannelAdminViewController(vm: ChangeAdminViewModel(
+            coordinator: self,
+            useCase: DefaultChannelUseCase(),
+            channelID: channelID
+        ))
         vc.modalPresentationStyle = .pageSheet
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.large()]
@@ -83,7 +95,22 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toAddChannel() {
-        // TODO: 채널 생성 화면 전환
+        let vm = AddChannelViewModel(
+            channelUseCase: channelUseCase,
+            coordinator: self
+        )
+        vm.delegate = homeVM
+        
+        let vc = AddChannelViewController(vm: vm)
+        vc.modalPresentationStyle = .pageSheet
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.large()]
+            sheet.prefersGrabberVisible = true
+        }
+        navigationController.present(
+            vc,
+            animated: true
+        )
     }
     
     func toPlayground() {

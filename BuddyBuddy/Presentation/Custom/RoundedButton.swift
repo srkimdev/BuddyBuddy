@@ -8,6 +8,7 @@
 import UIKit
 
 final class RoundedButton: UIButton {
+    private var title: String?
     
     init(btnType: RoundedButtonType) {
         super.init(frame: .zero)
@@ -38,12 +39,35 @@ final class RoundedButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func updateBtn(
+        bgColor: UIColor,
+        txtColor: UIColor
+    ) {
+        guard var config = configuration,
+              let title else { return }
+        
+        let attributes = AttributeContainer([
+            .font: UIFont.title2 as Any,
+            .foregroundColor: txtColor
+        ])
+        
+        config.baseBackgroundColor = bgColor
+        config.attributedTitle = AttributedString.init(
+            title,
+            attributes: attributes
+        )
+        
+        configuration = config
+    }
+    
     func setupBtn(
         title: String,
         bgColor: UIColor,
         txtColor: UIColor,
         btnType: RoundedButtonType
     ) {
+        self.title = title
+        
         var config = UIButton.Configuration.filled()
         
         config.baseBackgroundColor = bgColor

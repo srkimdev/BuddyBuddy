@@ -28,16 +28,17 @@ final class ChannelSettingViewController: BaseViewController {
     private let middleView = ChannelSettingMiddleView()
     private let bottomView = ChannelSettingBottomView()
     private let tapGesture = PublishRelay<Void>()
+    private let exitAlert = BuddyAlert(
+        title: "ExitChannel".localized(),
+        leftButtonTitle: "Cancel".localized(),
+        rightButtonTitle: "Exit".localized(),
+        hasTwoButton: true
+    )
     
     init(vm: ChannelSettingViewModel) {
         self.vm = vm
         
         super.init()
-    }
-    
-    override func bind() {
-        let input = ChannelSettingViewModel.Input(blindViewTapped: tapGesture.map { () })
-        let output = vm.transform(input: input)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -52,8 +53,70 @@ final class ChannelSettingViewController: BaseViewController {
         navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
+    override func bind() {
+        let input = ChannelSettingViewModel.Input(
+            viewWillAppear: rx.viewWillAppear,
+            blindViewTapped: tapGesture.map { () },
+            exitBtnTapped: bottomView.exitBtn.rx.tap.map { () },
+            changeAdminBtnTapped: bottomView.adminBtn.rx.tap.map { () },
+            cancelBtnTapped: exitAlert.leftButton.rx.tap.map { () },
+            exitAlertBtnTapped: exitAlert.rightButton.rx.tap.map { () }
+        )
+        let output = vm.transform(input: input)
+        
+        output.channelInfo
+            .drive(with: self) { owner, value in
+                let name = value.0
+                let description = value.1
+                owner.topView.setChannelInfo(
+                    name: name,
+                    intro: description ?? ""
+                )
+            }
+            .disposed(by: disposeBag)
+        
+        output.channelMembers
+            .drive(with: self) { owner, members in
+                owner.middleView.setMemberCount(count: members.count)
+            }
+            .disposed(by: disposeBag)
+        
+        output.channelMembers
+            .drive(middleView.memberTableView.rx.items(
+                cellIdentifier: ChannelSettingCell.identifier,
+                cellType: ChannelSettingCell.self
+            )) { _, data, cell in
+                // TODO: Profile Image 통신
+                cell.setProfileUI(
+                    profileImg: nil,
+                    profileName: data.nickname
+                )
+            }
+            .disposed(by: disposeBag)
+        
+        output.showChangeAdminBtn
+            .drive(with: self) { owner, isAdmin in
+                owner.bottomView.showAdminBtn(isAdmin)
+            }
+            .disposed(by: disposeBag)
+        
+        output.showAlert
+            .drive(with: self) { owner, showAlert in
+                owner.setExitAlertHidden(showAlert)
+            }
+            .disposed(by: disposeBag)
+        
+        output.alertInfo
+            .drive(with: self) { owner, info in
+                owner.exitAlert.setMessageBody(info)
+            }
+            .disposed(by: disposeBag)
+    }
+    
     override func setHierarchy() {
-        view.addSubview(settingContainerView)
+        [settingContainerView, exitAlert].forEach {
+            view.addSubview($0)
+        }
         [topView, middleView, bottomView].forEach {
             settingContainerView.addSubview($0)
         }
@@ -63,6 +126,8 @@ final class ChannelSettingViewController: BaseViewController {
             action: #selector(handleTap)
         )
         view.addGestureRecognizer(tapGesture)
+        
+        exitAlert.isHidden = true
     }
     
     override func setConstraints() {
@@ -84,6 +149,9 @@ final class ChannelSettingViewController: BaseViewController {
             make.horizontalEdges.equalTo(settingContainerView)
             make.bottom.equalTo(bottomView.snp.top)
         }
+        exitAlert.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
     }
     
     override func setView() {
@@ -97,5 +165,9 @@ final class ChannelSettingViewController: BaseViewController {
         if !settingContainerView.frame.contains(tapLocation) {
             tapGesture.accept(())
         }
+    }
+    
+    private func setExitAlertHidden(_ show: Bool) {
+        exitAlert.isHidden = show ? false : true
     }
 }

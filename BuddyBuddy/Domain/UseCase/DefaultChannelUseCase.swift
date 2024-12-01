@@ -20,12 +20,47 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
     func fetchUnreadCountOfChannel(
         playgroundID: String,
         channelID: String,
-        after: Date? = nil
+        after: String? = nil
     ) -> Single<Result<UnreadCountOfChannel, any Error>> {
         repository.fetchUnreadCountOfChannel(
             playgroundID: playgroundID,
             channelID: channelID,
             after: after
         )
+    }
+    
+    func createChannel(request: AddChannelReqeustDTO) -> Single<Result<AddChannel, any Error>> {
+        repository.createChannel(request: request)
+    }
+    
+    func fetchChannelChats(
+        channelID: String,
+        date: String?
+    ) -> Single<Result<Bool, any Error>> {
+        return repository.fetchChannelChats(
+            channelID: channelID,
+            date: date
+        )
+    }
+    
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, any Error>> {
+        return repository.fetchSpecificChannel(channelID: channelID)
+    }
+    
+    func changeChannelAdmin(
+        channelID: String,
+        selectedUserID: String
+    ) -> Single<Result<Bool, Error>> {
+        return repository.changeChannelAdmin(
+            channelID: channelID,
+            selectedUserID: selectedUserID
+        )
+    }
+    
+    func deleteChannel(channelID: String) -> Single<Result<Void, any Error>> {
+        return repository.deleteChannel(channelID: channelID)
+    }
+    func exitChannel(channelID: String) -> Single<Result<Void, any Error>> {
+        return repository.exitChannel(channelID: channelID)
     }
 }
