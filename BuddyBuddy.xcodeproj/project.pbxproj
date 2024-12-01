@@ -14,6 +14,8 @@
 		C02D93C12CFC5F01003471B9 /* PlaygrondListResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */; };
 		C02D93C42CFC5F92003471B9 /* PlaygroundList.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */; };
 		C02D93C62CFC67EC003471B9 /* PlaygroundTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */; };
+		C02D93C82CFC6DAB003471B9 /* PlaygroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */; };
+		C02D93CA2CFC715F003471B9 /* ActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C92CFC715F003471B9 /* ActionSheetType.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
@@ -205,6 +207,8 @@
 		C02D93C02CFC5F01003471B9 /* PlaygrondListResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygrondListResponseDTO.swift; sourceTree = "<group>"; };
 		C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundList.swift; sourceTree = "<group>"; };
 		C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundTableViewCell.swift; sourceTree = "<group>"; };
+		C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewModel.swift; sourceTree = "<group>"; };
+		C02D93C92CFC715F003471B9 /* ActionSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetType.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
@@ -772,6 +776,7 @@
 				C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */,
 				C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */,
 				C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */,
+				C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1112,6 +1117,7 @@
 				C0A35E012CF786CA00B41E60 /* RegularExpression.swift */,
 				C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */,
 				C90FEE752CF5D065008819AF /* AlertLiteral.swift */,
+				C02D93C92CFC715F003471B9 /* ActionSheetType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1369,6 +1375,7 @@
 				C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */,
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
+				C02D93CA2CFC715F003471B9 /* ActionSheetType.swift in Sources */,
 				C0A35E0F2CF8CB0B00B41E60 /* ToastMessage.swift in Sources */,
 				C91BBC192CE487BA001EFC70 /* ChannelSettingBottomView.swift in Sources */,
 				DC9375732CEDF8A000012F43 /* UserInfoDTO.swift in Sources */,
@@ -1420,6 +1427,7 @@
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C91F67382CEE452500C84265 /* UserProfile.swift in Sources */,
 				C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */,
+				C02D93C82CFC6DAB003471B9 /* PlaygroundViewModel.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C91F67312CEE439A00C84265 /* ProfileDTO.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
