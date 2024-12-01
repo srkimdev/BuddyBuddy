@@ -64,32 +64,11 @@ final class HomeViewController: BaseNavigationViewController {
         view.isScrollEnabled = false
         return view
     }()
-    private let memberAddBtn: UIButton = {
-        let view = UIButton()
-        var config = UIButton.Configuration.plain()
-        var imgConfig = UIImage.SymbolConfiguration(pointSize: 13)
-        var attr = AttributedString.init("Add Member".localized())
-        
-        attr.font = UIFont.body
-        
-        config.attributedTitle = attr
-        config.preferredSymbolConfigurationForImage = imgConfig
-        config.image = UIImage(systemName: "plus")
-        config.imagePlacement = .leading
-        config.imagePadding = 12
-        config.baseForegroundColor = .gray1
-        config.contentInsets = .init(
-            top: 0,
-            leading: 16,
-            bottom: 0,
-            trailing: 0
-        )
-        
-        view.configuration = config
-        view.backgroundColor = .white
-        view.contentHorizontalAlignment = .left
-        return view
-    }()
+    private let memberAddBtn: LeftAlignButton = LeftAlignButton(
+        title: "Add Member".localized(),
+        icon: UIImage(systemName: "plus"),
+        backgroundColor: .white
+    )
     private let emptyView: UIView = {
         let view = UIView()
         view.backgroundColor = .white

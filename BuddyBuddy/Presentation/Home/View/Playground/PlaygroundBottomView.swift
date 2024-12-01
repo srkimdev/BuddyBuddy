@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 
 final class PlaygroundBottomView: BaseView {
-    let addButton: UIButton = {
-        let view = UIButton()
-        return view
-    }()
-    let helpButton: UIButton = {
-        let view = UIButton()
-        return view
-    }()
+    let addButton: LeftAlignButton = LeftAlignButton(
+        title: "Add Playground".localized(),
+        icon: UIImage(systemName: "plus")
+    )
+    let helpButton: LeftAlignButton = LeftAlignButton(
+        title: "Help".localized(),
+        icon: UIImage(systemName: "questionmark.circle")
+    )
     
     override func setHierarchy() {
         [addButton, helpButton].forEach {

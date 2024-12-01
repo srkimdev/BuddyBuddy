@@ -10,6 +10,7 @@
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
 		C02D93BB2CFB47FA003471B9 /* PlaygroundBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */; };
 		C02D93BD2CFB4DDD003471B9 /* PlaygroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */; };
+		C02D93BF2CFC4EBA003471B9 /* LeftAlignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
 		C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */; };
@@ -197,6 +198,7 @@
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundBottomView.swift; sourceTree = "<group>"; };
 		C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewController.swift; sourceTree = "<group>"; };
+		C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeftAlignButton.swift; path = BuddyBuddy/Presentation/DM/LeftAlignButton.swift; sourceTree = SOURCE_ROOT; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
 		C079AEF52CEC835C00B34692 /* DefaultChannelUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChannelUseCase.swift; sourceTree = "<group>"; };
@@ -1026,6 +1028,7 @@
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
 				C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */,
 				C9E818CB2CF5B02200034660 /* BuddyAlert.swift */,
+				C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1371,6 +1374,7 @@
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C91F672E2CEE427600C84265 /* UserRepositoryInterface.swift in Sources */,
+				C02D93BF2CFC4EBA003471B9 /* LeftAlignButton.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
 				C9F20F5C2CDB6DB60043351E /* TabBarCoordinator.swift in Sources */,
 				C9E44AA52CEE38A30044CD5C /* UserRouter.swift in Sources */,
