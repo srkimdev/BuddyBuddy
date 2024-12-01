@@ -10,6 +10,6 @@ import Foundation
 enum ActionSheetType {
     case edit
     case exit
-    case changAdmin
+    case changeAdmin
     case delete
 }
