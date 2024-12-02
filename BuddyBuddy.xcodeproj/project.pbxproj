@@ -195,6 +195,7 @@
 		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
 		DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */; };
 		DC9E80E52CFC552900CF0A54 /* UserInfoString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */; };
+		DCB9ABB02CFE0134006845CF /* DMListInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABAF2CFE0134006845CF /* DMListInfo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -377,6 +378,7 @@
 		DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnRead.swift; sourceTree = "<group>"; };
 		DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
 		DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoString.swift; sourceTree = "<group>"; };
+		DCB9ABAF2CFE0134006845CF /* DMListInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListInfo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1169,6 +1171,7 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9E2CE36CA700E2A2F7 /* DMList.swift */,
+				DCB9ABAF2CFE0134006845CF /* DMListInfo.swift */,
 				DC9375972CF9E3EC00012F43 /* DMHistory.swift */,
 				DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */,
 				DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */,
@@ -1418,6 +1421,7 @@
 				DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */,
 				DC9375902CF88F6600012F43 /* DMImageTableViewCell.swift in Sources */,
 				C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */,
+				DCB9ABB02CFE0134006845CF /* DMListInfo.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
 				C91BBC232CE4CF97001EFC70 /* ChannelAdminViewController.swift in Sources */,

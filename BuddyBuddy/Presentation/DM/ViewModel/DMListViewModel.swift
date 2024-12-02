@@ -10,15 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct DMListInfo {
-    let profileImg: String
-    let userName: String
-    let lastText: String
-    let lastTime: String
-    let unReadCount: Int
-    let roomID: String
-}
-
 final class DMListViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
