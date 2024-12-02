@@ -114,8 +114,13 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toPlayground() {
-        let vc = PlaygroundViewController()
-        vc.modalPresentationStyle = .custom
+        let vc = PlaygroundViewController(
+            vm: PlaygroundViewModel(
+                coordinator: self,
+                useCase: DefaultPlaygroundUseCase()
+            )
+        )
+        
         navigationController.present(
             vc,
             animated: true
