@@ -16,6 +16,10 @@ final class DefaultAuthCoordinator: AuthCoordinator {
         self.navigationController = navigationController
     }
     
+    deinit {
+        print("DEINIT")
+    }
+    
     func start() {
         let vc = AuthViewController(vm: AuthViewModel(
             coordinator: self,
@@ -25,5 +29,12 @@ final class DefaultAuthCoordinator: AuthCoordinator {
             vc,
             animated: true
         )
+    }
+}
+
+extension DefaultAuthCoordinator {
+    func changeToHome() {
+        finish()
+        parent?.start()
     }
 }

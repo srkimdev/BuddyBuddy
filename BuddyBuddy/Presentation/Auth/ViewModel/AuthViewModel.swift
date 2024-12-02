@@ -14,17 +14,21 @@ import RxSwift
 final class AuthViewModel: NSObject, ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
-    private let coordinator: Coordinator
+    private let coordinator: AuthCoordinator
     private let userUseCase: UserUseCaseInterface
     
     private let userInfoAboutApple = PublishRelay<AppleUser>()
     
     init(
-        coordinator: Coordinator,
+        coordinator: AuthCoordinator,
         userUseCase: UserUseCaseInterface
     ) {
         self.coordinator = coordinator
         self.userUseCase = userUseCase
+    }
+    
+    deinit {
+        print("DEINIT")
     }
     
     struct Input {
@@ -52,8 +56,26 @@ final class AuthViewModel: NSObject, ViewModelType {
                 case .success(let isFinish):
                     print(isFinish)
                     if isFinish {
-//                        owner.coordinator.
-                        print("화면 전환")
+                        owner.coordinator.changeToHome()
+                    } else {
+                        print("Toast Message")
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        input.emailLoginTapped
+            .withUnretained(self)
+            .flatMap { (owner, _) in
+                owner.userUseCase.loginWithEmail()
+            }
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let isLogined):
+                    if isLogined {
+                        owner.coordinator.changeToHome()
                     } else {
                         print("Toast Message")
                     }
