@@ -339,7 +339,6 @@
 		C9F20F6B2CDB73470043351E /* DefaultSettingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSettingCoordinator.swift; sourceTree = "<group>"; };
 		C9F20F6D2CDB743D0043351E /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		C9F20F6F2CDB74550043351E /* DefaultAuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultAuthCoordinator.swift; sourceTree = "<group>"; };
-		C9F61BBB2CFCE111007FB03B /* AppleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUser.swift; sourceTree = "<group>"; };
 		C9F96D3F2CDCE51600271295 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
 		C9F96D412CDCE5E300271295 /* Dependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dependency.swift; sourceTree = "<group>"; };
 		C9F96D622CDD28D000271295 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
@@ -1051,7 +1050,6 @@
 		C9C279F72CDA315500243744 = {
 			isa = PBXGroup;
 			children = (
-				C9F61BBC2CFCE111007FB03B /* Auth */,
 				DC213A7F2CE1EEAE00E2A2F7 /* Secrets.xcconfig */,
 				C908285E2CDA72B50096BA0D /* .swiftlint.yml */,
 				C9C27A022CDA315500243744 /* BuddyBuddy */,
@@ -1115,15 +1113,6 @@
 				C97DE2B92CFCAF43000B4E94 /* LoginType.swift */,
 			);
 			path = Enum;
-			sourceTree = "<group>";
-		};
-		C9F61BBC2CFCE111007FB03B /* Auth */ = {
-			isa = PBXGroup;
-			children = (
-				C9F61BBB2CFCE111007FB03B /* AppleUser.swift */,
-			);
-			name = Auth;
-			path = BuddyBuddy/Domain/Entity/Auth;
 			sourceTree = "<group>";
 		};
 		C9F96D532CDD236900271295 /* Base */ = {
