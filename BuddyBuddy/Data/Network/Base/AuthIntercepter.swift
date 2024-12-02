@@ -19,7 +19,7 @@ final class AuthIntercepter: RequestInterceptor {
         var urlRequest = urlRequest
         urlRequest.setValue(
             KeyChainManager.shared.getAccessToken(),
-            forHTTPHeaderField: "Authorization"
+            forHTTPHeaderField: Header.authorization.rawValue
         )
         completion(.success(urlRequest))
     }
@@ -39,7 +39,7 @@ final class AuthIntercepter: RequestInterceptor {
         print(response.statusCode, "statuscode")
         
         do {
-            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
+            let request = try AuthRouter.accessTokenRefresh.asURLRequest()
             session.request(request)
                 .responseDecodable(of: AccessTokenDTO.self) { response in
                     switch response.result {

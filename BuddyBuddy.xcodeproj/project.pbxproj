@@ -156,7 +156,7 @@
 		DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */; };
 		DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */; };
 		DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */; };
-		DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */; };
+		DC213A902CE32C4500E2A2F7 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8F2CE32C4500E2A2F7 /* AuthRouter.swift */; };
 		DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A912CE332A000E2A2F7 /* TargetType.swift */; };
 		DC213A942CE365D000E2A2F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A932CE365D000E2A2F7 /* Header.swift */; };
 		DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A952CE3668700E2A2F7 /* APIKey.swift */; };
@@ -353,7 +353,7 @@
 		DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
 		DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingViewModel.swift; sourceTree = "<group>"; };
 		DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInRouter.swift; sourceTree = "<group>"; };
+		DC213A8F2CE32C4500E2A2F7 /* AuthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRouter.swift; sourceTree = "<group>"; };
 		DC213A912CE332A000E2A2F7 /* TargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetType.swift; sourceTree = "<group>"; };
 		DC213A932CE365D000E2A2F7 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		DC213A952CE3668700E2A2F7 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
@@ -1233,7 +1233,7 @@
 		DC9BC0CF2CE748C6002AF523 /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				DC213A8F2CE32C4500E2A2F7 /* LogInRouter.swift */,
+				DC213A8F2CE32C4500E2A2F7 /* AuthRouter.swift */,
 				C09FA8E52CEC635D00613FEA /* ChannelRouter.swift */,
 				DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */,
 				C9E44A992CECBC410044CD5C /* PlaygroundRouter.swift */,
@@ -1529,7 +1529,7 @@
 				DC9375682CECAB5D00012F43 /* DMRepositoryInterface.swift in Sources */,
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
-				DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */,
+				DC213A902CE32C4500E2A2F7 /* AuthRouter.swift in Sources */,
 				C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */,
 				C97DE2B82CFCAEC5000B4E94 /* LoginButton.swift in Sources */,
 			);
