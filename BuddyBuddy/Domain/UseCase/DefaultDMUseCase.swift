@@ -19,14 +19,26 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     
     func fetchDMHistory(
         playgroundID: String,
-        roomID: String,
-        cursorDate: String
+        roomID: String
     ) -> Single<Result<[DMHistory], Error>> {
-        return dmRepositoryInterface.fetchDMHistory(
+        return dmRepositoryInterface.fetchDMHistoryString(
             playgroundID: playgroundID,
-            roomID: roomID,
-            cursorDate: cursorDate
+            roomID: roomID
         )
+        .flatMap { response -> Single<Result<[DMHistory], Error>> in
+            switch response {
+            case .success(let value):
+                return self.dmRepositoryInterface.convertArrayToDMHistory(
+                    roomID: roomID,
+                    dmHistoryStringArray: value
+                )
+                .flatMap { _ in
+                    self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
+                }
+            case .failure(let error):
+                return Single.just(.failure(error))
+            }
+        }
     }
     
     func fetchDMUnRead(
@@ -44,13 +56,29 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
-    ) -> Single<Result<DMHistoryTable, Error>> {
+        message: String,
+        files: [Data]
+    ) -> Single<Result<[DMHistory], Error>> {
         return dmRepositoryInterface.sendDM(
             playgroundID: playgroundID,
             roomID: roomID, 
-            message: message
+            message: message,
+            files: files
         )
+        .flatMap { response -> Single<Result<[DMHistory], Error>> in
+            switch response {
+            case .success(let value):
+                return self.dmRepositoryInterface.convertObjectToDMHistory(
+                    roomID: roomID,
+                    dmHistoryString: value
+                )
+                .flatMap { _ in
+                    self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
+                }
+            case .failure(let error):
+                return Single.just(.failure(error))
+            }
+        }
     }
     
     func connectSocket(roomID: String) {
@@ -60,8 +88,18 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     func disConnectSocket() {
         socketRepositoryInterface.disConnectSocket()
     }
-    
-    func observeMessage() -> Observable<DMHistoryTable> {
-        return socketRepositoryInterface.observeMessage()
+
+    func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>> {
+        return self.socketRepositoryInterface.observeMessage()
+            .flatMap { dmHistoryString in
+                self.dmRepositoryInterface.convertObjectToDMHistory(
+                    roomID: roomID,
+                    dmHistoryString: dmHistoryString
+                )
+            }
+            .flatMap { _ in
+                self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
+            }
+            .asObservable()
     }
 }

@@ -148,7 +148,6 @@
 		DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */; };
 		DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */; };
 		DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A852CE307F200E2A2F7 /* DMChattingViewController.swift */; };
-		DC213A882CE3086300E2A2F7 /* DMChattingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */; };
 		DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */; };
 		DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */; };
 		DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */; };
@@ -181,14 +180,21 @@
 		DC93757A2CEE330700012F43 /* SocketIO in Frameworks */ = {isa = PBXBuildFile; productRef = DC9375792CEE330700012F43 /* SocketIO */; };
 		DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */; };
 		DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */; };
+		DC93758C2CF7000100012F43 /* ImagePickerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */; };
+		DC93758E2CF88F4800012F43 /* DMTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758D2CF88F4800012F43 /* DMTextTableViewCell.swift */; };
+		DC9375902CF88F6600012F43 /* DMImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC93758F2CF88F6600012F43 /* DMImageTableViewCell.swift */; };
+		DC9375922CF88F9200012F43 /* DMTextImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375912CF88F9200012F43 /* DMTextImageTableViewCell.swift */; };
+		DC9375942CF8973200012F43 /* ChatSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375932CF8973100012F43 /* ChatSection.swift */; };
+		DC9375982CF9E3EC00012F43 /* DMHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9375972CF9E3EC00012F43 /* DMHistory.swift */; };
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
-		DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */; };
+		DC9BC0D52CE8DAA6002AF523 /* DMHistoryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */; };
 		DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */; };
 		DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */; };
 		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
 		DC9BC0E52CEA0CAB002AF523 /* KeyChainProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */; };
+		DC9E80E52CFC552900CF0A54 /* UserInfoString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -327,7 +333,6 @@
 		DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListTableViewCell.swift; sourceTree = "<group>"; };
 		DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCountView.swift; sourceTree = "<group>"; };
 		DC213A852CE307F200E2A2F7 /* DMChattingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingViewController.swift; sourceTree = "<group>"; };
-		DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingTableViewCell.swift; sourceTree = "<group>"; };
 		DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechBubbleView.swift; sourceTree = "<group>"; };
 		DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMChattingViewModel.swift; sourceTree = "<group>"; };
 		DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
@@ -357,14 +362,21 @@
 		DC9375762CEE087B00012F43 /* SocketRepositoryInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocketRepositoryInterface.swift; sourceTree = "<group>"; };
 		DC9375832CF4B78A00012F43 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DC9375852CF4B79900012F43 /* BaseUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUserDefaults.swift; sourceTree = "<group>"; };
+		DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCollectionViewCell.swift; sourceTree = "<group>"; };
+		DC93758D2CF88F4800012F43 /* DMTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTextTableViewCell.swift; sourceTree = "<group>"; };
+		DC93758F2CF88F6600012F43 /* DMImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMImageTableViewCell.swift; sourceTree = "<group>"; };
+		DC9375912CF88F9200012F43 /* DMTextImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMTextImageTableViewCell.swift; sourceTree = "<group>"; };
+		DC9375932CF8973100012F43 /* ChatSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatSection.swift; sourceTree = "<group>"; };
+		DC9375972CF9E3EC00012F43 /* DMHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistory.swift; sourceTree = "<group>"; };
 		DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMRouter.swift; sourceTree = "<group>"; };
 		DC9BC0D02CE765B5002AF523 /* DMListState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListState.swift; sourceTree = "<group>"; };
 		DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryDTO.swift; sourceTree = "<group>"; };
-		DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistory.swift; sourceTree = "<group>"; };
+		DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMHistoryString.swift; sourceTree = "<group>"; };
 		DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkProtocol.swift; sourceTree = "<group>"; };
 		DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnReadDTO.swift; sourceTree = "<group>"; };
 		DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMUnRead.swift; sourceTree = "<group>"; };
 		DC9BC0E42CEA0CAB002AF523 /* KeyChainProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyChainProtocol.swift; sourceTree = "<group>"; };
+		DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoString.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -775,7 +787,10 @@
 			isa = PBXGroup;
 			children = (
 				DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */,
-				DC213A872CE3086300E2A2F7 /* DMChattingTableViewCell.swift */,
+				DC93758B2CF7000100012F43 /* ImagePickerCollectionViewCell.swift */,
+				DC93758D2CF88F4800012F43 /* DMTextTableViewCell.swift */,
+				DC93758F2CF88F6600012F43 /* DMImageTableViewCell.swift */,
+				DC9375912CF88F9200012F43 /* DMTextImageTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1154,9 +1169,12 @@
 			isa = PBXGroup;
 			children = (
 				DC213A9E2CE36CA700E2A2F7 /* DMList.swift */,
-				DC9BC0D42CE8DAA6002AF523 /* DMHistory.swift */,
+				DC9375972CF9E3EC00012F43 /* DMHistory.swift */,
+				DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */,
 				DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */,
 				DC9375632CEC7E6500012F43 /* UserInfo.swift */,
+				DC9E80E42CFC552900CF0A54 /* UserInfoString.swift */,
+				DC9375932CF8973100012F43 /* ChatSection.swift */,
 			);
 			path = DM;
 			sourceTree = "<group>";
@@ -1353,7 +1371,6 @@
 				C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */,
 				C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */,
 				C91BBC2D2CE4F830001EFC70 /* InviteMemberViewModel.swift in Sources */,
-				DC213A882CE3086300E2A2F7 /* DMChattingTableViewCell.swift in Sources */,
 				C9F20F3A2CDB5F070043351E /* TabKind.swift in Sources */,
 				C91BBC212CE4C7A7001EFC70 /* ChannelAdminTableViewCell.swift in Sources */,
 				C91F672E2CEE427600C84265 /* UserRepositoryInterface.swift in Sources */,
@@ -1385,6 +1402,7 @@
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C91F67382CEE452500C84265 /* UserProfile.swift in Sources */,
 				C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */,
+				DC9E80E52CFC552900CF0A54 /* UserInfoString.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C91F67312CEE439A00C84265 /* ProfileDTO.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
@@ -1398,6 +1416,7 @@
 				C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */,
 				C90FEE762CF5D065008819AF /* AlertLiteral.swift in Sources */,
 				DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */,
+				DC9375902CF88F6600012F43 /* DMImageTableViewCell.swift in Sources */,
 				C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */,
 				C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */,
 				C91BBBF32CE33FF3001EFC70 /* Reactive+.swift in Sources */,
@@ -1410,8 +1429,9 @@
 				C91F673F2CEF2F6F00C84265 /* SearchResult.swift in Sources */,
 				C9E44A932CECB2F40044CD5C /* PlaygroundRepositoryInterface.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
-				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
+				DC9BC0D52CE8DAA6002AF523 /* DMHistoryString.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
+				DC9375922CF88F9200012F43 /* DMTextImageTableViewCell.swift in Sources */,
 				C09FA9002CEC6FAF00613FEA /* ChannelRepositoryInterface.swift in Sources */,
 				C957EA712CE21FD800B62A2A /* SearchItemTableViewCell.swift in Sources */,
 				C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */,
@@ -1430,7 +1450,9 @@
 				C9E44A9F2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift in Sources */,
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
 				C9E44A982CECB4DC0044CD5C /* SearchDTO.swift in Sources */,
+				DC9375982CF9E3EC00012F43 /* DMHistory.swift in Sources */,
 				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
+				DC93758C2CF7000100012F43 /* ImagePickerCollectionViewCell.swift in Sources */,
 				C0A35E0D2CF8AAEC00B41E60 /* ToastMessageLabel.swift in Sources */,
 				DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */,
 				C9BF5CC82CF85E3600F7F547 /* ChannelInfo.swift in Sources */,
@@ -1440,6 +1462,7 @@
 				DC213A862CE307F200E2A2F7 /* DMChattingViewController.swift in Sources */,
 				C079AEF62CEC835C00B34692 /* DefaultChannelUseCase.swift in Sources */,
 				C9F20F5E2CDB6E6C0043351E /* HomeCoordinator.swift in Sources */,
+				DC9375942CF8973200012F43 /* ChatSection.swift in Sources */,
 				DC213AA42CE3744300E2A2F7 /* DMUseCaseInterface.swift in Sources */,
 				C9E44A902CECB2D10044CD5C /* DefaultPlaygroundRepository.swift in Sources */,
 				C9F20F682CDB72C30043351E /* DefaultSearchCoordinator.swift in Sources */,
@@ -1453,6 +1476,7 @@
 				DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
 				DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */,
+				DC93758E2CF88F4800012F43 /* DMTextTableViewCell.swift in Sources */,
 				DC9375772CEE087B00012F43 /* SocketRepositoryInterface.swift in Sources */,
 				C9E818CC2CF5B02200034660 /* BuddyAlert.swift in Sources */,
 				DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */,

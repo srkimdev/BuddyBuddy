@@ -1,8 +1,8 @@
 //
-//  DMHistory.swift
+//  DMHistoryData.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/16/24.
+//  Created by 김성률 on 11/29/24.
 //
 
 import Foundation
@@ -12,19 +12,20 @@ struct DMHistory {
     let roomID: String
     let content: String
     let createdAt: String
-    let files: [String]
+    let files: [Data]
     let user: UserInfo
 }
 
 extension DMHistory {
-    func toTable() -> DMHistoryTable {
-        let table = DMHistoryTable()
-        table.dmID = self.dmID
-        table.roomID = self.roomID
-        table.content = self.content
-        table.createdAt = self.createdAt
-        table.files.append(objectsIn: self.files)
-        table.user = self.user.toTable()
-        return table
+    func toChatType() -> ChatType {
+        if !content.isEmpty && !files.isEmpty {
+            return .TextAndImage(self)
+        } else if !content.isEmpty && files.isEmpty {
+            return .onlyText(self)
+        } else if content.isEmpty && !files.isEmpty {
+            return .onlyImage(self)
+        } else {
+            return .onlyText(self)
+        }
     }
 }

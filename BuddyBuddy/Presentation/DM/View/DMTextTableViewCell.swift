@@ -1,15 +1,15 @@
 //
-//  DMChattingTableViewCell.swift
+//  TextTableViewCell.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/12/24.
+//  Created by 김성률 on 11/28/24.
 //
 
 import UIKit
 
 import SnapKit
 
-final class DMChattingTableViewCell: BaseTableViewCell {
+final class DMTextTableViewCell: BaseTableViewCell {
     private let profileImage: UIImageView = {
         let view = UIImageView()
         view.layer.cornerRadius = 10
@@ -58,8 +58,6 @@ final class DMChattingTableViewCell: BaseTableViewCell {
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.bottom.equalToSuperview().inset(8)
-//            make.trailing.lessThanOrEqualTo(chatTime.snp.leading).offset(-8)
-//            make.width.greaterThanOrEqualToSuperview().multipliedBy(0.6)
         }
         chatTime.snp.makeConstraints { make in
             make.bottom.equalTo(speechBubble.snp.bottom)
@@ -68,10 +66,11 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         }
     }
     
-    func designCell(_ transition: DMHistoryTable) {
+    func designCell(_ transition: DMHistory) {
         profileImage.backgroundColor = .lightGray
-        userName.text = transition.user?.nickname
+        userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
+        
         speechBubble.updateText(transition.content)
     }
 }

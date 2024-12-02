@@ -7,7 +7,6 @@
 
 import Foundation
 
-import UIKit
 import Alamofire
 import RxSwift
 
@@ -99,29 +98,29 @@ extension NetworkService {
     func callMultiPart<T: Decodable>(
         router: TargetType,
         responseType: T.Type,
-        content: String
+        content: String,
+        files: [Data]
     ) -> Single<Result<T, Error>> {
         return Single.create { observer -> Disposable in
             do {
                 let request = try router.asURLRequest()
                 NetworkService.session.upload(
                     multipartFormData: { multipartFormData in
-                        multipartFormData.append(
-                            content.data(using: .utf8)!,
-                            withName: "content"
-                        )
-                        
-                        guard let image = UIImage(named: "spinner") else { return }
-                        guard let imageData = image.jpegData(compressionQuality: 0.5) else {
-                            return
+                        if let contentData = content.data(using: .utf8) {
+                            multipartFormData.append(
+                                contentData,
+                                withName: "content"
+                            )
+                        } else {
+                            print("content를 Data로 변환할 수 없습니다.")
                         }
-                        let fileDataArray: [Data] = [imageData]
                         
-                        for (index, data) in fileDataArray.enumerated() {
-                            multipartFormData.append(data,
-                                                     withName: "files",
-                                                     fileName: "file\(index + 1).jpg",
-                                                     mimeType: "image/jpeg"
+                        for (index, data) in files.enumerated() {
+                            multipartFormData.append(
+                                data,
+                                withName: "files",
+                                fileName: "file\(index + 1).jpg",
+                                mimeType: "image/jpeg"
                             )
                         }
                     }, 
@@ -134,7 +133,6 @@ extension NetworkService {
                     case .success(let value):
                         observer(.success(.success(value)))
                     case .failure(let error):
-                        print(error, "here")
                         observer(.success(.failure(error)))
                     }
                 }

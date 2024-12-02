@@ -103,7 +103,7 @@ final class DMListViewController: BaseNavigationViewController {
             .disposed(by: disposeBag)
             
         dmListTableView.rx.modelSelected(DMListInfo.self)
-            .bind(with: self) { _, value in
+            .bind { value in
                 toDMChattingTrigger.onNext(value)
             }
             .disposed(by: disposeBag)

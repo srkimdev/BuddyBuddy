@@ -8,18 +8,29 @@
 import UIKit
 import PhotosUI
 
+import RxDataSources
 import RxSwift
 import SnapKit
 
 final class DMChattingViewController: BaseNavigationViewController {
     private let disposeBag = DisposeBag()
     private let vm: DMChattingViewModel
+    private let imagePicker = BehaviorSubject<[UIImage]>(value: [])
+    private lazy var datasource = createDataSource()
     
     private let dmChattingTableView: UITableView = {
         let view = UITableView()
         view.register(
-            DMChattingTableViewCell.self,
-            forCellReuseIdentifier: DMChattingTableViewCell.identifier
+            DMTextTableViewCell.self,
+            forCellReuseIdentifier: DMTextTableViewCell.identifier
+        )
+        view.register(
+            DMImageTableViewCell.self,
+            forCellReuseIdentifier: DMImageTableViewCell.identifier
+        )
+        view.register(
+            DMTextImageTableViewCell.self,
+            forCellReuseIdentifier: DMTextImageTableViewCell.identifier
         )
         view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
@@ -34,11 +45,10 @@ final class DMChattingViewController: BaseNavigationViewController {
     }()
     private let chatTextView: UITextView = {
         let view = UITextView()
-//        view.isScrollEnabled = false
+        view.isScrollEnabled = false
         view.showsVerticalScrollIndicator = false
         view.font = .systemFont(ofSize: 15)
         view.backgroundColor = .gray3
-//        view.textContainerInset = .zero
         view.textContainer.lineFragmentPadding = 0
         view.textContainer.lineBreakMode = .byWordWrapping
         return view
@@ -51,12 +61,6 @@ final class DMChattingViewController: BaseNavigationViewController {
         config.preferredSymbolConfigurationForImage = imgConfig
         config.image = UIImage(systemName: "plus")
         config.baseForegroundColor = .black
-        config.contentInsets = .init(
-            top: 0,
-            leading: 0,
-            bottom: 0,
-            trailing: 0
-        )
         
         view.configuration = config
         view.backgroundColor = .gray3
@@ -71,16 +75,23 @@ final class DMChattingViewController: BaseNavigationViewController {
         config.preferredSymbolConfigurationForImage = imgConfig
         config.image = UIImage(named: "send")
         config.baseForegroundColor = .black
-        config.contentInsets = .init(
-            top: 0,
-            leading: 0,
-            bottom: 0,
-            trailing: 0
-        )
         
         view.configuration = config
         view.backgroundColor = .clear
         
+        return view
+    }()
+    private lazy var imagePickerCollectionView: UICollectionView = {
+        let view = UICollectionView(
+            frame: .zero,
+            collectionViewLayout: imagePickerCollectionViewLayout()
+        )
+        view.register(
+            ImagePickerCollectionViewCell.self,
+            forCellWithReuseIdentifier: ImagePickerCollectionViewCell.identifier
+        )
+        view.isScrollEnabled = false
+        view.backgroundColor = .gray3
         return view
     }()
     
@@ -94,9 +105,10 @@ final class DMChattingViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        view.addSubview(dmChattingTableView)
-        view.addSubview(chatBarBackground)
-        [plusButton, chatTextView, sendButton].forEach {
+        [dmChattingTableView, chatBarBackground].forEach {
+            view.addSubview($0)
+        }
+        [plusButton, chatTextView, imagePickerCollectionView, sendButton].forEach {
             chatBarBackground.addSubview($0)
         }
     }
@@ -104,7 +116,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func setConstraints() {
         dmChattingTableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
-            make.bottom.equalTo(chatBarBackground.snp.top).priority(.high)
+            make.bottom.equalTo(chatBarBackground.snp.top)
         }
         chatBarBackground.snp.makeConstraints { make in
             make.top.equalTo(dmChattingTableView.snp.bottom)
@@ -112,22 +124,27 @@ final class DMChattingViewController: BaseNavigationViewController {
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
         plusButton.snp.makeConstraints { make in
-            make.leading.equalTo(chatBarBackground.snp.leading).offset(8)
-            make.verticalEdges.equalToSuperview()
-            make.width.equalTo(44)
+            make.leading.equalTo(chatBarBackground.snp.leading).offset(4)
+            make.size.equalTo(44)
+            make.bottom.equalToSuperview()
         }
-        
-        let height = chatTextView.font!.lineHeight + chatTextView.layoutMargins.top + chatTextView.layoutMargins.bottom
         chatTextView.snp.makeConstraints { make in
+            make.top.equalToSuperview().offset(5)
             make.leading.equalTo(plusButton.snp.trailing)
             make.trailing.equalTo(sendButton.snp.leading)
-            make.height.equalTo(height)
-            make.verticalEdges.equalToSuperview().inset(8)
+            make.height.equalTo(34)
+        }
+        imagePickerCollectionView.snp.makeConstraints { make in
+            make.top.equalTo(chatTextView.snp.bottom)
+            make.leading.equalTo(plusButton.snp.trailing)
+            make.trailing.equalTo(sendButton.snp.leading)
+            make.height.equalTo(0)
+            make.bottom.equalToSuperview().inset(5)
         }
         sendButton.snp.makeConstraints { make in
-            make.trailing.equalToSuperview().inset(8)
-            make.verticalEdges.equalToSuperview()
-            make.width.equalTo(44)
+            make.trailing.equalToSuperview()
+            make.size.equalTo(44)
+            make.bottom.equalToSuperview()
         }
     }
     
@@ -138,58 +155,101 @@ final class DMChattingViewController: BaseNavigationViewController {
             viewWillAppearTrigger: viewdidLoadTrigger,
             sendBtnTapped: sendButton.rx.tap.asObservable(),
             plusBtnTapped: plusButton.rx.tap.asObservable(),
-            chatBarText: chatTextView.rx.text.orEmpty.asObservable()
+            chatBarText: chatTextView.rx.text.orEmpty.asObservable(),
+            imagePicker: imagePicker.asObservable()
         )
         let output = vm.transform(input: input)
         
         output.updateDMListTableView
-            .drive(
-                dmChattingTableView.rx.items(
-                    cellIdentifier: DMChattingTableViewCell.identifier,
-                    cellType: DMChattingTableViewCell.self
-                )
-            ) { (_, element, cell) in
-                cell.designCell(element)
-            }
+            .drive(dmChattingTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
         
         output.scrollToDown
-            .drive { [weak self] _ in
-                guard let self else { return }
+            .drive(with: self) { owner, _ in
                 let indexPath = IndexPath(
-                    row: dmChattingTableView.numberOfRows(inSection: 0) - 1,
+                    row: owner.dmChattingTableView.numberOfRows(inSection: 0) - 1,
                     section: 0
                 )
                 
                 if indexPath.row >= 0 {
-                    dmChattingTableView.scrollToRow(
-                        at: indexPath, at: .bottom,
+                    owner.dmChattingTableView.scrollToRow(
+                        at: indexPath, 
+                        at: .bottom,
                         animated: false
                     )
                 }
             }
             .disposed(by: disposeBag)
         
-        output.removeChattingBarText
-            .drive { [weak self] _ in
-                guard let self else { return }
-                chatTextView.text = ""
+        output.removeChattingBarTextAndImage
+            .drive(with: self) { owner, _ in
+                owner.chatTextView.text = nil
+                
+                owner.imagePickerCollectionView.constraints.forEach { constraint in
+                    if constraint.firstAttribute == .height {
+                        constraint.constant = 0
+                    }
+                }
             }
             .disposed(by: disposeBag)
         
         output.plusBtnTapped
-            .drive { [weak self] _ in
-                guard let self else { return }
-                showPickerView()
+            .drive(with: self) { owner, _ in
+                owner.showPickerView()
+            }
+            .disposed(by: disposeBag)
+        
+        output.imagePicker
+            .drive(with: self) { owner, value in
+                
+                owner.imagePickerCollectionView.isHidden = value.isEmpty
+                
+                if value.isEmpty {
+                    owner.imagePickerCollectionView.constraints.forEach { constraint in
+                        if constraint.firstAttribute == .height {
+                            constraint.constant = 0
+                        }
+                    }
+                } else {
+                    owner.imagePickerCollectionView.constraints.forEach { constraint in
+                        if constraint.firstAttribute == .height {
+                            constraint.constant = owner.imagePickerCollectionView.frame.width / 5
+                        }
+                    }
+                }
+            }
+            .disposed(by: disposeBag)
+        
+        output.imagePicker
+            .drive(
+                imagePickerCollectionView.rx.items(
+                    cellIdentifier: ImagePickerCollectionViewCell.identifier,
+                    cellType: ImagePickerCollectionViewCell.self
+                )
+            ) { (_, element, cell) in
+                cell.designCell(element)
             }
             .disposed(by: disposeBag)
         
         chatTextView.rx
             .didChange
             .bind(with: self) { owner, _ in
-                if owner.chatTextView.contentSize.height < owner.chatTextView.font!.lineHeight * 4 {
-                    owner.chatTextView.snp.updateConstraints { make in
-                        make.height.equalTo(owner.chatTextView.contentSize.height)
+                let size = CGSize(
+                    width: owner.chatTextView.frame.width,
+                    height: .infinity
+                )
+                let estimatedSize = owner.chatTextView.sizeThatFits(size)
+
+                if estimatedSize.height > 70 {
+                    owner.chatTextView.isScrollEnabled = true
+                    return
+                } else {
+                    owner.chatTextView.isScrollEnabled = false
+
+                    owner.chatTextView.constraints.forEach { constraint in
+                        if constraint.firstAttribute == .height {
+                            constraint.constant = estimatedSize.height
+                        }
                     }
                 }
             }
@@ -204,16 +264,21 @@ extension DMChattingViewController: PHPickerViewControllerDelegate {
     ) {
         picker.dismiss(animated: true, completion: nil)
         
-        guard let itemProvider = results.first?.itemProvider, 
-                itemProvider.canLoadObject(ofClass: UIImage.self) else {
-            return
+        let dispatchGroup = DispatchGroup()
+        var selectedImage: [UIImage] = []
+        
+        for result in results {
+            dispatchGroup.enter()
+            result.itemProvider.loadObject(ofClass: UIImage.self) { object, _ in
+                if let image = object as? UIImage {
+                    selectedImage.append(image)
+                }
+                dispatchGroup.leave()
+            }
         }
         
-        itemProvider.loadObject(ofClass: UIImage.self) { [weak self] image, error in
-            guard let self else { return }
-            if let image = image as? UIImage {
-//                self?.viewModel.selectedImage.accept(image)
-            }
+        dispatchGroup.notify(queue: .main) {
+            self.imagePicker.onNext(selectedImage)
         }
     }
     
@@ -225,6 +290,74 @@ extension DMChattingViewController: PHPickerViewControllerDelegate {
         let picker = PHPickerViewController(configuration: configuration)
         picker.delegate = self
         
-        present(picker, animated: true)
+        present(
+            picker,
+            animated: true
+        )
+    }
+}
+
+extension DMChattingViewController {
+    private func imagePickerCollectionViewLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalHeight(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 5,
+            leading: 0,
+            bottom: 0,
+            trailing: 5
+        )
+        let groupSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1.0),
+            heightDimension: .fractionalHeight(1.0)
+        )
+        let group = NSCollectionLayoutGroup.horizontal(
+            layoutSize: groupSize,
+            subitems: [item]
+        )
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
+    }
+}
+
+extension DMChattingViewController {
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChatSection> {
+        return RxTableViewSectionedReloadDataSource<ChatSection>
+        { [weak self] _, _, indexpath, item in
+            guard let self else { return UITableViewCell() }
+            
+            switch item {
+            case .onlyText(let table):
+                guard let cell = dmChattingTableView.dequeueReusableCell(
+                    withIdentifier: DMTextTableViewCell.identifier,
+                    for: indexpath
+                ) as? DMTextTableViewCell else { return UITableViewCell() }
+                cell.designCell(table)
+                return cell
+            
+            case .onlyImage(let table):
+                guard let cell = dmChattingTableView.dequeueReusableCell(
+                    withIdentifier: DMImageTableViewCell.identifier,
+                    for: indexpath
+                ) as? DMImageTableViewCell else { return UITableViewCell() }
+                cell.designCell(table)
+                return cell
+                
+            case .TextAndImage(let table):
+                guard let cell = dmChattingTableView.dequeueReusableCell(
+                    withIdentifier: DMTextImageTableViewCell.identifier,
+                    for: indexpath
+                ) as? DMTextImageTableViewCell else { return UITableViewCell() }
+                cell.designCell(table)
+                return cell
+            }
+        }
     }
 }

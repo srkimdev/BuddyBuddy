@@ -14,8 +14,7 @@ protocol DMUseCaseInterface {
     
     func fetchDMHistory(
         playgroundID: String,
-        roomID: String,
-        cursorDate: String
+        roomID: String
     ) -> Single<Result<[DMHistory], Error>>
     
     func fetchDMUnRead(
@@ -27,12 +26,13 @@ protocol DMUseCaseInterface {
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
-    ) -> Single<Result<DMHistoryTable, Error>>
+        message: String,
+        files: [Data]
+    ) -> Single<Result<[DMHistory], Error>>
     
     func connectSocket(roomID: String)
     
     func disConnectSocket()
     
-    func observeMessage() -> Observable<DMHistoryTable>
+    func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>>
 }

@@ -60,8 +60,7 @@ final class DMListViewModel: ViewModelType {
                         Observable.zip(
                             self.dmUseCase.fetchDMHistory(
                                 playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.roomID,
-                                cursorDate: ""
+                                roomID: dmList.roomID
                             )
                             .asObservable(),
                             self.dmUseCase.fetchDMUnRead(

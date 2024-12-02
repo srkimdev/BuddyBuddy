@@ -11,19 +11,34 @@ import RxSwift
 
 protocol DMRepositoryInterface {
     func fetchDMList(playgroundID: String) -> Single<Result<[DMList], Error>>
-    func fetchDMHistory(
+    
+    func fetchDMHistoryString(
         playgroundID: String,
-        roomID: String,
-        cursorDate: String
-    ) -> Single<Result<[DMHistory], Error>>
+        roomID: String
+    ) -> Single<Result<[DMHistoryString], Error>>
+    
     func fetchDMNoRead(
         playgroundID: String,
         roomID: String,
         after: String
     ) -> Single<Result<DMUnRead, Error>>
+    
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
-    ) -> Single<Result<DMHistoryTable, Error>>
+        message: String,
+        files: [Data]
+    ) -> Single<Result<DMHistoryString, Error>>
+    
+    func convertArrayToDMHistory(
+        roomID: String,
+        dmHistoryStringArray: [DMHistoryString]
+    ) -> Single<Result<[DMHistory], Error>>
+    
+    func convertObjectToDMHistory(
+        roomID: String,
+        dmHistoryString: DMHistoryString
+    ) -> Single<Result<DMHistory, Error>> 
+    
+    func fetchDMHistoryTable(roomID: String) -> Single<Result<[DMHistory], Error>>
 }

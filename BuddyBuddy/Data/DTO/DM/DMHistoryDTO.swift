@@ -26,8 +26,8 @@ struct DMHistoryDTO: Decodable {
 }
 
 extension DMHistoryDTO {
-    func toDomain() -> DMHistory {
-        return DMHistory(
+    func toDomain() -> DMHistoryString {
+        return DMHistoryString(
             dmID: dmID,
             roomID: roomID,
             content: content ?? "",
@@ -35,16 +35,5 @@ extension DMHistoryDTO {
             files: files,
             user: user.toDomain()
         )
-    }
-    
-    func toTable() -> DMHistoryTable {
-        let table = DMHistoryTable()
-        table.dmID = self.dmID
-        table.roomID = self.roomID
-        table.content = self.content ?? ""
-        table.createdAt = self.createdAt
-        table.files.append(objectsIn: self.files)
-        table.user = self.user.toTable()
-        return table
     }
 }
