@@ -82,7 +82,7 @@ final class PlaygroundViewModel: ViewModelType {
                     break
                 case .exit:
                     showExitAlert.accept(())
-                case .changAdmin:
+                case .changeAdmin:
                     // TODO: 관리자 변경 화면 전환
                     break
                 case .delete:

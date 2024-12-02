@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ActionSheetType {
+enum ActionSheetType: CaseIterable {
     case edit
     case exit
     case changeAdmin
