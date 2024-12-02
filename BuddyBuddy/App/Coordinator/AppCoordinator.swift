@@ -17,7 +17,13 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
-        startTab()
+        // MARK: 현재 특정 워크스페이스 고정이기 때문에 워크스페이스에 포함되어있는 형태가 아니라면 Retry가 뜰 예정
+        // +) 애플 로그인 -> 스웨거로 TED 가입 -> 키체인 삭제 -> HomeVC 임시 로그인 지우기 -> 로그인 시 테스트 가능
+        if KeyChainManager.shared.getAccessToken() != nil {
+            startTab()
+        } else {
+            startLogin()
+        }
     }
     
     private func startTab() {
