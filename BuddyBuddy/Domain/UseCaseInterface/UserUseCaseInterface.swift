@@ -15,4 +15,5 @@ protocol UserUseCaseInterface: AnyObject {
     func checkUserProfile(userID: String) -> Single<Result<UserProfile, Error>>
     func getUserProfileImage(imagePath: String?) -> Single<Data?>
     func loginWithApple(_ user: AppleUser) -> Single<Result<Bool, Error>>
+    func loginWithEmail() -> Single<Result<Bool, Error>>
 }

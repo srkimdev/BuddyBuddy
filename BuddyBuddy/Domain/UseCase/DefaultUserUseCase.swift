@@ -41,4 +41,8 @@ final class DefaultUserUseCase: UserUseCaseInterface {
         )
         return repository.loginWithApple(query: query)
     }
+    
+    func loginWithEmail() -> Single<Result<Bool, Error>> {
+        return repository.loginWithEmail()
+    }
 }
