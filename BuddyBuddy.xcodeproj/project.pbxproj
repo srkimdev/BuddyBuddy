@@ -415,21 +415,47 @@
 			path = NetworkLogger;
 			sourceTree = "<group>";
 		};
-		C02D93B92CFB47A0003471B9 /* Playground */ = {
-			isa = PBXGroup;
-			children = (
-				C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */,
-				C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */,
-			);
-			path = Playground;
-			sourceTree = "<group>";
-		};
 		C02D93C22CFC5F87003471B9 /* Playground */ = {
 			isa = PBXGroup;
 			children = (
 				C02D93C32CFC5F92003471B9 /* PlaygroundList.swift */,
 			);
 			path = Playground;
+			sourceTree = "<group>";
+		};
+		C043981A2CFF3C3300CCC4A1 /* Playground */ = {
+			isa = PBXGroup;
+			children = (
+				C043981D2CFF3C4B00CCC4A1 /* View */,
+				C043981C2CFF3C4600CCC4A1 /* ViewController */,
+				C043981B2CFF3C3F00CCC4A1 /* ViewModel */,
+			);
+			path = Playground;
+			sourceTree = "<group>";
+		};
+		C043981B2CFF3C3F00CCC4A1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		C043981C2CFF3C4600CCC4A1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C043981D2CFF3C4B00CCC4A1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */,
+				C02D93C52CFC67EC003471B9 /* PlaygroundTableViewCell.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		C09FA8ED2CEC660E00613FEA /* Channel */ = {
@@ -559,6 +585,7 @@
 				C9BCFCE42CE1CFA2003E5093 /* Custom */,
 				C90827DB2CDA639C0096BA0D /* Tab */,
 				C90827DC2CDA63A20096BA0D /* Home */,
+				C043981A2CFF3C3300CCC4A1 /* Playground */,
 				C90827DD2CDA63A60096BA0D /* DM */,
 				C90827DE2CDA63AA0096BA0D /* Search */,
 				C90827DF2CDA63B30096BA0D /* Setting */,
@@ -746,7 +773,6 @@
 		C90827E12CDA64040096BA0D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				C02D93B92CFB47A0003471B9 /* Playground */,
 				C0CF50C42CF4831700F131A0 /* Admin */,
 				C0CF50C32CF4828100F131A0 /* Channel */,
 				C0CF50C22CF4824800F131A0 /* Setting */,
@@ -764,7 +790,6 @@
 				C91BBC2A2CE4F7F0001EFC70 /* InviteMemberViewController.swift */,
 				C98363DB2CE58AA200AC51CA /* ProfileViewController.swift */,
 				C08644D42CF6E3C300862523 /* AddChannelViewController.swift */,
-				C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -778,7 +803,6 @@
 				C91BBC2C2CE4F830001EFC70 /* InviteMemberViewModel.swift */,
 				C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */,
 				C08644D02CF62C5E00862523 /* AddChannelViewModel.swift */,
-				C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
