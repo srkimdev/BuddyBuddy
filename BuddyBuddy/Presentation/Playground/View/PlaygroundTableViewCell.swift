@@ -14,7 +14,6 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
-        view.backgroundColor = .white
         return view
     }()
     private let corverImgView: UIImageView = {
@@ -87,5 +86,7 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
     func configureCell(_ data: Workspace) {
         titleLable.text = data.name
         dateLabel.text = data.createdAt.toDate(format: .defaultDate)?.toString(format: .simpleDate)
+        let isHighlight = UserDefaultsManager.playgroundID == data.workspaceID
+        containerView.backgroundColor = isHighlight ? .white : .clear
     }
 }
