@@ -41,7 +41,6 @@
 		C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = C908284C2CDA6B760096BA0D /* RxCocoa */; };
 		C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C908284E2CDA6B760096BA0D /* RxSwift */; };
 		C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = C90828512CDA6BD90096BA0D /* Alamofire */; };
-		C90828552CDA6D6E0096BA0D /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = C90828542CDA6D6E0096BA0D /* Nuke */; };
 		C90828582CDA6D910096BA0D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = C90828572CDA6D910096BA0D /* SnapKit */; };
 		C908285B2CDA6E940096BA0D /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = C908285A2CDA6E940096BA0D /* RealmSwift */; };
 		C908285F2CDA72B50096BA0D /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C908285E2CDA72B50096BA0D /* .swiftlint.yml */; };
@@ -206,6 +205,9 @@
 		DCB9ABC62CFEDC52006845CF /* ChannelHistoryResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABC52CFEDC52006845CF /* ChannelHistoryResponseDTO.swift */; };
 		DCB9ABC82CFEDD23006845CF /* ChannelRealmTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABC72CFEDD23006845CF /* ChannelRealmTable.swift */; };
 		DCB9ABCA2CFEDDFE006845CF /* UserRealmTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABC92CFEDDFE006845CF /* UserRealmTable.swift */; };
+		DCB9ABD22CFF1E09006845CF /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = DCB9ABD12CFF1E09006845CF /* Nuke */; };
+		DCB9ABD42CFF1E09006845CF /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCB9ABD32CFF1E09006845CF /* NukeUI */; };
+		DCB9ABD62CFF530A006845CF /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -399,6 +401,7 @@
 		DCB9ABC52CFEDC52006845CF /* ChannelHistoryResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelHistoryResponseDTO.swift; sourceTree = "<group>"; };
 		DCB9ABC72CFEDD23006845CF /* ChannelRealmTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRealmTable.swift; sourceTree = "<group>"; };
 		DCB9ABC92CFEDDFE006845CF /* UserRealmTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealmTable.swift; sourceTree = "<group>"; };
+		DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -409,12 +412,13 @@
 				C908285B2CDA6E940096BA0D /* RealmSwift in Frameworks */,
 				C90828622CDA75CF0096BA0D /* RxKakaoSDKAuth in Frameworks */,
 				C90828522CDA6BD90096BA0D /* Alamofire in Frameworks */,
+				DCB9ABD42CFF1E09006845CF /* NukeUI in Frameworks */,
 				C0BF428D2CE4721600C5B5B4 /* RxDataSources in Frameworks */,
+				DCB9ABD22CFF1E09006845CF /* Nuke in Frameworks */,
 				C908284F2CDA6B760096BA0D /* RxSwift in Frameworks */,
 				DC93757A2CEE330700012F43 /* SocketIO in Frameworks */,
 				C90828642CDA75CF0096BA0D /* RxKakaoSDKCommon in Frameworks */,
 				C908284D2CDA6B760096BA0D /* RxCocoa in Frameworks */,
-				C90828552CDA6D6E0096BA0D /* Nuke in Frameworks */,
 				C0BF428B2CE4721600C5B5B4 /* Differentiator in Frameworks */,
 				C90828582CDA6D910096BA0D /* SnapKit in Frameworks */,
 			);
@@ -1053,6 +1057,7 @@
 				DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */,
 				C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */,
 				C9E818CB2CF5B02200034660 /* BuddyAlert.swift */,
+				DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1320,7 +1325,6 @@
 				C908284C2CDA6B760096BA0D /* RxCocoa */,
 				C908284E2CDA6B760096BA0D /* RxSwift */,
 				C90828512CDA6BD90096BA0D /* Alamofire */,
-				C90828542CDA6D6E0096BA0D /* Nuke */,
 				C90828572CDA6D910096BA0D /* SnapKit */,
 				C908285A2CDA6E940096BA0D /* RealmSwift */,
 				C90828612CDA75CF0096BA0D /* RxKakaoSDKAuth */,
@@ -1328,6 +1332,8 @@
 				C0BF428A2CE4721600C5B5B4 /* Differentiator */,
 				C0BF428C2CE4721600C5B5B4 /* RxDataSources */,
 				DC9375792CEE330700012F43 /* SocketIO */,
+				DCB9ABD12CFF1E09006845CF /* Nuke */,
+				DCB9ABD32CFF1E09006845CF /* NukeUI */,
 			);
 			productName = BuddyBuddy;
 			productReference = C9C27A002CDA315500243744 /* BuddyBuddy.app */;
@@ -1361,13 +1367,13 @@
 			packageReferences = (
 				C908284B2CDA6B760096BA0D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				C90828502CDA6BD90096BA0D /* XCRemoteSwiftPackageReference "Alamofire" */,
-				C90828532CDA6D6E0096BA0D /* XCRemoteSwiftPackageReference "Nuke" */,
 				C90828562CDA6D910096BA0D /* XCRemoteSwiftPackageReference "SnapKit" */,
 				C90828592CDA6E940096BA0D /* XCRemoteSwiftPackageReference "realm-swift" */,
 				C908285C2CDA6FEC0096BA0D /* XCRemoteSwiftPackageReference "SwiftLint" */,
 				C90828602CDA75CF0096BA0D /* XCRemoteSwiftPackageReference "kakao-ios-sdk-rx" */,
 				C0BF42892CE4721600C5B5B4 /* XCRemoteSwiftPackageReference "RxDataSources" */,
 				DC9375782CEE330700012F43 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */,
+				DCB9ABD02CFF1E09006845CF /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = C9C27A012CDA315500243744 /* Products */;
 			projectDirPath = "";
@@ -1555,6 +1561,7 @@
 				C9BF5CC62CF8574B00F7F547 /* SpecificChannelResponseDTO.swift in Sources */,
 				DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */,
 				DC213AAA2CE4742F00E2A2F7 /* KeyChainManager.swift in Sources */,
+				DCB9ABD62CFF530A006845CF /* ProfileImageView.swift in Sources */,
 				DC9375662CECAAF100012F43 /* DefaultDMRepository.swift in Sources */,
 				DC93758E2CF88F4800012F43 /* DMTextTableViewCell.swift in Sources */,
 				DC9375772CEE087B00012F43 /* SocketRepositoryInterface.swift in Sources */,
@@ -1855,14 +1862,6 @@
 				minimumVersion = 5.10.1;
 			};
 		};
-		C90828532CDA6D6E0096BA0D /* XCRemoteSwiftPackageReference "Nuke" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 12.8.0;
-			};
-		};
 		C90828562CDA6D910096BA0D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
@@ -1903,6 +1902,14 @@
 				minimumVersion = 16.1.1;
 			};
 		};
+		DCB9ABD02CFF1E09006845CF /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1931,11 +1938,6 @@
 			package = C90828502CDA6BD90096BA0D /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
 		};
-		C90828542CDA6D6E0096BA0D /* Nuke */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C90828532CDA6D6E0096BA0D /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
-		};
 		C90828572CDA6D910096BA0D /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C90828562CDA6D910096BA0D /* XCRemoteSwiftPackageReference "SnapKit" */;
@@ -1960,6 +1962,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DC9375782CEE330700012F43 /* XCRemoteSwiftPackageReference "socket.io-client-swift" */;
 			productName = SocketIO;
+		};
+		DCB9ABD12CFF1E09006845CF /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCB9ABD02CFF1E09006845CF /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+		DCB9ABD32CFF1E09006845CF /* NukeUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCB9ABD02CFF1E09006845CF /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = NukeUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

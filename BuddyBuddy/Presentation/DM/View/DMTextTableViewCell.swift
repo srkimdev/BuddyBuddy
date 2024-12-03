@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 final class DMTextTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
-        let view = UIImageView()
+    private let profileImage: ProfileImageView = {
+        let view = ProfileImageView()
         view.layer.cornerRadius = 10
         return view
     }()
@@ -68,10 +68,10 @@ final class DMTextTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: DMHistory) {
-        profileImage.backgroundColor = .lightGray
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         
         speechBubble.updateText(transition.content)
+        profileImage.updateURL(url: transition.user.profileImage ?? "")
     }
 }

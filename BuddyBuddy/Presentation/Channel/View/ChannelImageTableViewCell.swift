@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 final class ChannelImageTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
-        let view = UIImageView()
+    private let profileImage: ProfileImageView = {
+        let view = ProfileImageView()
         view.layer.cornerRadius = 10
         return view
     }()
@@ -132,11 +132,11 @@ final class ChannelImageTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: ChannelHistory) {
-        profileImage.backgroundColor = .lightGray
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         
         imageType(dataArray: transition.files)
+        profileImage.updateURL(url: transition.user.profileImage ?? "")
     }
     
     private func imageType(dataArray: [Data]) {
@@ -221,4 +221,3 @@ extension ChannelImageTableViewCell {
         }
     }
 }
-

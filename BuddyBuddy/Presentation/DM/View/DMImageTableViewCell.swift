@@ -10,8 +10,8 @@ import UIKit
 import SnapKit
 
 final class DMImageTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
-        let view = UIImageView()
+    private let profileImage: ProfileImageView = {
+        let view = ProfileImageView()
         view.layer.cornerRadius = 10
         return view
     }()
@@ -133,10 +133,10 @@ final class DMImageTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: DMHistory) {
-        profileImage.backgroundColor = .lightGray
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         
+        profileImage.updateURL(url: transition.user.profileImage ?? "")
         imageType(dataArray: transition.files)
     }
     
