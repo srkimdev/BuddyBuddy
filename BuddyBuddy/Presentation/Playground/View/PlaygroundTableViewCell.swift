@@ -37,7 +37,7 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
         view.textColor = .gray1
         return view
     }()
-    private let moreButton: UIButton = {
+    let moreButton: UIButton = {
         let view = UIButton()
         var config = UIButton.Configuration.plain()
         

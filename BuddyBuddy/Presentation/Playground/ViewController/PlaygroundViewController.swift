@@ -33,6 +33,7 @@ final class PlaygroundViewController: BaseViewController {
         return view
     }()
     private let bottomView: PlaygroundBottomView = PlaygroundBottomView()
+    private let moreBtnTapped = PublishRelay<String>()
     
     init(vm: PlaygroundViewModel) {
         self.vm = vm
@@ -41,7 +42,6 @@ final class PlaygroundViewController: BaseViewController {
     
     override func bind() {
         let actionSheetItemTapped = PublishRelay<ActionSheetType>()
-        let moreBtnTapped = PublishRelay<String>()
         let input = PlaygroundViewModel.Input(
             viewWillAppearTrigger: rx.viewWillAppear,
             selectedPlayground: playgroundTableView.rx.modelSelected(Workspace.self).asObservable(),
@@ -56,6 +56,12 @@ final class PlaygroundViewController: BaseViewController {
                 cellType: PlaygroundTableViewCell.self
             )) { _, value, cell in
                 cell.configureCell(value)
+                cell.moreButton.accessibilityIdentifier = value.workspaceID
+                cell.moreButton.addTarget(
+                    self,
+                    action: #selector(self.moreBtnDidTap),
+                    for: .touchUpInside
+                )
             }
             .disposed(by: disposeBag)
         
@@ -88,5 +94,10 @@ final class PlaygroundViewController: BaseViewController {
             make.bottom.equalTo(safeArea)
             make.height.equalTo(82)
         }
+    }
+    
+    @objc func moreBtnDidTap(_ sender: UIButton) {
+        guard let id = sender.accessibilityIdentifier else { return }
+        moreBtnTapped.accept(id)
     }
 }
