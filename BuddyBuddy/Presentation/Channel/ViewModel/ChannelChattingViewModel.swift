@@ -55,8 +55,8 @@ final class ChannelChattingViewModel: ViewModelType {
         input.viewWillAppearTrigger
             .flatMap {
                 return self.channelUseCase.fetchChannelHistory(
-                    playgroundID: UserDefaultsManager.playgroundID,
-                    channelID: ""
+                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                    channelID: self.channelID
                 )
             }
             .bind(with: self) { owner, response in
@@ -67,14 +67,14 @@ final class ChannelChattingViewModel: ViewModelType {
                     updateChannelChatTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
                     
-//                    owner.dmUseCase.connectSocket(roomID: owner.dmListInfo.roomID)
+                    owner.channelUseCase.connectSocket(channelID: self.channelID)
                 case .failure(let error):
                     print(error)
                 }
             }
             .disposed(by: disposeBag)
         
-        self.channelUseCase.observeMessage(channelID: "")
+        self.channelUseCase.observeMessage(channelID: channelID)
             .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
@@ -95,8 +95,8 @@ final class ChannelChattingViewModel: ViewModelType {
             ))
             .flatMap { (text, images) -> Single<Result<[ChannelHistory], Error>> in
                 return self.channelUseCase.sendChannel(
-                    playgroundID: UserDefaultsManager.playgroundID,
-                    channelID: "",
+                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                    channelID: self.channelID,
                     message: text,
                     files: self.imageToData(imageArray: images)
                 )
@@ -141,4 +141,3 @@ extension ChannelChattingViewModel {
         return dataArray
     }
 }
-

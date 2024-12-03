@@ -25,13 +25,13 @@ enum ChannelRouter {
 
 extension ChannelRouter: TargetType {
     var baseURL: String {
-        return APIKey.baseURL + "/v1/"
+        return APIKey.baseURL + "/v1"
     }
     
     var method: HTTPMethod {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel, .exitChannel, .channelHistory,
-                .channelImage:
+        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel, 
+                .exitChannel, .channelHistory, .channelImage:
             return .get
         case .changeChannelAdmin:
             return .put
@@ -45,25 +45,25 @@ extension ChannelRouter: TargetType {
     var path: String {
         switch self {
         case .myChannelList(let playgroundID):
-            return "workspaces/\(playgroundID)/my-channels"
+            return "/workspaces/\(playgroundID)/my-channels"
         case .unreadCount(let playgroundID, let channelID, _):
-            return "workspaces/\(playgroundID)/channels/\(channelID)/unreads"
+            return "/workspaces/\(playgroundID)/channels/\(channelID)/unreads"
         case .createChannel:
-            return "workspaces/\(UserDefaultsManager.playgroundID)/channels"
+            return "/workspaces/\(UserDefaultsManager.playgroundID)/channels"
         case .fetchChannelChat(let query):
-            return "workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
+            return "/workspaces/\(query.playgroundID)/channels/\(query.channelID)/chats"
         case .specificChannel(let channelID):
-            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
+            return "/workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
         case .changeChannelAdmin(let channelID, _):
-            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/transfer/ownership"
+            return "/workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/transfer/ownership"
         case .deleteChannel(let channelID):
-            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
+            return "/workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
         case .exitChannel(let channelID):
-            return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/exit"
+            return "/workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/exit"
         case .channelHistory(let playgroundID, let channelID, _):
-            return "workspaces/\(playgroundID)/channels/\(channelID)/chats"
+            return "/workspaces/\(playgroundID)/channels/\(channelID)/chats"
         case .sendChannelChat(let playgroundID, let channelID):
-            return "workspaces/\(playgroundID)/channels/\(channelID)/chats"
+            return "/workspaces/\(playgroundID)/channels/\(channelID)/chats"
         case .channelImage(let path):
             return path
         }

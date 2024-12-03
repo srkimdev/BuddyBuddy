@@ -10,9 +10,9 @@ import Foundation
 import RealmSwift
 
 final class ChannelHistoryTable: Object {
-    @Persisted(primaryKey: true) var channelID: String
+    @Persisted(primaryKey: true) var chatID: String
     @Persisted var channelName: String
-    @Persisted var chatID: String
+    @Persisted var channelID: String
     @Persisted var content: String
     @Persisted var createdAt: String
     @Persisted var files: List<Data> = List()

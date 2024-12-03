@@ -17,7 +17,7 @@ final class DMTextTableViewCell: BaseTableViewCell {
     }()
     private let userName: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 13)
+        view.font = .body
         return view
     }()
     private let speechBubble: SpeechBubbleView = {
@@ -26,7 +26,8 @@ final class DMTextTableViewCell: BaseTableViewCell {
     }()
     private let chatTime: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12)
+        view.textColor = .gray1
+        view.font = .caption
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()

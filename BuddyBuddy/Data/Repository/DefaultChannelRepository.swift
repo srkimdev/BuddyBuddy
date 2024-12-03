@@ -217,7 +217,9 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     ) -> Single<Result<[ChannelHistory], Error>> {
         let channelHistoryTasks = channelHistoryStringArray.map { channelHistoryString in
             Single.zip(channelHistoryString.files.map { filePath in
-                self.networkService.downloadImage(router: ChannelRouter.channelImage(path: filePath))
+                self.networkService.downloadImage(
+                    router: ChannelRouter.channelImage(path: filePath)
+                )
             })
             .map { results -> [Data] in
                 let fileDataArray = results.compactMap { result in

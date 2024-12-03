@@ -17,7 +17,7 @@ final class ChannelTextImageTableViewCell: BaseTableViewCell {
     }()
     private let userName: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 13)
+        view.font = .body
         return view
     }()
     private let speechBubble: SpeechBubbleView = {
@@ -52,7 +52,8 @@ final class ChannelTextImageTableViewCell: BaseTableViewCell {
     }()
     private let chatTime: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12)
+        view.textColor = .gray1
+        view.font = .caption
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
@@ -117,7 +118,6 @@ final class ChannelTextImageTableViewCell: BaseTableViewCell {
         userName.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(15)
         }
         speechBubble.snp.makeConstraints { make in
@@ -126,12 +126,13 @@ final class ChannelTextImageTableViewCell: BaseTableViewCell {
             make.trailing.lessThanOrEqualToSuperview().inset(92)
         }
         chatTime.snp.makeConstraints { make in
-            make.centerY.equalTo(profileImage)
+            make.centerY.equalTo(userName)
             make.leading.equalTo(userName.snp.trailing).offset(16)
         }
         pickerImageStackView.snp.makeConstraints { make in
             make.top.equalTo(speechBubble.snp.bottom).offset(4)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(92)
             make.bottom.equalToSuperview().inset(8)
         }
         topImageView.snp.makeConstraints { make in
