@@ -33,11 +33,6 @@ final class PlaygroundViewController: BaseViewController {
         return view
     }()
     private let bottomView: PlaygroundBottomView = PlaygroundBottomView()
-    private let actionSheet: UIAlertController = UIAlertController(
-        title: nil,
-        message: nil,
-        preferredStyle: .actionSheet
-    )
     
     init(vm: PlaygroundViewModel) {
         self.vm = vm
@@ -51,7 +46,6 @@ final class PlaygroundViewController: BaseViewController {
             viewWillAppearTrigger: rx.viewWillAppear,
             selectedPlayground: playgroundTableView.rx.modelSelected(Workspace.self).asObservable(),
             moreBtnTapped: moreBtnTapped.asObservable(),
-            actionSheetItemTapped: actionSheetItemTapped.asObservable(),
             addBtnTapped: bottomView.addButton.rx.tap.asObservable()
         )
         let output = vm.transform(input: input)
@@ -62,12 +56,6 @@ final class PlaygroundViewController: BaseViewController {
                 cellType: PlaygroundTableViewCell.self
             )) { _, value, cell in
                 cell.configureCell(value)
-            }
-            .disposed(by: disposeBag)
-        
-        output.showActionSheet
-            .drive(with: self) { owner, _ in
-                owner.setActionSheet(with: actionSheetItemTapped)
             }
             .disposed(by: disposeBag)
         
@@ -99,35 +87,6 @@ final class PlaygroundViewController: BaseViewController {
             make.horizontalEdges.equalToSuperview()
             make.bottom.equalTo(safeArea)
             make.height.equalTo(82)
-        }
-    }
-    
-    func setActionSheet(with relay: PublishRelay<ActionSheetType>) {
-        for type in ActionSheetType.allCases {
-            var title = ""
-            switch type {
-            case .edit:
-                title = ActionSheetTitle.edit.localized
-            case .exit:
-                title = ActionSheetTitle.exit.localized
-            case .changeAdmin:
-                title = ActionSheetTitle.changeAdmin.localized
-            case .delete:
-                title = ActionSheetTitle.delete.localized
-            }
-            
-            let action = UIAlertAction(
-                title: title,
-                style: .default
-            ) { _ in
-                relay.accept(type)
-            }
-            
-            actionSheet.addAction(action)
-        }
-        
-        DispatchQueue.main.async {
-            self.present(self.actionSheet, animated: true)
         }
     }
 }
