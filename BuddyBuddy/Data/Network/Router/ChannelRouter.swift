@@ -18,6 +18,9 @@ enum ChannelRouter {
     case changeChannelAdmin(channelID: String, ownerID: String)
     case deleteChannel(channelID: String)
     case exitChannel(channelID: String)
+    case channelHistory(playgroundID: String, channelID: String, cursurDate: String)
+    case sendChannelChat(playgroundID: String, channelID: String)
+    case channelImage(path: String)
 }
 
 extension ChannelRouter: TargetType {
@@ -27,13 +30,14 @@ extension ChannelRouter: TargetType {
     
     var method: HTTPMethod {
         switch self {
-        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel, .exitChannel:
+        case .myChannelList, .unreadCount, .fetchChannelChat, .specificChannel, .exitChannel, .channelHistory,
+                .channelImage:
             return .get
         case .changeChannelAdmin:
             return .put
         case .deleteChannel:
             return .delete
-        case .createChannel:
+        case .createChannel, .sendChannelChat:
             return .post
         }
     }
@@ -56,13 +60,19 @@ extension ChannelRouter: TargetType {
             return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)"
         case .exitChannel(let channelID):
             return "workspaces/\(UserDefaultsManager.playgroundID)/channels/\(channelID)/exit"
+        case .channelHistory(let playgroundID, let channelID, _):
+            return "workspaces/\(playgroundID)/channels/\(channelID)/chats"
+        case .sendChannelChat(let playgroundID, let channelID):
+            return "workspaces/\(playgroundID)/channels/\(channelID)/chats"
+        case .channelImage(let path):
+            return path
         }
     }
     
     var header: [String: String] {
         switch self {
         case .myChannelList, .unreadCount, .fetchChannelChat,
-                .specificChannel, .exitChannel, .deleteChannel:
+                .specificChannel, .exitChannel, .deleteChannel, .channelHistory:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
@@ -72,6 +82,18 @@ extension ChannelRouter: TargetType {
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
                 Header.Key.rawValue: APIKey.Key,
                 Header.contentType.rawValue: Header.json.rawValue
+            ]
+        case .sendChannelChat:
+            return [
+                Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
+                Header.Key.rawValue: APIKey.Key,
+                Header.contentType.rawValue: Header.multipart.rawValue
+            ]
+        case .channelImage:
+            return [
+                Header.contentType.rawValue: Header.multipart.rawValue,
+                Header.authorization.rawValue: KeyChainManager.shared.getRefreshToken() ?? "",
+                Header.Key.rawValue: APIKey.Key
             ]
         }
     }
@@ -83,7 +105,8 @@ extension ChannelRouter: TargetType {
     var queryItems: [URLQueryItem]? {
         switch self {
         case .myChannelList, .specificChannel, .createChannel,
-                .changeChannelAdmin, .deleteChannel, .exitChannel:
+                .changeChannelAdmin, .deleteChannel, .exitChannel, 
+                .channelHistory, .sendChannelChat, .channelImage:
             return nil
         case .unreadCount(_, _, let after):
             guard let after else { return nil }

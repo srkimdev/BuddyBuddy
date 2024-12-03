@@ -1,8 +1,8 @@
 //
-//  DMChattingViewController.swift
+//  ChannelChattingViewController.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/12/24.
+//  Created by 김성률 on 12/3/24.
 //
 
 import UIKit
@@ -12,25 +12,25 @@ import RxDataSources
 import RxSwift
 import SnapKit
 
-final class DMChattingViewController: BaseNavigationViewController {
+final class ChannelChattingViewController: BaseNavigationViewController {
     private let disposeBag = DisposeBag()
-    private let vm: DMChattingViewModel
+    private let vm: ChannelChattingViewModel
     private let imagePicker = BehaviorSubject<[UIImage]>(value: [])
     private lazy var datasource = createDataSource()
     
-    private let dmChattingTableView: UITableView = {
+    private let ChannelChattingTableView: UITableView = {
         let view = UITableView()
         view.register(
-            DMTextTableViewCell.self,
-            forCellReuseIdentifier: DMTextTableViewCell.identifier
+            ChannelTextTableViewCell.self,
+            forCellReuseIdentifier: ChannelTextTableViewCell.identifier
         )
         view.register(
-            DMImageTableViewCell.self,
-            forCellReuseIdentifier: DMImageTableViewCell.identifier
+            ChannelImageTableViewCell.self,
+            forCellReuseIdentifier: ChannelImageTableViewCell.identifier
         )
         view.register(
-            DMTextImageTableViewCell.self,
-            forCellReuseIdentifier: DMTextImageTableViewCell.identifier
+            ChannelTextImageTableViewCell.self,
+            forCellReuseIdentifier: ChannelTextImageTableViewCell.identifier
         )
         view.rowHeight = UITableView.automaticDimension
         view.separatorStyle = .none
@@ -95,7 +95,7 @@ final class DMChattingViewController: BaseNavigationViewController {
         return view
     }()
     
-    init(vm: DMChattingViewModel) {
+    init(vm: ChannelChattingViewModel) {
         self.vm = vm
     }
     
@@ -105,7 +105,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     }
     
     override func setHierarchy() {
-        [dmChattingTableView, chatBarBackground].forEach {
+        [ChannelChattingTableView, chatBarBackground].forEach {
             view.addSubview($0)
         }
         [plusButton, chatTextView, imagePickerCollectionView, sendButton].forEach {
@@ -114,12 +114,12 @@ final class DMChattingViewController: BaseNavigationViewController {
     }
     
     override func setConstraints() {
-        dmChattingTableView.snp.makeConstraints { make in
+        ChannelChattingTableView.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
             make.bottom.equalTo(chatBarBackground.snp.top)
         }
         chatBarBackground.snp.makeConstraints { make in
-            make.top.equalTo(dmChattingTableView.snp.bottom)
+            make.top.equalTo(ChannelChattingTableView.snp.bottom)
             make.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(16)
             make.bottom.equalTo(view.safeAreaLayoutGuide)
         }
@@ -151,7 +151,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     override func bind() {
         let viewdidLoadTrigger = Observable.just(())
         
-        let input = DMChattingViewModel.Input(
+        let input = ChannelChattingViewModel.Input(
             viewWillAppearTrigger: viewdidLoadTrigger,
             sendBtnTapped: sendButton.rx.tap.asObservable(),
             plusBtnTapped: plusButton.rx.tap.asObservable(),
@@ -160,20 +160,20 @@ final class DMChattingViewController: BaseNavigationViewController {
         )
         let output = vm.transform(input: input)
         
-        output.updateDMListTableView
-            .drive(dmChattingTableView.rx.items(dataSource: datasource))
+        output.updateChannelChatTableView
+            .drive(ChannelChattingTableView.rx.items(dataSource: datasource))
             .disposed(by: disposeBag)
         
         output.scrollToDown
             .drive(with: self) { owner, _ in
                 let indexPath = IndexPath(
-                    row: owner.dmChattingTableView.numberOfRows(inSection: 0) - 1,
+                    row: owner.ChannelChattingTableView.numberOfRows(inSection: 0) - 1,
                     section: 0
                 )
                 
                 if indexPath.row >= 0 {
-                    owner.dmChattingTableView.scrollToRow(
-                        at: indexPath, 
+                    owner.ChannelChattingTableView.scrollToRow(
+                        at: indexPath,
                         at: .bottom,
                         animated: false
                     )
@@ -258,7 +258,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     }
 }
 
-extension DMChattingViewController: PHPickerViewControllerDelegate {
+extension ChannelChattingViewController: PHPickerViewControllerDelegate {
     func picker(
         _ picker: PHPickerViewController,
         didFinishPicking results: [PHPickerResult]
@@ -298,7 +298,7 @@ extension DMChattingViewController: PHPickerViewControllerDelegate {
     }
 }
 
-extension DMChattingViewController {
+extension ChannelChattingViewController {
     private func imagePickerCollectionViewLayout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalHeight(1.0),
@@ -328,37 +328,37 @@ extension DMChattingViewController {
     }
 }
 
-extension DMChattingViewController {
-    private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChatSection<DMHistory>> {
+extension ChannelChattingViewController {
+    private func createDataSource() -> RxTableViewSectionedReloadDataSource<ChatSection<ChannelHistory>> {
         return RxTableViewSectionedReloadDataSource<ChatSection>
         { [weak self] _, _, indexpath, item in
             guard let self else { return UITableViewCell() }
-            
             switch item {
             case .onlyText(let table):
-                guard let cell = dmChattingTableView.dequeueReusableCell(
-                    withIdentifier: DMTextTableViewCell.identifier,
+                guard let cell = ChannelChattingTableView.dequeueReusableCell(
+                    withIdentifier: ChannelTextTableViewCell.identifier,
                     for: indexpath
-                ) as? DMTextTableViewCell else { return UITableViewCell() }
+                ) as? ChannelTextTableViewCell else { return UITableViewCell() }
                 cell.designCell(table)
                 return cell
             
             case .onlyImage(let table):
-                guard let cell = dmChattingTableView.dequeueReusableCell(
-                    withIdentifier: DMImageTableViewCell.identifier,
+                guard let cell = ChannelChattingTableView.dequeueReusableCell(
+                    withIdentifier: ChannelImageTableViewCell.identifier,
                     for: indexpath
-                ) as? DMImageTableViewCell else { return UITableViewCell() }
+                ) as? ChannelImageTableViewCell else { return UITableViewCell() }
                 cell.designCell(table)
                 return cell
                 
             case .TextAndImage(let table):
-                guard let cell = dmChattingTableView.dequeueReusableCell(
-                    withIdentifier: DMTextImageTableViewCell.identifier,
+                guard let cell = ChannelChattingTableView.dequeueReusableCell(
+                    withIdentifier: ChannelTextImageTableViewCell.identifier,
                     for: indexpath
-                ) as? DMTextImageTableViewCell else { return UITableViewCell() }
+                ) as? ChannelTextImageTableViewCell else { return UITableViewCell() }
                 cell.designCell(table)
                 return cell
             }
         }
     }
 }
+

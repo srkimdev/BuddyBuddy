@@ -1,23 +1,24 @@
 //
-//  DMHistoryData.swift
+//  ChannelHistory.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/29/24.
+//  Created by 김성률 on 12/3/24.
 //
 
 import Foundation
 
-struct DMHistory {
-    let dmID: String
-    let roomID: String
+struct ChannelHistory {
+    let channelID: String
+    let channelName: String
+    let chatID: String
     let content: String
     let createdAt: String
     let files: [Data]
     let user: UserInfo
 }
 
-extension DMHistory {
-    func toChatType() -> ChatType<DMHistory> {
+extension ChannelHistory {
+    func toChatType() -> ChatType<ChannelHistory> {
         if !content.isEmpty && !files.isEmpty {
             return .TextAndImage(self)
         } else if !content.isEmpty && files.isEmpty {

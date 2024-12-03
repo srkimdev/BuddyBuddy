@@ -49,7 +49,10 @@ extension AppDelegate {
         
         DIContainer.register(
             type: ChannelRepositoryInterface.self,
-            DefaultChannelRepository(networkService: networkService)
+            DefaultChannelRepository(
+                networkService: networkService,
+                realmRepository: RealmRepository<ChannelHistoryTable>()
+            )
         )
         
         DIContainer.register(

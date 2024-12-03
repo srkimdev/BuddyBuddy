@@ -90,8 +90,18 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         )
     }
    
-    func toChannelDM() {
-        // TODO: 채널 디엠 화면 전환
+    func toChannelDM(channelID: String) {
+        let vc = ChannelChattingViewController(vm: ChannelChattingViewModel(
+            coordinator: self,
+            channelUseCase: DefaultChannelUseCase(),
+            channelID: channelID
+        ))
+        vc.hidesBottomBarWhenPushed = true
+        navigationController.interactivePopGestureRecognizer?.isEnabled = false
+        navigationController.pushViewController(
+            vc,
+            animated: true
+        )
     }
     
     func toAddChannel() {

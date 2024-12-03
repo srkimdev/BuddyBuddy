@@ -82,7 +82,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     }
     
     func connectSocket(roomID: String) {
-        socketRepositoryInterface.connectSocket(roomID: roomID)
+        socketRepositoryInterface.connectSocket(ID: roomID)
     }
     
     func disConnectSocket() {
@@ -90,7 +90,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     }
 
     func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>> {
-        return self.socketRepositoryInterface.observeMessage()
+        return self.socketRepositoryInterface.observeDMMessage()
             .flatMap { dmHistoryString in
                 self.dmRepositoryInterface.convertObjectToDMHistory(
                     roomID: roomID,
