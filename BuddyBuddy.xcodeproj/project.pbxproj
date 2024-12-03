@@ -148,6 +148,8 @@
 		C9F96D422CDCE5E300271295 /* Dependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D412CDCE5E300271295 /* Dependency.swift */; };
 		C9F96D652CDD295300271295 /* UIFont+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D642CDD295300271295 /* UIFont+.swift */; };
 		C9F96D672CDD2A5400271295 /* AppDelegate+Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F96D662CDD2A5400271295 /* AppDelegate+Register.swift */; };
+		C9FF81412CFF60350049ED1F /* NetworkErrorDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FF81402CFF60350049ED1F /* NetworkErrorDTO.swift */; };
+		C9FF81442CFF60940049ED1F /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9FF81432CFF60940049ED1F /* NetworkError.swift */; };
 		DC213A802CE1EEAF00E2A2F7 /* Secrets.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = DC213A7F2CE1EEAE00E2A2F7 /* Secrets.xcconfig */; };
 		DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */; };
 		DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */; };
@@ -345,6 +347,8 @@
 		C9F96D632CDD28D000271295 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
 		C9F96D642CDD295300271295 /* UIFont+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+.swift"; sourceTree = "<group>"; };
 		C9F96D662CDD2A5400271295 /* AppDelegate+Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Register.swift"; sourceTree = "<group>"; };
+		C9FF81402CFF60350049ED1F /* NetworkErrorDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkErrorDTO.swift; sourceTree = "<group>"; };
+		C9FF81432CFF60940049ED1F /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		DC213A7F2CE1EEAE00E2A2F7 /* Secrets.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		DC213A812CE1F6F200E2A2F7 /* DMListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMListTableViewCell.swift; sourceTree = "<group>"; };
 		DC213A832CE23E1B00E2A2F7 /* MessageCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCountView.swift; sourceTree = "<group>"; };
@@ -579,6 +583,7 @@
 		C90827D32CDA63140096BA0D /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				C9FF813F2CFF60220049ED1F /* NetworkError */,
 				C91F672F2CEE439100C84265 /* User */,
 				C9E44A962CECB4D10044CD5C /* Playground */,
 				DC213AB32CE4874F00E2A2F7 /* LogIn */,
@@ -604,6 +609,7 @@
 		C90827D52CDA63250096BA0D /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				C9FF81422CFF608C0049ED1F /* Error */,
 				C9F96D532CDD236900271295 /* Base */,
 				DC9BC0CF2CE748C6002AF523 /* Router */,
 			);
@@ -1184,6 +1190,22 @@
 			path = Font;
 			sourceTree = "<group>";
 		};
+		C9FF813F2CFF60220049ED1F /* NetworkError */ = {
+			isa = PBXGroup;
+			children = (
+				C9FF81402CFF60350049ED1F /* NetworkErrorDTO.swift */,
+			);
+			path = NetworkError;
+			sourceTree = "<group>";
+		};
+		C9FF81422CFF608C0049ED1F /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				C9FF81432CFF60940049ED1F /* NetworkError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
 		DC213A9D2CE36CA000E2A2F7 /* DM */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,6 +1445,7 @@
 				C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
 				C91F67312CEE439A00C84265 /* ProfileDTO.swift in Sources */,
+				C9FF81442CFF60940049ED1F /* NetworkError.swift in Sources */,
 				C9F96D402CDCE51600271295 /* DIContainer.swift in Sources */,
 				DC213A9F2CE36CA700E2A2F7 /* DMList.swift in Sources */,
 				C9F20F6A2CDB73330043351E /* SettingCoordinator.swift in Sources */,
@@ -1506,6 +1529,7 @@
 				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
 				C08644D52CF6E3C300862523 /* AddChannelViewController.swift in Sources */,
+				C9FF81412CFF60350049ED1F /* NetworkErrorDTO.swift in Sources */,
 				DC213A822CE1F6F200E2A2F7 /* DMListTableViewCell.swift in Sources */,
 				DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */,
 				C9F20F422CDB61F50043351E /* HomeViewController.swift in Sources */,
