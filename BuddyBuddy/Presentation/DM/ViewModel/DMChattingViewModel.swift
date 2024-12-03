@@ -55,7 +55,7 @@ final class DMChattingViewModel: ViewModelType {
         input.viewWillAppearTrigger
             .flatMap {
                 return self.dmUseCase.fetchDMHistory(
-                    playgroundID: UserDefaultsManager.playgroundID,
+                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
                     roomID: self.dmListInfo.roomID
                 )
             }
@@ -95,7 +95,7 @@ final class DMChattingViewModel: ViewModelType {
             ))
             .flatMap { (text, images) -> Single<Result<[DMHistory], Error>> in
                 return self.dmUseCase.sendDM(
-                    playgroundID: UserDefaultsManager.playgroundID,
+                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
                     roomID: self.dmListInfo.roomID,
                     message: text,
                     files: self.imageToData(imageArray: images)
