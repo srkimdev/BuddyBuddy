@@ -114,16 +114,9 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toPlayground() {
-        let vc = PlaygroundViewController(
-            vm: PlaygroundViewModel(
-                coordinator: self,
-                useCase: DefaultPlaygroundUseCase()
-            )
-        )
-        
-        navigationController.present(
-            vc,
-            animated: true
-        )
+        let coordinator = DefaultPlaygroundCoordinator(navigationController: navigationController)
+        coordinator.parent = self
+        childs.append(coordinator)
+        coordinator.start()
     }
 }

@@ -12,11 +12,11 @@ import RxSwift
 
 final class PlaygroundViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
-    private let coordinator: HomeCoordinator
+    private let coordinator: PlaygroundCoordinator
     private let useCase: PlaygroundUseCaseInterface
     
     init(
-        coordinator: HomeCoordinator,
+        coordinator: PlaygroundCoordinator,
         useCase: PlaygroundUseCaseInterface
     ) {
         self.coordinator = coordinator
