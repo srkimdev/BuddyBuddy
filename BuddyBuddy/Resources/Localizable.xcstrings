@@ -477,6 +477,23 @@
         }
       }
     },
+    "Playground" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Playground"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드"
+          }
+        }
+      }
+    },
     "PlaygroundChangeAdmin" : {
       "extractionState" : "manual",
       "localizations" : {

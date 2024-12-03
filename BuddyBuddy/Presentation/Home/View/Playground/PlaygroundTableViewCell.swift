@@ -14,6 +14,7 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 8
+        view.backgroundColor = .white
         return view
     }()
     private let corverImgView: UIImageView = {
@@ -21,6 +22,7 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
         view.contentMode = .scaleAspectFill
         view.layer.cornerRadius = 8
         view.clipsToBounds = true
+        view.backgroundColor = .gray2
         return view
     }()
     private let titleLable: UILabel = {
@@ -40,9 +42,14 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
         var config = UIButton.Configuration.plain()
         
         config.image = UIImage(systemName: "ellipsis")
+        config.baseForegroundColor = .black
         view.configuration = config
         return view
     }()
+    
+    override func setBackground() {
+        contentView.backgroundColor = .gray3
+    }
     
     override func setHierarchy() {
         contentView.addSubview(containerView)
@@ -59,7 +66,7 @@ final class PlaygroundTableViewCell: BaseTableViewCell {
         }
         corverImgView.snp.makeConstraints { make in
             make.centerY.equalToSuperview()
-            make.leading.equalToSuperview()
+            make.leading.equalToSuperview().inset(8)
             make.size.equalTo(44)
         }
         titleLable.snp.makeConstraints { make in

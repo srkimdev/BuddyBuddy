@@ -19,6 +19,10 @@ final class PlaygroundBottomView: BaseView {
         icon: UIImage(systemName: "questionmark.circle")
     )
     
+    override func setView() {
+        backgroundColor = .clear
+    }
+    
     override func setHierarchy() {
         [addButton, helpButton].forEach {
             addSubview($0)

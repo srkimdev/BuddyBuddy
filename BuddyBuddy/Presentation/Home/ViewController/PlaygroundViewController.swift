@@ -17,6 +17,8 @@ final class PlaygroundViewController: BaseViewController {
     
     private let titleLabel: UILabel = {
         let view = UILabel()
+        view.text = "Playground".localized()
+        view.font = .title1
         return view
     }()
     private let playgroundTableView: UITableView = {
@@ -25,6 +27,9 @@ final class PlaygroundViewController: BaseViewController {
             PlaygroundTableViewCell.self,
             forCellReuseIdentifier: PlaygroundTableViewCell.identifier
         )
+        view.backgroundColor = .clear
+        view.rowHeight = 72
+        view.separatorStyle = .none
         return view
     }()
     private let bottomView: PlaygroundBottomView = PlaygroundBottomView()
@@ -67,6 +72,10 @@ final class PlaygroundViewController: BaseViewController {
             .disposed(by: disposeBag)
         
         // TODO: Alert 추가
+    }
+    
+    override func setView() {
+        view.backgroundColor = .gray3
     }
     
     override func setHierarchy() {
