@@ -67,12 +67,15 @@ final class DMListViewController: BaseNavigationViewController {
         }
     }
     
+    override func setNavigation() {
+        
+    }
+    
     override func bind() {
-        let viewdidLoadTrigger = Observable.just(())
         let toDMChattingTrigger = PublishSubject<DMListInfo>()
         
         let input = DMListViewModel.Input(
-            viewWillAppearTrigger: viewdidLoadTrigger,
+            viewWillAppearTrigger: rx.viewWillAppear,
             toDMChatting: toDMChattingTrigger
         )
         let output = vm.transform(input: input)

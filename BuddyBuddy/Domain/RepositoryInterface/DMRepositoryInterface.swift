@@ -17,10 +17,9 @@ protocol DMRepositoryInterface {
         roomID: String
     ) -> Single<Result<[DMHistoryString], Error>>
     
-    func fetchDMNoRead(
+    func fetchDMUnread(
         playgroundID: String,
-        roomID: String,
-        after: String
+        roomID: String
     ) -> Single<Result<DMUnRead, Error>>
     
     func sendDM(
@@ -41,4 +40,6 @@ protocol DMRepositoryInterface {
     ) -> Single<Result<DMHistory, Error>> 
     
     func fetchDMHistoryTable(roomID: String) -> Single<Result<[DMHistory], Error>>
+    
+    func findRoomIDFromUser(userID: String) -> (String, String)
 }

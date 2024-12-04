@@ -43,13 +43,11 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     
     func fetchDMUnRead(
         playgroundID: String,
-        roomID: String,
-        after: String
+        roomID: String
     ) -> Single<Result<DMUnRead, Error>> {
-        return dmRepositoryInterface.fetchDMNoRead(
+        return dmRepositoryInterface.fetchDMUnread(
             playgroundID: playgroundID,
-            roomID: roomID,
-            after: after
+            roomID: roomID
         )
     }
     
@@ -101,5 +99,9 @@ final class DefaultDMUseCase: DMUseCaseInterface {
                 self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
             }
             .asObservable()
+    }
+    
+    func findRoomIDFromUser(userID: String) -> (String, String) {
+        return self.dmRepositoryInterface.findRoomIDFromUser(userID: userID)
     }
 }

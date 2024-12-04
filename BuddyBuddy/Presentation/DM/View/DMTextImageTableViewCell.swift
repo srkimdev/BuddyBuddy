@@ -53,6 +53,7 @@ final class DMTextImageTableViewCell: BaseTableViewCell {
     private let chatTime: UILabel = {
         let view = UILabel()
         view.font = .caption
+        view.textColor = .gray1
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()

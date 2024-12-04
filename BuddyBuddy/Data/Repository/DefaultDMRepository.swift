@@ -62,16 +62,18 @@ final class DefaultDMRepository: DMRepositoryInterface {
         }
     }
     
-    func fetchDMNoRead(
+    func fetchDMUnread(
         playgroundID: String,
-        roomID: String,
-        after: String
+        roomID: String
     ) -> RxSwift.Single<Result<DMUnRead, Error>> {
+        let chatHistory = realmRepository.readAllItem().filter {
+            $0.roomID == roomID
+        }
         return networkService.callRequest(
             router: DMRouter.dmUnRead(
                 playgroundID: playgroundID,
                 roomID: roomID,
-                after: after
+                after: chatHistory.last?.createdAt ?? ""
             ),
             responseType: DMUnReadDTO.self)
         .map { result in
@@ -222,5 +224,10 @@ final class DefaultDMRepository: DMRepositoryInterface {
             single(.success(.success(histories)))
             return Disposables.create()
         }
+    }
+    
+    func findRoomIDFromUser(userID: String) -> (String, String) {
+        let realmResults = self.realmRepository.readAllItem().filter { $0.user?.userID == userID }
+        return (realmResults.first?.roomID ?? "", realmResults.first?.user?.nickname ?? "")
     }
 }

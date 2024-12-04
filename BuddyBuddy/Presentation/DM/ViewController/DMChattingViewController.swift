@@ -17,6 +17,7 @@ final class DMChattingViewController: BaseNavigationViewController {
     private let vm: DMChattingViewModel
     private let imagePicker = BehaviorSubject<[UIImage]>(value: [])
     private lazy var datasource = createDataSource()
+    private var dmListInfo: DMListInfo?
     
     private let dmChattingTableView: UITableView = {
         let view = UITableView()
@@ -229,6 +230,12 @@ final class DMChattingViewController: BaseNavigationViewController {
                 )
             ) { (_, element, cell) in
                 cell.designCell(element)
+            }
+            .disposed(by: disposeBag)
+        
+        output.dmListInfo
+            .drive(with: self) { owner, value in
+                owner.navigationItem.title = value
             }
             .disposed(by: disposeBag)
         

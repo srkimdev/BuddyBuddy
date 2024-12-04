@@ -41,7 +41,7 @@ final class DMListViewModel: ViewModelType {
         input.viewWillAppearTrigger
             .flatMapLatest {
                 self.dmUseCase.fetchDMList(
-                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4"
+                    playgroundID: UserDefaultsManager.playgroundID
                 ).asObservable()
             }
             .flatMap { result -> Observable<[DMListInfo]> in
@@ -50,14 +50,13 @@ final class DMListViewModel: ViewModelType {
                     let dmListInfoRequests = dmLists.map { dmList in
                         Observable.zip(
                             self.dmUseCase.fetchDMHistory(
-                                playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                                playgroundID: UserDefaultsManager.playgroundID,
                                 roomID: dmList.roomID
                             )
                             .asObservable(),
                             self.dmUseCase.fetchDMUnRead(
-                                playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.roomID,
-                                after: ""
+                                playgroundID: UserDefaultsManager.playgroundID,
+                                roomID: dmList.roomID
                             )
                             .asObservable()
                         )

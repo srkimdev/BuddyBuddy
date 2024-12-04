@@ -149,6 +149,7 @@ final class HomeViewController: BaseNavigationViewController {
                     print(value)
                     KeyChainManager.shared.saveAccessToken(value.token.accessToken)
                     KeyChainManager.shared.saveRefreshToken(value.token.refreshToken)
+                    UserDefaultsManager.playgroundID = "70b565b8-9ca1-483f-b812-15d3e57b5cf4"
                 case .failure(let error):
                     print(error)
                 }

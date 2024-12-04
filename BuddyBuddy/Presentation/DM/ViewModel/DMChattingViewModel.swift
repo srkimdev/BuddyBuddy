@@ -15,16 +15,18 @@ final class DMChattingViewModel: ViewModelType {
     
     private let coordinator: DMCoordinator
     private let dmUseCase: DMUseCaseInterface
-    private let dmListInfo: DMListInfo
+    private let dmChatState: DMChatState
+    private var roomID: String?
+    private var userName: String?
     
     init(
         coordinator: DMCoordinator,
         dmUseCase: DMUseCaseInterface,
-        dmListInfo: DMListInfo
+        dmChatState: DMChatState
     ) {
         self.coordinator = coordinator
         self.dmUseCase = dmUseCase
-        self.dmListInfo = dmListInfo
+        self.dmChatState = dmChatState
     }
     
     deinit {
@@ -45,19 +47,35 @@ final class DMChattingViewModel: ViewModelType {
         let removeChattingBarTextAndImage: Driver<Void>
         let plusBtnTapped: Driver<Void>
         let imagePicker: Driver<[UIImage]>
+        let dmListInfo: Driver<String>
     }
     
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[ChatSection<DMHistory>]>()
         let scrollToDown = PublishSubject<Void>()
         let removeChattingBarText = PublishSubject<Void>()
+        let dmListInfoSubject = BehaviorRelay<String>(value: userName ?? "")
         
         input.viewWillAppearTrigger
-            .flatMap {
-                return self.dmUseCase.fetchDMHistory(
-                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                    roomID: self.dmListInfo.roomID
-                )
+            .withUnretained(self)
+            .flatMap { (owner, _) in
+                switch owner.dmChatState {
+                case .fromList(let dmListInfo):
+                    owner.roomID = dmListInfo.roomID
+                    owner.userName = dmListInfo.userName
+                    return self.dmUseCase.fetchDMHistory(
+                        playgroundID: UserDefaultsManager.playgroundID,
+                        roomID: dmListInfo.roomID
+                    )
+                case .fromProfile(let userID):
+                    let dmListInfo = self.dmUseCase.findRoomIDFromUser(userID: userID)
+                    owner.roomID = dmListInfo.0
+                    owner.userName = dmListInfo.1
+                    return self.dmUseCase.fetchDMHistory(
+                        playgroundID: UserDefaultsManager.playgroundID,
+                        roomID: dmListInfo.0
+                    )
+                }
             }
             .bind(with: self) { owner, response in
                 switch response {
@@ -66,15 +84,16 @@ final class DMChattingViewModel: ViewModelType {
                     
                     updateDMListTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
+                    dmListInfoSubject.accept(owner.userName ?? "")
                     
-                    owner.dmUseCase.connectSocket(roomID: owner.dmListInfo.roomID)
+                    owner.dmUseCase.connectSocket(roomID: owner.roomID ?? "")
                 case .failure(let error):
                     print(error)
                 }
             }
             .disposed(by: disposeBag)
         
-        self.dmUseCase.observeMessage(roomID: self.dmListInfo.roomID)
+        self.dmUseCase.observeMessage(roomID: roomID ?? "")
             .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
@@ -95,8 +114,8 @@ final class DMChattingViewModel: ViewModelType {
             ))
             .flatMap { (text, images) -> Single<Result<[DMHistory], Error>> in
                 return self.dmUseCase.sendDM(
-                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                    roomID: self.dmListInfo.roomID,
+                    playgroundID: UserDefaultsManager.playgroundID,
+                    roomID: self.roomID ?? "",
                     message: text,
                     files: self.imageToData(imageArray: images)
                 )
@@ -122,7 +141,8 @@ final class DMChattingViewModel: ViewModelType {
             scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
             removeChattingBarTextAndImage: removeChattingBarText.asDriver(onErrorJustReturn: ()),
             plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
-            imagePicker: input.imagePicker.asDriver(onErrorJustReturn: [])
+            imagePicker: input.imagePicker.asDriver(onErrorJustReturn: []),
+            dmListInfo: dmListInfoSubject.asDriver(onErrorDriveWith: .empty())
         )
     }
 }
