@@ -68,7 +68,7 @@ final class DMListViewController: BaseNavigationViewController {
     }
     
     override func setNavigation() {
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: DMNavigationView())
     }
     
     override func bind() {

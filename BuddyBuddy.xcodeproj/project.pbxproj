@@ -208,6 +208,7 @@
 		DCB9ABD22CFF1E09006845CF /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = DCB9ABD12CFF1E09006845CF /* Nuke */; };
 		DCB9ABD42CFF1E09006845CF /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCB9ABD32CFF1E09006845CF /* NukeUI */; };
 		DCB9ABD62CFF530A006845CF /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */; };
+		DCB9ABD82D00AAF5006845CF /* DMNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABD72D00AAF4006845CF /* DMNavigationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -402,6 +403,7 @@
 		DCB9ABC72CFEDD23006845CF /* ChannelRealmTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelRealmTable.swift; sourceTree = "<group>"; };
 		DCB9ABC92CFEDDFE006845CF /* UserRealmTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealmTable.swift; sourceTree = "<group>"; };
 		DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		DCB9ABD72D00AAF4006845CF /* DMNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DMNavigationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1058,6 +1060,7 @@
 				C0A35E0C2CF8AAEC00B41E60 /* ToastMessageLabel.swift */,
 				C9E818CB2CF5B02200034660 /* BuddyAlert.swift */,
 				DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */,
+				DCB9ABD72D00AAF4006845CF /* DMNavigationView.swift */,
 			);
 			path = Custom;
 			sourceTree = "<group>";
@@ -1482,6 +1485,7 @@
 				DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */,
 				C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */,
 				C91F67382CEE452500C84265 /* UserProfile.swift in Sources */,
+				DCB9ABD82D00AAF5006845CF /* DMNavigationView.swift in Sources */,
 				C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */,
 				DC9E80E52CFC552900CF0A54 /* UserInfoString.swift in Sources */,
 				C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */,
