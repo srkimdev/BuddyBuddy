@@ -21,8 +21,9 @@ final class HomeViewModel: ViewModelType {
     private let coordinator: HomeCoordinator
     private let channelUseCase: ChannelUseCaseInterface
     private let channelList = BehaviorRelay<MyChannelList>(value: [])
-    private let showToastMessage = PublishRelay<Void>()
-    private let playground: Playground
+    private let navigationTitle = PublishRelay<String>()
+    private let showToastMessage = PublishRelay<String>()
+//    private let playground: Playground
     
     init(
         coordinator: HomeCoordinator,
@@ -30,10 +31,10 @@ final class HomeViewModel: ViewModelType {
     ) {
         self.coordinator = coordinator
         self.channelUseCase = channelUseCase
-        self.playground = Playground(
-            id: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-            title: "Ted Study"
-        )
+//        self.playground = Playground(
+//            id: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+//            title: "Ted Study"
+//        )
     }
     
     struct Input {
@@ -48,25 +49,24 @@ final class HomeViewModel: ViewModelType {
     struct Output {
         let navigationTitle: Driver<String>
         let updateChannelState: Driver<[ChannelSectionModel]>
-        let showToastMessage: Driver<Void>
+        let showToastMessage: Driver<String>
     }
     
     func transform(input: Input) -> Output {
-        let navigationTitle = PublishRelay<String>()
         let updateChannelState = BehaviorRelay<[ChannelSectionModel]>(value: [])
         let isChannelFold = BehaviorRelay(value: false)
         
-        input.viewWillAppearTrigger
-            .bind(with: self) { owner, _ in
-                navigationTitle.accept(owner.playground.title)
-            }
-            .disposed(by: disposeBag)
+//        input.viewWillAppearTrigger
+//            .bind(with: self) { owner, _ in
+//                navigationTitle.accept(UserDefaultsManager.playgroundID.title)
+//            }
+//            .disposed(by: disposeBag)
         
         input.viewWillAppearTrigger
             .flatMap { [weak self] _ -> Single<Result<MyChannelList, any Error>> in
                 // TODO: faliure 반환하며 early exit
                 guard let self else { return Single.just(.success([])) }
-                return channelUseCase.fetchMyChannelList(playgroundID: playground.id)
+                return channelUseCase.fetchMyChannelList(playgroundID: UserDefaultsManager.playgroundID)
             }
             .bind(with: self) { owner, result in
                 switch result {
@@ -89,7 +89,7 @@ final class HomeViewModel: ViewModelType {
                     )))
                 }
                 return channelUseCase.fetchUnreadCountOfChannel(
-                    playgroundID: playground.id,
+                    playgroundID: UserDefaultsManager.playgroundID,
                     channelID: channel.channelID,
                     after: nil
                 )
@@ -179,13 +179,22 @@ final class HomeViewModel: ViewModelType {
 }
 
 extension HomeViewModel: ModalDelegate {
-    func dismissModal() {
-        channelUseCase.fetchMyChannelList(playgroundID: playground.id)
+    func dismissModal(msg: String) {
+        showToastMessage.accept(msg)
+        fetchChannelList()
+    }
+    
+    func dismissModal(title: String) {
+        navigationTitle.accept(title)
+        fetchChannelList()
+    }
+    
+    func fetchChannelList() {
+        channelUseCase.fetchMyChannelList(playgroundID: UserDefaultsManager.playgroundID)
             .subscribe(with: self) { owner, result in
                 switch result {
                 case .success(let value):
                     owner.channelList.accept(value)
-                    owner.showToastMessage.accept(())
                 case .failure(let error):
                     print(error)
                 }

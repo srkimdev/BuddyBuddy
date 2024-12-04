@@ -12,6 +12,7 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
     
+    weak var delegate: ModalDelegate?
     private lazy var vc = PlaygroundViewController(vm: vm)
     private lazy var vm = PlaygroundViewModel(
         coordinator: self,
@@ -24,6 +25,7 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
     
     func start() {
         vc.modalPresentationStyle = .overFullScreen
+        vm.delegate = delegate
         
         navigationController.present(
             vc,

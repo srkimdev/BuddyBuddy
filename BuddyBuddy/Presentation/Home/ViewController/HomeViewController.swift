@@ -100,7 +100,6 @@ final class HomeViewController: BaseNavigationViewController {
     }()
     private let toastMsgLabel: ToastMessageLabel = {
         let view = ToastMessageLabel()
-        view.text = ToastMessage.createChannel.localized
         view.isHidden = true
         return view
     }()
@@ -116,7 +115,7 @@ final class HomeViewController: BaseNavigationViewController {
         super.viewDidLoad()
         Observable.just(())
             .flatMap {
-                let login = LoginQuery(email: "compose@coffee.com", password: "1q2w3e4rQ!")
+                let login = LoginQuery(email: "compose2@coffee.com", password: "1q2w3e4rQ!")
                 return self.service.callRequest(
                     router: LogInRouter.login(query: login),
                     responseType: LogInDTO.self
@@ -164,7 +163,8 @@ final class HomeViewController: BaseNavigationViewController {
             .disposed(by: disposeBag)
         
         output.showToastMessage
-            .drive(with: self) { owner, _ in
+            .drive(with: self) { owner, msg in
+                owner.toastMsgLabel.text = msg
                 owner.toastMsgLabel.animation()
             }
             .disposed(by: disposeBag)

@@ -116,6 +116,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     func toPlayground() {
         let coordinator = DefaultPlaygroundCoordinator(navigationController: navigationController)
         coordinator.parent = self
+        coordinator.delegate = homeVM
         childs.append(coordinator)
         coordinator.start()
     }

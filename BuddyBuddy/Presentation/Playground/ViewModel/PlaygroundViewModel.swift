@@ -16,6 +16,7 @@ final class PlaygroundViewModel: ViewModelType {
     private let useCase: PlaygroundUseCaseInterface
     private let showActionSheet = PublishRelay<Void>()
     private let actionSheetItemTapped = PublishRelay<ActionSheetType>()
+    weak var delegate: ModalDelegate?
     
     init(
         coordinator: PlaygroundCoordinator,
@@ -40,7 +41,6 @@ final class PlaygroundViewModel: ViewModelType {
     
     func transform(input: Input) -> Output {
         let playgroundList = PublishRelay<PlaygroundList>()
-        let playgroundID = BehaviorRelay<String>(value: "")
         let showExitAlert = PublishRelay<Void>()
         let showDeleteAlert = PublishRelay<Void>()
         
@@ -61,9 +61,9 @@ final class PlaygroundViewModel: ViewModelType {
         
         input.selectedPlayground
             .bind(with: self) { owner, playground in
-                // TODO: UserDefaultsManager playgroundID 갱신
-                playgroundID.accept(playground.workspaceID)
+                UserDefaultsManager.playgroundID = playground.workspaceID
                 owner.coordinator.dismissVC()
+                owner.delegate?.dismissModal(title: playground.name)
             }
             .disposed(by: disposeBag)
         
