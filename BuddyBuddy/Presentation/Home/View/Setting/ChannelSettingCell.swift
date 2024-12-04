@@ -44,11 +44,11 @@ final class ChannelSettingCell: BaseTableViewCell {
         }
     }
     
-    func setProfileUI(profileImg: UIImage?, profileName: String) {
+    func setProfileUI(profileImg: Data?, profileName: String) {
         if profileImg == nil {
             profileImgView.image = UIImage(named: "BasicProfileImage")
         } else {
-            profileImgView.image = profileImg
+            profileImgView.image = profileImg?.toUIImage()
         }
         nameLabel.text = profileName
     }
