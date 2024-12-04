@@ -15,6 +15,13 @@ final class PlaygroundViewController: BaseViewController {
     private let disposeBag: DisposeBag = DisposeBag()
     private let vm: PlaygroundViewModel
     
+    private let containerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .gray3
+        view.layer.maskedCorners = [.layerMaxXMinYCorner, .layerMaxXMaxYCorner]
+        view.layer.cornerRadius = 25
+        return view
+    }()
     private let titleLabel: UILabel = {
         let view = UILabel()
         view.text = "Playground".localized()
@@ -69,16 +76,22 @@ final class PlaygroundViewController: BaseViewController {
     }
     
     override func setView() {
-        view.backgroundColor = .gray3
+        view.backgroundColor = .black.withAlphaComponent(0.5)
     }
     
     override func setHierarchy() {
+        view.addSubview(containerView)
+        
         [titleLabel, playgroundTableView, bottomView].forEach {
-            view.addSubview($0)
+            containerView.addSubview($0)
         }
     }
     
     override func setConstraints() {
+        containerView.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.8)
+            make.verticalEdges.leading.equalToSuperview()
+        }
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(safeArea).offset(8)
             make.leading.equalToSuperview().inset(16

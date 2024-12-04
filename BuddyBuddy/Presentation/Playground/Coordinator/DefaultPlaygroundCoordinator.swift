@@ -23,7 +23,7 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
     }
     
     func start() {
-        vc.modalPresentationStyle = .fullScreen
+        vc.modalPresentationStyle = .overFullScreen
         
         navigationController.present(
             vc,
