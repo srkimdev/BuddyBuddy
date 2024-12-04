@@ -19,7 +19,7 @@ final class SearchViewController: BaseNavigationViewController {
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.searchBar.placeholder = "Search".localized()
-        controller.searchBar.tintColor = .black
+        controller.searchBar.tintColor = .secondary
         controller.searchBar.sizeToFit()
         controller.searchBar.setBackgroundImage(
             UIImage(),
