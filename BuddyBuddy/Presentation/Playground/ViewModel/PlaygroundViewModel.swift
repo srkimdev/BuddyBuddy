@@ -86,6 +86,8 @@ final class PlaygroundViewModel: ViewModelType {
                     break
                 case .delete:
                     showDeleteAlert.accept(())
+                case .cancel:
+                    break
                 }
             }
             .disposed(by: disposeBag)

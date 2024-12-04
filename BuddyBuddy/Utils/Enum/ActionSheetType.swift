@@ -12,4 +12,20 @@ enum ActionSheetType: CaseIterable {
     case exit
     case changeAdmin
     case delete
+    case cancel
+    
+    var title: String {
+        switch self {
+        case .edit:
+            "PlaygroundEdit".localized()
+        case .exit:
+            "PlaygroundExit".localized()
+        case .changeAdmin:
+            "PlaygroundChangeAdmin".localized()
+        case .delete:
+            "PlaygroundDelete".localized()
+        case .cancel:
+            "Cancel".localized()
+        }
+    }
 }

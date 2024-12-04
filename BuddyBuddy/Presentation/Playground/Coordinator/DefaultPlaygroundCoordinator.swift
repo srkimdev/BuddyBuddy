@@ -50,21 +50,9 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
 extension DefaultPlaygroundCoordinator {
     func setActionSheet(_ actionSheet: inout UIAlertController) {
         for type in ActionSheetType.allCases {
-            var title = ""
-            switch type {
-            case .edit:
-                title = ActionSheetTitle.edit.localized
-            case .exit:
-                title = ActionSheetTitle.exit.localized
-            case .changeAdmin:
-                title = ActionSheetTitle.changeAdmin.localized
-            case .delete:
-                title = ActionSheetTitle.delete.localized
-            }
-            
             let action = UIAlertAction(
-                title: title,
-                style: .default
+                title: type.title,
+                style: (type == .cancel) ? .cancel : (type == .delete) ? .destructive : .default
             ) { [weak self] _ in
                 guard let self else { return }
                 vm.actionSheetTrigger(type)

@@ -17,7 +17,6 @@
 		C02D93C82CFC6DAB003471B9 /* PlaygroundViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */; };
 		C02D93CA2CFC715F003471B9 /* ActionSheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93C92CFC715F003471B9 /* ActionSheetType.swift */; };
 		C0327C7C2CE5870A00AEAEE1 /* UIView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */; };
-		C04398102CFCA48100CCC4A1 /* ActionSheetTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C043980F2CFCA48100CCC4A1 /* ActionSheetTitle.swift */; };
 		C04398202CFF40AE00CCC4A1 /* PlaygroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C043981F2CFF40AE00CCC4A1 /* PlaygroundCoordinator.swift */; };
 		C04398222CFF40C200CCC4A1 /* DefaultPlaygroundCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C04398212CFF40C200CCC4A1 /* DefaultPlaygroundCoordinator.swift */; };
 		C079AEF42CEC827F00B34692 /* ChannelUseCaseInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */; };
@@ -213,7 +212,6 @@
 		C02D93C72CFC6DAB003471B9 /* PlaygroundViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewModel.swift; sourceTree = "<group>"; };
 		C02D93C92CFC715F003471B9 /* ActionSheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetType.swift; sourceTree = "<group>"; };
 		C0327C7B2CE5870A00AEAEE1 /* UIView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+.swift"; sourceTree = "<group>"; };
-		C043980F2CFCA48100CCC4A1 /* ActionSheetTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetTitle.swift; sourceTree = "<group>"; };
 		C043981F2CFF40AE00CCC4A1 /* PlaygroundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundCoordinator.swift; sourceTree = "<group>"; };
 		C04398212CFF40C200CCC4A1 /* DefaultPlaygroundCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultPlaygroundCoordinator.swift; sourceTree = "<group>"; };
 		C079AEF32CEC827F00B34692 /* ChannelUseCaseInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelUseCaseInterface.swift; sourceTree = "<group>"; };
@@ -1158,7 +1156,6 @@
 				C0A35E0E2CF8CB0B00B41E60 /* ToastMessage.swift */,
 				C90FEE752CF5D065008819AF /* AlertLiteral.swift */,
 				C02D93C92CFC715F003471B9 /* ActionSheetType.swift */,
-				C043980F2CFCA48100CCC4A1 /* ActionSheetTitle.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1442,7 +1439,6 @@
 				C91F672E2CEE427600C84265 /* UserRepositoryInterface.swift in Sources */,
 				C02D93BF2CFC4EBA003471B9 /* LeftAlignButton.swift in Sources */,
 				C9C27A042CDA315500243744 /* AppDelegate.swift in Sources */,
-				C04398102CFCA48100CCC4A1 /* ActionSheetTitle.swift in Sources */,
 				C9F20F5C2CDB6DB60043351E /* TabBarCoordinator.swift in Sources */,
 				C9E44AA52CEE38A30044CD5C /* UserRouter.swift in Sources */,
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
