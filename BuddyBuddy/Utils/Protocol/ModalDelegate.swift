@@ -8,6 +8,5 @@
 import Foundation
 
 protocol ModalDelegate: AnyObject {
-    func dismissModal(msg: String)
-    func dismissModal(title: String)
+    func dismissModal(message: String?)
 }

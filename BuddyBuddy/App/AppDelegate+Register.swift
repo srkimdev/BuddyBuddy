@@ -37,6 +37,11 @@ extension AppDelegate {
         )
         
         DIContainer.register(
+            type: PlaygroundUseCaseInterface.self,
+            DefaultPlaygroundUseCase()
+        )
+        
+        DIContainer.register(
             type: UserRepositoryInterface.self,
             DefaultUserRepository(networkService: networkService)
         )

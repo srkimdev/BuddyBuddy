@@ -13,13 +13,18 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
     var navigationController: UINavigationController
     
     weak var delegate: ModalDelegate?
+    @Dependency(PlaygroundUseCaseInterface.self)
+    private var playgroundUseCase: PlaygroundUseCaseInterface
     private lazy var vc = PlaygroundViewController(vm: vm)
     private lazy var vm = PlaygroundViewModel(
         coordinator: self,
-        useCase: DefaultPlaygroundUseCase()
+        useCase: playgroundUseCase
     )
     
-    init(navigationController: UINavigationController) {
+    init(
+        navigationController: UINavigationController,
+        playgroundUseCase: PlaygroundUseCaseInterface
+    ) {
         self.navigationController = navigationController
     }
     

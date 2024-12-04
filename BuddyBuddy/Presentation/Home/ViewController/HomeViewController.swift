@@ -127,6 +127,7 @@ final class HomeViewController: BaseNavigationViewController {
                     print(value)
                     KeyChainManager.shared.saveAccessToken(value.token.accessToken)
                     KeyChainManager.shared.saveRefreshToken(value.token.refreshToken)
+                    UserDefaultsManager.userID = value.userID
                 case .failure(let error):
                     print(error)
                 }

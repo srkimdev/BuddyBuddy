@@ -63,7 +63,7 @@ final class PlaygroundViewModel: ViewModelType {
             .bind(with: self) { owner, playground in
                 UserDefaultsManager.playgroundID = playground.workspaceID
                 owner.coordinator.dismissVC()
-                owner.delegate?.dismissModal(title: playground.name)
+                owner.delegate?.dismissModal(message: nil)
             }
             .disposed(by: disposeBag)
         

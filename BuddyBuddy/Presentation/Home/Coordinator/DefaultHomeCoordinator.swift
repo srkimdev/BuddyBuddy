@@ -10,13 +10,16 @@ import UIKit
 final class DefaultHomeCoordinator: HomeCoordinator {
     @Dependency(ChannelUseCaseInterface.self)
     private var channelUseCase: ChannelUseCaseInterface
+    @Dependency(PlaygroundUseCaseInterface.self)
+    private var playgroundUseCase: PlaygroundUseCaseInterface
     var parent: Coordinator?
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
     
     private lazy var homeVM = HomeViewModel(
         coordinator: self,
-        channelUseCase: channelUseCase
+        channelUseCase: channelUseCase, 
+        playgroundUseCase: playgroundUseCase
     )
     
     init(navigationController: UINavigationController) {
@@ -114,7 +117,10 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toPlayground() {
-        let coordinator = DefaultPlaygroundCoordinator(navigationController: navigationController)
+        let coordinator = DefaultPlaygroundCoordinator(
+            navigationController: navigationController, 
+            playgroundUseCase: playgroundUseCase
+        )
         coordinator.parent = self
         coordinator.delegate = homeVM
         childs.append(coordinator)

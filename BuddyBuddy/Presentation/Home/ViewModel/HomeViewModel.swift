@@ -10,31 +10,24 @@ import Foundation
 import RxCocoa
 import RxSwift
 
-struct Playground {
-    let id: String
-    let title: String
-}
-
 final class HomeViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
     private let coordinator: HomeCoordinator
     private let channelUseCase: ChannelUseCaseInterface
+    private let playgroundUseCase: PlaygroundUseCaseInterface
     private let channelList = BehaviorRelay<MyChannelList>(value: [])
     private let navigationTitle = PublishRelay<String>()
     private let showToastMessage = PublishRelay<String>()
-//    private let playground: Playground
     
     init(
         coordinator: HomeCoordinator,
-        channelUseCase: ChannelUseCaseInterface
+        channelUseCase: ChannelUseCaseInterface,
+        playgroundUseCase: PlaygroundUseCaseInterface
     ) {
         self.coordinator = coordinator
         self.channelUseCase = channelUseCase
-//        self.playground = Playground(
-//            id: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-//            title: "Ted Study"
-//        )
+        self.playgroundUseCase = playgroundUseCase
     }
     
     struct Input {
@@ -56,11 +49,20 @@ final class HomeViewModel: ViewModelType {
         let updateChannelState = BehaviorRelay<[ChannelSectionModel]>(value: [])
         let isChannelFold = BehaviorRelay(value: false)
         
-//        input.viewWillAppearTrigger
-//            .bind(with: self) { owner, _ in
-//                navigationTitle.accept(UserDefaultsManager.playgroundID.title)
-//            }
-//            .disposed(by: disposeBag)
+        input.viewWillAppearTrigger
+            .withUnretained(self)
+            .flatMap { (owner, _) in
+                owner.playgroundUseCase.fetchCurrentPlayground()
+            }
+            .bind(with: self) { owner, result in
+                switch result {
+                case .success(let value):
+                    owner.navigationTitle.accept(value.name)
+                case .failure(let error):
+                    print(error)
+                }
+            }
+            .disposed(by: disposeBag)
         
         input.viewWillAppearTrigger
             .flatMap { [weak self] _ -> Single<Result<MyChannelList, any Error>> in
@@ -72,6 +74,7 @@ final class HomeViewModel: ViewModelType {
                 switch result {
                 case .success(let value):
                     owner.channelList.accept(value)
+                    print("🌞")
                 case .failure(let error):
                     print(error)
                 }
@@ -179,17 +182,25 @@ final class HomeViewModel: ViewModelType {
 }
 
 extension HomeViewModel: ModalDelegate {
-    func dismissModal(msg: String) {
-        showToastMessage.accept(msg)
-        fetchChannelList()
-    }
-    
-    func dismissModal(title: String) {
-        navigationTitle.accept(title)
-        fetchChannelList()
-    }
-    
-    func fetchChannelList() {
+    func dismissModal(message: String?) {
+        playgroundUseCase.fetchCurrentPlayground()
+            .subscribe(with: self) { owner, result in
+                switch result {
+                case .success(let value):
+                    owner.navigationTitle.accept(value.name)
+                    if let message {
+                        owner.showToastMessage.accept(message)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
+            } onFailure: { _, error in
+                print(error)
+            } onDisposed: { _ in
+                print("disposed")
+            }
+            .disposed(by: disposeBag)
+        
         channelUseCase.fetchMyChannelList(playgroundID: UserDefaultsManager.playgroundID)
             .subscribe(with: self) { owner, result in
                 switch result {
@@ -204,6 +215,5 @@ extension HomeViewModel: ModalDelegate {
                 print("disposed")
             }
             .disposed(by: disposeBag)
-
     }
 }

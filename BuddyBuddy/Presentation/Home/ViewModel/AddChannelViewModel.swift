@@ -86,7 +86,7 @@ final class AddChannelViewModel: ViewModelType {
                 switch result {
                 case .success(let response):
                     owner.coordinator.dismissVC()
-                    owner.delegate?.dismissModal(msg: ToastMessage.createChannel.localized)
+                    owner.delegate?.dismissModal(message: ToastMessage.createChannel.localized)
                 case .failure(let error):
                     print(error)
                 }
