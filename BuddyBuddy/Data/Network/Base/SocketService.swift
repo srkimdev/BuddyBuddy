@@ -16,15 +16,16 @@ final class SocketService: SocketProtocol {
     private var url = URL(string: APIKey.baseURL)
     
     private let decoder = JSONDecoder()
-    let eventRelay = PublishRelay<DMHistoryDTO>()
+    private let dmEventRelay = PublishRelay<DMHistoryDTO>()
+    private let channelEventRelay = PublishRelay<ChannelHistoryResponseDTO>()
     
-    func updateURL(roomID: String) {
+    func updateURL(ID: String) {
         guard let url else { return }
         manager = SocketManager(
             socketURL: url,
             config: [.log(true), .compress]
         )
-        socket = manager.socket(forNamespace: "/ws-dm-\(roomID)")
+        socket = manager.socket(forNamespace: "/ws-dm-\(ID)")
         socket.on(clientEvent: .connect) { data, ack in
             print("SOCKET IS CONNECTED", data, ack)
         }
@@ -33,7 +34,8 @@ final class SocketService: SocketProtocol {
             print("SOCKET IS DISCONNECTED", data, ack)
         }
         
-        receiveMessage()
+        receiveDMMessage()
+        receiveChannelMessage()
     }
     
     func establishConnection() {
@@ -44,7 +46,7 @@ final class SocketService: SocketProtocol {
         socket.disconnect()
     }
     
-    func receiveMessage() {
+    func receiveDMMessage() {
         socket.on("dm") { [weak self] datadict, _ in
             guard let self, let data = datadict[0] as? [String: Any] else { return }
             do {
@@ -53,14 +55,34 @@ final class SocketService: SocketProtocol {
                     DMHistoryDTO.self,
                     from: jsonData
                 )
-                eventRelay.accept(result)
+                dmEventRelay.accept(result)
             } catch {
                 print(error)
             }
         }
     }
     
-    func observeMessage() -> PublishRelay<DMHistoryDTO> {
-        return eventRelay
+    func receiveChannelMessage() {
+        socket.on("channel") { [weak self] datadict, _ in
+            guard let self, let data = datadict[0] as? [String: Any] else { return }
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: data)
+                let result = try self.decoder.decode(
+                    ChannelHistoryResponseDTO.self,
+                    from: jsonData
+                )
+                channelEventRelay.accept(result)
+            } catch {
+                print(error)
+            }
+        }
+    }
+    
+    func observeDMMessage() -> PublishRelay<DMHistoryDTO> {
+        return dmEventRelay
+    }
+    
+    func observeChannelMessage() -> PublishRelay<ChannelHistoryResponseDTO> {
+        return channelEventRelay
     }
 }

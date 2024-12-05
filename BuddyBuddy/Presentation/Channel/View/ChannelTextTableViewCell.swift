@@ -1,15 +1,15 @@
 //
-//  TextTableViewCell.swift
+//  ChannelTextTableViewCell.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/28/24.
+//  Created by 김성률 on 12/3/24.
 //
 
 import UIKit
 
 import SnapKit
 
-final class DMTextTableViewCell: BaseTableViewCell {
+final class ChannelTextTableViewCell: BaseTableViewCell {
     private let profileImage: ProfileImageView = {
         let view = ProfileImageView()
         view.layer.cornerRadius = 10
@@ -52,22 +52,20 @@ final class DMTextTableViewCell: BaseTableViewCell {
         userName.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(15)
+        }
+        chatTime.snp.makeConstraints { make in
+            make.centerY.equalTo(userName)
+            make.leading.equalTo(userName.snp.trailing).offset(16)
         }
         speechBubble.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.bottom.equalToSuperview().inset(8)
         }
-        chatTime.snp.makeConstraints { make in
-            make.bottom.equalTo(speechBubble.snp.bottom)
-            make.leading.equalTo(speechBubble.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualToSuperview().inset(30)
-        }
     }
     
-    func designCell(_ transition: DMHistory) {
+    func designCell(_ transition: ChannelHistory) {
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         

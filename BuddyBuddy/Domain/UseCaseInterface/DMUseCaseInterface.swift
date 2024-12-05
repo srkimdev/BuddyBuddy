@@ -19,8 +19,7 @@ protocol DMUseCaseInterface {
     
     func fetchDMUnRead(
         playgroundID: String,
-        roomID: String,
-        after: String
+        roomID: String
     ) -> Single<Result<DMUnRead, Error>>
     
     func sendDM(
@@ -35,4 +34,6 @@ protocol DMUseCaseInterface {
     func disConnectSocket()
     
     func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>>
+    
+    func findRoomIDFromUser(userID: String) -> (String, String)
 }

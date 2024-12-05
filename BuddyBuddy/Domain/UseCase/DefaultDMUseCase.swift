@@ -43,13 +43,11 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     
     func fetchDMUnRead(
         playgroundID: String,
-        roomID: String,
-        after: String
+        roomID: String
     ) -> Single<Result<DMUnRead, Error>> {
-        return dmRepositoryInterface.fetchDMNoRead(
+        return dmRepositoryInterface.fetchDMUnread(
             playgroundID: playgroundID,
-            roomID: roomID,
-            after: after
+            roomID: roomID
         )
     }
     
@@ -82,7 +80,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     }
     
     func connectSocket(roomID: String) {
-        socketRepositoryInterface.connectSocket(roomID: roomID)
+        socketRepositoryInterface.connectSocket(ID: roomID)
     }
     
     func disConnectSocket() {
@@ -90,7 +88,7 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     }
 
     func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>> {
-        return self.socketRepositoryInterface.observeMessage()
+        return self.socketRepositoryInterface.observeDMMessage()
             .flatMap { dmHistoryString in
                 self.dmRepositoryInterface.convertObjectToDMHistory(
                     roomID: roomID,
@@ -101,5 +99,9 @@ final class DefaultDMUseCase: DMUseCaseInterface {
                 self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
             }
             .asObservable()
+    }
+    
+    func findRoomIDFromUser(userID: String) -> (String, String) {
+        return self.dmRepositoryInterface.findRoomIDFromUser(userID: userID)
     }
 }

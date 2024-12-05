@@ -1,15 +1,15 @@
 //
-//  ImageTableViewCell.swift
+//  ChannelTextImageTableViewCell.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/28/24.
+//  Created by 김성률 on 12/3/24.
 //
 
 import UIKit
 
 import SnapKit
 
-final class DMImageTableViewCell: BaseTableViewCell {
+final class ChannelTextImageTableViewCell: BaseTableViewCell {
     private let profileImage: ProfileImageView = {
         let view = ProfileImageView()
         view.layer.cornerRadius = 10
@@ -18,6 +18,10 @@ final class DMImageTableViewCell: BaseTableViewCell {
     private let userName: UILabel = {
         let view = UILabel()
         view.font = .body
+        return view
+    }()
+    private let speechBubble: SpeechBubbleView = {
+        let view = SpeechBubbleView(text: "")
         return view
     }()
     private let pickerImageStackView: UIStackView = {
@@ -55,22 +59,27 @@ final class DMImageTableViewCell: BaseTableViewCell {
     }()
     private let firstImage: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .red
         return view
     }()
     private let secondImage: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .orange
         return view
     }()
     private let thirdImage: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .yellow
         return view
     }()
     private let fourthImage: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .green
         return view
     }()
     private let fifthImage: UIImageView = {
         let view = UIImageView()
+        view.backgroundColor = .blue
         return view
     }()
     
@@ -79,6 +88,7 @@ final class DMImageTableViewCell: BaseTableViewCell {
         [firstImage, secondImage, thirdImage, fourthImage, fifthImage].forEach {
             $0.image = nil
         }
+        speechBubble.content.text = nil
         topImageView.image = nil
         
         resetStackView(stackView: middleImageStackView)
@@ -91,7 +101,7 @@ final class DMImageTableViewCell: BaseTableViewCell {
     }
     
     override func setHierarchy() {
-        [profileImage, userName, pickerImageStackView, chatTime].forEach {
+        [profileImage, userName, speechBubble, pickerImageStackView, chatTime].forEach {
             contentView.addSubview($0)
         }
         [topImageView, middleImageStackView, bottomImageStackView].forEach {
@@ -108,12 +118,21 @@ final class DMImageTableViewCell: BaseTableViewCell {
         userName.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(15)
         }
-        pickerImageStackView.snp.makeConstraints { make in
+        speechBubble.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
+            make.trailing.lessThanOrEqualToSuperview().inset(92)
+        }
+        chatTime.snp.makeConstraints { make in
+            make.centerY.equalTo(userName)
+            make.leading.equalTo(userName.snp.trailing).offset(16)
+        }
+        pickerImageStackView.snp.makeConstraints { make in
+            make.top.equalTo(speechBubble.snp.bottom).offset(4)
+            make.leading.equalTo(profileImage.snp.trailing).offset(8)
+            make.trailing.equalToSuperview().inset(92)
             make.bottom.equalToSuperview().inset(8)
         }
         topImageView.snp.makeConstraints { make in
@@ -125,33 +144,29 @@ final class DMImageTableViewCell: BaseTableViewCell {
         bottomImageStackView.snp.makeConstraints { make in
             make.height.equalTo(80)
         }
-        chatTime.snp.makeConstraints { make in
-            make.leading.equalTo(pickerImageStackView.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().inset(30)
-            make.bottom.equalToSuperview().inset(8)
-        }
     }
     
-    func designCell(_ transition: DMHistory) {
+    func designCell(_ transition: ChannelHistory) {
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         
+        speechBubble.updateText(transition.content)
         profileImage.updateURL(url: transition.user.profileImage ?? "")
+        
         imageType(dataArray: transition.files)
     }
     
     private func imageType(dataArray: [Data]) {
         switch dataArray.count {
         case 1:
-            middleImageStackView.isHidden = true
-            bottomImageStackView.isHidden = true
-            
             let imageViews: [UIImageView] = [topImageView]
             for (imageView, data) in zip(imageViews, dataArray) {
                 if let image = UIImage(data: data) {
                     imageView.image = image
                 }
             }
+            middleImageStackView.isHidden = true
+            bottomImageStackView.isHidden = true
         case 2:
             [firstImage, secondImage].forEach {
                 middleImageStackView.addArrangedSubview($0)
@@ -202,20 +217,19 @@ final class DMImageTableViewCell: BaseTableViewCell {
             }
             topImageView.isHidden = true
             
-            let imageViews: [UIImageView] = [firstImage, secondImage, thirdImage, 
-                                             fourthImage, fifthImage]
+            let imageViews: [UIImageView] = [firstImage, secondImage, thirdImage, fourthImage, fifthImage]
             for (imageView, data) in zip(imageViews, dataArray) {
                 if let image = UIImage(data: data) {
                     imageView.image = image
                 }
             }
-        default: 
-            break
+        default: break
+            
         }
     }
 }
 
-extension DMImageTableViewCell {
+extension ChannelTextImageTableViewCell {
     private func resetStackView(stackView: UIStackView) {
         for subview in stackView.arrangedSubviews {
             subview.removeFromSuperview()

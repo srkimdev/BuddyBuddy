@@ -14,7 +14,7 @@ final class SpeechBubbleView: BaseView {
         let view = UIView()
         view.layer.borderWidth = 1
         view.layer.cornerRadius = 10
-        view.layer.borderColor = UIColor.lightGray.cgColor // ??
+        view.layer.borderColor = UIColor.gray1.cgColor
         return view
     }()
     let content: UILabel = {
@@ -22,8 +22,6 @@ final class SpeechBubbleView: BaseView {
         view.font = .systemFont(ofSize: 13)
         view.numberOfLines = 0
         view.lineBreakMode = .byWordWrapping
-//        view.setContentHuggingPriority(.required, for: .horizontal)
-//        view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
     
@@ -49,5 +47,4 @@ final class SpeechBubbleView: BaseView {
     func updateText(_ text: String) {
         content.text = text
     }
-    
 }

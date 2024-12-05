@@ -10,15 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct DMListInfo {
-    let profileImg: String
-    let userName: String
-    let lastText: String
-    let lastTime: String
-    let unReadCount: Int
-    let roomID: String
-}
-
 final class DMListViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -50,7 +41,7 @@ final class DMListViewModel: ViewModelType {
         input.viewWillAppearTrigger
             .flatMapLatest {
                 self.dmUseCase.fetchDMList(
-                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4"
+                    playgroundID: UserDefaultsManager.playgroundID
                 ).asObservable()
             }
             .flatMap { result -> Observable<[DMListInfo]> in
@@ -59,14 +50,13 @@ final class DMListViewModel: ViewModelType {
                     let dmListInfoRequests = dmLists.map { dmList in
                         Observable.zip(
                             self.dmUseCase.fetchDMHistory(
-                                playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                                playgroundID: UserDefaultsManager.playgroundID,
                                 roomID: dmList.roomID
                             )
                             .asObservable(),
                             self.dmUseCase.fetchDMUnRead(
-                                playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.roomID,
-                                after: ""
+                                playgroundID: UserDefaultsManager.playgroundID,
+                                roomID: dmList.roomID
                             )
                             .asObservable()
                         )

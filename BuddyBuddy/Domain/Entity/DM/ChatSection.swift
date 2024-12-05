@@ -9,20 +9,20 @@ import Foundation
 
 import RxDataSources
 
-enum ChatType {
-    case onlyText(DMHistory)
-    case onlyImage(DMHistory)
-    case TextAndImage(DMHistory)
+enum ChatType<T> {
+    case onlyText(T)
+    case onlyImage(T)
+    case TextAndImage(T)
 }
 
-struct ChatSection {
-    var items: [ChatType]
+struct ChatSection<T> {
+    var items: [ChatType<T>]
 }
 
 extension ChatSection: SectionModelType {
-    typealias Item = ChatType
+    typealias Item = ChatType<T>
 
-    init(original: ChatSection, items: [ChatType]) {
+    init(original: ChatSection, items: [ChatType<T>]) {
         self = original
         self.items = items
     }

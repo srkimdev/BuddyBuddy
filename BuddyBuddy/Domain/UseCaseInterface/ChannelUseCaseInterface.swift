@@ -28,4 +28,17 @@ protocol ChannelUseCaseInterface {
     ) -> Single<Result<Bool, Error>>
     func exitChannel(channelID: String) -> Single<Result<Void, Error>>
     func deleteChannel(channelID: String) -> Single<Result<Void, Error>>
+    func fetchChannelHistory(
+        playgroundID: String,
+        channelID: String
+    ) -> Single<Result<[ChannelHistory], Error>>
+    func sendChannel(
+        playgroundID: String,
+        channelID: String,
+        message: String,
+        files: [Data]
+    ) -> Single<Result<[ChannelHistory], Error>>
+    func connectSocket(channelID: String)
+    func disConnectSocket()
+    func observeMessage(channelID: String) -> Observable<Result<[ChannelHistory], Error>>
 }

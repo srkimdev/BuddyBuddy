@@ -10,14 +10,14 @@ import UIKit
 import SnapKit
 
 final class DMTextImageTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
-        let view = UIImageView()
+    private let profileImage: ProfileImageView = {
+        let view = ProfileImageView()
         view.layer.cornerRadius = 10
         return view
     }()
     private let userName: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 13)
+        view.font = .body
         return view
     }()
     private let speechBubble: SpeechBubbleView = {
@@ -52,7 +52,8 @@ final class DMTextImageTableViewCell: BaseTableViewCell {
     }()
     private let chatTime: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12)
+        view.font = .caption
+        view.textColor = .gray1
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
@@ -147,11 +148,11 @@ final class DMTextImageTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: DMHistory) {
-        profileImage.backgroundColor = .lightGray
         userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
         
         speechBubble.updateText(transition.content)
+        profileImage.updateURL(url: transition.user.profileImage ?? "")
         
         imageType(dataArray: transition.files)
     }

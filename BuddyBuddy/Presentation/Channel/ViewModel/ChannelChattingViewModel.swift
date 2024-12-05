@@ -1,8 +1,8 @@
 //
-//  DMChattingViewModel.swift
+//  ChannelChattingViewModel.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/12/24.
+//  Created by 김성률 on 12/3/24.
 //
 
 import UIKit
@@ -10,27 +10,25 @@ import UIKit
 import RxCocoa
 import RxSwift
 
-final class DMChattingViewModel: ViewModelType {
+final class ChannelChattingViewModel: ViewModelType {
     private let disposeBag = DisposeBag()
     
-    private let coordinator: DMCoordinator
-    private let dmUseCase: DMUseCaseInterface
-    private let dmChatState: DMChatState
-    private var roomID: String?
-    private var userName: String?
+    private let coordinator: HomeCoordinator
+    private let channelUseCase: ChannelUseCaseInterface
+    private let channelID: String
     
     init(
-        coordinator: DMCoordinator,
-        dmUseCase: DMUseCaseInterface,
-        dmChatState: DMChatState
+        coordinator: HomeCoordinator,
+        channelUseCase: ChannelUseCaseInterface,
+        channelID: String
     ) {
         self.coordinator = coordinator
-        self.dmUseCase = dmUseCase
-        self.dmChatState = dmChatState
+        self.channelUseCase = channelUseCase
+        self.channelID = channelID
     }
     
     deinit {
-        print("dmchatviewmodel deinit")
+        print("chatviewmodel deinit")
     }
     
     struct Input {
@@ -42,64 +40,47 @@ final class DMChattingViewModel: ViewModelType {
     }
     
     struct Output {
-        let updateDMListTableView: Driver<[ChatSection<DMHistory>]>
+        let updateChannelChatTableView: Driver<[ChatSection<ChannelHistory>]>
         let scrollToDown: Driver<Void>
         let removeChattingBarTextAndImage: Driver<Void>
         let plusBtnTapped: Driver<Void>
         let imagePicker: Driver<[UIImage]>
-        let dmListInfo: Driver<String>
     }
     
     func transform(input: Input) -> Output {
-        let updateDMListTableView = PublishSubject<[ChatSection<DMHistory>]>()
+        let updateChannelChatTableView = PublishSubject<[ChatSection<ChannelHistory>]>()
         let scrollToDown = PublishSubject<Void>()
         let removeChattingBarText = PublishSubject<Void>()
-        let dmListInfoSubject = BehaviorRelay<String>(value: userName ?? "")
-        
+
         input.viewWillAppearTrigger
-            .withUnretained(self)
-            .flatMap { (owner, _) in
-                switch owner.dmChatState {
-                case .fromList(let dmListInfo):
-                    owner.roomID = dmListInfo.roomID
-                    owner.userName = dmListInfo.userName
-                    return self.dmUseCase.fetchDMHistory(
-                        playgroundID: UserDefaultsManager.playgroundID,
-                        roomID: dmListInfo.roomID
-                    )
-                case .fromProfile(let userID):
-                    let dmListInfo = self.dmUseCase.findRoomIDFromUser(userID: userID)
-                    owner.roomID = dmListInfo.0
-                    owner.userName = dmListInfo.1
-                    return self.dmUseCase.fetchDMHistory(
-                        playgroundID: UserDefaultsManager.playgroundID,
-                        roomID: dmListInfo.0
-                    )
-                }
+            .flatMap {
+                return self.channelUseCase.fetchChannelHistory(
+                    playgroundID: UserDefaultsManager.playgroundID,
+                    channelID: self.channelID
+                )
             }
             .bind(with: self) { owner, response in
                 switch response {
                 case .success(let value):
                     let chatHistory = value.map { $0.toChatType() }
                     
-                    updateDMListTableView.onNext([ChatSection(items: chatHistory)])
+                    updateChannelChatTableView.onNext([ChatSection(items: chatHistory)])
                     scrollToDown.onNext(())
-                    dmListInfoSubject.accept(owner.userName ?? "")
                     
-                    owner.dmUseCase.connectSocket(roomID: owner.roomID ?? "")
+                    owner.channelUseCase.connectSocket(channelID: self.channelID)
                 case .failure(let error):
                     print(error)
                 }
             }
             .disposed(by: disposeBag)
         
-        self.dmUseCase.observeMessage(roomID: roomID ?? "")
+        self.channelUseCase.observeMessage(channelID: channelID)
             .bind(with: self) { _, response in
                 switch response {
                 case .success(let value):
                     let chatHistory = value.map { $0.toChatType() }
-                    updateDMListTableView.onNext([ChatSection(items: chatHistory)])
-                    
+                    updateChannelChatTableView.onNext([ChatSection(items: chatHistory)])
+
                     scrollToDown.onNext(())
                 case .failure(let error):
                     print(error)
@@ -112,10 +93,10 @@ final class DMChattingViewModel: ViewModelType {
                 input.chatBarText,
                 input.imagePicker
             ))
-            .flatMap { (text, images) -> Single<Result<[DMHistory], Error>> in
-                return self.dmUseCase.sendDM(
+            .flatMap { (text, images) -> Single<Result<[ChannelHistory], Error>> in
+                return self.channelUseCase.sendChannel(
                     playgroundID: UserDefaultsManager.playgroundID,
-                    roomID: self.roomID ?? "",
+                    channelID: self.channelID,
                     message: text,
                     files: self.imageToData(imageArray: images)
                 )
@@ -124,7 +105,7 @@ final class DMChattingViewModel: ViewModelType {
                 switch result {
                 case .success(let value):
                     let chatHistory = value.map { $0.toChatType() }
-                    updateDMListTableView.onNext([ChatSection(items: chatHistory)])
+                    updateChannelChatTableView.onNext([ChatSection(items: chatHistory)])
 
                     scrollToDown.onNext(())
                     removeChattingBarText.onNext(())
@@ -137,17 +118,16 @@ final class DMChattingViewModel: ViewModelType {
             .disposed(by: disposeBag)
             
         return Output(
-            updateDMListTableView: updateDMListTableView.asDriver(onErrorJustReturn: []),
+            updateChannelChatTableView: updateChannelChatTableView.asDriver(onErrorJustReturn: []),
             scrollToDown: scrollToDown.asDriver(onErrorJustReturn: ()),
             removeChattingBarTextAndImage: removeChattingBarText.asDriver(onErrorJustReturn: ()),
             plusBtnTapped: input.plusBtnTapped.asDriver(onErrorJustReturn: ()),
-            imagePicker: input.imagePicker.asDriver(onErrorJustReturn: []),
-            dmListInfo: dmListInfoSubject.asDriver(onErrorDriveWith: .empty())
+            imagePicker: input.imagePicker.asDriver(onErrorJustReturn: [])
         )
     }
 }
 
-extension DMChattingViewModel {
+extension ChannelChattingViewModel {
     private func imageToData(imageArray: [UIImage]) -> [Data] {
         var dataArray: [Data] = []
         

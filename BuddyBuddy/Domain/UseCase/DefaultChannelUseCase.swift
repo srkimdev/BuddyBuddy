@@ -12,6 +12,10 @@ import RxSwift
 final class DefaultChannelUseCase: ChannelUseCaseInterface {
     @Dependency(ChannelRepositoryInterface.self)
     private var repository: ChannelRepositoryInterface
+
+    @Dependency(SocketRepositoryInterface.self)
+    private var socketRepositoryInterface
+  
     @Dependency(UserRepositoryInterface.self)
     private var userRepository: UserRepositoryInterface
     
@@ -106,6 +110,77 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
         return repository.exitChannel(channelID: channelID)
     }
     
+    func fetchChannelHistory(
+        playgroundID: String,
+        channelID: String
+    ) -> Single<Result<[ChannelHistory], Error>> {
+        return repository.fetchChannelHistoryString(
+            playgroundID: playgroundID,
+            channelID: channelID
+        )
+        .flatMap { response -> Single<Result<[ChannelHistory], Error>> in
+            switch response {
+            case .success(let value):
+                return self.repository.convertArrayToChannelHistory(
+                    channelID: channelID,
+                    channelHistoryStringArray: value)
+                .flatMap { _ in
+                    self.repository.fetchChannelHistoryTable(channelID: channelID)
+                }
+            case .failure(let error):
+                return Single.just(.failure(error))
+            }
+        }
+    }
+    
+    func sendChannel(
+        playgroundID: String,
+        channelID: String,
+        message: String,
+        files: [Data]
+    ) -> Single<Result<[ChannelHistory], Error>> {
+        return repository.sendChannelChat(
+            playgroundID: playgroundID,
+            channelID: channelID,
+            message: message,
+            files: files
+        )
+        .flatMap { response -> Single<Result<[ChannelHistory], Error>> in
+            switch response {
+            case .success(let value):
+                return self.repository.convertObjectToChannelHistory(
+                    channelID: channelID,
+                    channelHistoryString: value
+                )
+                .flatMap { _ in
+                    self.repository.fetchChannelHistoryTable(channelID: channelID)
+                }
+            case .failure(let error):
+                return Single.just(.failure(error))
+            }
+        }
+    }
+    
+    func connectSocket(channelID: String) {
+        socketRepositoryInterface.connectSocket(ID: channelID)
+    }
+    
+    func disConnectSocket() {
+        socketRepositoryInterface.disConnectSocket()
+    }
+
+    func observeMessage(channelID: String) -> Observable<Result<[ChannelHistory], Error>> {
+        return self.socketRepositoryInterface.observeChannelMessage()
+            .flatMap { channelHistoryString in
+                self.repository.convertObjectToChannelHistory(
+                    channelID: channelID,
+                    channelHistoryString: channelHistoryString)
+            }
+            .flatMap { _ in
+                self.repository.fetchChannelHistoryTable(channelID: channelID)
+            }
+            .asObservable()
+
     private func changeDataArray(imageResults: [Result<Data?, Error>]) -> [Data] {
         imageResults.compactMap { result in
             switch result {
