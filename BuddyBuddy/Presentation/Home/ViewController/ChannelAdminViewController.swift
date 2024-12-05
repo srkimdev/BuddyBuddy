@@ -58,7 +58,7 @@ final class ChannelAdminViewController: BaseViewController {
                 cellType: ChannelAdminTableViewCell.self
             )) { _, value, cell in
                 cell.setUserProfile(
-                    img: nil,
+                    profileData: value.profileImage,
                     name: value.nickname,
                     email: value.email
                 )

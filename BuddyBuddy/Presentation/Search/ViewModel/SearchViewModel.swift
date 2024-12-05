@@ -66,6 +66,7 @@ final class SearchViewModel: ViewModelType {
                 return owner.playgroundUseCase.fetchPlaygroundInfo()
             }
             .bind(with: self) { owner, result in
+                selectedSegIndex.onNext(0)
                 switch result {
                 case .success(let value):
                     searchResult = value

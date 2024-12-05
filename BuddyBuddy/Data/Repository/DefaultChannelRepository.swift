@@ -107,6 +107,7 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
             }
         }
     }
+    
     func changeChannelAdmin(
         channelID: String,
         selectedUserID: String
