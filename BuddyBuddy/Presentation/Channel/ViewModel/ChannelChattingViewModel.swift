@@ -55,7 +55,7 @@ final class ChannelChattingViewModel: ViewModelType {
         input.viewWillAppearTrigger
             .flatMap {
                 return self.channelUseCase.fetchChannelHistory(
-                    playgroundID: /*UserDefaultsManager.playgroundID*/"70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                    playgroundID: UserDefaultsManager.playgroundID,
                     channelID: self.channelID
                 )
             }
@@ -95,7 +95,7 @@ final class ChannelChattingViewModel: ViewModelType {
             ))
             .flatMap { (text, images) -> Single<Result<[ChannelHistory], Error>> in
                 return self.channelUseCase.sendChannel(
-                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
+                    playgroundID: UserDefaultsManager.playgroundID,
                     channelID: self.channelID,
                     message: text,
                     files: self.imageToData(imageArray: images)

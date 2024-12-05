@@ -43,7 +43,7 @@ final class DefaultDMRepository: DMRepositoryInterface {
     ) -> RxSwift.Single<Result<[DMHistoryString], Error>> {
         let chatHistory = realmRepository.readAllItem().filter {
             $0.roomID == roomID
-        }
+        }.sorted { $0.createdAt < $1.createdAt }
         return networkService.callRequest(
             router: DMRouter.dmHistory(
                 playgroundID: playgroundID,
@@ -68,7 +68,7 @@ final class DefaultDMRepository: DMRepositoryInterface {
     ) -> RxSwift.Single<Result<DMUnRead, Error>> {
         let chatHistory = realmRepository.readAllItem().filter {
             $0.roomID == roomID
-        }
+        }.sorted { $0.createdAt < $1.createdAt }
         return networkService.callRequest(
             router: DMRouter.dmUnRead(
                 playgroundID: playgroundID,
