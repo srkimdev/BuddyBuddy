@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AuthCoordinator: Coordinator {
-    
+    func changeToHome()
 }

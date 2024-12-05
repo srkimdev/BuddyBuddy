@@ -13,9 +13,9 @@ enum UserDefaultsManager {
         case userID
     }
     
-    @BaseUserDefaults(key: Key.playgroundID.rawValue, defaultValue: "playgroundID")
+    @BaseUserDefaults(key: Key.playgroundID.rawValue, defaultValue: Key.playgroundID.rawValue)
     static var playgroundID
     
-    @BaseUserDefaults(key: Key.userID.rawValue, defaultValue: "userID")
+    @BaseUserDefaults(key: Key.userID.rawValue, defaultValue: Key.userID.rawValue)
     static var userID
 }
