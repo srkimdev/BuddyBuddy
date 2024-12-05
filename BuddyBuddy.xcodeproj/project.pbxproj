@@ -156,7 +156,6 @@
 		DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A892CE3190700E2A2F7 /* SpeechBubbleView.swift */; };
 		DC213A8C2CE31B9A00E2A2F7 /* DMChattingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8B2CE31B9A00E2A2F7 /* DMChattingViewModel.swift */; };
 		DC213A8E2CE32C3E00E2A2F7 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8D2CE32C3E00E2A2F7 /* NetworkService.swift */; };
-		DC213A902CE32C4500E2A2F7 /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8F2CE32C4500E2A2F7 /* AuthRouter.swift */; };
 		DC213A922CE332A000E2A2F7 /* TargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A912CE332A000E2A2F7 /* TargetType.swift */; };
 		DC213A942CE365D000E2A2F7 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A932CE365D000E2A2F7 /* Header.swift */; };
 		DC213A962CE3668700E2A2F7 /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A952CE3668700E2A2F7 /* APIKey.swift */; };
@@ -215,6 +214,7 @@
 		DCB9ABD42CFF1E09006845CF /* NukeUI in Frameworks */ = {isa = PBXBuildFile; productRef = DCB9ABD32CFF1E09006845CF /* NukeUI */; };
 		DCB9ABD62CFF530A006845CF /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABD52CFF5309006845CF /* ProfileImageView.swift */; };
 		DCB9ABD82D00AAF5006845CF /* DMNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCB9ABD72D00AAF4006845CF /* DMNavigationView.swift */; };
+		DCB9ABD92D019EC7006845CF /* AuthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC213A8F2CE32C4500E2A2F7 /* AuthRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1488,6 +1488,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCB9ABD92D019EC7006845CF /* AuthRouter.swift in Sources */,
 				C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */,
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
 				DC213AB92CE6186800E2A2F7 /* DMListViewModel.swift in Sources */,
@@ -1672,8 +1673,6 @@
 				DC213AB52CE4876700E2A2F7 /* LogInDTO.swift in Sources */,
 				DC213AA82CE4632F00E2A2F7 /* AuthIntercepter.swift in Sources */,
 				DCB9ABC22CFED436006845CF /* ChannelHistory.swift in Sources */,
-				DC213A902CE32C4500E2A2F7 /* LogInRouter.swift in Sources */,
-				DC213A902CE32C4500E2A2F7 /* AuthRouter.swift in Sources */,
 				C0A35E092CF860F400B41E60 /* AddChannel.swift in Sources */,
 				C97DE2B82CFCAEC5000B4E94 /* LoginButton.swift in Sources */,
 			);

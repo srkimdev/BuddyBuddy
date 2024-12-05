@@ -180,6 +180,7 @@ final class DefaultChannelUseCase: ChannelUseCaseInterface {
                 self.repository.fetchChannelHistoryTable(channelID: channelID)
             }
             .asObservable()
+    }
 
     private func changeDataArray(imageResults: [Result<Data?, Error>]) -> [Data] {
         imageResults.compactMap { result in
