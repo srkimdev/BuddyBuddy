@@ -13,3 +13,10 @@ struct UserProfile {
     let nickname: String
     let profileImage: String?
 }
+
+struct UserProfileData {
+    let userID: String
+    let email: String
+    let nickname: String
+    let profileImage: Data?
+}

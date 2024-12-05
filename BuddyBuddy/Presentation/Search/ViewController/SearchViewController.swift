@@ -19,7 +19,7 @@ final class SearchViewController: BaseNavigationViewController {
     private let searchController: UISearchController = {
         let controller = UISearchController(searchResultsController: nil)
         controller.searchBar.placeholder = "Search".localized()
-        controller.searchBar.tintColor = .blue
+        controller.searchBar.tintColor = .secondary
         controller.searchBar.sizeToFit()
         controller.searchBar.setBackgroundImage(
             UIImage(),
@@ -54,7 +54,7 @@ final class SearchViewController: BaseNavigationViewController {
     
     override func bind() {
         let input = SearchViewModel.Input(
-            viewWillAppear: rx.viewWillAppear,
+            viewWillAppear: Observable.just(()),
             inputText: searchController.searchBar.rx.searchButtonClicked
                 .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
             inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 },
