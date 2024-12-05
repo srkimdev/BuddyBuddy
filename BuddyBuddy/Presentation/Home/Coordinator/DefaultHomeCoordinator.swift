@@ -94,7 +94,7 @@ final class DefaultHomeCoordinator: HomeCoordinator {
         let vc = ChannelChattingViewController(vm: ChannelChattingViewModel(
             coordinator: self,
             channelUseCase: DefaultChannelUseCase(),
-            channelID: /*channelID*/ "96450ff7-753e-4536-87be-40fbc7a3ed5b"
+            channelID: channelID
         ))
         vc.hidesBottomBarWhenPushed = true
         navigationController.interactivePopGestureRecognizer?.isEnabled = false
