@@ -15,7 +15,6 @@ final class SearchItemTableViewCell: BaseTableViewCell {
         view.contentMode = .scaleAspectFit
         return view
     }()
-    
     private let searchedTerms: UILabel = {
         let view = UILabel()
         view.font = .bodyBold

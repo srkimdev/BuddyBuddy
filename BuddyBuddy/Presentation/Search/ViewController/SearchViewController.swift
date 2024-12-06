@@ -36,9 +36,9 @@ final class SearchViewController: BaseNavigationViewController {
     }()
     private let searchedResult: SearchResultView = SearchResultView()
     private let channelAlert: BuddyAlert = BuddyAlert(
-        title: "채널 참여",
-        leftButtonTitle: "취소",
-        rightButtonTitle: "확인",
+        title: "JoinChannel".localized(),
+        leftButtonTitle: "Cancel".localized(),
+        rightButtonTitle: "Confirm".localized(),
         hasTwoButton: true
     )
     
@@ -59,7 +59,7 @@ final class SearchViewController: BaseNavigationViewController {
                 .withLatestFrom(searchController.searchBar.rx.text.orEmpty),
             inputSegIndex: searchedResult.segmentedControl.rx.selectedSegmentIndex.map { $0 },
             selectedCell: searchedResult.searchResultTableView.rx
-                .modelSelected(SearchResult.self).map { $0 },
+                .modelSelected(SearchResultType.self).map { $0 },
             searchCancelBtnTapped: searchController.searchBar.rx.cancelButtonClicked.map { () },
             leftButtonTapped: channelAlert.leftButton.rx.tap.map { () },
             rightButtonTapped: channelAlert.rightButton.rx.tap.map { () },
@@ -82,12 +82,27 @@ final class SearchViewController: BaseNavigationViewController {
             .disposed(by: disposeBag)
         
         output.searchedResult
-            .drive(searchedResult.searchResultTableView.rx.items(
-                cellIdentifier: SearchItemTableViewCell.identifier,
-                cellType: SearchItemTableViewCell.self
-            )) { _, data, cell in
-                cell.setupUI(text: data.name)
-                cell.setupImageUI(imgType: imageType)
+            .drive(searchedResult.searchResultTableView.rx.items) { tableView, index, value in
+                switch value {
+                case .channel(let channel):
+                    tableView.rowHeight = 41
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: SearchItemTableViewCell.identifier,
+                        for: IndexPath(row: index, section: 0)
+                    ) as? SearchItemTableViewCell else { return UITableViewCell() }
+                    cell.setupUI(text: channel.name)
+                    cell.setupImageUI(imgType: imageType)
+                    
+                    return cell
+                case .user(let user):
+                    tableView.rowHeight = 70
+                    guard let cell = tableView.dequeueReusableCell(
+                        withIdentifier: SearchUserTableViewCell.identifier,
+                        for: IndexPath(row: index, section: 0)
+                    ) as? SearchUserTableViewCell else { return UITableViewCell() }
+                    cell.setupUI(nickname: user.name, profile: nil)
+                    return cell
+                }
             }
             .disposed(by: disposeBag)
         

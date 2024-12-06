@@ -33,7 +33,7 @@ final class SearchViewModel: ViewModelType {
         let viewWillAppear: Observable<Void>
         let inputText: Observable<String>
         let inputSegIndex: Observable<Int>
-        let selectedCell: Observable<SearchResult>
+        let selectedCell: Observable<SearchResultType>
         let searchCancelBtnTapped: Observable<Void>
         let leftButtonTapped: Observable<Void>
         let rightButtonTapped: Observable<Void>
@@ -43,7 +43,7 @@ final class SearchViewModel: ViewModelType {
     struct Output {
         let selectedSegIndex: Driver<Int>
         let searchData: Driver<SearchImageType>
-        let searchedResult: Driver<[SearchResult]>
+        let searchedResult: Driver<[SearchResultType]>
         let emptyResult: Driver<Bool>
         let channelAlert: Driver<(Bool, String)>
     }
@@ -51,10 +51,10 @@ final class SearchViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let selectedSegIndex = PublishSubject<Int>()
         let searchData = PublishSubject<SearchImageType>()
-        let searchedResult = PublishSubject<[SearchResult]>()
+        let searchedResult = PublishSubject<[SearchResultType]>()
         let emptyResult = PublishSubject<Bool>()
         let channelAlert = BehaviorSubject<(Bool, String)>(value: (true, ""))
-
+        
         var searchResult: [SearchResult] = []
         var totalInfo: [SearchResult] = []
         var myChannels = MyChannelList()
@@ -63,7 +63,7 @@ final class SearchViewModel: ViewModelType {
         input.viewWillAppear
             .withUnretained(self)
             .flatMap { (owner, _) in
-                return owner.playgroundUseCase.fetchPlaygroundInfo()
+                owner.playgroundUseCase.fetchPlaygroundInfo()
             }
             .bind(with: self) { owner, result in
                 selectedSegIndex.onNext(0)
@@ -74,7 +74,6 @@ final class SearchViewModel: ViewModelType {
                     owner.updateSearchData(
                         state: .channel,
                         searchResult: searchResult,
-                        searchData: searchData,
                         searchedResult: searchedResult,
                         emptyResult: emptyResult
                     )
@@ -106,7 +105,6 @@ final class SearchViewModel: ViewModelType {
                 owner.updateSearchData(
                     state: .channel,
                     searchResult: searchResult,
-                    searchData: searchData,
                     searchedResult: searchedResult,
                     emptyResult: emptyResult
                 )
@@ -117,7 +115,7 @@ final class SearchViewModel: ViewModelType {
         input.inputText
             .withUnretained(self)
             .flatMap { (viewModel, inputText) in
-                return viewModel.playgroundUseCase.searchInPlayground(text: inputText)
+                viewModel.playgroundUseCase.searchInPlayground(text: inputText)
             }
             .bind(with: self) { owner, result in
                 switch result {
@@ -126,7 +124,6 @@ final class SearchViewModel: ViewModelType {
                     owner.updateSearchData(
                         state: .channel,
                         searchResult: searchResult,
-                        searchData: searchData,
                         searchedResult: searchedResult,
                         emptyResult: emptyResult
                     )
@@ -142,7 +139,6 @@ final class SearchViewModel: ViewModelType {
                 owner.updateSearchData(
                     state: state,
                     searchResult: searchResult,
-                    searchData: searchData,
                     searchedResult: searchedResult,
                     emptyResult: emptyResult
                 )
@@ -151,18 +147,16 @@ final class SearchViewModel: ViewModelType {
         
         input.selectedCell
             .bind(with: self) { owner, selected in
-                switch selected.state {
-                case .channel:
-                    // 이미 참여한 Channel tap
-                    if myChannels.contains(where: { $0.channelID == selected.id }) {
-                        owner.delegate?.tappedChannelChat(with: selected.id)
+                switch selected {
+                case .channel(let channel):
+                    if myChannels.contains(where: { $0.channelID == channel.id }) {
+                        owner.delegate?.tappedChannelChat(with: channel.id)
                     } else {
-                        // 참여하지 않은 Channel tap
-                        channelID = selected.id
-                        channelAlert.onNext((false, selected.name))
+                        channelID = channel.id
+                        channelAlert.onNext((false, channel.name))
                     }
-                case .user:
-                    owner.coordinator.toProfile(userID: selected.id)
+                case .user(let user):
+                    owner.coordinator.toProfile(userID: user.id)
                 }
             }
             .disposed(by: disposeBag)
@@ -175,12 +169,12 @@ final class SearchViewModel: ViewModelType {
         
         input.rightButtonTapped
             .withUnretained(self)
-            .flatMap({ (owner, _) in
+            .flatMap { (owner, _) in
                 owner.channelUseCase.fetchChannelChats(
                     channelID: channelID,
                     date: nil
                 )
-            })
+            }
             .bind(with: self) { owner, result in
                 switch result {
                 case .success(let value):
@@ -210,19 +204,16 @@ final class SearchViewModel: ViewModelType {
     private func updateSearchData(
         state: SearchState,
         searchResult: [SearchResult],
-        searchData: PublishSubject<SearchImageType>,
-        searchedResult: PublishSubject<[SearchResult]>,
+        searchedResult: PublishSubject<[SearchResultType]>,
         emptyResult: PublishSubject<Bool>
     ) {
         let filteredResults = searchResult.filter { $0.state == state }
-        let imageType: SearchImageType = state == .channel ? .channel : .country(emoji: .kr)
-        
-        searchData.onNext(imageType)
-        if state == .user {
-            searchedResult.onNext(filteredResults.filter { $0.id != UserDefaultsManager.userID})
-        } else {
-            searchedResult.onNext(filteredResults)
+        let resultTypes: [SearchResultType] = filteredResults.map {
+            state == .channel ? .channel($0) : .user($0)
         }
-        emptyResult.onNext(filteredResults.isEmpty)
+        
+        searchedResult.onNext(resultTypes)
+        emptyResult.onNext(resultTypes.isEmpty)
     }
 }
+
