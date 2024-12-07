@@ -16,14 +16,6 @@ final class DefaultPlaygroundUseCase: PlaygroundUseCaseInterface {
     @Dependency(UserRepositoryInterface.self)
     private var userRepository: UserRepositoryInterface
     
-    func searchInPlayground(text: String) -> Single<Result<[SearchResult], Error>> {
-        return repository.searchPlaygournd(text: text)
-    }
-    
-    func fetchPlaygroundInfo() -> Single<Result<[SearchResult], Error>> {
-        return repository.fetchPlaygroundInfo()
-    }
-    
     func fetchPlaygroundInfoWithImage() -> Single<Result<[SearchResultWithImage], Error>> {
         return repository.fetchPlaygroundInfo()
             .flatMap { [weak self] result in
