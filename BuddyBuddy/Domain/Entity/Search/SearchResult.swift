@@ -11,4 +11,5 @@ struct SearchResult {
     let state: SearchState
     let id: String
     let name: String
+    let file: String?
 }
