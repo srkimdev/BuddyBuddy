@@ -55,15 +55,15 @@ final class SearchViewModel: ViewModelType {
         let emptyResult = PublishSubject<Bool>()
         let channelAlert = BehaviorSubject<(Bool, String)>(value: (true, ""))
         
-        var searchResult: [SearchResult] = []
-        var totalInfo: [SearchResult] = []
+        var searchResult: [SearchResultWithImage] = []
+        var totalInfo: [SearchResultWithImage] = []
         var myChannels = MyChannelList()
         var channelID: String = ""
         
         input.viewWillAppear
             .withUnretained(self)
             .flatMap { (owner, _) in
-                owner.playgroundUseCase.fetchPlaygroundInfo()
+                owner.playgroundUseCase.fetchPlaygroundInfoWithImage()
             }
             .bind(with: self) { owner, result in
                 selectedSegIndex.onNext(0)
@@ -115,7 +115,7 @@ final class SearchViewModel: ViewModelType {
         input.inputText
             .withUnretained(self)
             .flatMap { (viewModel, inputText) in
-                viewModel.playgroundUseCase.searchInPlayground(text: inputText)
+                viewModel.playgroundUseCase.searchInPlaygroundWithImage(text: inputText)
             }
             .bind(with: self) { owner, result in
                 switch result {
@@ -203,7 +203,7 @@ final class SearchViewModel: ViewModelType {
     
     private func updateSearchData(
         state: SearchState,
-        searchResult: [SearchResult],
+        searchResult: [SearchResultWithImage],
         searchedResult: PublishSubject<[SearchResultType]>,
         emptyResult: PublishSubject<Bool>
     ) {
@@ -216,4 +216,3 @@ final class SearchViewModel: ViewModelType {
         emptyResult.onNext(resultTypes.isEmpty)
     }
 }
-

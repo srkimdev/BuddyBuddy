@@ -71,7 +71,10 @@ final class SearchUserTableViewCell: BaseTableViewCell {
         }
     }
     
-    func setupUI(nickname: String, profile: Data?) {
+    func setupUI(
+        nickname: String,
+        profile: Data?
+    ) {
         if let profile {
             profileImage.image = UIImage(data: profile)
         } else {

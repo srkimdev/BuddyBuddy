@@ -92,7 +92,6 @@ final class SearchViewController: BaseNavigationViewController {
                     ) as? SearchItemTableViewCell else { return UITableViewCell() }
                     cell.setupUI(text: channel.name)
                     cell.setupImageUI(imgType: imageType)
-                    
                     return cell
                 case .user(let user):
                     tableView.rowHeight = 70
@@ -100,7 +99,10 @@ final class SearchViewController: BaseNavigationViewController {
                         withIdentifier: SearchUserTableViewCell.identifier,
                         for: IndexPath(row: index, section: 0)
                     ) as? SearchUserTableViewCell else { return UITableViewCell() }
-                    cell.setupUI(nickname: user.name, profile: nil)
+                    cell.setupUI(
+                        nickname: user.name,
+                        profile: user.image
+                    )
                     return cell
                 }
             }
