@@ -29,8 +29,17 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
     }
     
     func start() {
-        vc.modalPresentationStyle = .overFullScreen
         vm.delegate = delegate
+        
+        let presentation = SlidePresentationController(
+            presentedViewController: vc,
+            presenting: nil
+        )
+        
+        let manager = SlideInPresentationManager(presentationController: presentation)
+        
+        vc.modalPresentationStyle = .custom
+        vc.transitioningDelegate = manager
         
         navigationController.present(
             vc,

@@ -47,6 +47,9 @@
 		C0BF428F2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */; };
 		C0BF42932CE47A6100C5B5B4 /* ChannelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */; };
 		C0BF42952CE4D71E00C5B5B4 /* ChannelSectionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */; };
+		C0C9C87D2D060B770061CF14 /* SlidPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C87C2D060B770061CF14 /* SlidPresentationController.swift */; };
+		C0C9C87F2D060BD20061CF14 /* SlidePresentationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C87E2D060BD20061CF14 /* SlidePresentationManager.swift */; };
+		C0C9C8812D060C180061CF14 /* SlideTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C9C8802D060C180061CF14 /* SlideTransition.swift */; };
 		C0EA66802CE7227D00401F92 /* ChannelAddTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */; };
 		C908280E2CDA650B0096BA0D /* SettingViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280D2CDA650B0096BA0D /* SettingViewEmpty */; };
 		C90828102CDA651E0096BA0D /* AuthViewEmpty in Resources */ = {isa = PBXBuildFile; fileRef = C908280F2CDA651E0096BA0D /* AuthViewEmpty */; };
@@ -242,6 +245,9 @@
 		C0BF428E2CE473BF00C5B5B4 /* ChannelTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTitleTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42922CE47A6100C5B5B4 /* ChannelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelTableViewCell.swift; sourceTree = "<group>"; };
 		C0BF42942CE4D71E00C5B5B4 /* ChannelSectionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelSectionModel.swift; sourceTree = "<group>"; };
+		C0C9C87C2D060B770061CF14 /* SlidPresentationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidPresentationController.swift; sourceTree = "<group>"; };
+		C0C9C87E2D060BD20061CF14 /* SlidePresentationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlidePresentationManager.swift; sourceTree = "<group>"; };
+		C0C9C8802D060C180061CF14 /* SlideTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideTransition.swift; sourceTree = "<group>"; };
 		C0EA667F2CE7227D00401F92 /* ChannelAddTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelAddTableViewCell.swift; sourceTree = "<group>"; };
 		C908280D2CDA650B0096BA0D /* SettingViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = SettingViewEmpty; sourceTree = "<group>"; };
 		C908280F2CDA651E0096BA0D /* AuthViewEmpty */ = {isa = PBXFileReference; lastKnownFileType = text; path = AuthViewEmpty; sourceTree = "<group>"; };
@@ -522,6 +528,16 @@
 				C0A35E042CF8516900B41E60 /* AddChannelReqeustDTO.swift */,
 			);
 			path = Request;
+			sourceTree = "<group>";
+		};
+		C0C9C8842D0611750061CF14 /* SideMenu */ = {
+			isa = PBXGroup;
+			children = (
+				C0C9C87C2D060B770061CF14 /* SlidPresentationController.swift */,
+				C0C9C87E2D060BD20061CF14 /* SlidePresentationManager.swift */,
+				C0C9C8802D060C180061CF14 /* SlideTransition.swift */,
+			);
+			path = SideMenu;
 			sourceTree = "<group>";
 		};
 		C0CF50C12CF4824400F131A0 /* Profile */ = {
@@ -1041,6 +1057,7 @@
 				C96C72982CDAF9EA00E0D6CF /* BaseNavigationViewController.swift */,
 				C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */,
 				C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */,
+				C0C9C8842D0611750061CF14 /* SideMenu */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -1449,6 +1466,7 @@
 				C9E44AA52CEE38A30044CD5C /* UserRouter.swift in Sources */,
 				C9F20F4E2CDB64330043351E /* SearchViewModel.swift in Sources */,
 				C9F20F662CDB72A60043351E /* SearchCoordinator.swift in Sources */,
+				C0C9C87F2D060BD20061CF14 /* SlidePresentationManager.swift in Sources */,
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
 				C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
@@ -1522,6 +1540,7 @@
 				C9E44A9F2CECC10F0044CD5C /* PlaygroundUseCaseInterface.swift in Sources */,
 				DC213A8A2CE3190700E2A2F7 /* SpeechBubbleView.swift in Sources */,
 				C9E44A982CECB4DC0044CD5C /* SearchDTO.swift in Sources */,
+				C0C9C87D2D060B770061CF14 /* SlidPresentationController.swift in Sources */,
 				DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */,
 				C0A35E0D2CF8AAEC00B41E60 /* ToastMessageLabel.swift in Sources */,
 				DC9375642CEC7E6500012F43 /* UserInfo.swift in Sources */,
@@ -1574,6 +1593,7 @@
 				C0A35E022CF786CA00B41E60 /* RegularExpression.swift in Sources */,
 				C90FEE7C2CF62091008819AF /* NavigateTabDelegate.swift in Sources */,
 				DC213A842CE23E1B00E2A2F7 /* MessageCountView.swift in Sources */,
+				C0C9C8812D060C180061CF14 /* SlideTransition.swift in Sources */,
 				DC213AAC2CE47A8900E2A2F7 /* LoginQuery.swift in Sources */,
 				DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */,
 				C96C72972CDAF9D100E0D6CF /* BaseViewController.swift in Sources */,
