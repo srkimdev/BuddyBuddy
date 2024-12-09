@@ -7,8 +7,18 @@
 
 import Foundation
 
-enum BuddyDateFormatter: String {
+enum BuddyDateFormatter {
     static let standard = DateFormatter()
     
-    case defaultDate = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+    case defaultDate
+    case simpleDate
+    
+    var value: String {
+        switch self {
+        case .defaultDate:
+            return "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        case .simpleDate:
+            return "SimpleDate".localized()
+        }
+    }
 }

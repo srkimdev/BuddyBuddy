@@ -10,13 +10,16 @@ import UIKit
 final class DefaultHomeCoordinator: HomeCoordinator {
     @Dependency(ChannelUseCaseInterface.self)
     private var channelUseCase: ChannelUseCaseInterface
+    @Dependency(PlaygroundUseCaseInterface.self)
+    private var playgroundUseCase: PlaygroundUseCaseInterface
     var parent: Coordinator?
     var childs: [Coordinator] = []
     var navigationController: UINavigationController
     
     private lazy var homeVM = HomeViewModel(
         coordinator: self,
-        channelUseCase: channelUseCase
+        channelUseCase: channelUseCase, 
+        playgroundUseCase: playgroundUseCase
     )
     
     init(navigationController: UINavigationController) {
@@ -124,6 +127,13 @@ final class DefaultHomeCoordinator: HomeCoordinator {
     }
     
     func toPlayground() {
-        // TODO: 플레이그라운드 목록 화면 전환
+        let coordinator = DefaultPlaygroundCoordinator(
+            navigationController: navigationController, 
+            playgroundUseCase: playgroundUseCase
+        )
+        coordinator.parent = self
+        coordinator.delegate = homeVM
+        childs.append(coordinator)
+        coordinator.start()
     }
 }
