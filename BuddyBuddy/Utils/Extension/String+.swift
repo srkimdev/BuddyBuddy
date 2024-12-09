@@ -19,7 +19,7 @@ extension String {
     }
     
     func toDate(format: BuddyDateFormatter) -> Date? {
-        BuddyDateFormatter.standard.dateFormat = format.rawValue
+        BuddyDateFormatter.standard.dateFormat = format.value
         return BuddyDateFormatter.standard.date(from: self)
     }
     

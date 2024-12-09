@@ -95,4 +95,12 @@ final class DefaultPlaygroundUseCase: PlaygroundUseCaseInterface {
         
         return infos
     }
+    
+    func fetchPlaygroundList() -> Single<Result<PlaygroundList, any Error>> {
+        return repository.fetchPlaygroundList()
+    }
+    
+    func fetchCurrentPlayground() -> Single<Result<Playground, any Error>> {
+        return repository.fetchCurrentPlayground()
+    }
 }

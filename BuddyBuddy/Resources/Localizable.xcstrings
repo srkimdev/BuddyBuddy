@@ -35,6 +35,23 @@
         }
       }
     },
+    "Add Playground" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add playground"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드 추가"
+          }
+        }
+      }
+    },
     "Cancel" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -358,6 +375,23 @@
         }
       }
     },
+    "Help" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "도움말"
+          }
+        }
+      }
+    },
     "InviteMember" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -409,6 +443,23 @@
         }
       }
     },
+    "JustExitChannel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "When you leave, you're removed from the channel list."
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "나가기를 하면 채널 목록에서 삭제됩니다."
+          }
+        }
+      }
+    },
     "OK" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -426,19 +477,87 @@
         }
       }
     },
-    "JustExitChannel" : {
+    "Playground" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "When you leave, you're removed from the channel list."
+            "value" : "Playground"
           }
         },
         "ko" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "나가기를 하면 채널 목록에서 삭제됩니다."
+            "value" : "플레이그라운드"
+          }
+        }
+      }
+    },
+    "PlaygroundChangeAdmin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change Admin"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드 관리자 변경"
+          }
+        }
+      }
+    },
+    "PlaygroundDelete" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드 삭제"
+          }
+        }
+      }
+    },
+    "PlaygroundEdit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드 편집"
+          }
+        }
+      }
+    },
+    "PlaygroundExit" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "플레이그라운드 나가기"
           }
         }
       }
@@ -490,6 +609,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "채널 혹은 사용자를 검색해보세요"
+          }
+        }
+      }
+    },
+    "SimpleDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "MM.dd.yy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yy.MM.dd"
           }
         }
       }
