@@ -107,6 +107,7 @@
 		C9AF3CAC2D02F51200386058 /* SearchResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF3CAB2D02F51200386058 /* SearchResultType.swift */; };
 		C9AF3CAE2D03109E00386058 /* LanguageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF3CAD2D03109E00386058 /* LanguageLabel.swift */; };
 		C9B0E27A2CFCE181000AA052 /* AppleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0E2792CFCE181000AA052 /* AppleUser.swift */; };
+		C9BE381C2D06B5AC00EE0B2C /* LangState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE381B2D06B5AC00EE0B2C /* LangState.swift */; };
 		C9BF5CC62CF8574B00F7F547 /* SpecificChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF5CC52CF8574B00F7F547 /* SpecificChannelResponseDTO.swift */; };
 		C9BF5CC82CF85E3600F7F547 /* ChannelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF5CC72CF85E3600F7F547 /* ChannelInfo.swift */; };
 		C9BF5CCC2CF8C11300F7F547 /* ChangeChannelQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF5CCB2CF8C11300F7F547 /* ChangeChannelQuery.swift */; };
@@ -325,6 +326,7 @@
 		C9AF3CAB2D02F51200386058 /* SearchResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultType.swift; sourceTree = "<group>"; };
 		C9AF3CAD2D03109E00386058 /* LanguageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLabel.swift; sourceTree = "<group>"; };
 		C9B0E2792CFCE181000AA052 /* AppleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUser.swift; sourceTree = "<group>"; };
+		C9BE381B2D06B5AC00EE0B2C /* LangState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangState.swift; sourceTree = "<group>"; };
 		C9BF5CC52CF8574B00F7F547 /* SpecificChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificChannelResponseDTO.swift; sourceTree = "<group>"; };
 		C9BF5CC72CF85E3600F7F547 /* ChannelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelInfo.swift; sourceTree = "<group>"; };
 		C9BF5CCB2CF8C11300F7F547 /* ChangeChannelQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeChannelQuery.swift; sourceTree = "<group>"; };
@@ -1084,6 +1086,7 @@
 				C91F673E2CEF2F6F00C84265 /* SearchResult.swift */,
 				C9AF3CAB2D02F51200386058 /* SearchResultType.swift */,
 				C928FFBC2D042870001AF963 /* SearchResultWithImage.swift */,
+				C9BE381B2D06B5AC00EE0B2C /* LangState.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1545,6 +1548,7 @@
 				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
 				C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */,
 				DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */,
+				C9BE381C2D06B5AC00EE0B2C /* LangState.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,

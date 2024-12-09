@@ -16,7 +16,6 @@ final class LanguageLabel: BaseView {
         view.spacing = 4
         return view
     }()
-    
     private let languageLabel: UILabel = {
         let view = UILabel()
         view.font = .title2
@@ -31,6 +30,13 @@ final class LanguageLabel: BaseView {
         view.textColor = .gray1
         return view
     }()
+    
+    private var languageState: LangState
+    
+    init(languageState: LangState) {
+        self.languageState = languageState
+        super.init()
+    }
     
     override func setHierarchy() { 
         addSubview(containLabels)
@@ -48,6 +54,12 @@ final class LanguageLabel: BaseView {
     
     func setupLanguages(language: Country) {
         languageLabel.text = language.toLang
-        levelLabel.text = "Lv.\(Int.random(in: 0...5))"
+        
+        switch languageState {
+        case .mine:
+            levelLabel.text = "Lv.\(Int.random(in: 3...5))"
+        case .other:
+            levelLabel.text = "Lv.\(Int.random(in: 0...2))"
+        }
     }
 }

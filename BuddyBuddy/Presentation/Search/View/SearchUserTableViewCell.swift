@@ -23,7 +23,7 @@ final class SearchUserTableViewCell: BaseTableViewCell {
         view.textAlignment = .left
         return view
     }()
-    private let myLanguage: LanguageLabel = LanguageLabel()
+    private let myLanguage: LanguageLabel = LanguageLabel(languageState: .mine)
     private let changeImage: UIImageView = {
         let view = UIImageView()
         view.image = UIImage(named: "twowayArrow")?.withTintColor(
@@ -33,7 +33,7 @@ final class SearchUserTableViewCell: BaseTableViewCell {
         view.contentMode = .scaleAspectFit
         return view
     }()
-    private let exchangeLanguage: LanguageLabel = LanguageLabel()
+    private let exchangeLanguage: LanguageLabel = LanguageLabel(languageState: .other)
     
     override func setHierarchy() { 
         [profileImage, userName, myLanguage,
