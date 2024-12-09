@@ -71,6 +71,12 @@ final class DMListTableViewCell: BaseTableViewCell {
         userName.text = transition.userName
         lastText.text = transition.lastText
         lastTime.text = "PM 06:12"
-        unreadCount.updateCount(transition.unReadCount)
+        
+        print(transition.unReadCount, "🤪")
+        if transition.unReadCount > 0 {
+            unreadCount.updateCount(transition.unReadCount)
+        } else {
+            unreadCount.isHidden = true
+        }
     }
 }

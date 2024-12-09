@@ -37,6 +37,7 @@ final class DMListViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMListInfo]>()
         let viewState = PublishSubject<DMListState>()
+        let unreadCount = PublishSubject<Int>()
         let timer = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
         
         timer
