@@ -720,6 +720,7 @@
 		C90827D22CDA4CFA0096BA0D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				C97DE2BB2CFCC2A6000B4E94 /* BuddyBuddy.entitlements */,
 				C9F96D612CDD289000271295 /* Font */,
 				C9C27A0F2CDA315600243744 /* Assets.xcassets */,
 				C9C27A112CDA315600243744 /* LaunchScreen.storyboard */,
@@ -1236,7 +1237,6 @@
 		C9C27A022CDA315500243744 /* BuddyBuddy */ = {
 			isa = PBXGroup;
 			children = (
-				C97DE2BB2CFCC2A6000B4E94 /* BuddyBuddy.entitlements */,
 				C90827CC2CDA4CA30096BA0D /* App */,
 				C908284A2CDA68AB0096BA0D /* Core */,
 				C90827CE2CDA4CB10096BA0D /* Data */,
@@ -1953,7 +1953,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BuddyBuddy/BuddyBuddy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BuddyBuddy/Resources/BuddyBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T4W7695R5C;
@@ -1988,7 +1988,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = BuddyBuddy/BuddyBuddy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = BuddyBuddy/Resources/BuddyBuddy.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = T4W7695R5C;

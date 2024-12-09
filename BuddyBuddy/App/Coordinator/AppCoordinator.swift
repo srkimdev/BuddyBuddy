@@ -21,8 +21,9 @@ final class AppCoordinator: Coordinator {
             name: Notification.Name("Login"),
             object: nil
         )
-        KeyChainManager.shared.deleteAccessToken()
-        KeyChainManager.shared.deleteRefreshToken()
+        
+//        KeyChainManager.shared.deleteAccessToken()
+//        KeyChainManager.shared.deleteRefreshToken()
     }
     
     deinit {
