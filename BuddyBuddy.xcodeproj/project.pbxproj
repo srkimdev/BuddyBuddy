@@ -100,6 +100,7 @@
 		C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67402CEF2F8700C84265 /* SearchState.swift */; };
 		C91F67442CF098C900C84265 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67432CF098C900C84265 /* Data+.swift */; };
 		C928FFBD2D042870001AF963 /* SearchResultWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928FFBC2D042870001AF963 /* SearchResultWithImage.swift */; };
+		C948CE9F2D06D10E00C22975 /* DMHistoryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */; };
@@ -213,7 +214,6 @@
 		DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0CD2CE73EA0002AF523 /* DMRouter.swift */; };
 		DC9BC0D12CE765B5002AF523 /* DMListState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D02CE765B5002AF523 /* DMListState.swift */; };
 		DC9BC0D32CE8DA29002AF523 /* DMHistoryDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D22CE8DA29002AF523 /* DMHistoryDTO.swift */; };
-		DC9BC0D52CE8DAA6002AF523 /* DMHistoryString.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0D42CE8DAA6002AF523 /* DMHistoryString.swift */; };
 		DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DA2CE8DE9E002AF523 /* NetworkProtocol.swift */; };
 		DC9BC0DD2CE9BB21002AF523 /* DMUnReadDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DC2CE9BB21002AF523 /* DMUnReadDTO.swift */; };
 		DC9BC0DF2CE9BB4B002AF523 /* DMUnRead.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC9BC0DE2CE9BB4B002AF523 /* DMUnRead.swift */; };
@@ -1604,6 +1604,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C948CE9F2D06D10E00C22975 /* DMHistoryString.swift in Sources */,
 				DCB9ABD92D019EC7006845CF /* AuthRouter.swift in Sources */,
 				C0A35E052CF8516900B41E60 /* AddChannelReqeustDTO.swift in Sources */,
 				DC213AB82CE6186800E2A2F7 /* DMListViewController.swift in Sources */,
@@ -1706,8 +1707,6 @@
 				C9E44A932CECB2F40044CD5C /* PlaygroundRepositoryInterface.swift in Sources */,
 				DC213AB22CE484BE00E2A2F7 /* AccessToken.swift in Sources */,
 				C04398202CFF40AE00CCC4A1 /* PlaygroundCoordinator.swift in Sources */,
-				DC9BC0D52CE8DAA6002AF523 /* DMHistory.swift in Sources */,
-				DC9BC0D52CE8DAA6002AF523 /* DMHistoryString.swift in Sources */,
 				C9F20F4C2CDB64070043351E /* SearchViewController.swift in Sources */,
 				DC9375922CF88F9200012F43 /* DMTextImageTableViewCell.swift in Sources */,
 				DCB9ABC42CFEDC19006845CF /* ChannelHistoryString.swift in Sources */,
