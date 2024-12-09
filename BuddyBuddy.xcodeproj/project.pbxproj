@@ -99,6 +99,7 @@
 		C91F673F2CEF2F6F00C84265 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F673E2CEF2F6F00C84265 /* SearchResult.swift */; };
 		C91F67412CEF2F8700C84265 /* SearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67402CEF2F8700C84265 /* SearchState.swift */; };
 		C91F67442CF098C900C84265 /* Data+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C91F67432CF098C900C84265 /* Data+.swift */; };
+		C928FFBD2D042870001AF963 /* SearchResultWithImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C928FFBC2D042870001AF963 /* SearchResultWithImage.swift */; };
 		C957EA672CE2095300B62A2A /* UIViewController+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA662CE2095300B62A2A /* UIViewController+.swift */; };
 		C957EA692CE20C2300B62A2A /* SearchEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */; };
 		C957EA6F2CE21F8A00B62A2A /* RecentSearchTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */; };
@@ -117,7 +118,11 @@
 		C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */; };
 		C98363E02CE59F7E00AC51CA /* ProfileBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */; };
 		C98363E42CE5A3E800AC51CA /* SystemImageLabelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */; };
+		C9AF3CAA2D02EFD600386058 /* SearchUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF3CA92D02EFD600386058 /* SearchUserTableViewCell.swift */; };
+		C9AF3CAC2D02F51200386058 /* SearchResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF3CAB2D02F51200386058 /* SearchResultType.swift */; };
+		C9AF3CAE2D03109E00386058 /* LanguageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9AF3CAD2D03109E00386058 /* LanguageLabel.swift */; };
 		C9B0E27A2CFCE181000AA052 /* AppleUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9B0E2792CFCE181000AA052 /* AppleUser.swift */; };
+		C9BE381C2D06B5AC00EE0B2C /* LangState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BE381B2D06B5AC00EE0B2C /* LangState.swift */; };
 		C9BF5CC62CF8574B00F7F547 /* SpecificChannelResponseDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF5CC52CF8574B00F7F547 /* SpecificChannelResponseDTO.swift */; };
 		C9BF5CC82CF85E3600F7F547 /* ChannelInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF5CC72CF85E3600F7F547 /* ChannelInfo.swift */; };
 		C9BF5CCC2CF8C11300F7F547 /* ChangeChannelQuery.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BF5CCB2CF8C11300F7F547 /* ChangeChannelQuery.swift */; };
@@ -328,6 +333,7 @@
 		C91F673E2CEF2F6F00C84265 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		C91F67402CEF2F8700C84265 /* SearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchState.swift; sourceTree = "<group>"; };
 		C91F67432CF098C900C84265 /* Data+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+.swift"; sourceTree = "<group>"; };
+		C928FFBC2D042870001AF963 /* SearchResultWithImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultWithImage.swift; sourceTree = "<group>"; };
 		C957EA662CE2095300B62A2A /* UIViewController+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+.swift"; sourceTree = "<group>"; };
 		C957EA682CE20C2300B62A2A /* SearchEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEmptyView.swift; sourceTree = "<group>"; };
 		C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentSearchTableView.swift; sourceTree = "<group>"; };
@@ -346,7 +352,11 @@
 		C98363DD2CE58AD400AC51CA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		C98363DF2CE59F7E00AC51CA /* ProfileBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileBottomView.swift; sourceTree = "<group>"; };
 		C98363E32CE5A3E800AC51CA /* SystemImageLabelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemImageLabelView.swift; sourceTree = "<group>"; };
+		C9AF3CA92D02EFD600386058 /* SearchUserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserTableViewCell.swift; sourceTree = "<group>"; };
+		C9AF3CAB2D02F51200386058 /* SearchResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultType.swift; sourceTree = "<group>"; };
+		C9AF3CAD2D03109E00386058 /* LanguageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageLabel.swift; sourceTree = "<group>"; };
 		C9B0E2792CFCE181000AA052 /* AppleUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleUser.swift; sourceTree = "<group>"; };
+		C9BE381B2D06B5AC00EE0B2C /* LangState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LangState.swift; sourceTree = "<group>"; };
 		C9BF5CC52CF8574B00F7F547 /* SpecificChannelResponseDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecificChannelResponseDTO.swift; sourceTree = "<group>"; };
 		C9BF5CC72CF85E3600F7F547 /* ChannelInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChannelInfo.swift; sourceTree = "<group>"; };
 		C9BF5CCB2CF8C11300F7F547 /* ChangeChannelQuery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeChannelQuery.swift; sourceTree = "<group>"; };
@@ -984,6 +994,8 @@
 				C957EA6E2CE21F8A00B62A2A /* RecentSearchTableView.swift */,
 				C957EA702CE21FD800B62A2A /* SearchItemTableViewCell.swift */,
 				C91BBC042CE37093001EFC70 /* SearchResultView.swift */,
+				C9AF3CA92D02EFD600386058 /* SearchUserTableViewCell.swift */,
+				C9AF3CAD2D03109E00386058 /* LanguageLabel.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1169,6 +1181,9 @@
 			isa = PBXGroup;
 			children = (
 				C91F673E2CEF2F6F00C84265 /* SearchResult.swift */,
+				C9AF3CAB2D02F51200386058 /* SearchResultType.swift */,
+				C928FFBC2D042870001AF963 /* SearchResultWithImage.swift */,
+				C9BE381B2D06B5AC00EE0B2C /* LangState.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -1629,6 +1644,7 @@
 				C96C72952CDAF9CA00E0D6CF /* BaseView.swift in Sources */,
 				C0A35E072CF8606300B41E60 /* AddChannelResponseDTO.swift in Sources */,
 				C9F20F642CDB709A0043351E /* DefaultDMCoordinator.swift in Sources */,
+				C9AF3CAA2D02EFD600386058 /* SearchUserTableViewCell.swift in Sources */,
 				C98363DE2CE58AD400AC51CA /* ProfileViewModel.swift in Sources */,
 				C9B0E27A2CFCE181000AA052 /* AppleUser.swift in Sources */,
 				DC9375712CEDC0B900012F43 /* SocketProtocol.swift in Sources */,
@@ -1637,9 +1653,11 @@
 				C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */,
 				C09FA9032CEC716500613FEA /* DefaultChannelRepository.swift in Sources */,
 				DC9375862CF4B79900012F43 /* BaseUserDefaults.swift in Sources */,
+				C9BE381C2D06B5AC00EE0B2C /* LangState.swift in Sources */,
 				C9F20F3C2CDB5FFD0043351E /* TabBarViewController.swift in Sources */,
 				C91BBC172CE47F66001EFC70 /* ChannelSettingTopView.swift in Sources */,
 				C9F20F582CDB65AC0043351E /* Coordinator.swift in Sources */,
+				C9AF3CAC2D02F51200386058 /* SearchResultType.swift in Sources */,
 				C90828682CDA78770096BA0D /* String+.swift in Sources */,
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				DC9375752CEE081D00012F43 /* DefaultSocketRepository.swift in Sources */,
@@ -1668,6 +1686,7 @@
 				DCB9ABC62CFEDC52006845CF /* ChannelHistoryResponseDTO.swift in Sources */,
 				C90FEE762CF5D065008819AF /* AlertLiteral.swift in Sources */,
 				C97DE2BA2CFCAF43000B4E94 /* LoginType.swift in Sources */,
+				C9AF3CAE2D03109E00386058 /* LanguageLabel.swift in Sources */,
 				DC9BC0CE2CE73EA0002AF523 /* DMRouter.swift in Sources */,
 				DCB9ABC02CFECC50006845CF /* ChannelTextImageTableViewCell.swift in Sources */,
 				DC9375902CF88F6600012F43 /* DMImageTableViewCell.swift in Sources */,
@@ -1704,6 +1723,7 @@
 				C91BBC0B2CE3B162001EFC70 /* AlertType.swift in Sources */,
 				DC9375842CF4B78A00012F43 /* UserDefaultsManager.swift in Sources */,
 				C0A35E0B2CF8A3C600B41E60 /* ModalDelegate.swift in Sources */,
+				C928FFBD2D042870001AF963 /* SearchResultWithImage.swift in Sources */,
 				C09FA8E42CEC62A200613FEA /* Date+.swift in Sources */,
 				C9F20F562CDB64D30043351E /* AuthViewController.swift in Sources */,
 				C91BBC2B2CE4F7F0001EFC70 /* InviteMemberViewController.swift in Sources */,

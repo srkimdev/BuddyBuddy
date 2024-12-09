@@ -34,12 +34,14 @@ extension SearchDTO {
         let playgroundChannel: [SearchResult] = channels.map { .init(
                 state: .channel,
                 id: $0.channelID,
-                name: $0.channelName
+                name: $0.channelName,
+                file: $0.coverImage
             )}
         let members: [SearchResult] = playgroundMembers.map { .init(
             state: .user,
             id: $0.userID,
-            name: $0.nickname
+            name: $0.nickname,
+            file: $0.profileImage
         )}
         return playgroundChannel + members
     }

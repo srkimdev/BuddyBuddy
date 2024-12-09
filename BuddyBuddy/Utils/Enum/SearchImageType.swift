@@ -21,7 +21,7 @@ enum SearchImageType {
     }
 }
 
-enum Country: String {
+enum Country: String, CaseIterable {
     case kr
     case us
     case jp
@@ -55,6 +55,31 @@ enum Country: String {
             return "SingaporeFlag"
         case .au:
             return "AustraliaFlag"
+        }
+    }
+    
+    var toLang: String {
+        switch self {
+        case .kr:
+            return "KO"
+        case .us:
+            return "EN"
+        case .jp:
+            return "JA"
+        case .cn:
+            return "ZH"
+        case .es:
+            return "ES"
+        case .fr:
+            return "FR"
+        case .pt:
+            return "PT"
+        case .ind:
+            return "ID"
+        case .sg:
+            return "EN"
+        case .au:
+            return "EN"
         }
     }
 }

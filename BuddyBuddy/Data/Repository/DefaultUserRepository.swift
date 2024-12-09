@@ -50,8 +50,8 @@ final class DefaultUserRepository: UserRepositoryInterface {
     }
     
     func getUserProfileImage(imagePath: String?) -> Single<Result<Data?, Error>> {
-        let router = UserRouter.userProfileImage(path: imagePath ?? "")
-        
+        guard let imagePath else { return Single.just(.success(nil)) }
+        let router = UserRouter.userProfileImage(path: imagePath)
         return networkService.downloadImage(router: router)
             .map { result in
                 switch result {
@@ -74,7 +74,7 @@ final class DefaultUserRepository: UserRepositoryInterface {
                 KeyChainManager.shared.saveAccessToken(value.token.accessToken)
                 KeyChainManager.shared.saveRefreshToken(value.token.refreshToken)
                 return .success(true)
-            case .failure(let error):
+            case .failure(_):
                 return .success(false)
             }
         }

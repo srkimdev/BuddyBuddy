@@ -21,7 +21,10 @@ final class SearchResultView: BaseView {
             SearchItemTableViewCell.self,
             forCellReuseIdentifier: SearchItemTableViewCell.identifier
         )
-        view.rowHeight = 41
+        view.register(
+            SearchUserTableViewCell.self,
+            forCellReuseIdentifier: SearchUserTableViewCell.identifier
+        )
         view.showsVerticalScrollIndicator = false
         return view
     }()
