@@ -11,13 +11,18 @@ import RxSwift
 
 final class DefaultSocketRepository: SocketRepositoryInterface {
     private let socketService: SocketProtocol
+    private let realmRepository: RealmRepository<DMHistoryTable>
     
-    init(socketService: SocketProtocol) {
+    init(
+        socketService: SocketProtocol,
+        realmRepository: RealmRepository<DMHistoryTable>
+    ) {
         self.socketService = socketService
+        self.realmRepository = realmRepository
     }
     
-    func connectSocket(roomID: String) {
-        socketService.updateURL(roomID: roomID)
+    func connectSocket(ID: String) {
+        socketService.updateURL(ID: ID)
         socketService.establishConnection()
     }
     
@@ -25,11 +30,19 @@ final class DefaultSocketRepository: SocketRepositoryInterface {
         socketService.closeConnection()
     }
     
-    func observeMessage() -> Observable<DMHistoryTable> {
-        return socketService.observeMessage()
+    func observeDMMessage() -> Observable<DMHistoryString> {
+        socketService.observeDMMessage()
+            .map { message in
+                message.toDomain()
+            }
+            .asObservable()
     }
     
-    func sendMessage(roomID: String, message: String) {
-        socketService.sendMessage(to: roomID, message: message)
+    func observeChannelMessage() -> Observable<ChannelHistoryString> {
+        socketService.observeChannelMessage()
+            .map { message in
+                message.toDomain()
+            }
+            .asObservable()
     }
 }

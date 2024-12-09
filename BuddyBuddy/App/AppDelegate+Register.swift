@@ -23,12 +23,18 @@ extension AppDelegate {
         
         DIContainer.register(
             type: DMRepositoryInterface.self,
-            DefaultDMRepository(networkService: networkService)
+            DefaultDMRepository(
+                networkService: networkService,
+                realmRepository: RealmRepository<DMHistoryTable>()
+            )
         )
         
         DIContainer.register(
             type: SocketRepositoryInterface.self,
-            DefaultSocketRepository(socketService: socketService)
+            DefaultSocketRepository(
+                socketService: socketService,
+                realmRepository: RealmRepository<DMHistoryTable>()
+            )
         )
       
         DIContainer.register(
@@ -48,7 +54,10 @@ extension AppDelegate {
         
         DIContainer.register(
             type: ChannelRepositoryInterface.self,
-            DefaultChannelRepository(networkService: networkService)
+            DefaultChannelRepository(
+                networkService: networkService,
+                realmRepository: RealmRepository<ChannelHistoryTable>()
+            )
         )
         
         DIContainer.register(

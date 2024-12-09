@@ -19,49 +19,101 @@ final class DefaultDMUseCase: DMUseCaseInterface {
     
     func fetchDMHistory(
         playgroundID: String,
-        roomID: String,
-        cursorDate: String
+        roomID: String
     ) -> Single<Result<[DMHistory], Error>> {
-        return dmRepositoryInterface.fetchDMHistory(
+        return dmRepositoryInterface.fetchDMHistoryString(
             playgroundID: playgroundID,
-            roomID: roomID,
-            cursorDate: cursorDate
+            roomID: roomID
+        )
+        .flatMap { [weak self] response -> Single<Result<[DMHistory], Error>> in
+            guard let self else { return Single.just(.success([]))}
+            switch response {
+            case .success(let value):
+                return dmRepositoryInterface.convertArrayToDMHistory(
+                    roomID: roomID,
+                    dmHistoryStringArray: value
+                )
+                .flatMap { _ in
+                    self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
+                }
+            case .failure(let error):
+                return Single.just(.failure(error))
+            }
+        }
+    }
+    
+    func fetchDMHistoryForList(
+        playgroundID: String,
+        roomID: String
+    ) -> Single<Result<[DMHistoryString], Error>> {
+        return dmRepositoryInterface.fetchDMHistoryString(
+            playgroundID: playgroundID,
+            roomID: roomID
         )
     }
     
     func fetchDMUnRead(
         playgroundID: String,
-        roomID: String,
-        after: String
+        roomID: String
     ) -> Single<Result<DMUnRead, Error>> {
-        return dmRepositoryInterface.fetchDMNoRead(
+        return dmRepositoryInterface.fetchDMUnread(
             playgroundID: playgroundID,
-            roomID: roomID,
-            after: after
+            roomID: roomID
         )
     }
     
     func sendDM(
         playgroundID: String,
         roomID: String,
-        message: String
-    ) -> Single<Result<DMHistoryTable, Error>> {
+        message: String,
+        files: [Data]
+    ) -> Single<Result<[DMHistory], Error>> {
         return dmRepositoryInterface.sendDM(
             playgroundID: playgroundID,
             roomID: roomID, 
-            message: message
+            message: message,
+            files: files
         )
+        .flatMap { [weak self] response -> Single<Result<[DMHistory], Error>> in
+            guard let self else { return Single.just(.success([]))}
+            switch response {
+            case .success(let value):
+                return dmRepositoryInterface.convertObjectToDMHistory(
+                    roomID: roomID,
+                    dmHistoryString: value
+                )
+                .flatMap { _ in
+                    self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
+                }
+            case .failure(let error):
+                return Single.just(.failure(error))
+            }
+        }
     }
     
     func connectSocket(roomID: String) {
-        socketRepositoryInterface.connectSocket(roomID: roomID)
+        socketRepositoryInterface.connectSocket(ID: roomID)
     }
     
     func disConnectSocket() {
         socketRepositoryInterface.disConnectSocket()
     }
+
+    func observeMessage(roomID: String) -> Observable<Result<[DMHistory], Error>> {
+        return self.socketRepositoryInterface.observeDMMessage()
+            .flatMap { dmHistoryString in
+                self.dmRepositoryInterface.convertObjectToDMHistory(
+                    roomID: roomID,
+                    dmHistoryString: dmHistoryString
+                )
+            }
+            .flatMap { _ in
+                self.dmRepositoryInterface.fetchDMHistoryTable(roomID: roomID)
+            }
+            .asObservable()
+    }
     
-    func observeMessage() -> Observable<DMHistoryTable> {
-        return socketRepositoryInterface.observeMessage()
+    func findRoomIDFromUser(userID: String) -> (String, String) {
+        return self.dmRepositoryInterface.findRoomIDFromUser(userID: userID)
     }
 }

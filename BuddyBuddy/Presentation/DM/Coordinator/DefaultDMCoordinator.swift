@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum DMChatState {
+    case fromList(DMListInfo)
+    case fromProfile(String)
+}
+
 final class DefaultDMCoordinator: DMCoordinator {
     var parent: Coordinator?
     var childs: [Coordinator] = []
@@ -28,12 +33,12 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func toDMChatting(_ dmListInfo: DMListInfo) {
-        let vc = DMChattingViewController(vm: DMChattingViewModel(
+        let vc = DMChattingViewController(
+            vm: DMChattingViewModel(
             coordinator: self,
             dmUseCase: DefaultDMUseCase(),
-            dmListInfo: dmListInfo,
-            realmRepository: RealmRepository()
-        ))
+            dmChatState: DMChatState.fromList(dmListInfo))
+        )
         vc.hidesBottomBarWhenPushed = true
         navigationController.pushViewController(
             vc,
@@ -42,6 +47,16 @@ final class DefaultDMCoordinator: DMCoordinator {
     }
     
     func toDMChatting(userID: String) {
-        // 화면 전환
+        let vc = DMChattingViewController(
+            vm: DMChattingViewModel(
+            coordinator: self,
+            dmUseCase: DefaultDMUseCase(),
+            dmChatState: DMChatState.fromProfile(userID))
+        )
+        vc.hidesBottomBarWhenPushed = true
+        navigationController.pushViewController(
+            vc,
+            animated: true
+        )
     }
 }

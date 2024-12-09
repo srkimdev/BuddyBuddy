@@ -10,7 +10,6 @@ import Foundation
 import Alamofire
 
 final class AuthIntercepter: RequestInterceptor {
-    
     func adapt(
         _ urlRequest: URLRequest,
         for session: Session,
@@ -19,7 +18,7 @@ final class AuthIntercepter: RequestInterceptor {
         var urlRequest = urlRequest
         urlRequest.setValue(
             KeyChainManager.shared.getAccessToken(),
-            forHTTPHeaderField: "Authorization"
+            forHTTPHeaderField: Header.authorization.rawValue
         )
         completion(.success(urlRequest))
     }
@@ -36,22 +35,45 @@ final class AuthIntercepter: RequestInterceptor {
             return
         }
         
-        print(response.statusCode, "statuscode")
-        
         do {
-            let request = try LogInRouter.accessTokenRefresh.asURLRequest()
+            let request = try AuthRouter.accessTokenRefresh.asURLRequest()
             session.request(request)
-                .responseDecodable(of: AccessTokenDTO.self) { response in
+                .responseDecodable(of: AccessTokenDTO.self) { [weak self] response in
+                    guard let self else { return }
                     switch response.result {
                     case .success(let value):
                         KeyChainManager.shared.saveAccessToken(value.accessToken)
                         completion(.retry)
                     case .failure(let error):
+                        guard let errorCode = self.decodeNetworkError(from: response.data) else {
+                             return
+                        }
+                        let error = NetworkError(errorCode)
+                        if error == NetworkError.E06 {
+                            NotificationCenter.default.post(
+                                name: NSNotification.Name("Login"),
+                                object: nil
+                            )
+                        }
+                        
                         completion(.doNotRetryWithError(error))
                     }
                 }
         } catch {
             print(error)
         }
+    }
+    
+    private func decodeNetworkError(from jsonData: Data?) -> String? {
+        guard let jsonData else { return nil }
+        
+        if let errorResponse = try? JSONDecoder().decode(
+            NetworkErrorDTO.self,
+            from: jsonData
+        ) {
+            return errorResponse.errorCode
+        }
+        
+        return nil
     }
 }

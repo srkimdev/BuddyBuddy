@@ -68,14 +68,14 @@ final class ChannelAdminTableViewCell: BaseTableViewCell {
     }
     
     func setUserProfile(
-        img: UIImage?,
+        profileData: Data?,
         name: String,
         email: String
     ) {
-        if img == nil {
+        if profileData == nil {
             profileImgView.image = UIImage(named: "BasicProfileImage")
         } else {
-            profileImgView.image = img
+            profileImgView.image = profileData?.toUIImage()
         }
         profileNameLabel.text = name
         emailLabel.text = email

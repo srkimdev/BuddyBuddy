@@ -10,10 +10,9 @@ import UIKit
 import SnapKit
 
 final class DMListTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
-        let view = UIImageView()
+    private let profileImage: ProfileImageView = {
+        let view = ProfileImageView()
         view.layer.cornerRadius = 25
-        view.backgroundColor = .lightGray
         return view
     }()
     private let userName: UILabel = {
@@ -68,7 +67,7 @@ final class DMListTableViewCell: BaseTableViewCell {
     }
     
     func designCell(_ transition: DMListInfo) {
-        profileImage.image = UIImage(systemName: "star")
+        profileImage.updateURL(url: transition.profileImg)
         userName.text = transition.userName
         lastText.text = transition.lastText
         lastTime.text = "PM 06:12"

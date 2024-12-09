@@ -7,12 +7,12 @@
 
 import Foundation
 
-import RxSwift
+import RxCocoa
 
 protocol SocketProtocol {
-    func updateURL(roomID: String)
+    func updateURL(ID: String)
     func establishConnection()
     func closeConnection()
-    func sendMessage(to roomID: String, message: String)
-    func observeMessage() -> Observable<DMHistoryTable>
+    func observeDMMessage() -> PublishRelay<DMHistoryDTO>
+    func observeChannelMessage() -> PublishRelay<ChannelHistoryResponseDTO>
 }

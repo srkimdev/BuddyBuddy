@@ -15,3 +15,12 @@ struct ChannelInfo {
     let ownerID: String
     let channelMembers: [UserProfile]
 }
+
+struct ChannelInfoData {
+    let channelID: String
+    let channelName: String
+    let description: String?
+    let coverImage: String?
+    let ownerID: String
+    let channelMembers: [UserProfileData]
+}

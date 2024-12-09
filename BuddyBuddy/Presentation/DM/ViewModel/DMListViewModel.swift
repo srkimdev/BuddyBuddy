@@ -10,15 +10,6 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-struct DMListInfo {
-    let profileImg: String
-    let userName: String
-    let lastText: String
-    let lastTime: String
-    let unReadCount: Int
-    let roomID: String
-}
-
 final class DMListViewModel: ViewModelType {
     private let disposeBag: DisposeBag = DisposeBag()
     
@@ -46,11 +37,13 @@ final class DMListViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMListInfo]>()
         let viewState = PublishSubject<DMListState>()
+        let timer = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
         
-        input.viewWillAppearTrigger
-            .flatMapLatest {
-                self.dmUseCase.fetchDMList(
-                    playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4"
+        timer
+            .withUnretained(self)
+            .flatMapLatest { (owner, _) in
+                owner.dmUseCase.fetchDMList(
+                    playgroundID: UserDefaultsManager.playgroundID
                 ).asObservable()
             }
             .flatMap { result -> Observable<[DMListInfo]> in
@@ -58,16 +51,14 @@ final class DMListViewModel: ViewModelType {
                 case .success(let dmLists):
                     let dmListInfoRequests = dmLists.map { dmList in
                         Observable.zip(
-                            self.dmUseCase.fetchDMHistory(
-                                playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.roomID,
-                                cursorDate: ""
+                            self.dmUseCase.fetchDMHistoryForList(
+                                playgroundID: UserDefaultsManager.playgroundID,
+                                roomID: dmList.roomID
                             )
                             .asObservable(),
                             self.dmUseCase.fetchDMUnRead(
-                                playgroundID: "70b565b8-9ca1-483f-b812-15d3e57b5cf4",
-                                roomID: dmList.roomID,
-                                after: ""
+                                playgroundID: UserDefaultsManager.playgroundID,
+                                roomID: dmList.roomID
                             )
                             .asObservable()
                         )

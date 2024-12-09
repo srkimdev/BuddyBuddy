@@ -67,12 +67,15 @@ final class DMListViewController: BaseNavigationViewController {
         }
     }
     
+    override func setNavigation() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: DMNavigationView())
+    }
+    
     override func bind() {
-        let viewdidLoadTrigger = Observable.just(())
         let toDMChattingTrigger = PublishSubject<DMListInfo>()
         
         let input = DMListViewModel.Input(
-            viewWillAppearTrigger: viewdidLoadTrigger,
+            viewWillAppearTrigger: rx.viewWillAppear,
             toDMChatting: toDMChattingTrigger
         )
         let output = vm.transform(input: input)
@@ -103,7 +106,7 @@ final class DMListViewController: BaseNavigationViewController {
             .disposed(by: disposeBag)
             
         dmListTableView.rx.modelSelected(DMListInfo.self)
-            .bind(with: self) { _, value in
+            .bind { value in
                 toDMChattingTrigger.onNext(value)
             }
             .disposed(by: disposeBag)

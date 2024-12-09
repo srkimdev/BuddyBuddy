@@ -111,33 +111,6 @@ final class HomeViewController: BaseNavigationViewController {
         self.vm = vm
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        Observable.just(())
-            .flatMap {
-                let login = LoginQuery(email: "compose2@coffee.com", password: "1q2w3e4rQ!")
-                return self.service.callRequest(
-                    router: LogInRouter.login(query: login),
-                    responseType: LogInDTO.self
-                )
-            }
-            .bind(with: self) { _, response in
-                switch response {
-                case .success(let value):
-                    print(value)
-                    KeyChainManager.shared.saveAccessToken(value.token.accessToken)
-                    KeyChainManager.shared.saveRefreshToken(value.token.refreshToken)
-                    UserDefaultsManager.userID = value.userID
-                case .failure(let error):
-                    print(error)
-                }
-            }
-            .disposed(by: disposeBag)
-        
-        let repo = RealmRepository<DMHistoryTable>()
-        repo.detectRealmURL()
-    }
-    
     override func bind() {
         let input = HomeViewModel.Input(
             viewWillAppearTrigger: rx.viewWillAppear,

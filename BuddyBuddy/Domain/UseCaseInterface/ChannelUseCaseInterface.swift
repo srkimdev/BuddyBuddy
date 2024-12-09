@@ -21,11 +21,24 @@ protocol ChannelUseCaseInterface {
         channelID: String,
         date: String?
     ) -> Single<Result<Bool, any Error>>
-    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfo, Error>>
+    func fetchSpecificChannel(channelID: String) -> Single<Result<ChannelInfoData, Error>>
     func changeChannelAdmin(
         channelID: String,
         selectedUserID: String
     ) -> Single<Result<Bool, Error>>
     func exitChannel(channelID: String) -> Single<Result<Void, Error>>
     func deleteChannel(channelID: String) -> Single<Result<Void, Error>>
+    func fetchChannelHistory(
+        playgroundID: String,
+        channelID: String
+    ) -> Single<Result<[ChannelHistory], Error>>
+    func sendChannel(
+        playgroundID: String,
+        channelID: String,
+        message: String,
+        files: [Data]
+    ) -> Single<Result<[ChannelHistory], Error>>
+    func connectSocket(channelID: String)
+    func disConnectSocket()
+    func observeMessage(channelID: String) -> Observable<Result<[ChannelHistory], Error>>
 }

@@ -1,23 +1,23 @@
 //
-//  DMChattingTableViewCell.swift
+//  ChannelTextTableViewCell.swift
 //  BuddyBuddy
 //
-//  Created by 김성률 on 11/12/24.
+//  Created by 김성률 on 12/3/24.
 //
 
 import UIKit
 
 import SnapKit
 
-final class DMChattingTableViewCell: BaseTableViewCell {
-    private let profileImage: UIImageView = {
-        let view = UIImageView()
+final class ChannelTextTableViewCell: BaseTableViewCell {
+    private let profileImage: ProfileImageView = {
+        let view = ProfileImageView()
         view.layer.cornerRadius = 10
         return view
     }()
     private let userName: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 13)
+        view.font = .body
         return view
     }()
     private let speechBubble: SpeechBubbleView = {
@@ -26,7 +26,8 @@ final class DMChattingTableViewCell: BaseTableViewCell {
     }()
     private let chatTime: UILabel = {
         let view = UILabel()
-        view.font = .systemFont(ofSize: 12)
+        view.textColor = .gray1
+        view.font = .caption
         view.setContentCompressionResistancePriority(.required, for: .horizontal)
         return view
     }()
@@ -51,27 +52,24 @@ final class DMChattingTableViewCell: BaseTableViewCell {
         userName.snp.makeConstraints { make in
             make.top.equalTo(profileImage.snp.top)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
-            make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(15)
+        }
+        chatTime.snp.makeConstraints { make in
+            make.centerY.equalTo(userName)
+            make.leading.equalTo(userName.snp.trailing).offset(16)
         }
         speechBubble.snp.makeConstraints { make in
             make.top.equalTo(userName.snp.bottom).offset(8)
             make.leading.equalTo(profileImage.snp.trailing).offset(8)
             make.bottom.equalToSuperview().inset(8)
-//            make.trailing.lessThanOrEqualTo(chatTime.snp.leading).offset(-8)
-//            make.width.greaterThanOrEqualToSuperview().multipliedBy(0.6)
-        }
-        chatTime.snp.makeConstraints { make in
-            make.bottom.equalTo(speechBubble.snp.bottom)
-            make.leading.equalTo(speechBubble.snp.trailing).offset(8)
-            make.trailing.lessThanOrEqualToSuperview().inset(30)
         }
     }
     
-    func designCell(_ transition: DMHistoryTable) {
-        profileImage.backgroundColor = .lightGray
-        userName.text = transition.user?.nickname
+    func designCell(_ transition: ChannelHistory) {
+        userName.text = transition.user.nickname
         chatTime.text = "11:55 오전"
+        
         speechBubble.updateText(transition.content)
+        profileImage.updateURL(url: transition.user.profileImage ?? "")
     }
 }

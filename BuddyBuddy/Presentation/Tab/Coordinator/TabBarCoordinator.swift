@@ -89,6 +89,6 @@ extension TabBarCoordinator {
                 as? DefaultHomeCoordinator else {
             return
         }
-        homeCoordinator.toChannelDM()
+        homeCoordinator.toChannelDM(channelID: channelID)
     }
 }

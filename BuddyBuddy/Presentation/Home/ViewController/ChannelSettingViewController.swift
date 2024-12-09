@@ -88,7 +88,7 @@ final class ChannelSettingViewController: BaseViewController {
             )) { _, data, cell in
                 // TODO: Profile Image 통신
                 cell.setProfileUI(
-                    profileImg: nil,
+                    profileImg: data.profileImage,
                     profileName: data.nickname
                 )
             }

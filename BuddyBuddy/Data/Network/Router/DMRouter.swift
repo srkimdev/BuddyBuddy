@@ -11,24 +11,27 @@ import Alamofire
 
 enum DMRouter: TargetType {
     case dmList(playgroundID: String)
-    case dmSend(playgroundID: String, roomID: String, message: String)
+    case dmSend(playgroundID: String, roomID: String)
     case dmHistory(playgroundID: String, roomID: String, cursorDate: String)
     case dmUnRead(playgroundID: String, roomID: String, after: String)
+    case dmImage(path: String)
     
     var baseURL: String {
-        return APIKey.baseURL + "/v1/"
+        return APIKey.baseURL + "/v1"
     }
     
     var path: String {
         switch self {
         case .dmList(let playgroundID):
-            return "workspaces/\(playgroundID)/dms"
-        case .dmSend(let playgroundID, let roomID, _):
-            return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
+            return "/workspaces/\(playgroundID)/dms"
+        case .dmSend(let playgroundID, let roomID):
+            return "/workspaces/\(playgroundID)/dms/\(roomID)/chats"
         case .dmHistory(let playgroundID, let roomID, _):
-            return "workspaces/\(playgroundID)/dms/\(roomID)/chats"
+            return "/workspaces/\(playgroundID)/dms/\(roomID)/chats"
         case .dmUnRead(let playgroundID, let roomID, _):
-            return "workspaces/\(playgroundID)/dms/\(roomID)/unreads"
+            return "/workspaces/\(playgroundID)/dms/\(roomID)/unreads"
+        case .dmImage(let path):
+            return path
         }
     }
     
@@ -41,6 +44,8 @@ enum DMRouter: TargetType {
         case .dmHistory:
             return .get
         case .dmUnRead:
+            return .get
+        case .dmImage:
             return .get
         }
     }
@@ -85,6 +90,12 @@ enum DMRouter: TargetType {
         case .dmUnRead:
             return [
                 Header.authorization.rawValue: KeyChainManager.shared.getAccessToken() ?? "",
+                Header.Key.rawValue: APIKey.Key
+            ]
+        case .dmImage:
+            return [
+                Header.contentType.rawValue: Header.multipart.rawValue,
+                Header.authorization.rawValue: KeyChainManager.shared.getRefreshToken() ?? "",
                 Header.Key.rawValue: APIKey.Key
             ]
         }

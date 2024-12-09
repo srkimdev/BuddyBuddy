@@ -10,7 +10,8 @@ import Foundation
 import RxSwift
 
 protocol SocketRepositoryInterface {
-    func connectSocket(roomID: String)
+    func connectSocket(ID: String)
     func disConnectSocket()
-    func observeMessage() -> Observable<DMHistoryTable>
+    func observeDMMessage() -> Observable<DMHistoryString>
+    func observeChannelMessage() -> Observable<ChannelHistoryString>
 }

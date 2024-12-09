@@ -12,7 +12,7 @@ protocol HomeCoordinator: Coordinator {
     func toChannelAdmin(channelID: String)
     func toInviteMember()
     func toProfile(userID: String)
-    func toChannelDM()
+    func toChannelDM(channelID: String)
     func toAddChannel()
     func toPlayground()
 }
