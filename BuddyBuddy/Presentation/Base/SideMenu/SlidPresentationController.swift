@@ -24,7 +24,10 @@ final class SlidePresentationController: UIPresentationController {
         frame.size.width *= 0.8
         frame.size.height = frame.size.height
         
-        frame.origin = CGPoint(x: type == .leading ? 0 : originWidth - frame.size.width, y: 0)
+        frame.origin = CGPoint(
+            x: type == .leading ? 0 : originWidth - frame.size.width,
+            y: 0
+        )
         
         return frame
     }
@@ -55,19 +58,23 @@ final class SlidePresentationController: UIPresentationController {
             return
         }
         
-        coordinator.animate(alongsideTransition: { _ in
-            self.dimmingView.alpha = 0.5
+        coordinator.animate(alongsideTransition: { [weak self] _ in
+            guard let self else { return }
+            dimmingView.alpha = 0.5
         })
     }
     
     override func dismissalTransitionWillBegin() {
         if let coordinator = presentedViewController.transitionCoordinator {
-            coordinator.animate(alongsideTransition: { [weak self] _ in
-                guard let self else { return }
-                dimmingView.alpha = 0.0
-                presentingViewController.view.transform = CGAffineTransform.identity
-                containerView?.layoutIfNeeded()
-            }, completion: nil)
+            coordinator.animate(
+                alongsideTransition: { [weak self] _ in
+                    guard let self else { return }
+                    dimmingView.alpha = 0.0
+                    presentingViewController.view.transform = CGAffineTransform.identity
+                    containerView?.layoutIfNeeded()
+                }, 
+                completion: nil
+            )
         }
     }
     
