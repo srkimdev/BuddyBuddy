@@ -20,11 +20,16 @@ final class DefaultPlaygroundCoordinator: PlaygroundCoordinator {
         coordinator: self,
         useCase: playgroundUseCase
     )
+    private let slideType: SlideType = .leading
     private lazy var presentation = SlidePresentationController(
         presentedViewController: vc,
-        presenting: nil
+        presenting: nil,
+        type: slideType
     )
-    private lazy var manager = SlideInPresentationManager(presentationController: presentation)
+    private lazy var manager = SlideInPresentationManager(
+        presentationController: presentation,
+        type: slideType
+    )
     
     init(
         navigationController: UINavigationController,

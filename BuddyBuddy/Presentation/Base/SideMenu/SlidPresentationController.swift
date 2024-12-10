@@ -10,25 +10,31 @@ import SnapKit
 
 final class SlidePresentationController: UIPresentationController {
     private let dimmingView = UIView()
+    private let type: SlideType
     
     override var frameOfPresentedViewInContainerView: CGRect {
         guard var frame = containerView?.frame else {
             return .zero
         }
         
-        frame.origin = CGPoint(x: 0, y: 0)
+        let originWidth = frame.width
+        
         frame.size.width *= 0.8
         frame.size.height = frame.size.height
+        
+        frame.origin = CGPoint(x: type == .leading ? 0 : originWidth - frame.size.width, y: 0)
         
         return frame
     }
     
     var transitionCoordinator: UIViewControllerTransitionCoordinator?
     
-    override init(
+    init(
         presentedViewController: UIViewController,
-        presenting presentingViewController: UIViewController?
+        presenting presentingViewController: UIViewController?,
+        type: SlideType
     ) {
+        self.type = type
         super.init(
             presentedViewController: presentedViewController,
             presenting: presentingViewController

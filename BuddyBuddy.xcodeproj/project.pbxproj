@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C00F90C02CE75EC800B7DD62 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */; };
+		C0290A7B2D082BA3003B8A5D /* SlideType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0290A7A2D082BA3003B8A5D /* SlideType.swift */; };
 		C02D93BB2CFB47FA003471B9 /* PlaygroundBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */; };
 		C02D93BD2CFB4DDD003471B9 /* PlaygroundViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */; };
 		C02D93BF2CFC4EBA003471B9 /* LeftAlignButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */; };
@@ -253,6 +254,7 @@
 
 /* Begin PBXFileReference section */
 		C00F90BF2CE75EC800B7DD62 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		C0290A7A2D082BA3003B8A5D /* SlideType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideType.swift; sourceTree = "<group>"; };
 		C02D93BA2CFB47FA003471B9 /* PlaygroundBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundBottomView.swift; sourceTree = "<group>"; };
 		C02D93BC2CFB4DDD003471B9 /* PlaygroundViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaygroundViewController.swift; sourceTree = "<group>"; };
 		C02D93BE2CFC4EBA003471B9 /* LeftAlignButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LeftAlignButton.swift; path = BuddyBuddy/Presentation/DM/LeftAlignButton.swift; sourceTree = SOURCE_ROOT; };
@@ -1282,6 +1284,7 @@
 				C90FEE752CF5D065008819AF /* AlertLiteral.swift */,
 				C02D93C92CFC715F003471B9 /* ActionSheetType.swift */,
 				C97DE2B92CFCAF43000B4E94 /* LoginType.swift */,
+				C0290A7A2D082BA3003B8A5D /* SlideType.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -1777,6 +1780,7 @@
 				C91F672C2CEE425200C84265 /* DefaultUserRepository.swift in Sources */,
 				C9E44A9D2CECC1070044CD5C /* DefaultPlaygroundUseCase.swift in Sources */,
 				DCB9ABB82CFE0645006845CF /* ChannelChattingViewController.swift in Sources */,
+				C0290A7B2D082BA3003B8A5D /* SlideType.swift in Sources */,
 				C96C72992CDAF9EA00E0D6CF /* BaseNavigationViewController.swift in Sources */,
 				C91F67442CF098C900C84265 /* Data+.swift in Sources */,
 				C9F20F542CDB64C10043351E /* AuthViewModel.swift in Sources */,
