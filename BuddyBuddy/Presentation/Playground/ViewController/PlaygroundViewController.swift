@@ -76,7 +76,7 @@ final class PlaygroundViewController: BaseViewController {
     }
     
     override func setView() {
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = .clear
     }
     
     override func setHierarchy() {
@@ -89,7 +89,7 @@ final class PlaygroundViewController: BaseViewController {
     
     override func setConstraints() {
         containerView.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.width.equalToSuperview()
             make.verticalEdges.leading.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in

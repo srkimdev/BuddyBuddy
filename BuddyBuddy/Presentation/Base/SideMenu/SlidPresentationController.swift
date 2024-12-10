@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 final class SlidePresentationController: UIPresentationController {
     private let dimmingView = UIView()
@@ -16,7 +17,7 @@ final class SlidePresentationController: UIPresentationController {
         }
         
         frame.origin = CGPoint(x: 0, y: 0)
-        frame.size.width = frame.size.width
+        frame.size.width *= 0.8
         frame.size.height = frame.size.height
         
         return frame
@@ -53,11 +54,12 @@ final class SlidePresentationController: UIPresentationController {
     
     func setupDimmingViewLayout() {
         dimmingView.alpha = 0.0
+        dimmingView.backgroundColor = .black
         
         containerView?.insertSubview(dimmingView, at: 0)
         
-        dimmingView.snp.makeConstraints {
-            $0.edges.equalToSuperview()
+        dimmingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
         }
     }
     
