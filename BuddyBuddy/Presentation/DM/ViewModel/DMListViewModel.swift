@@ -37,7 +37,6 @@ final class DMListViewModel: ViewModelType {
     func transform(input: Input) -> Output {
         let updateDMListTableView = PublishSubject<[DMListInfo]>()
         let viewState = PublishSubject<DMListState>()
-        let unreadCount = PublishSubject<Int>()
         let timer = Observable<Int>.interval(.seconds(1), scheduler: MainScheduler.instance)
         
         timer
@@ -45,7 +44,8 @@ final class DMListViewModel: ViewModelType {
             .flatMapLatest { (owner, _) in
                 owner.dmUseCase.fetchDMList(
                     playgroundID: UserDefaultsManager.playgroundID
-                ).asObservable()
+                )
+                .asObservable()
             }
             .flatMap { result -> Observable<[DMListInfo]> in
                 switch result {
@@ -80,7 +80,6 @@ final class DMListViewModel: ViewModelType {
                         }
                     }
                     return Observable.zip(dmListInfoRequests)
-                    
                 case .failure(let error):
                     return Observable.error(error)
                 }

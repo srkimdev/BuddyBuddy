@@ -77,6 +77,7 @@ final class DMListTableViewCell: BaseTableViewCell {
         
         print(transition.unReadCount, "🤪")
         if transition.unReadCount > 0 {
+            unreadCount.isHidden = false
             unreadCount.updateCount(transition.unReadCount)
         } else {
             unreadCount.isHidden = true
