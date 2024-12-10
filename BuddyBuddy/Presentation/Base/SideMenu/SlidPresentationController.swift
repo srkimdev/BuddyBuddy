@@ -6,11 +6,13 @@
 //
 
 import UIKit
+
 import SnapKit
 
 final class SlidePresentationController: UIPresentationController {
-    private let dimmingView = UIView()
+    let dimmingView = UIView()
     private let type: SlideType
+    weak var sideMenuDelegate: SideMenuHandler?
     
     override var frameOfPresentedViewInContainerView: CGRect {
         guard var frame = containerView?.frame else {
@@ -58,17 +60,6 @@ final class SlidePresentationController: UIPresentationController {
         })
     }
     
-    func setupDimmingViewLayout() {
-        dimmingView.alpha = 0.0
-        dimmingView.backgroundColor = .black
-        
-        containerView?.insertSubview(dimmingView, at: 0)
-        
-        dimmingView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
-        }
-    }
-    
     override func dismissalTransitionWillBegin() {
         if let coordinator = presentedViewController.transitionCoordinator {
             coordinator.animate(alongsideTransition: { [weak self] _ in
@@ -85,5 +76,28 @@ final class SlidePresentationController: UIPresentationController {
         if completed {
             dimmingView.removeFromSuperview()
         }
+    }
+}
+
+extension SlidePresentationController {
+    func setupDimmingViewLayout() {
+        dimmingView.alpha = 0.0
+        dimmingView.backgroundColor = .black
+        
+        containerView?.insertSubview(dimmingView, at: 0)
+        
+        dimmingView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        let tapGesture = UITapGestureRecognizer(
+            target: self,
+            action: #selector(handleTap)
+        )
+        dimmingView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        sideMenuDelegate?.dismissNotification()
     }
 }

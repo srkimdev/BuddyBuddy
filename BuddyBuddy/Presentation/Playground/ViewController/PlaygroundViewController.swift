@@ -41,6 +41,7 @@ final class PlaygroundViewController: BaseViewController {
     }()
     private let bottomView: PlaygroundBottomView = PlaygroundBottomView()
     private let moreBtnTapped = PublishRelay<String>()
+    private let dismiss = PublishRelay<Void>()
     
     init(vm: PlaygroundViewModel) {
         self.vm = vm
@@ -53,7 +54,8 @@ final class PlaygroundViewController: BaseViewController {
             viewWillAppearTrigger: rx.viewWillAppear,
             selectedPlayground: playgroundTableView.rx.modelSelected(Workspace.self).asObservable(),
             moreBtnTapped: moreBtnTapped.asObservable(),
-            addBtnTapped: bottomView.addButton.rx.tap.asObservable()
+            addBtnTapped: bottomView.addButton.rx.tap.asObservable(),
+            dismiss: dismiss.asObservable()
         )
         let output = vm.transform(input: input)
         
@@ -112,5 +114,11 @@ final class PlaygroundViewController: BaseViewController {
     @objc func moreBtnDidTap(_ sender: UIButton) {
         guard let id = sender.accessibilityIdentifier else { return }
         moreBtnTapped.accept(id)
+    }
+}
+
+extension PlaygroundViewController: SideMenuHandler {
+    @objc func dismissNotification() {
+        dismiss.accept(())
     }
 }
