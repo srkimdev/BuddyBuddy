@@ -9,6 +9,12 @@ import UIKit
 
 import SnapKit
 
+/**
+- 해당 객체: Network가 끊겼을 때 보여질 VC
+- 객체가 생성될 때, Notification보내줄 Observer 등록
+- `NetworkMonitor` 객체에서 네트워크 연결에 따라 NotificationObserver에 이벤트 post
+- 네트워크 연결에 따라 timer 등록 및 등록된 타이머 삭제(`networkConnected/networkDisconnected` method)
+ */
 final class NetworkDisconnectViewController: BaseViewController {
     private let networkProgress: UIImageView = {
         let view = UIImageView()
@@ -34,10 +40,17 @@ final class NetworkDisconnectViewController: BaseViewController {
         return view
     }()
     
+    private var fatalErrorTask: DispatchWorkItem?
+    
     override init() {
         super.init()
         
-        setFatalError()
+        setupNotifications()
+    }
+    
+    deinit {
+        print("== NetworkDisconnectVC DEINIT ==")
+        NotificationCenter.default.removeObserver(self)
     }
     
     override func setHierarchy() {
@@ -63,6 +76,21 @@ final class NetworkDisconnectViewController: BaseViewController {
         }
         
         setProgressView()
+    }
+    
+    private func setupNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(networkConnected),
+            name: .networkConnected,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(networkDisconnected),
+            name: .networkDisconnected,
+            object: nil
+        )
     }
     
     private func setProgressView() {
@@ -93,14 +121,25 @@ final class NetworkDisconnectViewController: BaseViewController {
         networkProgress.startAnimating()
     }
     
-    private func setFatalError() {
-        DispatchQueue.global().asyncAfter(deadline: .now() + 7) {
+    private func setFatalErrorTimer() {
+        fatalErrorTask?.cancel()
+        fatalErrorTask = DispatchWorkItem {
             exit(EXIT_SUCCESS)
         }
+        DispatchQueue.global().asyncAfter(
+            deadline: .now() + 7,
+            execute: fatalErrorTask ?? DispatchWorkItem(block: {()})
+        )
     }
-}
-
-@available(iOS 17.0, *)
-#Preview {
-    NetworkDisconnectViewController()
+    
+    /// Network 연결 O
+    @objc private func networkConnected() {
+        fatalErrorTask?.cancel()
+        fatalErrorTask = nil
+    }
+    
+    /// Network 연결 X
+    @objc private func networkDisconnected() {
+        setFatalErrorTimer()
+    }
 }

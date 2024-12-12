@@ -46,6 +46,12 @@ final class NetworkMonitorService: NetworkMonitorInterface {
     }
     
     private func showNetworkWindow() {
+        /// 네트워크 끊겼을 때 보내는 Notification
+        NotificationCenter.default.post(
+            name: .networkDisconnected,
+            object: nil
+        )
+        
         DispatchQueue.main.async {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 let networkWindow = NetworkWindow(windowScene: windowScene)
@@ -58,6 +64,12 @@ final class NetworkMonitorService: NetworkMonitorInterface {
     }
     
     private func dismissNetworkWindow() {
+        /// 네트워크 돌아왔을 때 보내는 Notification
+        NotificationCenter.default.post(
+            name: .networkConnected,
+            object: nil
+        )
+        
         DispatchQueue.main.async {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 let sceneDelegate = windowScene.delegate as? SceneDelegate

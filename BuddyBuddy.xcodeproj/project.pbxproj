@@ -111,6 +111,7 @@
 		C96C729B2CDB289400E0D6CF /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */; };
 		C96C729D2CDB28B400E0D6CF /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */; };
 		C96C729F2CDB28F500E0D6CF /* Reusables.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96C729E2CDB28F500E0D6CF /* Reusables.swift */; };
+		C97955362D0AD6630033EA15 /* Notification+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97955352D0AD6630033EA15 /* Notification+.swift */; };
 		C97DE2B82CFCAEC5000B4E94 /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DE2B72CFCAEC5000B4E94 /* LoginButton.swift */; };
 		C97DE2BA2CFCAF43000B4E94 /* LoginType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97DE2B92CFCAF43000B4E94 /* LoginType.swift */; };
 		C97DE2BC2CFCCB69000B4E94 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C908285A2CDA6E940096BA0D /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
@@ -348,6 +349,7 @@
 		C96C729A2CDB289400E0D6CF /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		C96C729C2CDB28B400E0D6CF /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		C96C729E2CDB28F500E0D6CF /* Reusables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reusables.swift; sourceTree = "<group>"; };
+		C97955352D0AD6630033EA15 /* Notification+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notification+.swift"; sourceTree = "<group>"; };
 		C97DE2B72CFCAEC5000B4E94 /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		C97DE2B92CFCAF43000B4E94 /* LoginType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginType.swift; sourceTree = "<group>"; };
 		C97DE2BB2CFCC2A6000B4E94 /* BuddyBuddy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BuddyBuddy.entitlements; sourceTree = "<group>"; };
@@ -1131,6 +1133,7 @@
 				C91BBBF22CE33FF3001EFC70 /* Reactive+.swift */,
 				C91F67432CF098C900C84265 /* Data+.swift */,
 				C09FA8E32CEC62A200613FEA /* Date+.swift */,
+				C97955352D0AD6630033EA15 /* Notification+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -1700,6 +1703,7 @@
 				DC213A942CE365D000E2A2F7 /* Header.swift in Sources */,
 				DC9375752CEE081D00012F43 /* DefaultSocketRepository.swift in Sources */,
 				C9F20F622CDB70730043351E /* DMCoordinator.swift in Sources */,
+				C97955362D0AD6630033EA15 /* Notification+.swift in Sources */,
 				DC9375602CEC67D900012F43 /* DMRealmTable.swift in Sources */,
 				C0BF42932CE47A6100C5B5B4 /* ChannelTableViewCell.swift in Sources */,
 				DC9BC0DB2CE8DE9E002AF523 /* NetworkProtocol.swift in Sources */,
