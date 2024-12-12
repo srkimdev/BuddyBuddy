@@ -63,7 +63,10 @@ final class SocketService: SocketProtocol {
             return
         }
         if manager == nil {
-            manager = SocketManager(socketURL: url, config: [.log(true), .compress])
+            manager = SocketManager(
+                socketURL: url,
+                config: [.log(true), .compress]
+            )
         }
         if let socket = socket, socket.status != .connected {
             socket.connect()

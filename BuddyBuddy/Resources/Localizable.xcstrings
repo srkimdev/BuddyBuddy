@@ -646,6 +646,23 @@
           }
         }
       }
+    },
+    "YearMonthDay" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dd.MM.yyyy"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "yyyy/MM/dd"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

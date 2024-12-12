@@ -75,7 +75,6 @@ final class DMListTableViewCell: BaseTableViewCell {
         lastTime.text = defaultDate?.isToday() ?? true ? 
         defaultDate?.toString(format: .HourMinute) : defaultDate?.toString(format: .yearMonthDay)
         
-        print(transition.unReadCount, "🤪")
         if transition.unReadCount > 0 {
             unreadCount.isHidden = false
             unreadCount.updateCount(transition.unReadCount)
