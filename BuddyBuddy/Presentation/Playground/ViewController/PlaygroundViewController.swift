@@ -41,6 +41,7 @@ final class PlaygroundViewController: BaseViewController {
     }()
     private let bottomView: PlaygroundBottomView = PlaygroundBottomView()
     private let moreBtnTapped = PublishRelay<String>()
+    private let dismiss = PublishRelay<Void>()
     
     init(vm: PlaygroundViewModel) {
         self.vm = vm
@@ -53,7 +54,8 @@ final class PlaygroundViewController: BaseViewController {
             viewWillAppearTrigger: rx.viewWillAppear,
             selectedPlayground: playgroundTableView.rx.modelSelected(Workspace.self).asObservable(),
             moreBtnTapped: moreBtnTapped.asObservable(),
-            addBtnTapped: bottomView.addButton.rx.tap.asObservable()
+            addBtnTapped: bottomView.addButton.rx.tap.asObservable(),
+            dismiss: dismiss.asObservable()
         )
         let output = vm.transform(input: input)
         
@@ -61,14 +63,14 @@ final class PlaygroundViewController: BaseViewController {
             .drive(playgroundTableView.rx.items(
                 cellIdentifier: PlaygroundTableViewCell.identifier,
                 cellType: PlaygroundTableViewCell.self
-            )) { _, value, cell in
+            )) { [weak self] _, value, cell in
+                guard let self else { return }
                 cell.configureCell(value)
-                cell.moreButton.accessibilityIdentifier = value.workspaceID
-                cell.moreButton.addTarget(
-                    self,
-                    action: #selector(self.moreBtnDidTap),
-                    for: .touchUpInside
-                )
+                cell.moreButton.rx.tap
+                    .bind { _ in
+                        self.moreBtnTapped.accept(value.workspaceID)
+                    }
+                    .disposed(by: disposeBag)
             }
             .disposed(by: disposeBag)
         
@@ -76,7 +78,7 @@ final class PlaygroundViewController: BaseViewController {
     }
     
     override func setView() {
-        view.backgroundColor = .black.withAlphaComponent(0.5)
+        view.backgroundColor = .clear
     }
     
     override func setHierarchy() {
@@ -89,7 +91,7 @@ final class PlaygroundViewController: BaseViewController {
     
     override func setConstraints() {
         containerView.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.8)
+            make.width.equalToSuperview()
             make.verticalEdges.leading.equalToSuperview()
         }
         titleLabel.snp.makeConstraints { make in
@@ -108,9 +110,10 @@ final class PlaygroundViewController: BaseViewController {
             make.height.equalTo(82)
         }
     }
-    
-    @objc func moreBtnDidTap(_ sender: UIButton) {
-        guard let id = sender.accessibilityIdentifier else { return }
-        moreBtnTapped.accept(id)
+}
+
+extension PlaygroundViewController: SideMenuHandler {
+    @objc func dismissNotification() {
+        dismiss.accept(())
     }
 }
