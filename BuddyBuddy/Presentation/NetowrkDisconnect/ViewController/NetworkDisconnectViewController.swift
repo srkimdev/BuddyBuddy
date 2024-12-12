@@ -111,9 +111,15 @@ final class NetworkDisconnectViewController: BaseViewController {
         let frameCount = CGImageSourceGetCount(source)
         var images = [UIImage]()
         
-        (0..<frameCount)
-            .compactMap { CGImageSourceCreateImageAtIndex(source, $0, nil) }
-            .forEach { images.append(UIImage(cgImage: $0)) }
+        (0..<frameCount).compactMap {
+            CGImageSourceCreateImageAtIndex(
+                source,
+                $0,
+                nil
+            )
+        }.forEach {
+            images.append(UIImage(cgImage: $0))
+        }
         
         networkProgress.animationImages = images
         networkProgress.animationDuration = TimeInterval(frameCount) * 0.05
