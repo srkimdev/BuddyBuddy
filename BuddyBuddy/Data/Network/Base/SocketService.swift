@@ -19,6 +19,25 @@ final class SocketService: SocketProtocol {
     private let dmEventRelay = PublishRelay<DMHistoryDTO>()
     private let channelEventRelay = PublishRelay<ChannelHistoryResponseDTO>()
     
+    init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didEnterBackground),
+            name: NSNotification.Name("didEnterBackground"),
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(willEnterForeground),
+            name: NSNotification.Name("willEnterForeground"), 
+            object: nil
+        )
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func updateURL(ID: String) {
         guard let url else { return }
         manager = SocketManager(
@@ -39,11 +58,24 @@ final class SocketService: SocketProtocol {
     }
     
     func establishConnection() {
-        socket.connect()
+        guard let url = url else {
+            print("Error: URL is nil")
+            return
+        }
+        if manager == nil {
+            manager = SocketManager(socketURL: url, config: [.log(true), .compress])
+        }
+        if let socket = socket, socket.status != .connected {
+            socket.connect()
+            print("socket is connected")
+        } else {
+            print("Error: Socket is nil")
+        }
     }
     
     func closeConnection() {
         socket.disconnect()
+        print("socket is disconnected")
     }
     
     func receiveDMMessage() {
@@ -84,5 +116,13 @@ final class SocketService: SocketProtocol {
     
     func observeChannelMessage() -> PublishRelay<ChannelHistoryResponseDTO> {
         return channelEventRelay
+    }
+    
+    @objc private func didEnterBackground() {
+        closeConnection()
+    }
+    
+    @objc private func willEnterForeground() {
+        establishConnection()
     }
 }
