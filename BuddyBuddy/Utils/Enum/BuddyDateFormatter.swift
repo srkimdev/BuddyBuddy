@@ -22,7 +22,7 @@ enum BuddyDateFormatter {
         case .simpleDate:
             return "SimpleDate".localized()
         case .yearMonthDay:
-            return "yyyy년 MM월 dd일".localized()
+            return "YearMonthDay".localized()
         case .HourMinute:
             return "a HH:mm"
         }
