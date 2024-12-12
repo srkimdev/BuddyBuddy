@@ -31,6 +31,7 @@ extension UIFont {
         size: 22
     )
     
+    /// Medium 17
     static let naviTitle = UIFont.pretendard(
         type: .medium,
         size: 17
