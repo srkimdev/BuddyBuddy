@@ -60,7 +60,7 @@ final class ChannelChattingViewModel: ViewModelType {
             .flatMap { (owner, _) in
                 owner.channelUseCase.fetchSpecificChannel(channelID: owner.channelID)
             }
-            .bind(with: self) { _, response in
+            .bind { response in
                 switch response {
                 case .success(let value):
                     channelForNavi.onNext("#\(value.channelName) \(value.channelMembers.count)")

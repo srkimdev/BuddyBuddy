@@ -318,7 +318,8 @@ final class DefaultChannelRepository: ChannelRepositoryInterface {
     }
     
     func fetchChannelHistoryTable(channelID: String) -> Single<Result<[ChannelHistory], Error>> {
-        return Single.create { single in
+        return Single.create { [weak self] single in
+            guard let self else { return Disposables.create() }
             let realmResults = self.realmRepository.readAllItem()
                 .filter { $0.channelID == channelID }
                 .sorted { $0.createdAt < $1.createdAt }
