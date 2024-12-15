@@ -4,6 +4,8 @@
 
 ## 스크린샷
 
+이미지 준비중입니다.
+
 <br>
 
 ## 프로젝트 환경
@@ -16,7 +18,7 @@
     | iOS version | <img src="https://img.shields.io/badge/iOS-15.0+-black?logo=apple"/> |
     |:-:|:-:|
     | Framework | UIKit |
-    | Architecture | Clean Architecture + MVVM |
+    | Architecture | Clean Architecture + MVVM-C |
     | Reactive | RxSwift |
     | 다국어 | 한국어, 영어 |
 
@@ -42,9 +44,17 @@
 ## 프로젝트 구조
 #### Clean Architecture
 ![Clean Architecture](Documents/BuddyCleanArchitecture.png)
-// 설명
+- Data, Domain, Presentation 영역으로 분리
+- Data영역에는 서버와 통신, 채팅 DB관리, 소켓통신 관리
+- Domain영역에는 repository에 있는 함수들을 조합하여 usecase를 정의하고 view에서 사용될 데이터 모델을 구성
+- Presentation영역에는 usecase로 부터 얻은 데이터를 이용하여 뷰를 업데이트
+
+<br>
+
 #### Coordinator Pattern
 ![Coordinator Pattern](Documents/BuddyCoordinator.png)
+
+<br>
 
 #### DIContainer
 - usecase와 repository의 의존성 주입을 매번 해주는 번거로움을 줄이기 위해 DIContainer 도입
@@ -57,7 +67,7 @@
   - ### Socket 통신
     - socketIO 라이브러리를 이용하여 SocketManager, SocketIOClient 객체를 생성하고 소켓통신을 위한 url 연결 및 핸들러 등록
     - 메세지가 올 때 마다 RxSwift의 PublishRelay를 이용하여 이벤트를 방출하고 Presentation영역에서 구독하여 사용
-    - SceneDelegate에서 백그라운드/포어그라운드 진입을 감지하여 notification을 통해 이벤트를 전달하고 백그라운드 시 소켓 연결을 해제하고, 포어그라운드 시 소켓 연결을 재설정하도록 구현.
+    - SceneDelegate에서 백그라운드/포어그라운드 진입을 감지하여 notification을 통해 이벤트를 전달하고 백그라운드 시 소켓 연결을 해제하고, 포어그라운드 시 소켓 연결을 재설정하도록 구현
   
   <br>
 
@@ -67,17 +77,8 @@
 
   <br>
 
-  - ### 이미지 다운 샘플링
-    - Alamofire의 RequestIntercepter 프로토콜을 채택하여 adapt, retry 로직 구현 
-    - Access Token 만료 시 retry함수를 거쳐 새로운 엑세스 토큰 발급
-    - Refresh Token 만료 시 로그인 화면으로 이동
-
-  <br>
-
   - ### NS Cashe
-    - Alamofire의 RequestIntercepter 프로토콜을 채택하여 adapt, retry 로직 구현 
-    - Access Token 만료 시 retry함수를 거쳐 새로운 엑세스 토큰 발급
-    - Refresh Token 만료 시 로그인 화면으로 이동
+    - 프로필 이미지가 반복해서 나타나는 채팅방의 경우 매번 이미지를 통신하지 않고 NS Cashe를 이용
 
   <br>
 
@@ -99,19 +100,5 @@
   - interval은 1초에 한번씩 이벤트를 방출하지만 처음 0초에는 방출하지 않아 1초 후에야 모든 통신이 시작됨
 
 - 해결
-  - Observable.zip을 사용하여 모든 통신이 다 끝났을 때 이벤트를 방출하여 구독할 수 있도록 구성
+  - Observable.zip을 사용하여 모든 통신이 다 끝났을 때 이벤트를 방출
   - interval 오퍼레이터 사용 시 처음에도 이벤트를 발생할 수 있도록 concat을 사용하여 Observable.just(0)을 같이 결합 
-
-
-<br>
-- DMList 호출 시간
-- NSCache -> 메모리 캐시 (용량 -> 앱마다 캐싱 전략⭐️ 확립!)
-
-
-## 회고
-- DIContainer register 기준
-- Coordinator
-
-
-- 소켓 끊겼을 때 처리 + 재연결 시점 + 핑퐁 + 소켓 
-- (다운 샘플링 찾아보기💥)
