@@ -4,7 +4,9 @@
 
 ## 스크린샷
 
-이미지 준비중입니다.
+| 플레이그라운드 목록 | 채널 채팅 | 유저 검색 후 DM 화면전환 | 실시간 채팅 |
+| --- | --- | --- | --- |
+|<img src="https://github.com/user-attachments/assets/6c7928fc-9c70-455d-8b03-99074a55dfae" height="300">| <img src="https://github.com/user-attachments/assets/781eacaa-7ebf-4d48-b942-009edfdafbc9" height="300">| <img src="https://github.com/user-attachments/assets/bd47598f-29f4-4c8a-af8b-a9f8a5138790" height="300">| <img src="https://github.com/user-attachments/assets/b2f21824-90af-4812-ad14-2bc22ae8aa0d" height="300"> |
 
 <br>
 
@@ -47,7 +49,9 @@
 - Data, Domain, Presentation 영역으로 분리
 - Data영역에는 서버와 통신, 채팅 DB관리, 소켓통신 관리
 - Domain영역에는 repository에 있는 함수들을 조합하여 usecase를 정의하고 view에서 사용될 데이터 모델을 구성
-- Presentation영역에는 usecase로 부터 얻은 데이터를 이용하여 뷰를 업데이트
+- Presentation: UseCase를 통해 받은 데이터를 viewModel의 input, output을 통해 view로 전달하며, 단방향 데이터 플로우를 구성 *
+  - input: 사용자의 입력과 이벤트를 받아 상태 변경 *
+  - output: 변경된 상태와 데이터를 view에 전달하여 UI 업데이트 *
 
 <br>
 
