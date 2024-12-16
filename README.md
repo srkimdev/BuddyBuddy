@@ -12,7 +12,7 @@
 
 ## 프로젝트 환경
 - 개발 인원:
-  - iOS 3명, BE 2명
+  - iOS 3명, BE 1명
 - 개발 기간:
   - 24.11.05 - 24.12.09 (약 1달)
 - 개발 환경:
@@ -44,7 +44,7 @@
 <br/>
 
 ## 프로젝트 구조
-#### Clean Architecture
+### Clean Architecture
 ![Clean Architecture](Documents/BuddyCleanArchitecture.png)
 - Data, Domain, Presentation 영역으로 분리
 - Data영역에는 서버와 통신, 채팅 DB관리, 소켓통신 관리
@@ -55,12 +55,12 @@
 
 <br>
 
-#### Coordinator Pattern
+### Coordinator Pattern
 ![Coordinator Pattern](Documents/BuddyCoordinator.png)
 
 <br>
 
-#### DIContainer
+### DIContainer
 - usecase와 repository의 의존성 주입을 매번 해주는 번거로움을 줄이기 위해 DIContainer 도입
 - 많이 사용되는 usecase와 repository 객체를 저장하고 필요 시 가져다 쓸 수 있도록 딕셔너리 형태로 구현
 
