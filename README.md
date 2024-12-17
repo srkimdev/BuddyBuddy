@@ -4,9 +4,13 @@
 
 ## 스크린샷
 
-| 플레이그라운드 목록 | 채널 채팅 | 유저 검색 후 DM 화면전환 | 실시간 채팅 |
-| --- | --- | --- | --- |
-|<img src="https://github.com/user-attachments/assets/6c7928fc-9c70-455d-8b03-99074a55dfae" height="300">| <img src="https://github.com/user-attachments/assets/781eacaa-7ebf-4d48-b942-009edfdafbc9" height="300">| <img src="https://github.com/user-attachments/assets/bd47598f-29f4-4c8a-af8b-a9f8a5138790" height="300">| <img src="https://github.com/user-attachments/assets/b2f21824-90af-4812-ad14-2bc22ae8aa0d" height="300"> |
+| 플레이그라운드 목록 | 채널 채팅 | 유저 검색 후 DM 화면전환 |
+| --- | --- | --- |
+|<img src="https://github.com/user-attachments/assets/6c7928fc-9c70-455d-8b03-99074a55dfae" height="300">| <img src="https://github.com/user-attachments/assets/781eacaa-7ebf-4d48-b942-009edfdafbc9" height="300">| <img src="https://github.com/user-attachments/assets/bd47598f-29f4-4c8a-af8b-a9f8a5138790" height="300">|
+
+| 실시간 채팅 | 실시간 채팅 목록 갱신 |
+| --- | --- |
+|<img src="https://github.com/user-attachments/assets/b2f21824-90af-4812-ad14-2bc22ae8aa0d" height="300">| <img src="https://github.com/user-attachments/assets/903c65aa-4250-42ac-8d97-2903664fc4bc" height="300">|
 
 <br>
 
@@ -14,7 +18,7 @@
 - 개발 인원:
   - iOS 3명, BE 1명
 - 개발 기간:
-  - 24.11.05 - 24.12.09 (약 1달)
+  - 24.11.14 - 24.12.09 (약 1달)
 - 개발 환경:
     
     | iOS version | <img src="https://img.shields.io/badge/iOS-15.0+-black?logo=apple"/> |
@@ -46,23 +50,31 @@
 ## 프로젝트 구조
 ### Clean Architecture
 ![Clean Architecture](Documents/BuddyCleanArchitecture.png)
-- Data, Domain, Presentation 영역으로 분리
-- Data영역에는 서버와 통신, 채팅 DB관리, 소켓통신 관리
-- Domain영역에는 repository에 있는 함수들을 조합하여 usecase를 정의하고 view에서 사용될 데이터 모델을 구성
-- Presentation: UseCase를 통해 받은 데이터를 viewModel의 input, output을 통해 view로 전달하며, 단방향 데이터 플로우를 구성 *
-  - input: 사용자의 입력과 이벤트를 받아 상태 변경 *
-  - output: 변경된 상태와 데이터를 view에 전달하여 UI 업데이트 *
+
+### Data
+- 서버와 통신
+- 채팅 DB관리
+- 소켓통신 관리
+
+### Domain
+- Repository Interface를 통해 SOLID 원칙 중 DIP 충족
+- 프로젝트의 주요 기능을 기준으로 Domain을 분리하여 SOLID의 SRP 충족
+
+### presentation
+- ViewModel의 Input, Output 패턴을 사용하여 단방향 데이터 플로우 구성
 
 <br>
 
 ### Coordinator Pattern
 ![Coordinator Pattern](Documents/BuddyCoordinator.png)
+- 기존 ViewController 내부에서 화면 전환을 처리할 경우, 다른 ViewController와 높은 결합도 생성
+- 화면 전환을 담당하는 Coordinator 객체를 통해 ViewController 객체간 결합도 감소
 
 <br>
 
 ### DIContainer
-- usecase와 repository의 의존성 주입을 매번 해주는 번거로움을 줄이기 위해 DIContainer 도입
-- 많이 사용되는 usecase와 repository 객체를 저장하고 필요 시 가져다 쓸 수 있도록 딕셔너리 형태로 구현
+- 필요한 객체를 매번 생성하여 주입하는 과정에서 발생하는 비효율성과 객체 생성 비용의 낭비 발생
+- 의존성을 일관되게 관리하고 재사용 가능한 구조를 만들기 위해 딕셔너리 형태의 DI 객체 구현
 
 <br>
 
@@ -70,29 +82,28 @@
 
   - ### Socket 통신
     - socketIO 라이브러리를 이용하여 SocketManager, SocketIOClient 객체를 생성하고 소켓통신을 위한 url 연결 및 핸들러 등록
-    - 메세지가 올 때 마다 RxSwift의 PublishRelay를 이용하여 이벤트를 방출하고 Presentation영역에서 구독하여 사용
-    - SceneDelegate에서 백그라운드/포어그라운드 진입을 감지하여 notification을 통해 이벤트를 전달하고 백그라운드 시 소켓 연결을 해제하고, 포어그라운드 시 소켓 연결을 재설정하도록 구현
+    - 소켓 연결 이후 응답이 발생 할 때 마다 PublishRelay를 이용하여 이벤트를 방출
+    - 불필요한 소켓 통신을 줄이기 위해 백그라운드와 포그라운드 시점을 캐치하여 소켓 연결 및 해제 구현
   
   <br>
 
   - ### 폴링 방식을 활용한 실시간 메세지 수신
-    - 모든 채팅방에 대해 소켓통신을 열어놓아 메세지를 수신받는 것이 리소스 낭비라고 판단하여 폴링방식 도입
+    - 채팅 목록에서 모든 채팅방에 대한 소켓 통신을 연결하는 것이 리소스 낭비라고 판단하여 폴링방식 도입
     - RxSwift의 interval 오퍼레이터를 이용하여 1초에 한번 씩 HTTP요청을 보내 채팅방 목록 업데이트
 
   <br>
 
-  - ### NS Cache, Disk Cache 구현
-    - 프로필 이미지가 반복해서 나타나는 채팅방의 경우 매번 이미지를 통신하지 않고 캐시 도입
-    - 업로드 되는 이미지에 대해 NS Cache, Disk Cache에 저장
-    - filemanager기반 Disk Cache 구현
-    - 처음 이미지 통신 시 메모리 캐시 확인 -> 이미지 없을 시 디스크 캐시 확인 -> 이미지 없을 시 이미지 통신 진행
+  - ### 이미지 캐싱
+    - 업로드 되는 이미지에 대해 NSCache를 활용하여 Memory Cache 구현
+    - Filemanager기반 Disk Cache 구현
+    - 네트워크 통신 회수 감소 수치화
 
   <br>
 
-  - ### Network monitoring, 상태코드 처리
-    - 네트워크 통신이 끊겼을 때를 실시간으로 감시하여 끊길 시, 로딩화면을 띄어주어 사용자에게 알림
-    - 네트워크 통신이 끊길 시, 모든 채팅방의 소켓통신을 해제
-    - 네트워크 통신 시 상태 코드를 기준으로 에러를 분기하여 문제 발생 지점을 파악할 수 있도록 구성
+  - ### 네트워크 모니터링 및 네트워크 요청 실패 에러처리
+    - 애플의 Network 프레임워크를 활용해 네트워크 상태 감지 객체 구현
+    - 실시간 네트워크 상태를 감지하여 사용자 경험 개선
+    - 네트워크 요청 실패시 JSON 형태로 오는 에러코드를 디코딩하여 에러 상황 대응
 
   <br>
 
