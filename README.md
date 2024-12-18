@@ -32,7 +32,7 @@
 
 ## 기술 스택 및 라이브러리
 - UI: `SnapKit`, `RxDataSource`
-- Network: `SocketIO`, `Alamofire`, `Nuke`
+- Network: `SocketIO`, `Alamofire`
 - Database: `Realm`
 
 <br/>
@@ -60,7 +60,7 @@
 - Repository Interface를 통해 SOLID 원칙 중 DIP 충족
 - 프로젝트의 주요 기능을 기준으로 Domain을 분리하여 SOLID의 SRP 충족
 
-### presentation
+### Presentation
 - ViewModel의 Input, Output 패턴을 사용하여 단방향 데이터 플로우 구성
 
 <br>
