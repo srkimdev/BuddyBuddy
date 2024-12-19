@@ -58,7 +58,7 @@
 
 ### Domain
 - Repository Interface를 통해 SOLID 원칙 중 DIP 충족
-- 프로젝트의 주요 기능을 기준으로 Domain을 분리하여 SOLID의 SRP 충족
+- 프로젝트의 주요 기능을 기준으로 Domain을 분리하여 SOLID 원칙 중 SRP 충족
 
 ### Presentation
 - ViewModel의 Input, Output 패턴을 사용하여 단방향 데이터 플로우 구성
@@ -104,6 +104,12 @@
     - 애플의 Network 프레임워크를 활용해 네트워크 상태 감지 객체 구현
     - 실시간 네트워크 상태를 감지하여 사용자 경험 개선
     - 네트워크 요청 실패시 JSON 형태로 오는 에러코드를 디코딩하여 에러 상황 대응
+   
+  <br>
+   
+  - ### KeyChain
+    - Access Token, Refresh Token과 같은 보안이 중요한 개인정보들은 Keychain을 사용하여 데이터를 암호화
+    - KeyChainManager를 싱글톤형태로 만들어 토큰이 필요한 곳에 전역적으로 사용할 수 있도록 구성
 
   <br>
 
