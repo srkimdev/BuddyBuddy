@@ -69,6 +69,7 @@
 ![Coordinator Pattern](Documents/BuddyCoordinator.png)
 - 기존 ViewController 내부에서 화면 전환을 처리할 경우, 다른 ViewController와 높은 결합도 생성
 - 화면 전환을 담당하는 Coordinator 객체를 통해 ViewController 객체간 결합도 감소
+- 코디네이터 객체에 상위 코디네이터를 참조하기 위해 parent를 정의하고 하위 코디네이터가 메모리에서 해제되지 않도록 child 배열을 정의
 
 <br>
 
@@ -94,21 +95,20 @@
   <br>
 
   - ### 이미지 캐싱
-    - 업로드 되는 이미지에 대해 NSCache를 활용하여 Memory Cache 구현
-    - Filemanager기반 Disk Cache 구현
-    - 네트워크 통신 회수 감소 수치화
+    - 프로필 이미지를 반복해서 호출하는 리소스를 줄이기 위해 NSCache를 사용한 메모리 캐시와 FileManager를 사용한 디스크 캐시를 조합하여 이미지 캐싱 시스템을 구현
+    - 앱 시작 시 저장된 파일들의 마지막 수정 시점을 확인하여 timeInterval 메서드로 현재 날짜와 비교 후 7일 이상 지난 것에 대해 삭제하도록 디스크 캐시 정책 구현
 
   <br>
 
   - ### 네트워크 모니터링 및 네트워크 요청 실패 에러처리
-    - 애플의 Network 프레임워크를 활용해 네트워크 상태 감지 객체 구현
-    - 실시간 네트워크 상태를 감지하여 사용자 경험 개선
+    - NWPathMonitor객체를 생성하고 global queue에 작업을 할당하여 실시간으로 네트워크 모니터링
+    - 네트워크 통신 단절 시 로딩 화면의 Window로 교체하고 재연결 시 nil값을 할당하여 기존 화면 표시
     - 네트워크 요청 실패시 JSON 형태로 오는 에러코드를 디코딩하여 에러 상황 대응
    
   <br>
    
   - ### KeyChain
-    - Access Token, Refresh Token과 같은 보안이 중요한 개인정보들은 Keychain을 사용하여 데이터를 암호화
+    - Keychain의 AES 256비트 암호화 및 Secure Enclave 기반 보안 특성을 이용하여 Access Token과 같은 보안이 필요한 데이터를 안전하게 암호화하여 저장
     - KeyChainManager를 싱글톤형태로 만들어 토큰이 필요한 곳에 전역적으로 사용할 수 있도록 구성
 
   <br>
